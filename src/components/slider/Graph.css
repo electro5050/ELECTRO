@@ -1,0 +1,114 @@
+.chart-wrapper {
+    position: relative;
+    max-width: 1200px; 
+    max-height: 800px;
+    width: 80%; 
+    height: 80vh; 
+}
+
+#main {
+    width: 100%;
+    height: 100%;
+    top: 80px
+}
+
+.chart-button {
+    position: absolute;
+    right: 20px;  /* Added a margin of 20px to the right. Adjust this value as needed. */
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.chart-button-top {
+    top: 40px;
+    right: -190px; /* Adjust this to change the top button's position */
+}
+
+.chart-button-bottom {
+    bottom: 120px;
+    right: -190px; /* Adjust this to change the bottom button's position */
+}
+
+.red-btn {
+    background-color: red;
+    color: white;
+    width: 150px;
+    height: 50px;
+    font-size: 16px; /* reduced from 18px to 16px */
+    text-align: center;
+    line-height: 50px; /* matches the button's height */
+    padding: 0; /* ensuring there's no padding, but you can adjust if needed */
+    border: none;
+    overflow: hidden; /* hide overflowing text */
+    text-overflow: ellipsis; /* add "..." when the text overflows */
+    white-space: nowrap;
+}
+
+.green-btn {
+    color: white;
+    background-color: green;
+    width: 150px;
+    height: 50px;
+    font-size: 16px; /* reduced from 18px to 16px */
+    text-align: center;
+    line-height: 50px; /* matches the button's height */
+    padding: 0; /* ensuring there's no padding, but you can adjust if needed */
+    border: none;
+    overflow: hidden; /* hide overflowing text */
+    text-overflow: ellipsis; /* add "..." when the text overflows */
+    white-space: nowrap;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    z-index: 999;
+}
+
+.game-ended-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.error-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f44336;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 1000;
+}
+.switch-room-btn {
+    color: white;
+    background-color:rgb(246, 205, 20);
+    width: 150px;
+    height: 50px;
+    font-size: 16px; /* reduced from 18px to 16px */
+    text-align: center;
+    line-height: 50px; /* matches the button's height */
+    padding: 0; /* ensuring there's no padding, but you can adjust if needed */
+    border: none;
+    overflow: hidden; /* hide overflowing text */
+    text-overflow: ellipsis; /* add "..." when the text overflows */
+    white-space: nowrap;
+    position: absolute;
+    margin-right: 10px;
+}
