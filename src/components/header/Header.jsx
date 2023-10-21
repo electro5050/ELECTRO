@@ -9,10 +9,47 @@ import logodark2x from '../../assets/images/logo/logo_dark@2x.png';
 import imgsun from '../../assets/images/icon/sun.png';
 import avt from '../../assets/images/avatar/avt-2.jpg';
 
-const Header = () => {
+const Header = (gameState={gameState}) => {
   const { pathname } = useLocation();
+  const [coinBalance, setCoinBalance] = useState(null);
+
 
   const headerRef = useRef(null);
+
+  useEffect(() => {
+    // Assuming you have a function to get a user's token for authorization
+    const token = localStorage.getItem('token');
+
+    fetch('http://192.168.29.85:3000/coinbalance', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        const contentType = response.headers.get("content-type");
+        if (response.ok && contentType && contentType.includes("application/json")) {
+            return response.json();
+        } else {
+            console.error('Unexpected response:', response);
+            throw new Error(`Server responded with status: ${response.status} and content type: ${contentType}`);
+        }
+    })
+    
+    .then(data => {
+        if (data.coinbalance) {
+            setCoinBalance(data.coinbalance);
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching coin balance:', error);
+    });
+}, [gameState]);
+
+
+
+
   useEffect(() => {
     window.addEventListener('scroll', isSticky);
     return () => {
@@ -155,12 +192,10 @@ const Header = () => {
                     className="sc-btn-top mg-r-12"
                     id="site-header"
                   >
-                    <Link
-                      to="/wallet-connect"
-                      className="sc-button header-slider style style-1 wallet fl-button pri-1"
-                    >
-                      <span>Wallet connect</span>
-                    </Link>
+                  <p className="sc-button header-slider style style-1 wallet fl-button pri-1">
+                      <span>{coinBalance ? `${coinBalance} $` : 'Wallet connect'}</span>
+                  </p>
+
                   </div>
 
                   <div className="admin_active" id="header_admin">

@@ -33,10 +33,7 @@ function LineChart({data, gameState, setGameState, authError, setAuthError}) {
     
 
     const option = {
-        title: {
-            text: 'Your Chart Title',
-            left: '1%'
-        },
+       
         tooltip: {
             trigger: 'axis'
         },
@@ -90,8 +87,21 @@ function LineChart({data, gameState, setGameState, authError, setAuthError}) {
         const chartDom = document.getElementById('main');
         const myChart = echarts.init(chartDom);
         setChartDom(myChart);
-
+        
+        // Resize the chart when the window is resized
+        const handleResize = () => {
+            myChart.resize();
+        };
+    
+        // Add the resize event listener
+        window.addEventListener('resize', handleResize);
+    
+        // Return a cleanup function to remove the listener when the component is unmounted
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
     }, []);
+    
 
 
     useEffect(() => {

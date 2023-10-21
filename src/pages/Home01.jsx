@@ -7,6 +7,7 @@ import heroSliderData from '../assets/fake-data/data-slider';
 import Slider from '../components/slider/Slider';
 import Graph from '../components/slider/Graph'
 import SignUp from './SignUp';
+import Ranking from './Ranking';
 // import liveAuctionData from '../assets/fake-data/data-live-auction';
 // import LiveAuction from '../components/layouts/LiveAuction';
 // import TopSeller from '../components/layouts/TopSeller';
@@ -26,6 +27,8 @@ const Home01 = () => {
         activeGameButton: ""
     });
     const [authError, setAuthError] = useState(false);
+    const [rankingData, setRankingData] = useState([]);
+
   
     useEffect(() => {
       const websocket = new WebSocket("ws://192.168.29.85:5000");
@@ -39,7 +42,10 @@ const Home01 = () => {
   
       websocket.onmessage = (event) => {
           const message = JSON.parse(event.data);
-          if (message.message) {
+          console.log("Received WebSocket message:", event.data)
+          if (message.type && message.type === 'winners') {
+            setRankingData(message.winners);
+          } else if (message.message) {
               setGameState({
                   ...gameState,
                   endGameMessage: message.message,
@@ -82,9 +88,11 @@ const Home01 = () => {
   },[] )
     return (
         <div className='home-1'>
-            <Header />
+            <Header gameState={gameState}/>
             <Slider data={heroSliderData} />
             <Graph data={data} setAuthError={setAuthError} gameState={gameState} setGameState={setGameState} authError={authError} />
+            <Ranking rankingData={rankingData} />
+
             {/* <LiveAuction data={liveAuctionData} /> */}
             {/* <TopSeller data={topSellerData} /> */}
             {/* <TodayPicks data={todayPickData} />
