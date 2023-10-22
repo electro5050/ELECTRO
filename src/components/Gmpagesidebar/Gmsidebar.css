@@ -1,0 +1,36 @@
+/* Add this code to your Gmsidebar.css file */
+
+.sidebar-links {
+  display: flex;
+  flex-direction: column; /* Display links in a column */
+  align-items: flex-start; /* Align links to the left */
+  gap: 20px; /* Add spacing between links */
+}
+
+.sidebar-link {
+  text-decoration: none;
+  color: white;
+  display: flex; /* Display links and icons in a row */
+  align-items: center; /* Align links and icons vertically */
+  border: 2px solid transparent;
+  border-radius: 10px;
+  font-weight: bold;
+ /* Background color for the links */
+  padding: 18px 25px;
+  font-size: larger;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  display: inline-block; /* This makes it a block-level element for proper alignment */
+  margin-left: 15px; /* Adjust the margin as needed to align it properly */
+  text-decoration: none; /* Remove the default link underline */
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-link:hover {
+  background-color: #4e08e6; /* Background color on hover */
+  color: #CCB41A; /* Text color on hover */
+  border-color: transparent; /* Remove border on hover */
+}
+.user-modal{
+  padding: 5%;
+}

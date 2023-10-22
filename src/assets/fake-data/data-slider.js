@@ -1,7 +1,8 @@
-import img1 from '../images/slider/slide_1.png';
+// import img1 from '../images/slider/slide_1.png';
 import img2 from '../images/slider/slide_1.png';
 import imgbg1 from '../images/slider/bg_slide_1.png'
 import imgbg2 from '../images/slider/bg_slide_1.png'
+import img1 from '../images/slider/WhatsApp Image 2023-10-20 at 02.38.16.png'
 
 
 const heroSliderData = [

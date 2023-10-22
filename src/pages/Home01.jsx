@@ -17,7 +17,7 @@ import Ranking from './Ranking';
 // import PopularCollection from '../components/layouts/PopularCollection';
 // import popularCollectionData from '../assets/fake-data/data-popular-collection';
 // import Create from '../components/layouts/Create';
-
+import { Element } from 'react-scroll';
 const Home01 = () => {
     const [data, setData] = useState([]);
     const [ws, setWs] = useState(null);
@@ -103,7 +103,10 @@ const Home01 = () => {
             {/* <TodayPicks data={todayPickData} />
             <PopularCollection data={popularCollectionData} /> */}
             {/* <Create /> */}
+            <Element name='signup-section' className='element'>
             <SignUp/>
+            </Element>
+            
             <Footer />
         </div>
     );

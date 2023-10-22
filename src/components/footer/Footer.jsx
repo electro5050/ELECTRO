@@ -2,6 +2,9 @@ import React, { useState ,useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import logodark from '../../assets/images/logo/logo_dark.png'
 import logofooter from '../../assets/images/logo/logo2.png'
+import './Footer.css';
+import img04 from '../../assets/images/logo/DMCA_logo-green150w.png'
+
 const Footer = () => {
     const accountList = [
         {
@@ -119,50 +122,32 @@ const Footer = () => {
                             <div className="widget widget-logo">
                                 <div className="logo-footer" id="logo-footer">
                                     <Link to="/">
+                                   
                                         <img className='logo-dark' id="logo_footer" src={logodark} alt="nft-gaming" />
                                         <img className='logo-light' id="logo_footer" src={logofooter} alt="nft-gaming" />
                                         
                                     </Link>
+                                   
                                 </div>
                                 <p className="sub-widget-logo">Lorem ipsum dolor sit amet,consectetur adipisicing elit. Quis non, fugit totam vel laboriosam vitae.</p>
+                                <div className='badge'>
+                                    <img src={img04}alt="" />
+                                </div>
                             </div>
                         </div>
-                        <div className="col-lg-2 col-md-4 col-sm-5 col-5">
-                            <div className="widget widget-menu style-1">
-                                <h5 className="title-widget">My Account</h5>
-                                <ul>
-                                    {
-                                        accountList.map((item,index) =>(
-                                            <li key={index}><Link to={item.link}>{item.title}</Link></li>
-                                        ))
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="col-lg-2 col-md-4 col-sm-7 col-7">
-                            <div className="widget widget-menu style-2">
-                                <h5 className="title-widget">Resources</h5>
-                                <ul>
-                                    {
-                                        resourcesList.map((item,index) =>(
-                                            <li key={index}><Link to={item.link}>{item.title}</Link></li>
-                                        ))
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="col-lg-2 col-md-4 col-sm-5 col-5">
-                            <div className="widget widget-menu fl-st-3">
-                                <h5 className="title-widget">Company</h5>
-                                <ul>
-                                    {
-                                        companyList.map((item,index) =>(
-                                            <li key={index}><Link to={item.link}>{item.title}</Link></li>
-                                        ))
-                                    }
-                                </ul>
-                            </div>
-                        </div>
+                        <div className="footer">
+      <div className="mainhd">
+        <h1>Want to know more about us?</h1>
+      </div>
+      <div className="footer-links">
+        <a href="/About" className="footer-link">About</a>
+        <a href="/Privacy" className="footer-link">Privacy Policy</a>
+        <a href="/Terms" className="footer-link">Terms</a>
+        <a href="/Cookies" className="footer-link">Cookie Settings</a>
+      </div>
+      <div className="long-line"></div>
+    </div>
+
                         <div className="col-lg-3 col-md-6 col-sm-7 col-12">
                             <div className="widget widget-subcribe">
                                 <h5 className="title-widget">Subscribe Us</h5>

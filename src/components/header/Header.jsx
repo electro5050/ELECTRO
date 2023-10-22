@@ -9,6 +9,9 @@ import logodark2x from '../../assets/images/logo/logo_dark@2x.png';
 import imgsun from '../../assets/images/icon/sun.png';
 import avt from '../../assets/images/avatar/avt-2.jpg';
 import Chatpage from '../../pages/Chatpage'
+import '../header/Header.css'
+import { Link as ScrollLink } from 'react-scroll';
+
 
 const Header = (gameState={gameState}) => {
   const { pathname } = useLocation();
@@ -71,16 +74,14 @@ const Header = (gameState={gameState}) => {
 
   const menuLeft = useRef(null);
   const btnToggle = useRef(null);
-  const btnSearch = useRef(null);
+  
 
   const menuToggle = () => {
     menuLeft.current.classList.toggle('active');
     btnToggle.current.classList.toggle('active');
   };
 
-  const searchBtn = () => {
-    btnSearch.current.classList.toggle('active');
-  };
+  
 
   const [activeIndex, setActiveIndex] = useState(null);
   const handleOnClick = (index) => {
@@ -108,6 +109,8 @@ const Header = (gameState={gameState}) => {
                         src={logodark}
                         srcSet={`${logodark2x}`}
                         alt="nft-gaming"
+                        style={{ padding: '7%' }}
+                        
                       />
                       <img
                         className="logo-light"
@@ -115,6 +118,7 @@ const Header = (gameState={gameState}) => {
                         src={logoheader}
                         srcSet={`${logoheader2x}`}
                         alt="nft-gaming"
+                        style={{ padding: '7%' }}
                       />
                     </Link>
                   </div>
@@ -207,6 +211,12 @@ const Header = (gameState={gameState}) => {
                   </p>
 
                   </div>
+   
+                
+
+                 
+                  
+                  
 
                   <div className="admin_active" id="header_admin">
                     <div className="header_avatar">
