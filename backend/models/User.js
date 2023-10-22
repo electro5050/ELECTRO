@@ -19,4 +19,43 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
+
+// Main Game schema
+const gameSchema = new mongoose.Schema({
+    start_time: {
+        type: Date,
+    },
+    end_time: {
+        type: Date,
+    },
+    winning_coin: {
+        type: String,
+    },
+});
+
+const Game = mongoose.model('Game', gameSchema);
+
+// User Bid schema
+const userBidSchema = new mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',  // Reference to the User model
+    },
+    bid_amount: {
+        type: Number,
+    },
+    coin_type: {
+        type: String,
+    },
+    game: { 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Game',  // Reference to the Game model
+    }
+});
+
+const UserBid = mongoose.model('UserBid', userBidSchema);
+
+
+
+module.exports = { User, Game, UserBid };

@@ -23,6 +23,8 @@ print("Connecting to MongoDB...")
 
 users_collection = db['users']
 
+games_collection = db['games']
+
 # Lists
 game_history = []
 coin_allocations = {}
@@ -40,6 +42,7 @@ def parse_data(data_string):
     print(f"Received data from Redis: {data}")
     userId = data.get("userId", None)
     
+    # Check for the "switch" action
     if "action" in data and data["action"] == "switch":
         if userId and userId in coin_allocations:
             old_button_type = coin_allocations[userId]["buttonType"]
@@ -48,12 +51,26 @@ def parse_data(data_string):
             print(f"User {userId} switched from {old_button_type} to {new_button_type}.")
         else:
             print(f"User {userId} attempted to switch but isn't in coin_allocations.")
+    
+    # Check for the "deductCoins" action
+    elif "action" in data and data["action"] == "deductCoins":
+        userId_obj = ObjectId(userId)
+        deduction_amount = int(data["deductionAmount"])
+        
+        result = users_collection.update_one({"_id": userId_obj}, {"$inc": {"coinbalance": -deduction_amount}})
+        print(f"Deducted {deduction_amount} coins from user {userId}. {result.modified_count} records modified.")
+        
+        updated_balance = users_collection.find_one({"_id": userId_obj})["coinbalance"]
+        asyncio.create_task(send_data_to_clients({"type": "balanceUpdate", "userId": userId, "newBalance": updated_balance}))
+    
+    # Default behavior if neither "switch" nor "deductCoins" actions are detected
     else:
         if userId and userId not in coin_allocations:
             coin_allocations[userId] = {"buttonType": data["buttonType"], "value": 0}
             print(f"New user {userId} added with button type {data['buttonType']}.")
         coin_allocations[userId]["value"] += int(data["coinCount"])
         print(f"Updated user {userId} with new value: {coin_allocations[userId]['value']}.")
+
 
 async def send_data_to_clients(data):
     for websocket in list(active_websockets):
@@ -68,6 +85,23 @@ async def game_cycle():
     while True:
         game_history.clear()
         coin_allocations.clear()
+
+        # Create a new game document
+        game_doc = {
+            "start_time": asyncio.get_event_loop().time(),
+            "bids": [],
+            "winners": []
+        }
+        inserted_game = games_collection.insert_one(game_doc)
+        current_game_id = inserted_game.inserted_id
+
+        # Send the game ID to all connected clients
+        game_start_data = {
+            "type": "gameStart",
+            "gameId": str(current_game_id),
+            "startTime": game_doc["start_time"]
+        }
+        await send_data_to_clients(game_start_data)
         
         end_time = asyncio.get_event_loop().time() + 30
         while asyncio.get_event_loop().time() < end_time:
@@ -101,25 +135,31 @@ async def game_cycle():
                     
                     print(f"Update result for user {userId}: {result.modified_count} records modified.")
                     winners.append({
-                   "userId": userId,
-                    "bidAmount": data['value'],
-                   "winningBonus": bonus
-                                        })
+                        "userId": userId,
+                        "bidAmount": data['value'],
+                        "winningBonus": bonus
+                    })
                     print(f"Awarded user {userId} with bonus: {bonus}")
 
         winning_message = {
             "type": "winners",
             "winning_color": winning_color,
             "winners": winners
-            
         }
         await send_data_to_clients(winning_message)
+
+        # Update the game document with end time, winning color, and winners
+        game_doc["end_time"] = asyncio.get_event_loop().time()
+        game_doc["winning_color"] = winning_color
+        game_doc["winners"] = winners
+        games_collection.update_one({"_id": current_game_id}, {"$set": game_doc})
 
         end_message = {"message": "The game has ended. The next game will start in 10 seconds."}
         game_history.append(end_message)
         await send_data_to_clients(end_message)
         
         await asyncio.sleep(10)
+
 
 async def listen_to_redis():
     while True:
@@ -137,8 +177,11 @@ async def websocket_handler(websocket, path):
         await websocket.send(json.dumps(item))
     
     try:
-        async for message in websocket:
-            pass
+           async for message in websocket:
+            data = json.loads(message)
+            if data["type"] == "bid":
+                gameId = data["gameId"]
+                # Handle the bid and associate it with the specified gameId
     finally:
         active_websockets.remove(websocket)
 

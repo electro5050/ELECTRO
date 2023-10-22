@@ -8,10 +8,12 @@ import logodark from '../../assets/images/logo/logo_dark.png';
 import logodark2x from '../../assets/images/logo/logo_dark@2x.png';
 import imgsun from '../../assets/images/icon/sun.png';
 import avt from '../../assets/images/avatar/avt-2.jpg';
+import Chatpage from '../../pages/Chatpage'
 
 const Header = (gameState={gameState}) => {
   const { pathname } = useLocation();
   const [coinBalance, setCoinBalance] = useState(null);
+  const[chatOpen, setChatOpen] = useState(false)
 
 
   const headerRef = useRef(null);
@@ -84,6 +86,11 @@ const Header = (gameState={gameState}) => {
   const handleOnClick = (index) => {
     setActiveIndex(index);
   };
+
+
+  const handleChat =() => {
+    setChatOpen(!chatOpen)
+  }
 
   return (
     <header id="header_main" className="header_1 js-header" ref={headerRef}>
@@ -187,6 +194,9 @@ const Header = (gameState={gameState}) => {
                         </button>
                       </form>
                     </div>
+                  </div>
+                  <div> <button onClick={handleChat}> chat </button>
+                  {chatOpen && <Chatpage/>}
                   </div>
                   <div
                     className="sc-btn-top mg-r-12"

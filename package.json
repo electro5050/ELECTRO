@@ -20,6 +20,7 @@
     "react-scripts": "5.0.0",
     "react-tabs": "^3.2.3",
     "react-transition-group": "^4.4.2",
+    "socket.io-client": "^4.7.2",
     "swiper": "^7.4.1",
     "web-vitals": "^2.1.2"
   },

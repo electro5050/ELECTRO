@@ -3,7 +3,7 @@ import * as echarts from 'echarts';
  import './Graph.css';
 import axios from 'axios';
 
-function LineChart({data, gameState, setGameState, authError, setAuthError}) {
+function LineChart({data, gameState, setGameState, authError, setAuthError,gameId}) {
 
     const [showPopup, setShowPopup] = useState(false);
     const [buttonType, setButtonType] = useState("");
@@ -129,7 +129,8 @@ function LineChart({data, gameState, setGameState, authError, setAuthError}) {
     const sendDataToAPI = () => {
         axios.post('http://192.168.29.85:3000/bid', {
             coinCount: textFieldData,
-            buttonType: buttonType
+            buttonType: buttonType,
+            gameId: gameState.gameId
         })
         .then(response => {
             setGameState({

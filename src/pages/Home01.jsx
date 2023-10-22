@@ -41,33 +41,38 @@ const Home01 = () => {
       };
   
       websocket.onmessage = (event) => {
-          const message = JSON.parse(event.data);
-          console.log("Received WebSocket message:", event.data)
-          if (message.type && message.type === 'winners') {
+        const message = JSON.parse(event.data);
+        console.log("Received WebSocket message:", event.data);
+    
+        if (message.type && message.type === 'winners') {
             setRankingData(message.winners);
-          } else if (message.message) {
-              setGameState({
-                  ...gameState,
-                  endGameMessage: message.message,
-                  gameEnded: true
-              });
-              
-              setData([]);
-              
-              setTimeout(() => {
-                  setGameState({
-                      ...gameState,
-                      gameEnded: false,
-                      endGameMessage: ""
-                  });
-              }, 10000);
-          } else {
-              // Only update if the message value is different
-              if (!data.includes(message.value)) {
-                  setData(prevData => [...prevData, message.value]);
-              }
-          }
-      };
+        } else if (message.gameId) {
+            setGameState(prevState => ({ ...prevState, gameId: message.gameId }));
+        } else if (message.message) {
+            setGameState(prevState => ({
+                ...prevState,
+                endGameMessage: message.message,
+                gameEnded: true,
+                gameId: message.gameId
+            }));
+    
+            setData([]);
+    
+            setTimeout(() => {
+                setGameState(prevState => ({
+                    ...prevState,
+                    gameEnded: false,
+                    endGameMessage: ""
+                }));
+            }, 10000);
+        } else {
+            // Only update if the message value is different
+            if (!data.includes(message.value)) {
+                setData(prevData => [...prevData, message.value]);
+            }
+        }
+    };
+    
   
       websocket.onerror = (error) => {
           console.error("WebSocket Error:", error);
@@ -90,7 +95,7 @@ const Home01 = () => {
         <div className='home-1'>
             <Header gameState={gameState}/>
             <Slider data={heroSliderData} />
-            <Graph data={data} setAuthError={setAuthError} gameState={gameState} setGameState={setGameState} authError={authError} />
+            <Graph data={data} setAuthError={setAuthError} gameState={gameState} setGameState={setGameState} authError={authError} gameId={gameState.gameId} />
             <Ranking rankingData={rankingData} />
 
             {/* <LiveAuction data={liveAuctionData} /> */}

@@ -1,34 +1,43 @@
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
-const cors = require('cors'); // Import the CORS middleware
+const cors = require('cors');
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
 
-// Use CORS middleware to allow requests from any origin
+const io = new Server(server, {
+  cors: {
+    origin: ['http://192.168.29.85:8000', 'http://192.168.29.85:3002'],
+    methods: ['GET', 'POST']
+  },
+  transports: ['websocket']
+});
+
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'http://localhost:3001'],
+    origin: ['http://192.168.29.85:8000', 'http://192.168.29.85:3002'],
     methods: 'GET,POST,PUT,DELETE',
     credentials: true,
-   
   })
 );
-app.options('*', cors()); // Handle pre-flight requests for all routes
-
+app.options('*', cors());
 
 io.on('connection', (socket) => {
   console.log('A user connected');
   socket.on('message', (msg) => {
-    io.emit('message', msg); // Broadcast the message to all connected clients
+    io.emit('message', msg);
   });
   socket.on('disconnect', () => {
     console.log('A user disconnected');
   });
 });
 
-server.listen(3001, () => {
-  console.log('Server is running on http://localhost:3001');
+// Add connection error listener
+io.on('connect_error', (error) => {
+  console.log("Connection Error: ", error);
+});
+
+server.listen(3002, () => {
+  console.log('Server is running on http://localhost:3002');
 });
