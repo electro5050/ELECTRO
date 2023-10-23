@@ -86,7 +86,7 @@ const Home02 = () => {
   const handleLinkClick = (e) => {
     // Show the user modal when a sidebar link is clicked
     const {name} = e.target;
-    setShowUserModal
+
     switch (name){
         case 'Games':
             setShowUserModal('Games Modal Content');
@@ -104,7 +104,7 @@ const Home02 = () => {
             setShowUserModal('Live Support Modal Content');
             break;
           case 'Contact us':
-            setShowUserModalt('Contact Us Modal Content');
+            setShowUserModal('Contact Us Modal Content');
             break;
           default:
             setShowUserModal(null);

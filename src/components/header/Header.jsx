@@ -162,43 +162,7 @@ const Header = (gameState={gameState}) => {
                   </ul>
                 </nav>
                 <div className="flat-search-btn flex">
-                  <div
-                    className="header-search flat-show-search"
-                    id="s1"
-                  >
-                    <Link
-                      to="#"
-                      className="show-search header-search-trigger"
-                      onClick={searchBtn}
-                    >
-                      <i className="far fa-search"></i>
-                    </Link>
-                    <div className="top-search" ref={btnSearch}>
-                      <form
-                        action="#"
-                        method="get"
-                        role="search"
-                        className="search-form"
-                      >
-                        <input
-                          type="search"
-                          id="s"
-                          className="search-field"
-                          placeholder="Search..."
-                          name="s"
-                          title="Search for"
-                          required=""
-                        />
-                        <button
-                          className="search search-submit"
-                          type="submit"
-                          title="Search"
-                        >
-                          <i className="icon-fl-search-filled"></i>
-                        </button>
-                      </form>
-                    </div>
-                  </div>
+                  
                   <div> <button onClick={handleChat}> chat </button>
                   {chatOpen && <Chatpage/>}
                   </div>

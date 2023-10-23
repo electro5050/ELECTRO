@@ -8,36 +8,50 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ['http://192.168.29.85:8000', 'http://192.168.29.85:3002'],
-    methods: ['GET', 'POST']
+    origin: '*',  // Adjust according to your security needs
+    methods: ['GET', 'POST'],
   },
-  transports: ['websocket']
 });
 
 app.use(
   cors({
-    origin: ['http://192.168.29.85:8000', 'http://192.168.29.85:3002'],
+    origin: '*',  // Adjust according to your security needs
     methods: 'GET,POST,PUT,DELETE',
     credentials: true,
   })
 );
-app.options('*', cors());
 
 io.on('connection', (socket) => {
   console.log('A user connected');
+
+  // Socket-specific error handler
+  socket.on('error', (error) => {
+    console.error("Socket-specific Error:", error);
+  });
+
   socket.on('message', (msg) => {
     io.emit('message', msg);
   });
+
   socket.on('disconnect', () => {
     console.log('A user disconnected');
   });
 });
 
-// Add connection error listener
-io.on('connect_error', (error) => {
-  console.log("Connection Error: ", error);
+// Global error listeners
+process.on('uncaughtException', (error) => {
+  console.error('Uncaught exception:', error);
 });
 
-server.listen(3002, () => {
-  console.log('Server is running on http://localhost:3002');
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled promise rejection at:', promise, 'reason:', reason);
 });
+
+server.on('error', (error) => {
+  console.error('Server error:', error);
+});
+
+server.listen(3002, '192.168.29.85', () => {
+    console.log('Server is running on http://192.168.29.85:3002');
+  });
+  

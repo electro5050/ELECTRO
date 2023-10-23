@@ -1,82 +1,56 @@
-.chat-container {
-    position:fixed;
-    top: -500px;
-    right: 20px;
-    width: 300px;
-    background-color: #fff;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    z-index: 998;
-    transition: bottom 0.3s ease;
-    display: flex;
-    flex-direction: column;
+body {
+    background-color: black;
+    color: white; /* Making default text color white for better visibility */
   }
   
-   .chat-container.open {
-   top: 10px;
-    margin-top: 3.6%;
-  } 
-  
-  /* Styling for the chat window */
-  .chat-window {
-    flex: 1;
-    overflow-y: auto;
-    background-color: #f0f0f0;
+  .App {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 40px auto;
     padding: 20px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    scroll-margin-top: 10px;
+    background-color: #2e2e2e; /* Dark gray background for the chat box */
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  /* Styling for individual messages */
+  .chat-box {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #1a1a1a; /* Slightly darker background for the messages area */
+  }
+  
   .message {
-    padding: 10px;
-    /* background-color: #fff;
+    color: red;
+    margin: 5px 0;
+    padding: 5px;
     border-radius: 5px;
-    margin: 10px 0;
-    max-width: 80%; */
-    word-wrap: break-word;
-    /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); */
+    background-color: #333; /* Slightly lighter than the chat box, to distinguish messages */
   }
   
-  .message.sent {
-    
-    color: black;
-    align-self: flex-end;
-  }
-  
-  /* Styling for the input and send button */
-  .input-container {
+  form {
     display: flex;
-    align-items: center;
-    padding: 10px;
-    background-color: #fff;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
   }
   
-  input[type="text"] {
+  input {
     flex: 1;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
+    padding: 10px;
     margin-right: 10px;
-    font-size: 16px;
+    border: 1px solid #ddd;
   }
   
-  .send {
-    width: 60px;
-    padding: 10px;
-    
-    color: #ffffff;
+  button {
+    padding: 10px 15px;
     border: none;
+    background-color: #007BFF;
+    color: white;
     cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    /* transition: background-color 0.3s ease; */
-    
-    
+    transition: background-color 0.3s;
   }
-  .send:hover{
-    background-color: rgb(207, 13, 100);
+  
+  button:hover {
+    background-color: #0056b3;
   }
+  
