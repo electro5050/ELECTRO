@@ -1,0 +1,62 @@
+.flat-search-btn {
+    padding: 2%;
+}
+
+.main-header{
+    min-height: 10vh;
+    height: 10vh;
+    width: 100%;
+    background: rgba(40, 40, 40, 0.6);
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    padding: 30px;
+}
+
+.sub-header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+.coin-image{
+    width: 3vh;
+}   
+
+.wallet-money{
+    border-radius: 50px;
+    border: 3px solid #DFDDD5;
+    margin-left: 10px;
+    padding: 3px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.wallet{
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+}
+
+.wallet-value{
+    color: #FFF;
+    text-align: justify;
+    font-family: Poppins;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-left: 8px;
+}
+
+.wallet-icon{
+    width: 32px;
+    height: 32px;
+}
+
+.actions-icon{
+    font-size: 17px;
+}
+
+

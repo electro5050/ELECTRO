@@ -1,0 +1,9 @@
+.main-game-container{
+    background: green;
+    min-height: 100vh;
+}
+
+.vertical-center{
+    margin-top: auto;
+    margin-bottom: auto;
+}

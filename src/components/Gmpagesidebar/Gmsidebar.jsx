@@ -33,12 +33,6 @@ function Gmsidebar({handleLinkClick}) {
         </a>
       </div>
 
-      {/* {showUserModal && (
-        <div className="user-modal">
-          <a>hello world</a>
-          <button onClick={handleCloseModal}>Close</button>
-        </div>
-      )} */}
     </div>
   );
 }
