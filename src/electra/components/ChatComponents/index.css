@@ -1,0 +1,45 @@
+.game-chat-main .game-chat-header{
+   border-bottom:  1px solid white;
+   padding-bottom: 10px;
+}
+
+  
+  .game-chat-box::-webkit-scrollbar {
+    width: 0; /* Adjust the scrollbar width */
+  }
+  
+  .game-chat-box::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the thumb */
+    border-radius: 5px; /* Rounded corners for the thumb */
+  }
+  
+  .game-chat-box::-webkit-scrollbar-track {
+    background: #eee; /* Color of the track */
+  }
+  
+  .game-chat-box::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the thumb on hover */
+  }
+  
+  .game-chat-box::-webkit-scrollbar-thumb:active {
+    background: #333; /* Color of the thumb when clicked */
+  }
+
+  .game-chat-box {
+    border-radius: 5px;
+  }
+  .game-chat-main .custom-text-box{
+    width: 70%;
+    border: 2px solid #6E73F6; /* Blue border */
+    border-radius: 5px; /* Small border radius */
+    background-color: #010101; /* Background color */
+    padding: 5px;
+    color: white;
+  }
+
+  .game-chat-main  .custom-text-box::placeholder {
+    color: white; /* Change the placeholder text color to red */
+    font-size: 1vw;
+    
+  }
+  

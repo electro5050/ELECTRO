@@ -12,6 +12,7 @@ import { Modal, Button } from 'react-bootstrap';
 import './index.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import GameComponent from 'electra/components/Games'
+import Chat from 'electra/components/ChatComponents';
 
 const GamePage = () => {
   const [activeTab, SetTab] = useState('Games');
@@ -59,10 +60,17 @@ const GamePage = () => {
             </div>
             <div style={{width: "85vw"}}>
                 <Headers handleLinkClick={handleLinkClick}  selectedHeader={activeTab}/>
-                <div style={{padding: "1vh", width: "65vw"}}>
-                  {renderComponent()}
-                </div>
 
+                <div style={{display: "flex"}}>
+
+                  <div style={{padding: "1vh", width: "65vw"}}>
+                    {renderComponent()}
+                  </div>
+
+                  <div style={{width: "20vw", maxHeight:"90vh"}}>
+                        <Chat />
+                  </div>
+                </div>
             </div>
         </div>
         {/* <Row>
