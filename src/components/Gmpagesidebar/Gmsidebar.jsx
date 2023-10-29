@@ -1,44 +1,47 @@
 import React, { useState } from 'react';
 import './Gmsidebar.css';
 
-function Gmsidebar({handleLinkClick}) {
-  // const [showUserModal, setShowUserModal] = useState(false);
+import Portfolio from '../../pages/Portfolio';
+import Topten from '../../pages/Top10';
 
+function Gmsidebar() {
+  const [showPortfolio, setShowPortfolio] = useState(false);
+  const [showTopten, setShowTopten] = useState(false);
 
-  // const handleCloseModal = () => {
-  //   // Close the user modal
-  //   setShowUserModal(false);
-  // };
+  const handleClick = () => {
+    setShowPortfolio(!showPortfolio); 
+  };
+  const handletop10Click = () => {
+    setShowTopten(!showTopten); 
+  };
 
   return (
     <div>
       <div className="sidebar-links">
-        <a href="#" className="sidebar-link" name='games' onClick={handleLinkClick}>
+        <div className="sidebar-link" name='games'>
           Games
-        </a>
-        <a href="#" className="sidebar-link" name='tutorials' onClick={handleLinkClick}>
-          Tutorials
-        </a>
-        <a href="#" className="sidebar-link"  name='VIP Membership'onClick={handleLinkClick}>
-          VIP Membership
-        </a>
-        <a href="#" className="sidebar-link" name='portfolio'onClick={handleLinkClick}>
-          Portfolio
-        </a>
-        <a href="#" className="sidebar-link" name= 'Live support'onClick={handleLinkClick}>
-          Live Support
-        </a>
-        <a href="#" className="sidebar-link"  name= 'Contact us'onClick={handleLinkClick}>
-          Contact us
-        </a>
-      </div>
-
-      {/* {showUserModal && (
-        <div className="user-modal">
-          <a>hello world</a>
-          <button onClick={handleCloseModal}>Close</button>
         </div>
-      )} */}
+        <div className="sidebar-link" name='tutorials'>
+          Tutorials
+        </div>
+        <div className="sidebar-link" name='VIP Membership'>
+          VIP Membership
+        </div>
+        <div className="sidebar-link" name='portfolio' onClick={handleClick}>
+          Portfolio
+        </div>
+        <div className="sidebar-link" name='Live support' >
+          Live Support
+        </div>
+        <div className="sidebar-link" name='Contact us'>
+          Contact us
+        </div>
+        <div className="sidebar-link" name='top 10 winners' onClick={handletop10Click}>
+          Top 10 Winners
+        </div>
+      </div>
+      {showPortfolio && <Portfolio />},
+      {showTopten && <Topten/>}
     </div>
   );
 }

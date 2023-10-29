@@ -106,7 +106,10 @@ function LineChart({data, gameState, setGameState, authError, setAuthError,gameI
 
     useEffect(() => {
         if (gameState.gameEnded) {
-            // setData([]);
+            setGameState({
+                ...gameState,
+                activeGameButton: null
+            });
         } else {
             chartDom && chartDom.setOption({
                 ...option,

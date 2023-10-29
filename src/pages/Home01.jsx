@@ -8,15 +8,7 @@ import Slider from '../components/slider/Slider';
 import Graph from '../components/slider/Graph'
 import SignUp from './SignUp';
 import Ranking from './Ranking';
-// import liveAuctionData from '../assets/fake-data/data-live-auction';
-// import LiveAuction from '../components/layouts/LiveAuction';
-// import TopSeller from '../components/layouts/TopSeller';
-// import topSellerData from '../assets/fake-data/data-top-seller'
-// import TodayPicks from '../components/layouts/TodayPicks';
-// import todayPickData from '../assets/fake-data/data-today-pick';
-// import PopularCollection from '../components/layouts/PopularCollection';
-// import popularCollectionData from '../assets/fake-data/data-popular-collection';
-// import Create from '../components/layouts/Create';
+
 import { Element } from 'react-scroll';
 const Home01 = () => {
     const [data, setData] = useState([]);
@@ -106,6 +98,7 @@ const Home01 = () => {
             <Element name='signup-section' className='element'>
             <SignUp/>
             </Element>
+            
             
             <Footer />
         </div>
