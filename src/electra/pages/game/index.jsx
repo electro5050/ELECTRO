@@ -13,6 +13,8 @@ import './index.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import GameComponent from 'electra/components/Games'
 import Chat from 'electra/components/ChatComponents';
+import WinHistoryComponent from 'electra/components/WinHistory'
+import PortfolioComponent from 'electra/components/PortFolio'
 
 const GamePage = () => {
   const [activeTab, SetTab] = useState('Games');
@@ -37,14 +39,14 @@ const GamePage = () => {
           //   return <TutorialsComponent />;
           // case 'VIPMembership':
           //   return <VIPMembershipComponent />;
-          // case 'Portfolio':
-          //   return <PortfolioComponent />;
+          case 'Portfolio':
+            return <PortfolioComponent />;
           // case 'LiveSupport':
           //   return <LiveSupportComponent />;
           // case 'ContactUs':
           //   return <ContactUsComponent />;
-          // case 'WinHistory':
-          //   return <WinHistoryComponent />;
+          case 'Win History':
+            return <WinHistoryComponent />;
           // case 'Referal':
           //   return <ReferalComponent />;
           default:
