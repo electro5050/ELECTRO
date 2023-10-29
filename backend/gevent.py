@@ -44,15 +44,22 @@ def parse_data(data_string):
     
     # Check for the "switch" action
     if "action" in data and data["action"] == "switch":
-        if userId and userId in coin_allocations:
-            old_button_type = coin_allocations[userId]["buttonType"]
-            coin_allocations[userId]["buttonType"] = "Red" if old_button_type == "Green" else "Green"
-            new_button_type = coin_allocations[userId]["buttonType"]
-            print(f"User {userId} switched from {old_button_type} to {new_button_type}.")
-        else:
-            print(f"User {userId} attempted to switch but isn't in coin_allocations.")
+      if userId and userId in coin_allocations:
+        old_button_type = coin_allocations[userId]["buttonType"]
+        coin_allocations[userId]["buttonType"] = "Red" if old_button_type == "Green" else "Green"
+        new_button_type = coin_allocations[userId]["buttonType"]
+        print(f"User {userId} switched from {old_button_type} to {new_button_type}.")
+        
+        # Convert userId string to ObjectId
+        userId_obj = ObjectId(userId)
+        
+        # Update the MongoDB users_collection with the new button type/color
+        users_collection.update_one({"_id": userId_obj}, {"$set": {"buttonType": new_button_type}})
+        
+      else:
+        print(f"User {userId} attempted to switch but isn't in coin_allocations.")
     
-    # Check for the "deductCoins" action
+      # Check for the "deductCoins" action
     elif "action" in data and data["action"] == "deductCoins":
         userId_obj = ObjectId(userId)
         deduction_amount = int(data["deductionAmount"])

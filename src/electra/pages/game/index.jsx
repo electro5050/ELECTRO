@@ -3,14 +3,14 @@ import axios from 'axios';
 import Headers from 'electra/components/header';
 import NavBar from 'electra/components/navbar';
 // import Footer from '@components/footer/Footer';
-import heroSliderData from 'assets/fake-data/data-slidergm';
-import Slider from 'components/slider/Slider';
-import Graph from 'components/slider/Graph'
-import TopSeller from 'components/layouts/TopSeller';
-import topSellerData from 'assets/fake-data/data-top-seller'
-import { Modal, Button } from 'react-bootstrap';
-import './index.css';
-import { Container, Row, Col } from 'react-bootstrap';
+// import heroSliderData from 'assets/fake-data/data-slidergm';
+// import Slider from 'components/slider/Slider';
+// import Graph from 'components/slider/Graph'
+// import TopSeller from 'components/layouts/TopSeller';
+// import topSellerData from 'assets/fake-data/data-top-seller'
+// import { Modal, Button } from 'react-bootstrap';
+// import './index.css';
+// import { Container, Row, Col } from 'react-bootstrap';
 import GameComponent from 'electra/components/Games'
 import Chat from 'electra/components/ChatComponents';
 import WinHistoryComponent from 'electra/components/WinHistory'
@@ -75,41 +75,7 @@ const GamePage = () => {
                 </div>
             </div>
         </div>
-        {/* <Row>
-            <Col xs={2} sm={2} md={2} lg={2} xl={2}>
-                <NavBar handleLinkClick={handleLinkClick} />
-            </Col>
-            <Col xs={10} sm={10} md={10} lg={10} xl={10}>
-                <Headers handleLinkClick={handleLinkClick} />
-            </Col>
-        </Row> */}
-
-        {/* <Slider data={[heroSliderData]} /> */}
-        {/* <Graph
-          data={data}
-          setAuthError={setAuthError}
-          gameState={gameState}
-          setGameState={setGameState}
-          authError={authError}
-        />
-        <TopSeller data={topSellerData} /> */}
-        {/* <Modal show={showUserModal} onHide={handleCloseModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>My Modal</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-
-            <p>This is the content of my modal.</p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant='secondary' onClick={handleCloseModal}>
-              Close
-            </Button>
-            <Button variant='primary' onClick={handleCloseModal}>
-              Save Changes
-            </Button>
-          </Modal.Footer>
-        </Modal> */}
+       
       </div>
     );
   };

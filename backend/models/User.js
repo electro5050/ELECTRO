@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
@@ -29,24 +30,36 @@ const gameSchema = new mongoose.Schema({
     end_time: {
         type: Date,
     },
-    winning_coin: {
+    winning_color: {
         type: String,
     },
+    winners: {
+        userId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        bidAmount: Number,
+        winningBonus: Number
+    }
 });
 
 const Game = mongoose.model('Game', gameSchema);
+
 
 // User Bid schema
 const userBidSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',  // Reference to the User model
+
     },
     bid_amount: {
         type: Number,
+
     },
     coin_type: {
         type: String,
+
     },
     game: { 
         type: mongoose.Schema.Types.ObjectId,
@@ -57,5 +70,25 @@ const userBidSchema = new mongoose.Schema({
 const UserBid = mongoose.model('UserBid', userBidSchema);
 
 
+// notifications schema 
 
-module.exports = { User, Game, UserBid };
+const notificationSchema = new mongoose.Schema({
+    title: {
+        type: String,
+    },
+    message: {
+        type: String,
+    },
+    imageUrl: String,   // URL of the image
+    timestamp: {
+        type: Date,
+        default: Date.now  // set default to current time
+    }
+});
+
+const Notification = mongoose.model('Notification', notificationSchema);
+
+
+
+
+module.exports = { User, Game, UserBid,Notification };

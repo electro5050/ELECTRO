@@ -9,9 +9,6 @@ function LineChart({data}) {
 
     const option = {
        
-        // tooltip: {
-        //     trigger: 'axis'
-        // },
         grid: {
             left: '0',
             right: '0',
@@ -53,29 +50,14 @@ function LineChart({data}) {
                 showSymbol: false,
                 itemStyle: {
                     color: 'rgba(255, 255, 255, 0.6)',
-                    // color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-                    //     offset: 0, color: 'red'
-                    // }, {
-                    //     offset: 1, color: 'green'
-                    // }], false)
+                  
                 },
                 lineStyle: {
                     // Increase the line width
                     width: 2, // You can adjust this value to set the desired line width
                 },
 
-                // areaStyle: {
-                //     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                //         {
-                //             offset: 0,
-                //             color: 'rgb(255, 0, 0)'
-                //         },
-                //         {
-                //             offset: 1,
-                //             color: 'rgb(0, 255, 0)'
-                //         }
-                //     ])
-                // }
+               
             }
         ]
     };
