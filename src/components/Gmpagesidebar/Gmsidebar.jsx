@@ -42,6 +42,7 @@ function Gmsidebar() {
       </div>
       {showPortfolio && <Portfolio />},
       {showTopten && <Topten/>}
+
     </div>
   );
 }

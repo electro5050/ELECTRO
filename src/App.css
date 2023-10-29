@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+/* Style the background track */
+::-webkit-scrollbar {
+  width: 6px; /* You can adjust the width as needed */
+  padding-left: 10px;
+}
+
+/* Style the track */
+::-webkit-scrollbar-track {
+  background: #766761; /* Change the background color */
+  border-radius: 10px;
+}
+
+/* Style the thumb */
+::-webkit-scrollbar-thumb {
+  background: #B1A8A3; /* Change the color of the thumb */
+  border-radius: 10px;
+}
+
+/* Style the thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #B1A8A3;
+}
