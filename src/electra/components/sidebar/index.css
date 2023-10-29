@@ -1,13 +1,19 @@
 /* Add this code to your Gmsidebar.css file */
 
-.sidebar-links {
+.game-sidebar{
+  background: rgba(0, 0, 0, 0.30);
+  height: 100%;
+  padding-right: 10px;
+}
+
+.game-sidebar .sidebar-links {
   display: flex;
   flex-direction: column; /* Display links in a column */
   align-items: flex-start; /* Align links to the left */
   gap: 11px; /* Add spacing between links */
 }
 
-.electra-sidebar-link {
+.game-sidebar .electra-sidebar-link {
   border-radius: 5px;
   background: #514747;
   width: calc(100% - 15px);
@@ -31,8 +37,15 @@
   transition: background-color 0.3s ease;
 }
 
+.game-sidebar .electra-sidebar-link.active {
+  background: #282828;
+}
 
-.electra-sidebar-link:hover {
+.game-sidebar .electra-sidebar-link.referal.active {
+  background: #B1A3D9;
+}
+
+.game-sidebar .electra-sidebar-link:hover {
   color: #DFDDD5; /* Text color on hover */
   border-color: transparent; /* Remove border on hover */
   border-radius: 5px;
@@ -40,28 +53,30 @@
   box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.80);
 }
 
-.referal{
+.game-sidebar .referal{
   background: #835AF9;
   padding: 0px 5px ;
   color: #DFDDD5 !important;
 }
 
-.referal-anchor{
+.game-sidebar .referal-anchor{
   color: #DFDDD5 !important;
 }
 
-.referal:hover{
+.game-sidebar .referal:hover{
   background: #B1A3D9;
   padding: 0px 5px ;
 }
 
-.referal .referal-image{
+.game-sidebar .referal .referal-image{
   width: 40px;
   height: 40px;
   filter: drop-shadow(0px 2px 40px #D4B116) drop-shadow(0px 2px 4px #000);
   transform: scaleX(-1);
 }
 
-.user-modal{
+.game-sidebar .user-modal{
   padding: 5%;
 }
+
+

@@ -5,12 +5,12 @@ import './index.css';
 
 
 
-const NavBar = ({handleNavClick}) => {
+const NavBar = ({handleLinkClick, activeTab}) => {
 
 
   return (
-    <div>
-        <div class="logo-container">
+    <div className="game-navbar">
+        <div className="logo-container">
             <img
                 className="background"
                 id="logo_header"
@@ -22,7 +22,7 @@ const NavBar = ({handleNavClick}) => {
 
 
         <div >
-            <SideBar handleLinkClick={handleNavClick} />
+            <SideBar handleLinkClick={handleLinkClick} activeTab={activeTab} />
         </div>
     </div>
   );

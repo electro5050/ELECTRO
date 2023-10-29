@@ -1,4 +1,4 @@
-.flat-search-btn {
+.main-header .flat-search-btn {
     padding: 2%;
 }
 
@@ -13,18 +13,18 @@
     padding: 30px;
 }
 
-.sub-header{
+.main-header .sub-header{
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
 
-.coin-image{
+.main-header .coin-image{
     width: 3vh;
 }   
 
-.wallet-money{
+.main-header .wallet-money{
     border-radius: 50px;
     border: 3px solid #DFDDD5;
     margin-left: 10px;
@@ -33,13 +33,13 @@
     align-items: center;
 }
 
-.wallet{
+.main-header .wallet{
     margin-top: auto;
     display: inline-flex;
     align-items: center;
 }
 
-.wallet-value{
+.main-header .wallet-value{
     color: #FFF;
     text-align: justify;
     font-family: Poppins;
@@ -50,12 +50,12 @@
     margin-left: 8px;
 }
 
-.wallet-icon{
+.main-header .wallet-icon{
     width: 32px;
     height: 32px;
 }
 
-.actions-icon{
+.main-header .actions-icon{
     font-size: 17px;
 }
 

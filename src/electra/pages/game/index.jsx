@@ -11,126 +11,58 @@ import topSellerData from 'assets/fake-data/data-top-seller'
 import { Modal, Button } from 'react-bootstrap';
 import './index.css';
 import { Container, Row, Col } from 'react-bootstrap';
+import GameComponent from 'electra/components/Games'
 
-const Home02 = () => {
-    const [data, setData] = useState([]);
-    const [ws, setWs] = useState(null);
-    const [gameState, setGameState] = useState({
-        gameEnded: false,
-        endGameMessage: "",
-        activeGameButton: ""
-    });
-    const [authError, setAuthError] = useState(false);
-  
-      const [showUserModal, setShowUserModal] = useState(false);
+const GamePage = () => {
+  const [activeTab, SetTab] = useState('Games');
 
-
-        const handleCloseModal = () => {
-            // Close the user modal
-            setShowUserModal(false);
-        };
-
-    useEffect(() => {
-      const websocket = new WebSocket("ws://192.168.29.85:5000");
-  
-      websocket.onopen = () => {
-          const token = localStorage.getItem('token');
-          if (token) {
-              websocket.send(JSON.stringify({ type: 'auth', token: token }));
-          }
-      };
-  
-      websocket.onmessage = (event) => {
-          const message = JSON.parse(event.data);
-          if (message.message) {
-              setGameState({
-                  ...gameState,
-                  endGameMessage: message.message,
-                  gameEnded: true
-              });
-              
-              setData([]);
-              
-              setTimeout(() => {
-                  setGameState({
-                      ...gameState,
-                      gameEnded: false,
-                      endGameMessage: ""
-                  });
-              }, 10000);
-          } else {
-              // Only update if the message value is different
-              if (!data.includes(message.value)) {
-                  setData(prevData => [...prevData, message.value]);
-              }
-          }
-      };
-  
-      websocket.onerror = (error) => {
-          console.error("WebSocket Error:", error);
-      };
-  
-      setWs(websocket);
-  
-      const token = localStorage.getItem('token');
-      if (token) {
-          axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      } else {
-          setAuthError(true);
-      }
-  
-      return () => {
-          websocket.close();
-      };
-  },[] );
-
-  const handleLinkClick = (e) => {
-    // Show the user modal when a sidebar link is clicked
-    const {name} = e.target;
-
-    switch (name){
-        case 'Games':
-            setShowUserModal('Games Modal Content');
-            break;
-          case 'Tutorials':
-            setShowUserModal('Tutorials Modal Content');
-            break;
-          case 'VIP Membership':
-            setShowUserModal('VIP Membership Modal Content');
-            break;
-          case 'Portfolio':
-            setShowUserModal('Portfolio Modal Content');
-            break;
-          case 'Live Support':
-            setShowUserModal('Live Support Modal Content');
-            break;
-          case 'Contact us':
-            setShowUserModal('Contact Us Modal Content');
-            break;
-          default:
-            setShowUserModal(null);
-        }
-    
-        
-    }
+  const handleLinkClick = (name) => {
+    SetTab(name);
+  }
     
   
     const backgroundStyle = {
-        backgroundImage: `url(/assets/electra/bg.jpg)`,
+        backgroundImage: `url(/assets/electra/bg1.png)`,
         backgroundSize: 'cover', // Adjust as needed
         backgroundRepeat: 'no-repeat',
         minHeight: "100vh",
-        fontFamily: "Poppins"
+      };
+
+      const renderComponent = () => {
+        switch (activeTab) {
+          case 'Games':
+            return <GameComponent />;
+          // case 'Tutorials':
+          //   return <TutorialsComponent />;
+          // case 'VIPMembership':
+          //   return <VIPMembershipComponent />;
+          // case 'Portfolio':
+          //   return <PortfolioComponent />;
+          // case 'LiveSupport':
+          //   return <LiveSupportComponent />;
+          // case 'ContactUs':
+          //   return <ContactUsComponent />;
+          // case 'WinHistory':
+          //   return <WinHistoryComponent />;
+          // case 'Referal':
+          //   return <ReferalComponent />;
+          default:
+            return null;
+        }
       };
 
     return (
-        <div style={backgroundStyle}>
+        <div style={backgroundStyle} className='main-game-container'>
         <div style={{ display: 'flex' }}>
-            <div style={{width: "15vw"}}>
-                <NavBar handleLinkClick={handleLinkClick} />
+            <div style={{width: "15vw", height:"100vh"}}>
+                <NavBar handleLinkClick={handleLinkClick} activeTab={activeTab}/>
             </div>
             <div style={{width: "85vw"}}>
-                <Headers handleLinkClick={handleLinkClick}  selectedHeader={"Games"}/>
+                <Headers handleLinkClick={handleLinkClick}  selectedHeader={activeTab}/>
+                <div style={{padding: "1vh", width: "65vw"}}>
+                  {renderComponent()}
+                </div>
+
             </div>
         </div>
         {/* <Row>
@@ -172,4 +104,4 @@ const Home02 = () => {
     );
   };
 
-export default Home02
+export default GamePage
