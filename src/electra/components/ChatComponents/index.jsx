@@ -32,14 +32,16 @@ const sendButtonStyle={
   borderRadius: "5px",
   background: "#5357B9",
   border: "1px solid #6E73F6",
-  padding:"7px",
+  // padding:"5px",
   width: "20%",
   marginLeft:"5px",
   color:"white",
+  height:"30px",
+  padding: 0
 }
 
 const iconSendButtonStyle = {
-  fontSize: '1.2vw',
+  fontSize: '0.9vw',
   color: 'white',
   fontWeight:"900"
 };
@@ -66,7 +68,7 @@ const ChatBox = ({}) => {
         </div>
       </div>
       <div style={{height: "18%",  background: "rgba(27, 27, 27, 0.80)", marginTop:"1%", borderRadius: "5px"}}>
-            <div style={{padding:"10px"}}>
+            <div style={{padding:"10px", display:"flex"}}>
             <input
                 type="text"
                 className="custom-text-box"
