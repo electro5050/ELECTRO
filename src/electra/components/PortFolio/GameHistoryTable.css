@@ -1,0 +1,54 @@
+.game-view-top-winners .table-ranking{
+    margin: 0 !important;
+    padding: 5px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90%;
+    margin-right: 10px !important;
+}
+
+.game-view-top-winners .table-ranking .th-title {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 5px !important;
+    margin-top: 5px !important;
+}
+
+.game-view-top-winners .table-ranking .th-title .column {
+    text-align: center;
+    width: 33.3%;
+    font-size: 1vw;
+}
+
+.game-view-top-winners  .table-ranking .item .column {
+    text-align: center;
+    width: 33.3%;
+    justify-content: center;
+    font-size: 1vw;
+}
+
+.game-view-top-winners .table-ranking .item {
+    align-items: center;
+    background: rgba(217, 217, 217, 0.20);
+    box-shadow: none !important;
+    border-radius: 30px;
+    padding: 10px;
+    height: 40px;
+    margin-bottom: 0;
+}
+
+.game-view-top-winners .table-ranking .fl-item:not(:first-child) {
+    margin-top: 10px;
+  }
+
+.game-view-top-winners .table-ranking .item .infor-item .media {
+    width: auto; 
+    height: 30px;
+}
+
+.game-view-top-winners .margin-vertical-center {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+

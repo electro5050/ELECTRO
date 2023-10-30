@@ -13,6 +13,8 @@ import NavBar from 'electra/components/navbar';
 // import { Container, Row, Col } from 'react-bootstrap';
 import GameComponent from 'electra/components/Games'
 import Chat from 'electra/components/ChatComponents';
+import WinHistoryComponent from 'electra/components/WinHistory'
+import PortfolioComponent from 'electra/components/PortFolio'
 
 const GamePage = () => {
   const [activeTab, SetTab] = useState('Games');
@@ -105,6 +107,20 @@ const GamePage = () => {
         switch (activeTab) {
           case 'Games':
             return <GameComponent />;
+          // case 'Tutorials':
+          //   return <TutorialsComponent />;
+          // case 'VIPMembership':
+          //   return <VIPMembershipComponent />;
+          case 'Portfolio':
+            return <PortfolioComponent />;
+          // case 'LiveSupport':
+          //   return <LiveSupportComponent />;
+          // case 'ContactUs':
+          //   return <ContactUsComponent />;
+          case 'Win History':
+            return <WinHistoryComponent />;
+          // case 'Referal':
+          //   return <ReferalComponent />;
           default:
             return null;
         }

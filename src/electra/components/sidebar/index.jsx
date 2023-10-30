@@ -36,13 +36,13 @@ console.log(activeTab);
         <FontAwesomeIcon icon={faHeadset} />
         <span style={{ paddingLeft: "10px" }}>Live Support</span>
       </a>
-      <a href="#" className={`electra-sidebar-link ${activeTab === "Contact us" ? 'active' : ''}`} onClick={() => handleLinkClick("Contact us")}>
+      {/* <a href="#" className={`electra-sidebar-link ${activeTab === "Contact us" ? 'active' : ''}`} onClick={() => handleLinkClick("Contact us")}>
         <FontAwesomeIcon icon={faPhoneVolume} />
         <span style={{ paddingLeft: "10px" }}>Contact us</span>
-      </a>
+      </a> */}
       <a href="#" className={`electra-sidebar-link ${activeTab === "Win History" ? 'active' : ''}`} onClick={() => handleLinkClick("Win History")}>
         <FontAwesomeIcon icon={faClockRotateLeft} />
-        <span style={{ paddingLeft: "10px" }}>Win History</span>
+        <span style={{ paddingLeft: "10px" }}>Top 10</span>
       </a>
 
         <div className={`electra-sidebar-link referal ${activeTab === "Referal" ? 'active' : ''}`} onClick={() => handleLinkClick("Referal")}>
