@@ -5,6 +5,7 @@ import Graph from 'electra/components/Common/Games/Graph';
 import GameControllerButtons from 'electra/components/Common/Games/GameControllerButtons';
 import ProgressBar from 'electra/components/Common/Games/ProgressBar';
 import axios from 'axios';
+import TopWinners from './TopWinnersTable';
 
 const gameChartContainer = {
   borderRadius: "10px",
@@ -121,8 +122,9 @@ const GameChart = () => {
        <GameControllerButtons data={data} setAuthError={setAuthError} gameState={gameState} setGameState={setGameState} authError={authError} />
       </div>
 
-
     </div>
+
+
   );
 };
 
