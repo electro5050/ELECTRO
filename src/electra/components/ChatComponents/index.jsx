@@ -8,12 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfo, faPaperPlane  } from '@fortawesome/free-solid-svg-icons';
 import ChatSection from 'electra/components/ChatComponents/chatBox';
 
-const getCurrentTime = () => {
-  const date = new Date();
-  const hours = String(date.getHours()).padStart(2, '0');
-  const minutes = String(date.getMinutes()).padStart(2, '0');
-  return `${hours}:${minutes}`;
-};
 
 const circleStyle = {
   width: '15px',
@@ -92,29 +86,43 @@ const ChatBox = () => {
   const [message, setMessage] = useState('');
   const chatWindowRef = useRef(null);
 
+  const [gameHistory, setGameHistory] = useState([]);
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+      fetch('http://192.168.29.85:3000/usergamehistory', {
+          method: 'GET',
+          headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data && Array.isArray(data)) {
+              setGameHistory(data);
+          }
+      })
+      .catch(error => {
+          console.error('Error fetching user game history:', error);
+      });
+  }, []);
+
   const socket = useRef(io('http://192.168.29.85:3002', {
     reconnectionAttempts: 5,
     reconnectionDelay: 2000,
     reconnectionDelayMax: 10000,
   })).current;
+
   useEffect(() => {
     socket.on('message', (msg) => {
-      setMessages((prevMessages) => [...prevMessages, { text: msg, user: 'received', time: getCurrentTime() }]);
+      setMessages((prevMessages) => [...prevMessages, { text: msg, user: 'received' }]);
     });
 
     return () => {
       socket.off('message');
     };
   }, [socket]);
-
-  const sendMessage = () => {
-    if (message.trim() !== '') {
-      const timestamp = getCurrentTime();
-      socket.emit('message', { text: message, time: timestamp }); // Emitting both message and its time
-      setMessages((prevMessages) => [...prevMessages, { text: message, user: 'sent', time: timestamp }]);
-      setMessage('');
-    }
-  };
 
   useEffect(() => {
     chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
@@ -124,6 +132,13 @@ const ChatBox = () => {
     setMessage(e.target.value);
   };
 
+  const sendMessage = () => {
+    if (message.trim() !== '') {
+      socket.emit('message', message);
+      setMessages((prevMessages) => [...prevMessages, { text: message, user: 'sent' }]);
+      setMessage('');
+    }
+  };
 
   return (
     <div className="game-chat-main" style={{ height: "100%" }}>
@@ -140,17 +155,18 @@ const ChatBox = () => {
             <FontAwesomeIcon icon={faInfo} style={iconStyle} />
           </div>
         </div>
-    
+    <div>
         {messages.map((msg, index) => (
-          <ChatSection 
-              key={index}
-              chatDetails={{
-                  name: msg.user,        // Adjust this as per your needs
-                  time: msg.time,        // Now displaying the timestamp
-                  message: msg.text
-              }}
-          />
-        ))}
+    <ChatSection 
+        key={index}
+        chatDetails={{
+            name:gameHistory.length > 0 ? gameHistory[0].username : 'Loading...',        // Assuming 'user' can represent 'name'. Adjust accordingly.
+            time: "N/A",           // Placeholder, adjust to real value if available.
+            message: msg.text
+        }}
+    />
+))}
+</div>
 
       </div>
 

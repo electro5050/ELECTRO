@@ -8,14 +8,38 @@ const avatharContainerStyle = {
     alignItems: "center"
 };
 
-const GameTopSection = ({}) => {
+const GameTopSection = () => {
+
+  const [gameHistory, setGameHistory] = useState([]);
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+      fetch('http://192.168.29.85:3000/usergamehistory', {
+          method: 'GET',
+          headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data && Array.isArray(data)) {
+              setGameHistory(data);
+          }
+      })
+      .catch(error => {
+          console.error('Error fetching user game history:', error);
+      });
+  }, []);
+  console.log(gameHistory)
+
 
   return (
     <div className="game-view-top-section" style={{height:"15vh"}}>
       <div style={avatharContainerStyle}>
         <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'2vw'}/>
         <span style={{paddingLeft:"10px",fontSize: "1vw"}}>
-            Hi Mark Antony, welcome back!
+         Hi {gameHistory.length > 0 ? gameHistory[0].username : 'Loading...'}, welcome back!
         </span>
       </div>
         <div style={{marginTop:"5px"}}>

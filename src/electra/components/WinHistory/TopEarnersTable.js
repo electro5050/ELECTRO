@@ -26,50 +26,7 @@ const TopWinners = ({rankingData}) => {
       <div style={headerStyle}>
         Top 10
       </div>
-{/* <div className="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Header 1</th>
-            <th>Header 2</th>
-            <th>Header 3</th>
-          </tr>
-        </thead>
-        <tbody height="15vh">
-          <tr>
-            <td>Data 1</td>
-            <td>Data 2</td>
-            <td>Data 3</td>
-          </tr>
 
-          <tr>
-            <td>Data 1</td>
-            <td>Data 2</td>
-            <td>Data 3</td>
-          </tr>
-
-          <tr>
-            <td>Data 1</td>
-            <td>Data 2</td>
-            <td>Data 3</td>
-          </tr>
-
-          <tr>
-            <td>Data 1</td>
-            <td>Data 2</td>
-            <td>Data 3</td>
-          </tr>
-
-          
-          <tr>
-            <td>Data 1</td>
-            <td>Data 2</td>
-            <td>Data 3</td>
-          </tr>
-
-        </tbody>
-      </table>
-    </div> */}
 
           <div className="table-ranking">
                                 <div className="flex th-title">
@@ -93,7 +50,7 @@ const TopWinners = ({rankingData}) => {
                                                       <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'2vw'}/>
                                                   </div>
                                                   <div className='margin-vertical-center'>
-                                                    {player.name}
+                                                    {player.username}
                                                   </div>
                                               </div>
                                               <div className="column">
@@ -101,7 +58,7 @@ const TopWinners = ({rankingData}) => {
                                                 {/* <div style={{...circleStyle, border: "3px solid #C0C0C0"}}>
                                                   <FontAwesomeIcon icon={faDollarSign} style={{...iconStyle, color: '#C0C0C0'}} />
                                                 </div> */}
-                                                  <span style={{color:"#C0C0C0", paddingLeft:'10px', fontWeight:"700"}}>{player.bidamount}</span>
+                                                  <span style={{color:"#C0C0C0", paddingLeft:'10px', fontWeight:"700"}}>{player.totalWin}</span>
                                                 </div>
 
                                               </div>

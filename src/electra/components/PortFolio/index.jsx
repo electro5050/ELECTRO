@@ -8,38 +8,31 @@ import GameHistoryTable from 'electra/components/PortFolio/GameHistoryTable';
 
 
 const GameComponent = ({}) => {
-  let rankingData=[
-    {
-      amount: 180,
-      isWin: true
-    },
-    {
-      amount: 180,
-      isWin: true
-    },
-    {
-      amount: 180,
-      isWin: true
-    },
-    {
-      amount: 180,
-      isWin: true
-    },
-    {
-      amount: 180,
-      isWin: true
-    },
-    {
-      amount: 180,
-      isWin: false
-    },
+  const [gameHistory, setGameHistory] = useState([]);
+  const token = localStorage.getItem('token');
 
-    
-  ]
+  useEffect(() => {
+      fetch('http://192.168.29.85:3000/usergamehistory', {
+          method: 'GET',
+          headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data && Array.isArray(data)) {
+              setGameHistory(data);
+          }
+      })
+      .catch(error => {
+          console.error('Error fetching user game history:', error);
+      });
+  }, []);
   return (
     <div className="win-history">
-      <TopSection />
-      <GameHistoryTable rankingData={rankingData} />
+      <TopSection  />
+      <GameHistoryTable rankingData={gameHistory} />
     </div>
   );
 };

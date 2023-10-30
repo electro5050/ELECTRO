@@ -8,68 +8,34 @@ import TopEarnersTable from 'electra/components/WinHistory/TopEarnersTable';
 
 
 const GameComponent = ({}) => {
-  let rankingData=[
-    {
-      name:"shafeer",
-      bidamount: 180
-    },
-    {
-      name:"suhail",
-      bidamount: 1000
-    },
-    {
-      name:"jubin",
-      bidamount: 400
-    },
-    {
-      name:"fari",
-      bidamount: 600
-    }
-    ,
-    {
-      name:"fari",
-      bidamount: 600
-    }
-    ,
-    {
-      name:"fari",
-      bidamount: 600
-    }
-    ,
-    {
-      name:"fari",
-      bidamount: 600
-    }
-    ,
-    {
-      name:"fari",
-      bidamount: 600
-    }
-    ,
-    {
-      name:"fari",
-      bidamount: 600
-    }
-    ,
-    {
-      name:"fari",
-      bidamount: 600
-    }
-    ,
-    {
-      name:"fari",
-      bidamount: 600
-    }
-    ,
-    {
-      name:"fari",
-      bidamount: 600
-    }
-  ]
+  const [allUsersGameHistory, setAllUsersGameHistory] = useState([]);
+  const token = localStorage.getItem('token');
+
+
+
+  useEffect(() => {
+      fetch('http://192.168.29.85:3000/allusersgamehistory', {
+          method: 'GET',
+          headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data && Array.isArray(data)) {
+              setAllUsersGameHistory(data);
+          }
+      })
+      .catch(error => {
+          console.error('Error fetching all users game history:', error);
+      });
+  }, []);
+
   return (
     <div className="win-history">
       <TopSection />
-      <TopEarnersTable rankingData={rankingData} />
+      <TopEarnersTable rankingData={allUsersGameHistory} />
     </div>
   );
 };
