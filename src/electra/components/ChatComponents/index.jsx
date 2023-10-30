@@ -80,6 +80,20 @@ socket.on('connect_timeout', (timeout) => {
   console.error('Connection timeout:', timeout);
 });
 
+function getCurrentTime(){
+  const now = new Date();
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+
+  // Format hours and minutes with leading zeros if needed
+  const formattedHours = hours;
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+
+  // Create the time string in "hh:mm" format
+  const timeString = `${formattedHours}:${formattedMinutes}`;
+
+  return timeString;
+}
 
 const ChatBox = () => {
   const [messages, setMessages] = useState([]);
@@ -116,7 +130,7 @@ const ChatBox = () => {
 
   useEffect(() => {
     socket.on('message', (msg) => {
-      setMessages((prevMessages) => [...prevMessages, { text: msg, user: 'received' }]);
+      setMessages((prevMessages) => [...prevMessages, { text: msg, user: 'received', time:getCurrentTime() }]);
     });
 
     return () => {
@@ -135,7 +149,7 @@ const ChatBox = () => {
   const sendMessage = () => {
     if (message.trim() !== '') {
       socket.emit('message', message);
-      setMessages((prevMessages) => [...prevMessages, { text: message, user: 'sent' }]);
+      setMessages((prevMessages) => [...prevMessages, { text: message, user: 'sent', time:getCurrentTime() }]);
       setMessage('');
     }
   };
@@ -161,7 +175,7 @@ const ChatBox = () => {
         key={index}
         chatDetails={{
             name:gameHistory.length > 0 ? gameHistory[0].username : 'Loading...',        // Assuming 'user' can represent 'name'. Adjust accordingly.
-            time: "N/A",           // Placeholder, adjust to real value if available.
+            time: msg.time,           // Placeholder, adjust to real value if available.
             message: msg.text
         }}
     />
