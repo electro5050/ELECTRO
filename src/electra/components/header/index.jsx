@@ -116,7 +116,7 @@ const Headers = ({selectedHeader, handleLinkClick , gameState={}}) => {
 
             <div className='vertical-center actions-icon'>
               <FontAwesomeIcon icon={faBell} style={{color: "#ffffff", marginRight: "3vw" }} />
-              <FontAwesomeIcon icon={faUser} style={{color: "#ffffff", marginRight: "3vw" }} />
+              <FontAwesomeIcon icon={faUser} style={{color: "#ffffff", marginRight: "3vw" }} name='' onClick={() => handleLinkClick("Profile")} />
               <FontAwesomeIcon icon={faMessage} style={{color: "#ffffff" }} />
             </div>
       </div>

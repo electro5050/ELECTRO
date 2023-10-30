@@ -15,6 +15,7 @@ import GameComponent from 'electra/components/Games'
 import Chat from 'electra/components/ChatComponents';
 import WinHistoryComponent from 'electra/components/WinHistory'
 import PortfolioComponent from 'electra/components/PortFolio'
+import ProfileComponent from 'electra/components/Profile'
 
 const GamePage = () => {
   const [activeTab, SetTab] = useState('Games');
@@ -121,6 +122,10 @@ const GamePage = () => {
             return <WinHistoryComponent />;
           // case 'Referal':
           //   return <ReferalComponent />;
+
+          case 'Profile':
+            return <ProfileComponent />;
+
           default:
             return null;
         }

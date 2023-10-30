@@ -24,7 +24,6 @@ const TopWinners = ({rankingData}) => {
   return (
     <div className="game-view-top-winners" style={{height:"70vh", background:"rgba(0, 0, 0, 0.60)", marginTop:"1vh", borderRadius: "20px"}}>
 
-
           <div className="table-ranking">
                                 <div className="flex th-title">
                                     <div className="column">
