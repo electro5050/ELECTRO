@@ -4,11 +4,12 @@
     align-items: center;
     justify-content: center;
    
-    padding: 50px 5px;
+    padding: 20px 5px;
     color: (56, 49, 78, 1), rgba(56, 49, 78, 0);
     text-align: center;
     padding-bottom: 5%;
     padding-right: 2%;
+    font-size: larger;
   }
   
   .mainhd {
@@ -38,13 +39,16 @@
   } */
    
   .long-line {
-    width: 80%;
+    width: 100%;
     height: 1px;
     background-color: rgba(200, 200, 200, 0.3);
     margin: 0 auto; /* Center the line */
   }
   .logo-dark{
     padding-bottom: 2%;
+  }
+  .llp{
+    font-size: small;
   }
   
   

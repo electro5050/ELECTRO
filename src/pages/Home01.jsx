@@ -3,12 +3,23 @@ import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
+import Payment from '../components/Upi/Payment'
 import heroSliderData from '../assets/fake-data/data-slider';
 import Slider from '../components/slider/Slider';
 import Graph from '../components/slider/Graph'
 import SignUp from './SignUp';
 import Ranking from './Ranking';
-
+import Picture from '../components/Baners/Baners'
+import Steps from '../components/steps/Steps'
+// import liveAuctionData from '../assets/fake-data/data-live-auction';
+// import LiveAuction from '../components/layouts/LiveAuction';
+// import TopSeller from '../components/layouts/TopSeller';
+// import topSellerData from '../assets/fake-data/data-top-seller'
+// import TodayPicks from '../components/layouts/TodayPicks';
+// import todayPickData from '../assets/fake-data/data-today-pick';
+// import PopularCollection from '../components/layouts/PopularCollection';
+// import popularCollectionData from '../assets/fake-data/data-popular-collection';
+// import Create from '../components/layouts/Create';
 import { Element } from 'react-scroll';
 const Home01 = () => {
     const [data, setData] = useState([]);
@@ -96,11 +107,14 @@ const Home01 = () => {
             <PopularCollection data={popularCollectionData} /> */}
             {/* <Create /> */}
             <Element name='signup-section' className='element'>
-            <SignUp/>
+           
             </Element>
-            
-            
+            <Picture/>
+            <Payment />
+            <Steps/>
+            <SignUp/>
             <Footer />
+           
         </div>
     );
 }
