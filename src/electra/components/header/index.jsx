@@ -43,22 +43,22 @@ const Headers = ({selectedHeader, handleLinkClick , gameState={}}) => {
 }, [gameState]);
 
   const headerRef = useRef(null);
-  useEffect(() => {
-    window.addEventListener('scroll', isSticky);
-    return () => {
-      window.removeEventListener('scroll', isSticky);
-    };
-  });
-  const isSticky = (e) => {
-    const header = document.querySelector('.js-header');
-    const scrollTop = window.scrollY;
-    scrollTop >= 300
-      ? header.classList.add('is-fixed')
-      : header.classList.remove('is-fixed');
-    scrollTop >= 400
-      ? header.classList.add('is-small')
-      : header.classList.remove('is-small');
-  };
+  // useEffect(() => {
+  //   window.addEventListener('scroll', isSticky);
+  //   return () => {
+  //     window.removeEventListener('scroll', isSticky);
+  //   };
+  // });
+  // const isSticky = (e) => {
+  //   const header = document.querySelector('.js-header');
+  //   const scrollTop = window.scrollY;
+  //   scrollTop >= 300
+  //     ? header.classList.add('is-fixed')
+  //     : header.classList.remove('is-fixed');
+  //   scrollTop >= 400
+  //     ? header.classList.add('is-small')
+  //     : header.classList.remove('is-small');
+  // };
 
   const menuLeft = useRef(null);
   const btnToggle = useRef(null);

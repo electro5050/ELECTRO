@@ -12,36 +12,6 @@ const avatharContainerStyle = {
   alignItems: "center"
 };
 
-let rankingData=[
-  {
-    amount: 180,
-    datetime: '24/20/2023 10:00:30 am',
-    isWin: true
-  },
-
-  {
-    amount: 180,
-    datetime: '24/20/2023 10:00:30 am',
-    isWin: false
-  },
-  {
-    amount: 180,
-    datetime: '24/20/2023 10:00:30 am',
-    isWin: false
-  },
-  {
-    amount: 180,
-    datetime: '24/20/2023 10:00:30 am',
-    isWin: false
-  },
-  {
-    amount: 180,
-    datetime: '24/20/2023 10:00:30 am',
-    isWin: false
-  },
-
-  
-]
 
 
 const InputStyle = {
@@ -55,6 +25,29 @@ const InputStyle = {
 };
 
 const ProfileUpdate = ({user}) => {
+
+  const [gameHistory, setGameHistory] = useState([]);
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+      fetch('http://192.168.29.85:3000/usergamehistory', {
+          method: 'GET',
+          headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data && Array.isArray(data)) {
+              setGameHistory(data);
+          }
+      })
+      .catch(error => {
+          console.error('Error fetching user game history:', error);
+      });
+  }, []);
+  console.log(gameHistory)
 
   const [isEdit, setIsEdit] = useState(false);
 
@@ -70,7 +63,7 @@ const ProfileUpdate = ({user}) => {
         <div style={{paddingLeft:"10px"}}>
             <div style={{display:"flex", alignItems: "center"}}>
                 <div style={{fontSize: "1.2vw", color:"white", fontWeight:"800"}}>
-                    Name
+                {gameHistory.length > 0 ? gameHistory[0].username : 'Loading...'}
                 </div>
                 <div style={{marginLeft:"10px", fontSize: "0.5vw"}}>
                 <svg
@@ -115,7 +108,7 @@ const ProfileUpdate = ({user}) => {
       </div>
 
       <div style={{fontSize: "0.8vw", color:"white", fontWeight:"800", width:"15vw", ...avatharContainerStyle}}>
-        Shafeer, you're one of our most anticipated bidders! Play more and Earn more. GOOD LUCK!
+      {gameHistory.length > 0 ? gameHistory[0].username : 'Loading...'}, you're one of our most anticipated bidders! Play more and Earn more. GOOD LUCK!
       </div>
 
       </div>
@@ -129,7 +122,7 @@ const ProfileUpdate = ({user}) => {
             {isEdit ? (
               <input type="text" placeholder="Enter Name" value={"Shafeer_3218"} style={InputStyle} />
             ) : (
-              <label>Shafeer_3218</label>
+              <label>{gameHistory.length > 0 ? gameHistory[0].userId : 'Loading...'}</label>
             )}
             
             &nbsp;
@@ -207,7 +200,7 @@ const ProfileUpdate = ({user}) => {
         </div>
 
         </div>
-        <GameHistoryTable rankingData={rankingData} />
+        <GameHistoryTable />
       </div>
     </div>
   );
