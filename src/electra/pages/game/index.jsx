@@ -16,6 +16,11 @@ import Chat from 'electra/components/ChatComponents';
 import WinHistoryComponent from 'electra/components/WinHistory'
 import PortfolioComponent from 'electra/components/PortFolio'
 import ProfileComponent from 'electra/components/Profile'
+import TutorialComponent from 'electra/components/Tutorials'
+import VIPMembershipComponent from 'electra/components/Membership'
+import ContactUsComponent from 'electra/components/ContactUs'
+import ReferralComponent from 'electra/components/Referral'
+
 
 const GamePage = () => {
   const [activeTab, SetTab] = useState('Games');
@@ -108,20 +113,20 @@ const GamePage = () => {
         switch (activeTab) {
           case 'Games':
             return <GameComponent />;
-          // case 'Tutorials':
-          //   return <TutorialsComponent />;
-          // case 'VIPMembership':
-          //   return <VIPMembershipComponent />;
+          case 'Tutorials':
+            return <TutorialComponent />;
+          case 'VIP Membership':
+            return <VIPMembershipComponent />;
           case 'Portfolio':
             return <PortfolioComponent />;
           // case 'LiveSupport':
           //   return <LiveSupportComponent />;
-          // case 'ContactUs':
-          //   return <ContactUsComponent />;
+          case 'Contact us':
+            return <ContactUsComponent />;
           case 'Win History':
             return <WinHistoryComponent />;
-          // case 'Referal':
-          //   return <ReferalComponent />;
+          case 'Referal':
+            return <ReferralComponent />;
 
           case 'Profile':
             return <ProfileComponent />;
