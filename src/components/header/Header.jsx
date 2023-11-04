@@ -11,40 +11,16 @@ import avt from '../../assets/images/avatar/avt-2.jpg';
 import Chatpage from '../../pages/Chatpage'
 import '../header/Header.css'
 import { Link as ScrollLink } from 'react-scroll';
-import Profile from '../../pages/Profile';
+import Button from 'react-bootstrap/Button';
 
 
 const Header = (gameState={gameState}) => {
   const { pathname } = useLocation();
   const [coinBalance, setCoinBalance] = useState(null);
   const[chatOpen, setChatOpen] = useState(false)
-  const[profileOpen,setProfileOpen] = useState(false)
-  const [notifications, setNotifications] = useState([]);
- const [showNotifications, setShowNotifications] = useState(false);
-
 
 
   const headerRef = useRef(null);
-
-
-  useEffect(() => {
-  
-  
-    fetch('http://192.168.29.85:3000/notification', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        setNotifications(data);
-    })
-    .catch(error => {
-        console.error('Error fetching notifications:', error);
-    });
-  }, []);
-  
 
   useEffect(() => {
     // Assuming you have a function to get a user's token for authorization
@@ -117,14 +93,6 @@ const Header = (gameState={gameState}) => {
   const handleChat =() => {
     setChatOpen(!chatOpen)
   }
-  const handleProfile =() => {
-    setProfileOpen(!profileOpen)
-  }
-
-  const toggleNotifications = () => {
-    setShowNotifications(!showNotifications);
-  };
-  
 
   return (
     <header id="header_main" className="header_1 js-header" ref={headerRef}>
@@ -142,7 +110,7 @@ const Header = (gameState={gameState}) => {
                         src={logodark}
                         srcSet={`${logodark2x}`}
                         alt="nft-gaming"
-                        style={{ padding: '7%' }}
+                        style={{ width: '25vh', height: '25vh',   }}
                         
                       />
                       <img
@@ -151,7 +119,7 @@ const Header = (gameState={gameState}) => {
                         src={logoheader}
                         srcSet={`${logoheader2x}`}
                         alt="nft-gaming"
-                        style={{ padding: '7%' }}
+                        style={{ width: '25vh',height:'25vh', }}
                       />
                     </Link>
                   </div>
@@ -163,7 +131,7 @@ const Header = (gameState={gameState}) => {
                 >
                   <span></span>
                 </div>
-                <nav id="main-nav" className="main-nav" ref={menuLeft}>
+                {/* <nav id="main-nav" className="main-nav" ref={menuLeft}>
                   <ul id="menu-primary-menu" className="menu">
                     {menus.map((data, index) => (
                       <li
@@ -193,36 +161,89 @@ const Header = (gameState={gameState}) => {
                       </li>
                     ))}
                   </ul>
-                </nav>
-
-                
+                </nav> */}
                 <div className="flat-search-btn flex">
-                  <div> <button onClick={handleProfile}> Profile </button>{profileOpen && <Profile/>}  </div>
-                                        <div> 
-                          <button onClick={toggleNotifications}> Notifications </button>
-                          {showNotifications && (
-                            <div className="notification-list">
-                              {notifications.map((notification, index) => (
-                                <div key={index} className="notification-item">
-                                  <h4>{notification.title}</h4>
-                                  <p>{notification.message}</p>
-                                  {notification.imageUrl && <img src={notification.imageUrl} alt="Notification" />}
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                  <div> <button onClick={handleChat}> chat </button>
-                  {chatOpen && <Chatpage/>}
+                  <div className='login'>
+                  <Button variant="outline-primary">Log In</Button>{' '}
+
                   </div>
+               
+                 
+                  
+                  {/* <div> <button onClick={handleChat}> chat </button>
+                  {chatOpen && <Chatpage/>}
+                  </div> */}
                   <div
                     className="sc-btn-top mg-r-12"
                     id="site-header"
                   >
-                  <p className="sc-button header-slider style style-1 wallet fl-button pri-1">
+                  {/* <p className="sc-button header-slider style style-1 wallet fl-button pri-1">
                       <span>{coinBalance ? `${coinBalance} $` : 'Wallet connect'}</span>
-                  </p>
+                  </p> */}
+                  <div className='signup'>
+                  <Button variant="primary">Sign up</Button>{' '}
 
+                  </div>
+                 
+
+                  </div>
+   
+                
+
+                 
+                  
+                  
+
+                  <div className="admin_active" id="header_admin">
+                    <div className="header_avatar">
+                      <div className="price">
+                        <span>2.45 <strong>ETH</strong> </span>
+                      </div>
+                      <img
+                        className="avatar"
+                        src={avt}
+                        alt="avatar"
+                      />
+                      <div className="avatar_popup mt-20">
+                        <div className="d-flex align-items-center copy-text justify-content-between">
+                          <span> 13b9ebda035r178... </span>
+                          <Link to="/" className="ml-2">
+                            <i className="fal fa-copy"></i>
+                          </Link>
+                        </div>
+                        <div className="d-flex align-items-center mt-10">
+                          <img
+                            className="coin"
+                            src={imgsun}
+                            alt="/"
+                          />
+                          <div className="info ml-10">
+                            <p className="text-sm font-book text-gray-400">
+                              Balance
+                            </p>
+                            <p className="w-full text-sm font-bold text-green-500">
+                              16.58 ETH
+                            </p>
+                          </div>
+                        </div>
+                        <div className="hr"></div>
+                        <div className="links mt-20">
+                          <Link to="#">
+                            <i className="fab fa-accusoft"></i>{' '}
+                            <span> My items</span>
+                          </Link>
+                          <Link to="/edit-profile">
+                            <i className="fas fa-pencil-alt"></i>{' '}
+                            <span> Edit Profile</span>
+                          </Link>
+                          <Link to="/logout"> {/* Add this line */}
+                            <i className="fal fa-sign-out"></i>{' '}
+                            <span> Logout</span>
+                          </Link>{' '}
+                          {/* Add this line */}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

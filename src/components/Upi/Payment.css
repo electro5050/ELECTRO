@@ -1,0 +1,85 @@
+.payment {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Align vertically in the center */
+  padding: 20px;
+  margin-bottom: 35%;
+  border-radius: 30px;
+  background: rgba(243, 187, 41, 0.85);
+  width: 80%;
+  
+  margin-left: 10%;
+  margin-top: 0%;
+  
+
+}
+
+.secure {
+  font-family: Gilroy;
+  font-size: 25px;
+  font-weight: 700;
+  color: #068FFF;
+  line-height: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.wayto {
+  font-family: Gilroy;
+  font-size: 44px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 1);
+  line-height: normal;
+  margin-bottom: 10px;
+}
+
+.buycoins{
+  background-color: #000000;
+  color: #fff;
+  border: none; /* Remove border */
+  border-radius: 6px; /* Remove border-radius */
+ 
+}
+
+.gateway {
+  border-radius: 30px;
+  color: #080808; /* Changed the text color to white */
+  margin-left: 5%; /* Adjust margin as needed to move the container to the right */
+  /* margin-bottom: 10vh; */
+  background-color: #000000;
+  
+}
+
+/* Add responsive styles for different screen sizes as needed */
+@media (max-width: 768px) {
+  .secure {
+    font-size: 30px;
+    font-weight: 700;
+    color: #000000;
+  }
+
+  .wayto {
+    font-size: 20px;
+  }
+
+  .dpbuttn {
+    font-size: 16px;
+  }
+
+  .gateway {
+    margin-left: 10px; /* Adjust margin as needed for smaller screens */
+  }
+}
+.easy{
+  color: #000000;
+}
+.grandient02{
+  width:100%;
+  height: 100vh;
+  background: url('../../assets/images/grandient/Ellipse\ 41.png');
+  background-size: cover;
+  background-position: center;
+  
+}

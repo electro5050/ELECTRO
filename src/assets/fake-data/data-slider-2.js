@@ -1,7 +1,7 @@
 import img1 from '../images/slider/slide_2.png';
 import img2 from '../images/slider/slide_2.png';
-import imgbg1 from '../images/slider/bg_slide_2.png'
-import imgbg2 from '../images/slider/bg_slide_2.png'
+// import imgbg1 from '../images/slider/bg_slide_2.png'
+// import imgbg2 from '../images/slider/bg_slide_2.png'
 
 
 const heroSliderData = [
@@ -12,7 +12,7 @@ const heroSliderData = [
         title_4: "NFTs",
         description: "Marketplace for monster character cllections non fungible token NFTs",
         img: img1,
-        imgbg: imgbg1,
+        // imgbg: imgbg1,
         class: 'left'
     },
     {
@@ -22,7 +22,7 @@ const heroSliderData = [
         title_4: "NFTs",
         description: "Marketplace for monster character cllections non fungible token NFTs",
         img: img2,
-        imgbg: imgbg2,
+        // imgbg: imgbg2,
         class: 'center'
     },
     {

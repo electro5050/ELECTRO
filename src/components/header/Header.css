@@ -1,25 +1,27 @@
-/* Add these styles to your existing CSS file or component styles */
-.signup-button {
-    background-color: rgb(30, 30, 201);
-    color: white;
-    border-radius: 10px;
-    padding: 14px 17px;
-    font-size: larger;
-    
-    
-    border: none;
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
-    display: inline-block; /* This makes it a block-level element for proper alignment */
-    margin-left: 15px; /* Adjust the margin as needed to align it properly */
-    font-weight: bold; /* Make the text bold */
-    text-decoration: none; /* Remove the default link underline */
-    transition: background-color 0.3s ease; /* Add a transition effect */
-  }
+/* Responsive Navbar Styles */
+.header_1 {
+  background: #141313; /* Add a background color */
+  padding: 10px 0; /* Adjust the padding as needed */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  text-decoration: none;
+  /* background-color: rgba(221, 170, 49, 1);
+  background-color: rgba(150, 22, 195, 1); */
   
-  .signup-button:hover {
-    background-color: #333; /* Change the background color on hover */
-  }
-  .button{
-    padding-top: 10%;
-  }
+}
+
+.main-logo img {
+  max-width: 100%; /* Ensure the logo scales properly */
+  height: auto;
+  margin-top: 4vh;
+}
+
+
+
+/* Style the Log In and Sign Up buttons */
+.login, .signup {
+  margin: 0 10px; /* Add space between buttons */
+}

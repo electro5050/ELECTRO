@@ -1,0 +1,261 @@
+/* baner.css */
+.garndient{
+  width: 100%;
+  height: 170vh;
+  background: url('../../assets/images/grandient/Ellipse\ 38\ \(2\).png');
+  background-size: cover;
+  background-position: center;
+}
+.baner-page {
+  height: 140vh;
+  width: 80%;
+  border-radius: 2270px;
+  margin-left: 25vh;
+  margin-top: 0vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  
+}
+
+
+
+
+.banners-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 80%;
+}
+
+.baner-first,
+.baner-2nd {
+  height: 50vh;
+  width: 38%;
+  border-radius: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.50);
+  background: url('../../assets/images/baners/7b15e980925f5b2039af3b47e1066542.png');
+  background-size: cover;
+  background-position: center;
+  margin-right: 13%;
+  margin-bottom: 60vh;
+}
+
+.text01 {
+  text-align: center;
+}
+
+.text-a {
+  color: rgba(0, 0, 0, 0.80);
+  text-shadow: 0px 4px 40px #FEF7C3;
+  font-family: Poppins;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5;
+  display: block;
+  margin: 10px 0;
+}
+
+.text-b {
+  color: #FDFB81;
+  text-shadow: 0px -20px 70px rgba(253, 251, 129, 0.90), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Poppins;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.2;
+  display: block;
+  margin: 10px 0;
+}
+.text-c{
+  width: 574px;
+height: 64px;
+flex-shrink: 0;
+color: #FFF;
+
+font-family: Poppins;
+font-size: 30px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+padding-right: 20%;
+position: absolute;
+}
+.plybutton {
+  color: #FFF;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border-radius: 10px;
+  background: #BE5ACE;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.50);
+  width: 133.617px;
+  height: 46.04px;
+  flex-shrink: 0;
+  margin-top: 15%;
+}
+
+.text02 {
+  color: #FFF;
+  text-align: center;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Poppins;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5;
+  display: block;
+  margin: 10px 0;
+}
+
+.plybutton2 {
+  color: #FFF;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border-radius: 10px;
+  background: rgba(57, 57, 57, 1);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.50);
+  width: 130.617px;
+  height: 41.04px;
+  flex-shrink: 0;
+  margin-left: 13vh;
+}
+
+.baner-3 {
+  height: 48vh;
+  width: 57%;
+  background-color: #FFF;
+  position: absolute;
+  margin-top: 80vh;
+  margin-right: 17vh;
+  border-radius: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.50);
+  background: url('../../assets/images/baners/b22923a8f4ea6b5833c3eb52d46f3057.png');
+  background-size: cover;
+  background-position: center;
+  display: flex; /* Added display: flex to center the text */
+  justify-content: center; /* Added justify-content to center the text */
+  align-items: start; /* Added align-items to center the text */
+}
+.text03{
+  text-align: start;
+  position: absolute;
+  margin-right: 55vh;
+
+}
+
+.text-e {
+  width: 84.678px;
+  height: 44px;
+  flex-shrink: 0;
+  color: #FFF;
+  text-shadow: 0px 5px 20px #FFF, 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Poppins;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  position: absolute;
+  margin-top: 5vh;
+  display: block;
+  
+  
+  
+  
+  
+}
+
+.text-f {
+  width: 346.944px;
+  height: 128px;
+  flex-shrink: 0;
+  color: #FFD700;
+  text-shadow: 0px 5px 20px #FFF, 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Poppins;
+  font-size: 70px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  
+  margin: 10vh 0; /* Adjust the margin to create space */
+  display: block;
+  
+}
+.text-g{
+  width: 242.273px;
+height: 41px;
+flex-shrink: 0;
+color: #FFF;
+text-shadow: 0px 5px 20px #FFF, 0px 4px 4px rgba(0, 0, 0, 0.25);
+font-family: Poppins;
+font-size: 30px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+
+
+}
+.text-h{
+  width: 331.655px;
+height: 44px;
+flex-shrink: 0;
+color: #FFF;
+text-shadow: 0px 5px 20px #FFF, 0px 4px 4px rgba(0, 0, 0, 0.25);
+font-family: Poppins;
+font-size: 30px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+position:absolute;
+}
+.onvery{
+  position: absolute;
+  bottom: 8vh;
+}
+.endtext{
+  text-align: end;
+  
+  
+}
+.text-i{
+  margin-left: 18vh;
+  margin-top: 20vh;
+  width: 563.344px;
+height: 96px;
+flex-shrink: 0;
+color: #FFF;
+text-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25), 0px 2px 10px rgba(252, 252, 252, 0.50);
+font-family: Poppins;
+font-size: 30px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.plybutton03{
+  color: #FFF;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border-radius: 10px;
+  background: #FFBC0E;
+
+  box-shadow: 0px 5px 12px 0px #000, 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 130.617px;
+  height: 41.04px;
+  flex-shrink: 0;
+  margin-right: 14%;
+  
+}
+
