@@ -20,7 +20,30 @@ const headerStyle = {
   padding: "10px",
   alignItems: "center"
 };
-const TopWinners = ({rankingData}) => {
+const TopWinners = () => {
+  const [gameHistory, setGameHistory] = useState([]);
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+      fetch('http://192.168.29.85:3000/usergamehistory', {
+          method: 'GET',
+          headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data && Array.isArray(data)) {
+              setGameHistory(data);
+          }
+      })
+      .catch(error => {
+          console.error('Error fetching user game history:', error);
+      });
+  }, []);
+
+
 
   return (
     <div className="game-view-top-history-profile" style={{height:"30vh", background:"#43415B", marginTop:"4vh", borderRadius: "20px"}}>
@@ -53,7 +76,7 @@ const TopWinners = ({rankingData}) => {
                                 </div>
                               <div style={{height:"35vh", overflowY:"auto", paddingRight: "10px"}}>
                               {
-                                   rankingData && rankingData.map((player, index) => (
+                                   gameHistory && gameHistory.map((player, index) => (
                                       <div  className="fl-item" style={{paddingTop:"10px"}}>
                                           <div className="item flex">
                                               <div className="column">
@@ -64,27 +87,27 @@ const TopWinners = ({rankingData}) => {
                                               </div>
                                               <div className="column" style={{width:"34.6%"}}>
                                                 <div style={{display:"flex", justifyContent: "center"}}>
-                                                  <span style={{color:"#FFFFFF", paddingLeft:'10px', fontWeight:"700"}}>{player.datetime}</span>
+                                                  <span style={{color:"#FFFFFF", paddingLeft:'10px', fontWeight:"700"}}>{player.startTime}</span>
                                                 </div>
 
                                               </div>
 
                                               <div className="column" >
                                                 <div style={{display:"flex", justifyContent: "center"}}>
-                                                  <span style={{color:"#FFFFFF", paddingLeft:'10px', fontWeight:"700"}}>{player.amount}</span>
+                                                  <span style={{color:"#FFFFFF", paddingLeft:'10px', fontWeight:"700"}}>{player.bidAmount}</span>
                                                 </div>
 
                                               </div>
 
                                               <div className="column"style={{width:"10.6%"}}>
                                                 <div style={{display:"flex", justifyContent: "center"}}>
-                                                  <span style={{color:"#70D77A", paddingLeft:'10px', fontWeight:"700"}}>+{player.isWin ? 2 * player.amount : ''}</span>
+                                                  <span style={{color:"#70D77A", paddingLeft:'10px', fontWeight:"700"}}> {player.win}</span>
                                                 </div>
 
                                               </div>
                                               <div className="column" style={{width:"10.6%"}}>
                                               <div style={{display:"flex", justifyContent: "center"}}>
-                                                  <span style={{color:"#D77070", paddingLeft:'10px', fontWeight:"700"}}>-{!player.isWin ? player.amount : ''}</span>
+                                                  <span style={{color:"#D77070", paddingLeft:'10px', fontWeight:"700"}}> {player.loss}</span>
                                                 </div>
                                               </div>
 

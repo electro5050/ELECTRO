@@ -48,7 +48,6 @@ const Headers = ({selectedHeader, handleLinkClick , gameState={}}) => {
     });
 }, [gameState]);
 
-
   return (
     <div className='main-header'>
       <div className='sub-header'>
@@ -76,7 +75,7 @@ const Headers = ({selectedHeader, handleLinkClick , gameState={}}) => {
                       />
                       <span className='wallet-value'>
                     
-                      {coinBalance ? `${coinBalance} $` : 'Wallet connect'}
+                      {coinBalance ? `${coinBalance} $` : '000'}
                       </span>
                   </div>
 

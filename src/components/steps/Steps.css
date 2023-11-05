@@ -1,0 +1,218 @@
+.mainbox{
+  width: calc(89.33vw);
+  height: calc(59.27vh);
+    flex-shrink: 0;
+    border-radius: 20px;
+    opacity: 0.7;
+    
+    /* background: linear-gradient(0deg, #BEBFC0 0%, #BEBFC0 100%), linear-gradient(0deg, #70D77A 0%, #70D77A 100%), #70D77A; */
+    
+    /* Add margin to create a gap between the navbar and the box */
+    margin-top: 0%;
+    display: flex;
+ 
+    margin-left: 18vh;
+    
+}
+.texts{
+  text-align: center;
+  
+  
+  
+ 
+  
+}
+.grandient03 {
+  width: 100%;
+  height: auto;
+  background: url('../../assets/images/grandient/Ellipse\ 41.png');
+  background-size: cover;
+  background-position: center;
+  border: none;
+  outline: none;
+  margin: 0;
+  margin-top: 0%;
+}
+
+.method {
+  color: #FFF;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 650;
+  line-height: normal;
+}
+
+.method2 {
+  color: #ffd700;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 650;
+  line-height: normal;
+  margin-top: 2vh;
+  position: absolute;
+  margin-left: 20%;
+}
+
+.innerbox{
+align-items: center;
+}
+.innerbox1{
+  width: calc(210 / 1920 * 100vw);
+
+  height: calc(249 / 1080 * 100vh);
+
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #FFF;
+  margin-left: 2vw;
+  align-items: center;
+  position: absolute;
+  margin-top: 4%;
+  border-radius: 19.037px;
+border: 2.004px solid #DDAA31;
+background: rgba(255, 255, 255, 0.10);
+}
+.outer1{
+  text-align: left;
+  position: absolute;
+  margin-top: 32vh;
+  margin-left: 12vh;
+  color: #FFF;
+font-family: Inter;
+font-size:large;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.pic-a{
+  position: absolute;
+  padding: 5%;
+}
+.innerbox2{
+  width: calc(210 / 1920 * 100vw);
+
+  height: calc(249 / 1080 * 100vh);
+
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #FFF;
+  margin-left: 18vw;
+  align-items: center;
+  position: absolute;
+  margin-top: 4%;
+  border-radius: 19.037px;
+border: 2.004px solid #DDAA31;
+background: rgba(255, 255, 255, 0.10);
+}
+.outer2{
+  text-align: left;
+  position: absolute;
+  margin-top: 32vh;
+  margin-left: 44vh;
+  color: #FFF;
+font-family: Inter;
+font-size: large;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.pic-b{
+  position: absolute;
+  padding: 5%;
+}
+.innerbox3{
+  width: calc(210 / 1920 * 100vw);
+
+  height: calc(249 / 1080 * 100vh);
+
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #FFF;
+  margin-left: 34vw;
+  align-items: center;
+  position: absolute;
+  margin-top: 4%;
+  border-radius: 19.037px;
+border: 2.004px solid #DDAA31;
+background: rgba(255, 255, 255, 0.10);
+}
+.outer3{
+  text-align: left;
+  position: absolute;
+  margin-top: 32vh;
+  margin-left: 77vh;
+  color: #FFF;
+font-family: Inter;
+font-size: large;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.innerbox4{
+  width: calc(210 / 1920 * 100vw);
+
+  height: calc(249 / 1080 * 100vh);
+
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #FFF;
+  margin-left: 50vw;
+  align-items: center;
+  position: absolute;
+  margin-top: 4%;
+  border-radius: 19.037px;
+border: 2.004px solid #DDAA31;
+background: rgba(255, 255, 255, 0.10);
+}
+.outer4{
+  text-align: left;
+  position: absolute;
+  margin-top: 32vh;
+  margin-left: 110vh;
+  color: #FFF;
+font-family: Inter;
+font-size: large;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.pic-c{
+  position: absolute;
+  padding: 5%;
+}
+.innerbox5{
+  width: calc(210 / 1920 * 100vw);
+
+  height: calc(249 / 1080 * 100vh);
+
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #FFF;
+  margin-left: 65vw;
+  align-items: center;
+  position: absolute;
+  margin-top: 4%;
+  border-radius: 19.037px;
+border: 2.004px solid #DDAA31;
+background: rgba(255, 255, 255, 0.10);
+}
+.outer5{
+  text-align: left;
+  position: absolute;
+  margin-top: 32vh;
+  margin-left: 141vh;
+  color: #FFF;
+font-family: Inter;
+font-size: large;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.pic-d{
+  position: absolute;
+  padding: 5%;
+}

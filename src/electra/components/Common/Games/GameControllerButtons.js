@@ -55,7 +55,8 @@ const buttonStyle={
   display: "flex",
   alignItems: "center",
   padding: "0 5px",
-  justifyContent: "space-around"
+  justifyContent: "space-around",
+  cursor:"pointer"
 
 }
 
@@ -119,34 +120,30 @@ const GameControllerButtons = ({BidValue,data, gameState, setGameState, authErro
 
   useEffect(() => {
     const timer = setTimeout(() => {
-        setShowSwitchRoomButton(true);
+      setShowSwitchRoomButton(true);
     }, 24000); // 24 seconds
 
-    // Clean up the timer if the component is unmounted before 24 seconds
     return () => {
-        clearTimeout(timer);
+      clearTimeout(timer);
     };
-}, [gameState.gameEnded]); // Empty dependency array ensures this runs only once after initial render
-
-
-useEffect(() => {
-  if (gameState.gameEnded) {
-      setShowSwitchRoomButton(false);
-  }
-}, [gameState.gameEnded]);
-
-
+  }, [gameState.gameEnded]);
 
   useEffect(() => {
-    if (buttonType) {
-      sendDataToAPI();
+    if (gameState.gameEnded) {
+      setShowSwitchRoomButton(false);
+      setButtonType('');
+      setResult(1);
+      setTextFieldData('');
+      
     }
-  }, []);
+    
+  }, [gameState.gameEnded]);
 
   const handleDropdownChange = (event) => {
-    const newValue = parseInt(event.target.value);
+    const newValue = parseInt(event.target.value, 10);
     setSelectedValue(newValue);
     setResult(newValue);
+    setTextFieldData(event.target.value);
   };
 
   const handleMultiply = () => {
@@ -154,45 +151,48 @@ useEffect(() => {
   };
 
   const handleDivide = () => {
-    if(result >= 2)
-      {
-        const newResult = result / 2;
-        setResult(Math.floor(newResult));
-      }
+    if (result >= 2) {
+      setResult(Math.floor(result / 2));
+    }
   };
-
 
   const handleButtonClick = (type) => {
     setButtonType(type);
-};
+    sendDataToAPI(type); // Sending the type as a parameter to the function
+  };
 
-const sendDataToAPI = () => {
-  // Check if gameState or gameState.gameId is undefined
-  if (!gameState || gameState.gameId === undefined) {
-    console.error('gameState or gameId is undefined!');
-    return;
-  }
+  const sendDataToAPI = (type) => {
+    
+    if (!gameState || gameState.gameId === undefined) {
+      console.error('gameState or gameId is undefined!');
+      return;
+    }
 
-  axios.post('http://192.168.29.85:3000/bid', {
-      coinCount: textFieldData,
-      buttonType: buttonType,
+    // if (typeof textFieldData === 'string' && textFieldData.trim() === '') {
+    //   console.error("Coin count is empty");
+    //   return;
+    // }
+
+    axios.post('http://192.168.29.85:3000/bid', {
+      coinCount: result,
+      buttonType: type,
       gameId: gameState.gameId
-  })
-  .then(response => {
+    })
+    .then(response => {
       setGameState({
-          ...gameState,
-          activeGameButton: buttonType
+        ...gameState,
+        activeGameButton: type
       });
       console.log("Data sent successfully:", response.data);
-  })
-  .catch(error => {
+    })
+    .catch(error => {
       console.error("Error sending data:", error);
       if (error.response && error.response.status === 401) {
-          console.log('Authentication error. Please login again.');
-          setAuthError(true);
+        console.log('Authentication error. Please login again.');
+        setAuthError(true);
       }
-  });
-};
+    });
+  };
 
 const handleSwitchRoom = () => {
   const userIdFromLocalStorage = localStorage.getItem('userId');
@@ -218,8 +218,9 @@ console.log('gameId:', gameState ? gameState.gameId : 'gameState is undefined');
       <div style={ButtonGroupContainer}>
         <div style={CenterStyle}>
           <div style={{...buttonStyle, background: "#D9D4D4"}} onClick={() => {
-    handleButtonClick("Green");
-    sendDataToAPI();
+            if(buttonType != 'Red')
+              handleButtonClick("Green");
+    // sendDataToAPI();
 }} >
               <span style={TextStyle}>
                   Bid
@@ -241,7 +242,7 @@ console.log('gameId:', gameState ? gameState.gameId : 'gameState is undefined');
         <div style={CenterStyle}>
           <div>
             <div style={DropDownStyles.dropdownContainer}>
-              <select value={textFieldData} onChange={(e) => { setTextFieldData(e.target.value);handleDropdownChange(e);}} style={DropDownStyles.dropdown}>
+              <select value={textFieldData} onChange={(e) => {handleDropdownChange(e);}} style={DropDownStyles.dropdown}>
                 <option value={1}>1</option>
                 <option value={10}>10</option>
                 <option value={50}>50</option>
@@ -260,8 +261,9 @@ console.log('gameId:', gameState ? gameState.gameId : 'gameState is undefined');
 
         <div style={CenterStyle}>
           <div style={{...buttonStyle, background: "#FFD700"}} onClick={() => {
+            if(buttonType != 'Green')
            handleButtonClick("Red");
-           sendDataToAPI();
+          //  sendDataToAPI();
                }}  >
               <span style={TextStyle}>
                   Bid

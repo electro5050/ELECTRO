@@ -6,7 +6,7 @@ import GamePage from "electra/pages/game";
 import CoinPage from "electra/pages/buy-coin";
 
 const routes = [
-  { path: '/', component: <GamePage />},
+  { path: '/', component: <Home01 />},
   { path: '/home-02', component: <Home02 />},
   { path: '/login', component: <Login />},
   { path: '/sign-up', component: <SignUp />},
