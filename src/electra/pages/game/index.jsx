@@ -35,67 +35,67 @@ const GamePage = () => {
   const [rankingData, setRankingData] = useState([]);
 
 
-  useEffect(() => {
-    const websocket = new WebSocket("ws://192.168.29.85:5000");
+  // useEffect(() => {
+  //   const websocket = new WebSocket("ws://192.168.29.85:5000");
 
-    websocket.onopen = () => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            websocket.send(JSON.stringify({ type: 'auth', token: token }));
-        }
-    };
+  //   websocket.onopen = () => {
+  //       const token = localStorage.getItem('token');
+  //       if (token) {
+  //           websocket.send(JSON.stringify({ type: 'auth', token: token }));
+  //       }
+  //   };
 
-    websocket.onmessage = (event) => {
-      const message = JSON.parse(event.data);
-      console.log("Received WebSocket message:", event.data);
+  //   websocket.onmessage = (event) => {
+  //     const message = JSON.parse(event.data);
+  //     console.log("Received WebSocket message:", event.data);
   
-      if (message.type && message.type === 'winners') {
-          setRankingData(message.winners);
-      } else if (message.gameId) {
-          setGameState(prevState => ({ ...prevState, gameId: message.gameId }));
-      } else if (message.message) {
-          setGameState(prevState => ({
-              ...prevState,
-              endGameMessage: message.message,
-              gameEnded: true,
-              gameId: message.gameId
-          }));
+  //     if (message.type && message.type === 'winners') {
+  //         setRankingData(message.winners);
+  //     } else if (message.gameId) {
+  //         setGameState(prevState => ({ ...prevState, gameId: message.gameId }));
+  //     } else if (message.message) {
+  //         setGameState(prevState => ({
+  //             ...prevState,
+  //             endGameMessage: message.message,
+  //             gameEnded: true,
+  //             gameId: message.gameId
+  //         }));
   
-          setData([]);
+  //         setData([]);
   
-          setTimeout(() => {
-              setGameState(prevState => ({
-                  ...prevState,
-                  gameEnded: false,
-                  endGameMessage: ""
-              }));
-          }, 10000);
-      } else {
-          // Only update if the message value is different
-          if (!data.includes(message.value)) {
-              setData(prevData => [...prevData, message.value]);
-          }
-      }
-  };
+  //         setTimeout(() => {
+  //             setGameState(prevState => ({
+  //                 ...prevState,
+  //                 gameEnded: false,
+  //                 endGameMessage: ""
+  //             }));
+  //         }, 10000);
+  //     } else {
+  //         // Only update if the message value is different
+  //         if (!data.includes(message.value)) {
+  //             setData(prevData => [...prevData, message.value]);
+  //         }
+  //     }
+  // };
   
 
-    websocket.onerror = (error) => {
-        console.error("WebSocket Error:", error);
-    };
+//     websocket.onerror = (error) => {
+//         console.error("WebSocket Error:", error);
+//     };
 
-    setWs(websocket);
+//     setWs(websocket);
 
-    const token = localStorage.getItem('token');
-    if (token) {
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    } else {
-        setAuthError(true);
-    }
+//     const token = localStorage.getItem('token');
+//     if (token) {
+//         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+//     } else {
+//         setAuthError(true);
+//     }
 
-    return () => {
-        websocket.close();
-    };
-},[] )
+//     return () => {
+//         websocket.close();
+//     };
+// },[] )
 
   const handleLinkClick = (name) => {
     SetTab(name);

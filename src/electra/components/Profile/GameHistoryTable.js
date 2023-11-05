@@ -23,7 +23,7 @@ const headerStyle = {
 const TopWinners = ({rankingData}) => {
 
   return (
-    <div className="game-view-top-history-profile" style={{height:"40vh", background:"#43415B", marginTop:"4vh", borderRadius: "20px"}}>
+    <div className="game-view-top-history-profile" style={{height:"30vh", background:"#43415B", marginTop:"4vh", borderRadius: "20px"}}>
         
 <div style={headerStyle}>
   <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'2vw'} />
