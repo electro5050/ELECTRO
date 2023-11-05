@@ -213,7 +213,8 @@ const ChatBox = () => {
         chatDetails={{
             name:gameHistory.length > 0 ? gameHistory[0].username : 'Loading...',        // Assuming 'user' can represent 'name'. Adjust accordingly.
             time: msg.time,           // Placeholder, adjust to real value if available.
-            message: msg.text
+            message: msg.text,
+            type: msg.type
         }}
     />
 ))}
