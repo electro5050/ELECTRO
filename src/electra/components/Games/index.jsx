@@ -6,10 +6,24 @@ import TopSection from 'electra/components/Common/Games/TopSection';
 import GameChart from 'electra/components/Common/Games/GameChart';
 import TopWinnersTable from 'electra/components/Common/Games/TopWinnersTable';
 import axios from 'axios';
+import Modal from './model'
 
-const avatharContainerStyle = {
-
-};
+const shareButtonStyle = {
+    borderRadius: '10px',
+    background: 'linear-gradient(0deg, rgb(255, 255, 255) 0%, rgba(244, 225, 124, 0.9) 100%)',
+    backdropFilter: 'blur(50px)',
+    width: 'fit-content',
+    height: '20px',
+    display: 'flex',
+    textAlign: 'center',
+    justifyContent: 'center',
+    color: 'black',
+    alignItems: 'center',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    padding: '10px 20px',
+    fontWeight: 700
+  };
 
 const GameComponent = ({}) => {
   const [data, setData] = useState([]);
@@ -99,13 +113,40 @@ useEffect(() => {
   return () => {
       s0.parentNode.removeChild(s1);
   };
+
 }, [])
  
+
+
+const [winModel, SetIsWinModal] = useState(true);
+
+
+const closeWinModal = () => {
+    SetIsWinModal(false)
+};
+
   return (
+
+
+
     <div className="game-view">
       <TopSection />
       <GameChart />
       <TopWinnersTable rankingData={rankingData} />
+
+        
+      <Modal isOpen={winModel} onClose={closeWinModal}>
+            <div>
+            <img src={"assets/electra/win-shield.png"}  alt=""  style={{height:"50vh"}}/>
+            <div style={shareButtonStyle}>
+                    share &nbsp;&nbsp;
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
+                    <path d="M7.5 0V3C1.5 3 0 6.075 0 10.5C0.78 7.53 3 6 6 6H7.5V9L12 4.26L7.5 0Z" fill="#6D6520"/>
+                    </svg>
+            </div>
+            </div>
+
+        </Modal>
     </div>
   );
 };

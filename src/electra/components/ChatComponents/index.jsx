@@ -170,13 +170,51 @@ const ChatBox = () => {
           </div>
         </div>
     <div>
+    <ChatSection 
+        key={1}
+        chatDetails={{
+            name:gameHistory.length > 0 ? gameHistory[0].username : 'Loading...',        // Assuming 'user' can represent 'name'. Adjust accordingly.
+            time: "9:10am",           // Placeholder, adjust to real value if available.
+            message: "test game chat"
+        }}
+    />
+
+<ChatSection 
+        key={1}
+        chatDetails={{
+            name:gameHistory.length > 0 ? gameHistory[0].username : 'Loading...',        // Assuming 'user' can represent 'name'. Adjust accordingly.
+            time: "9:10am",           // Placeholder, adjust to real value if available.
+            message: "test"
+        }}
+    />
+
+<ChatSection 
+        key={1}
+        chatDetails={{
+            name:gameHistory.length > 0 ? gameHistory[0].username : 'Loading...',        // Assuming 'user' can represent 'name'. Adjust accordingly.
+            time: "9:10am",           // Placeholder, adjust to real value if available.
+            message: "abcdf dsajda jdksada dksajd jsdasds sadjas asjdsad "
+        }}
+    />
+
+<ChatSection 
+        key={1}
+        chatDetails={{
+            name:gameHistory.length > 0 ? gameHistory[0].username : 'Loading...',        // Assuming 'user' can represent 'name'. Adjust accordingly.
+            time: "9:10am",           // Placeholder, adjust to real value if available.
+            message: "1000.000",
+            type:"win"
+        }}
+    />
+
         {messages.map((msg, index) => (
     <ChatSection 
         key={index}
         chatDetails={{
             name:gameHistory.length > 0 ? gameHistory[0].username : 'Loading...',        // Assuming 'user' can represent 'name'. Adjust accordingly.
             time: msg.time,           // Placeholder, adjust to real value if available.
-            message: msg.text
+            message: msg.text,
+            type: msg.type
         }}
     />
 ))}

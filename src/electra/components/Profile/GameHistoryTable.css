@@ -13,17 +13,18 @@
     padding-bottom: 0 !important;
     margin-bottom: 5px !important;
     margin-top: 5px !important;
+    width: 100%;
 }
 
 .game-view-top-history-profile .table-ranking .th-title .column {
     text-align: center;
-    width: 16.6%;
+    /* width: 16.6%; */
     font-size: 0.7vw;
 }
 
 .game-view-top-history-profile  .table-ranking .item .column {
     text-align: center;
-    width: 16.6%;
+    /* width: 16.6%; */
     justify-content: center;
     font-size: 1vw;
 }
@@ -33,9 +34,10 @@
     background: #282828;
     box-shadow: none !important;
     border-radius: 30px;
-    padding: 10px;
+    padding: 0;
     height: 40px;
     margin-bottom: 0;
+    width: 100%;
 }
 
 .game-view-top-history-profile .table-ranking .fl-item:not(:first-child) {

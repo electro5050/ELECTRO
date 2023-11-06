@@ -1,0 +1,10 @@
+.avathar-conainer-rounded {
+    border-radius: 10px;
+    background: #fff799;
+    transition: background 0.3s;
+  }
+  
+  .avathar-conainer-rounded:hover {
+    background: white; /* Change to the desired color on hover */
+    cursor: pointer;
+  }
