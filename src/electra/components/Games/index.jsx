@@ -100,6 +100,7 @@ useEffect(() => {
       s0.parentNode.removeChild(s1);
   };
 }, [])
+ 
   return (
     <div className="game-view">
       <TopSection />

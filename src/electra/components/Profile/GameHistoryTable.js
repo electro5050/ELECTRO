@@ -43,8 +43,6 @@ const TopWinners = () => {
       });
   }, []);
 
-
-
   return (
     <div className="game-view-top-history-profile" style={{height:"40vh", background:"#43415B", marginTop:"4vh", borderRadius: "20px"}}>
         
