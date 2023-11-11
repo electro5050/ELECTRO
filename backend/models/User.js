@@ -17,7 +17,8 @@ const userSchema = new mongoose.Schema({
     coinbalance:{
         type: Number,
         default: 10000
-    }
+    },
+    profilePictureUrl: { type: String }
 });
 
 const User = mongoose.model('User', userSchema);

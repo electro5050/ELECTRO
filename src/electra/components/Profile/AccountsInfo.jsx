@@ -23,7 +23,8 @@ const InputStyle = {
   border: 'none',
   width: 'min-content',
   fontSize: '0.7vw',
-  color:"white"
+  color:"white",
+  width:"100%"
 };
 
 const passwordChangeButton = {
@@ -38,11 +39,16 @@ const passwordChangeButton = {
 };
 
 
-const AccountInfo = ({}) => {
+const AccountInfo = ({userDate}) => {
 
   const [isEdit, setIsEdit] = useState(false);
   const [isPasswordPopUpOpen, setIsPasswordOpen] = useState(false);
+  const [name, setName] = useState("shafeer");
 
+  const OnSubmitClieck = () => {
+    alert("save");
+    let newName = name;
+  };
 
   const closePasswordChangeModal = () => {
     setIsPasswordOpen(false)
@@ -98,9 +104,9 @@ const AccountInfo = ({}) => {
                 padding:"1.5%"
               }}>
                 {isEdit ? (
-           <input type="text" placeholder="Enter Name" value={"Shafeer_3218"} style={InputStyle} />
+           <input type="text" placeholder="Enter Name" value={name} style={InputStyle} handleChange={()=>{setName()}} />
             ) : (
-              <label>Shafeer_3218</label>
+              <label>{name}</label>
             )}
           </div>
       </div>
