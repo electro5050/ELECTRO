@@ -100,27 +100,29 @@ const ChatBox = () => {
   const [message, setMessage] = useState('');
   const chatWindowRef = useRef(null);
 
-  const [gameHistory, setGameHistory] = useState([]);
+ 
   const token = localStorage.getItem('token');
 
+  const [user, setUser] = useState([]);
+
   useEffect(() => {
-      fetch('http://192.168.29.85:3000/usergamehistory', {
-          method: 'GET',
-          headers: {
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json'
-          }
-      })
-      .then(response => response.json())
-      .then(data => {
-          if (data && Array.isArray(data)) {
-              setGameHistory(data);
-          }
-      })
-      .catch(error => {
-          console.error('Error fetching user game history:', error);
-      });
-  }, []);
+    fetch('http://192.168.29.85:3000/users', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data && typeof data === 'object') {
+            setUser([data]); // Set the user state with an array containing the single user object
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching user data:', error);
+    });
+}, []);
 
   const socket = useRef(io('http://192.168.29.85:3002', {
     reconnectionAttempts: 5,
@@ -170,7 +172,7 @@ const ChatBox = () => {
           </div>
         </div>
     <div>
-    <ChatSection 
+    {/* <ChatSection 
         key={1}
         chatDetails={{
             name:gameHistory.length > 0 ? gameHistory[0].username : 'Loading...',        // Assuming 'user' can represent 'name'. Adjust accordingly.
@@ -205,13 +207,13 @@ const ChatBox = () => {
             message: "1000.000",
             type:"win"
         }}
-    />
+    /> */}
 
         {messages.map((msg, index) => (
     <ChatSection 
         key={index}
         chatDetails={{
-            name:gameHistory.length > 0 ? gameHistory[0].username : 'Loading...',        // Assuming 'user' can represent 'name'. Adjust accordingly.
+            name:user && user[0] ? user[0].name : 'Loading...',        // Assuming 'user' can represent 'name'. Adjust accordingly.
             time: msg.time,           // Placeholder, adjust to real value if available.
             message: msg.text,
             type: msg.type

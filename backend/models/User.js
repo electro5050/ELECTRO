@@ -18,7 +18,8 @@ const userSchema = new mongoose.Schema({
         type: Number,
         default: 10000
     },
-    profilePictureUrl: { type: String }
+    profilePictureUrl: { type: String },
+    avatar:{type:String} 
 });
 
 const User = mongoose.model('User', userSchema);

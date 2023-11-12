@@ -38,7 +38,7 @@ const SignUp = () => {
                 localStorage.setItem('token', data.token);
                 axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
             }
-            navigate('/home-02');
+            navigate('/game');
         } catch (error) {
             console.error('Error during signup:', error.response?.data || error.message);
         }

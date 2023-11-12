@@ -3,6 +3,9 @@ import React, { useState, useRef ,useEffect  } from 'react';
 import Avathar from 'electra/components/Common/AvatharView';
 import Modal from './model';
 import AWS from 'aws-sdk';
+import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
+
 
 const avatharContainerStyle = {
   display: "flex",
@@ -46,25 +49,40 @@ const Details = () => {
   const [uploading,setUploading] = useState(false);
   const [uploadError,setUploadError] = useState(null);
   const fileInputRef = useRef(null);
+  const [selectedAvatar, setSelectedAvatar] = useState('');
+  const [avatarPath,setAvatarPath] = useState('')
+  
+
+  const [userId, setUserId] = useState('');
 
   useEffect(() => {
-      fetch('http://192.168.29.85:3000/allusersgamehistory', {
-          method: 'GET',
-          headers: {
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json'
-          }
-      })
-      .then(response => response.json())
-      .then(data => {
-          if (data && Array.isArray(data)) {
-              setGameHistory(data);
-          }
-      })
-      .catch(error => {
-          console.error('Error fetching user game history:', error);
-      });
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken = jwtDecode(token); // Function to decode JWT
+      setUserId(decodedToken.userId);
+    }
   }, []);
+
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    fetch('http://192.168.29.85:3000/users', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data && typeof data === 'object') {
+            setUser([data]); // Set the user state with an array containing the single user object
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching user data:', error);
+    });
+}, []);
 
   const [isImagePopUpOpen, setIsImagePopUpOpen] = useState(false);
 
@@ -91,7 +109,7 @@ const Details = () => {
 
     const params = {
       Bucket: 'electro5050',
-      Key: `${gameHistory[0].username}`,
+      Key: `${user[0].name}`,
       Body: file,
       ContentType: file.type,
       // ACL: 'public-read',
@@ -112,7 +130,45 @@ const Details = () => {
   }
 };
 
-  
+const handleAvatarClick = (avatarPath) => {
+  setSelectedAvatar(avatarPath);
+  // You can also perform other actions here like sending the selected avatar to the server
+};
+
+const handleAvatarSelect = async () => {
+  try {
+    // Define the headers for the request
+    const headers = {
+      'Authorization': `Bearer ${token}`, // Assuming 'token' is your auth token
+      'Content-Type': 'application/json'
+    };
+
+    // Prepare the data to be sent
+    const data = {
+      userId: userId,       // ID of the user
+      avatarPath: selectedAvatar // Path of the selected avatar
+    };
+
+    // Making a POST request with Axios
+    const response = await axios.post(
+      'http://192.168.29.85:3000/update-avatar',
+      data,
+      { headers: headers }
+    );
+
+    // Handle the response
+    console.log(response.data); // Log the response data from the server
+    alert('Avatar updated successfully!');
+  } catch (error) {
+    console.error('Error updating avatar:', error);
+    alert('Failed to update avatar.');
+  }
+};
+
+
+console.log('selectedAvatar',selectedAvatar)
+
+
   
   
   
@@ -141,15 +197,20 @@ const Details = () => {
 
             </div>
             
-            { [...Array(avatharCount).keys()].map((number) => (
-                    <div style={{...avatarStyle, color:'black'}} className={"avathar-conainer-rounded"}>
-                   <img src={"assets/Avatars/avathar_"+ (number+1) +".png"} alt="" style={{height: "90%",     marginTop: "10%"}} />
-                    </div>
-              ))}
+           
+        { [...Array(avatharCount).keys()].map((number) => {
+            const avatarPath = `assets/Avatars/avathar_${number + 1}.png`;
+            return (
+              <div key={number} style={avatarStyle} className="avathar-conainer-rounded" onClick={() => handleAvatarClick(avatarPath)}>
+                <img src={avatarPath} alt={`Avatar ${number + 1}`} style={{ height: "90%", marginTop: "10%" }} />
+              </div>
+            );
+        })}
+      
 
 
           </div>
-          <div onClick={closeAvatharEditModal} style={avatharButton}>apply new avatar</div>
+          <div onClick={handleAvatarSelect} style={avatharButton}>apply new avatar</div>
       </Modal>
       </div>
 
@@ -157,7 +218,7 @@ const Details = () => {
       <div style={{paddingLeft:"10px"}}>
           <div style={{display:"flex", alignItems: "center"}}>
               <div style={{fontSize: "1.2vw", color:"white", fontWeight:"800"}}>
-              {gameHistory.length > 0 ? gameHistory[0].username : 'Loading...'}
+              {user && user[0] ? user[0].name : 'Loading...'}
               </div>
               <div style={{marginLeft:"10px", fontSize: "0.5vw"}}>
               <svg
@@ -195,14 +256,14 @@ const Details = () => {
               </div>
           </div>
           <div style={{fontSize: "1.2vw", color:"#B7B7B7", marginTop: "10px"}}>
-            User ID: {gameHistory.length > 0 ? gameHistory[0].userId : 'Loading...'}
+            User ID: {gameHistory.length > 0 ? userId : 'Loading...'}
           </div>
       </div>  
 
     </div>
 
     <div style={{fontSize: "0.8vw", color:"white", fontWeight:"800", width:"15vw", ...avatharContainerStyle}}>
-    {gameHistory.length > 0 ? gameHistory[0].username : 'Loading...'}, you're one of our most anticipated bidders! Play more and Earn more. GOOD LUCK!
+    {user && user[0] ? user[0].name : 'Loading...'}, you're one of our most anticipated bidders! Play more and Earn more. GOOD LUCK!
     </div>
 
     </div>
