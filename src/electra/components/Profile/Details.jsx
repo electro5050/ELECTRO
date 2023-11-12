@@ -64,25 +64,30 @@ const Details = () => {
   }, []);
 
   const [user, setUser] = useState([]);
+  const [userAvatar, setUserAvatar] = useState('null');
 
   useEffect(() => {
-    fetch('http://192.168.29.85:3000/users', {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data && typeof data === 'object') {
-            setUser([data]); // Set the user state with an array containing the single user object
-        }
-    })
-    .catch(error => {
-        console.error('Error fetching user data:', error);
-    });
-}, []);
+    const token = localStorage.getItem('token');
+    if (token) {
+      fetch('http://192.168.29.85:3000/users', {
+          method: 'GET',
+          headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data && typeof data === 'object') {
+              setUser([data]); // Existing code
+              setUserAvatar(data.avatar); // Store the avatar filename
+          }
+      })
+      .catch(error => {
+          console.error('Error fetching user data:', error);
+      });
+    }
+  }, [token]);
 
   const [isImagePopUpOpen, setIsImagePopUpOpen] = useState(false);
 
@@ -145,8 +150,8 @@ const handleAvatarSelect = async () => {
 
     // Prepare the data to be sent
     const data = {
-      userId: userId,       // ID of the user
-      avatarPath: selectedAvatar // Path of the selected avatar
+      userId: userId,             // ID of the user
+      avatarFileName: selectedAvatar // Use the correct property name here
     };
 
     // Making a POST request with Axios
@@ -166,18 +171,16 @@ const handleAvatarSelect = async () => {
 };
 
 
-console.log('selectedAvatar',selectedAvatar)
-
-
-  
-  
-  
 
   return (
     <div style={{display:"flex", justifyContent:"space-between"}}>
     <div style={avatharContainerStyle}>
       <div>
-      <Avathar imageUrl="assets/Avatars/avathar_1.png" imageSize={'6vw'} editIconClick={ImageEditButtonClick}/>
+      <Avathar 
+          imageUrl={userAvatar ? userAvatar : "assets/Avatars/avathar_1.png"} 
+          imageSize={'6vw'} 
+          editIconClick={ImageEditButtonClick} 
+        />
       
         <Modal isOpen={isImagePopUpOpen} onClose={closeAvatharEditModal}>
           <span style={{fontSize:"max(13px, 0.8vw)", color:"white"}}>Choose your avathar</span>
@@ -256,7 +259,7 @@ console.log('selectedAvatar',selectedAvatar)
               </div>
           </div>
           <div style={{fontSize: "1.2vw", color:"#B7B7B7", marginTop: "10px"}}>
-            User ID: {gameHistory.length > 0 ? userId : 'Loading...'}
+            User ID: {user && user[0] ? user[0].id : 'Loading...'}
           </div>
       </div>  
 

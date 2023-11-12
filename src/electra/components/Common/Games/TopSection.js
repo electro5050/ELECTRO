@@ -7,36 +7,41 @@ const avatharContainerStyle = {
     display: "flex",
     alignItems: "center"
 };
-
+const token = localStorage.getItem('token');
 const GameTopSection = () => {
 
   const [user, setUser] = useState([]);
-  const token = localStorage.getItem('token');
+  const [userAvatar, setUserAvatar] = useState('null');
+
   useEffect(() => {
-    fetch('http://192.168.29.85:3000/users', {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data && typeof data === 'object') {
-            setUser([data]); // Set the user state with an array containing the single user object
-        }
-    })
-    .catch(error => {
-        console.error('Error fetching user data:', error);
-    });
-}, []);
+    const token = localStorage.getItem('token');
+    if (token) {
+      fetch('http://192.168.29.85:3000/users', {
+          method: 'GET',
+          headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data && typeof data === 'object') {
+              setUser([data]); // Existing code
+              setUserAvatar(data.avatar); // Store the avatar filename
+          }
+      })
+      .catch(error => {
+          console.error('Error fetching user data:', error);
+      });
+    }
+  }, [token]);
 
 
 console.log('user' ,user )
   return (
     <div className="game-view-top-section" style={{height:"15vh"}}>
       <div style={avatharContainerStyle}>
-        <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'2vw'}/>
+        <Avathar imageUrl={userAvatar ? userAvatar : "assets/Avatars/avathar_1.png"}  imageSize={'2vw'}/>
         <span style={{paddingLeft:"10px",fontSize: "1vw"}}>
          Hi {user && user[0] ? user[0].name : 'Loading...'}, welcome back!
         </span>

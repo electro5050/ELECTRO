@@ -10,12 +10,41 @@ const flexCenterStype = {
   alignItems: "center",
 
 };
+const token = localStorage.getItem('token');
 
 
 
 const Headers = ({selectedHeader, handleLinkClick , gameState={}}) => {
   const { pathname } = useLocation();
   const [coinBalance, setCoinBalance] = useState(null);
+
+  const [user, setUser] = useState([]);
+  const [userAvatar, setUserAvatar] = useState('null');
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      fetch('http://192.168.29.85:3000/users', {
+          method: 'GET',
+          headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data && typeof data === 'object') {
+              setUser([data]); // Existing code
+              setUserAvatar(data.avatar); // Store the avatar filename
+          }
+      })
+      .catch(error => {
+          console.error('Error fetching user data:', error);
+      });
+    }
+  }, [token]);
+
+
 
   useEffect(() => {
     // Assuming you have a function to get a user's token for authorization
@@ -104,11 +133,11 @@ const Headers = ({selectedHeader, handleLinkClick , gameState={}}) => {
                   <div className="dropdown-content">
 
                     <div style={{...flexCenterStype,   marginBottom:'30px'}}>
-                        <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'4vw'}/>
+                        <Avathar imageUrl={userAvatar ? userAvatar : "assets/Avatars/avathar_1.png"}  imageSize={'4vw'}/>
                         <div style={{paddingLeft:"10px"}}>
                             <div style={{display:"flex", alignItems: "center"}}>
                                 <div style={{fontSize: "max(1vw, 14px)", color:"white", fontWeight:"800"}}>
-                                    Name
+                               { user[0].name}
                                 </div>
                             </div>
                             <div style={{fontSize: "max(0.7vw, 10px)", color:"#B7B7B7", marginTop: "10px"}}>
