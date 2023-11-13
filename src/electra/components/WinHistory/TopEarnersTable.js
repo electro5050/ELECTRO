@@ -22,63 +22,54 @@ const headerStyle = {
 const TopWinners = ({rankingData}) => {
 
   return (
-    <div className="game-view-top-winners" style={{height:"70vh", background:"rgba(0, 0, 0, 0.60)", marginTop:"1vh", borderRadius: "20px"}}>
+    <div className="game-view-top-earners" style={{height:"70vh", background:"rgba(0, 0, 0, 0.60)", marginTop:"1vh", borderRadius: "20px"}}>
       <div style={headerStyle}>
         Top 10
       </div>
 
+      <table className="table electra-table">
+        <thead>
+          <tr className="th-title">
+            <th className="column" style={{width: "50%"}}> user ID </th>
+            <th className="column">Win amount</th>
+            <th className="column">Game</th>
+          </tr>
+        </thead>
 
-          <div className="table-ranking">
-                                <div className="flex th-title">
-                                    <div className="column">
-                                    user ID  
-                                    </div>
-                                    <div className="column">
-                                    Win amount
-                                    </div>
-                                    <div className="column">
-                                    game
-                                    </div>
-                                </div>
-                              <div style={{height:"60vh", overflowY:"auto", paddingRight: "10px"}}>
-                              {
-                                   rankingData && rankingData.map((player, index) => (
-                                      <div  className="fl-item">
-                                          <div className="item flex">
-                                              <div className="infor-item flex column">
-                                                  <div className="media">
-                                                      <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'2vw'}/>
-                                                  </div>
-                                                  <div className='margin-vertical-center'>
-                                                    {player.username}
-                                                  </div>
-                                              </div>
-                                              <div className="column">
-                                                <div style={{display:"flex", justifyContent: "center"}}>
-                                                {/* <div style={{...circleStyle, border: "3px solid #C0C0C0"}}>
-                                                  <FontAwesomeIcon icon={faDollarSign} style={{...iconStyle, color: '#C0C0C0'}} />
-                                                </div> */}
-                                                  <span style={{color:"#C0C0C0", paddingLeft:'10px', fontWeight:"700"}}>{player.totalWin}</span>
-                                                </div>
+        <tbody style={{ maxHeight: "20vh", overflowY: "auto", paddingRight: "10px" }}>
+          {rankingData && rankingData.length > 0 && rankingData.map((player, index) => (
+            <tr key={index} className="item">
+              <td className="column" style={{width: "50%"}}>
+                <div>
+                <div className="user-view">
+                  <div className="media-user">
+                    <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'2vw'} />
+                  </div>
+                  <div className=''>
+                  {player.username}
+                  </div>
+                </div>
+                </div>
 
-                                              </div>
-                                              <div className="column">
-                                              <div style={{display:"flex", justifyContent: "center"}}>
-                                              {/* <div style={{...circleStyle, border: "3px solid #DDA83E"}}>
-                                              <FontAwesomeIcon icon={faDollarSign} style={{...iconStyle, color: '#DDA83E'}} />
-                                                </div> */}
-                                                  <span style={{color:"#C0C0C0", paddingLeft:'10px', fontWeight:"700"}}>bid and win</span>
-                                                </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                    ))
-                                }
-                              </div>
 
-                        
-                            </div>
+              </td>
+              <td className="column">
+                <div>
+                <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
+                  <span style={{ color: "#C0C0C0", paddingLeft: '10px', fontWeight: "700" }}>{player.totalWin}</span>
+                </div>
+                </div>
 
+              </td>
+              <td className="column">
+                <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
+                  <span style={{ color: "#C0C0C0", paddingLeft: '10px', fontWeight: "700" }}>bid and win</span>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
     </div>
   );

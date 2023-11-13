@@ -1,3 +1,7 @@
+body{
+  color: white !important;
+}
+
 .App {
   text-align: center;
 }
@@ -59,3 +63,101 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #B1A8A3;
 }
+
+/* @font-face {
+  font-family: 'YourFontName';
+  src: url('./fonts/yourfont.woff') format('woff'),
+       url('./fonts/yourfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+@font-face {
+  font-family: 'electra';
+  src: url('assets/fonts/Carthage Pro Regular.otf') format('opentype'),
+       url('assets/fonts/Carthage Pro Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: electra !important;
+}
+
+.d-center{
+display: flex;
+justify-content: center;
+}
+
+.d-between{
+  display: flex;
+  justify-content: space-between;
+  }
+  
+.v-cen{
+align-items: center;
+}
+
+.electra-table{
+  border-width: 0;
+  border: none;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-spacing:  0px 10px;
+}
+
+.electra-table {
+  width: 98%;
+  display: block;
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.electra-table span,  .electra-table div{
+  font-size: 1em;
+}
+
+@media only screen and (max-width: 768px) {
+  .electra-table span,  .electra-table div{
+      font-size: 1.2em;
+  }
+}
+
+
+
+.electra-table thead,
+.electra-table tbody {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.electra-table thead{
+
+}
+/* .electra-table tbody{
+  max-height: 100%;
+  overflow-y: scroll;
+} */
+
+.electra-table th, .electra-table td{
+  /* border-width: 0; */
+  border: none;
+  text-align: center;
+}
+
+.electra-table tr{
+  margin-top: 10px;
+}
+
+.electra-table .user-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.electra-table td {
+  vertical-align: middle;
+}
+
+

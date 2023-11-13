@@ -20,8 +20,8 @@ const headerStyle = {
   padding: "10px",
   alignItems: "center"
 };
-const TopWinners = () => {
-  const [gameHistory, setGameHistory] = useState([]);
+const TopWinners = ({rankingData}) => {
+  const [gameHistory, setGameHistory] = useState(rankingData);
   const token = localStorage.getItem('token');
 
   useEffect(() => {
@@ -51,88 +51,80 @@ const TopWinners = () => {
     <span  style={{marginLeft:"10px"}}>Your Game History</span>
       </div>
 
-          <div className="table-ranking">
-                                <div className="flex th-title">
-                                    <div className="column">
-                                    game type
-                                    </div>
-                                    <div className="column" style={{width:"34.6%"}}>
-                                    date and time
-                                    </div>
-                                    <div className="column">
-                                    bid amount
-                                    </div>
-                                    <div className="column" style={{width:"10.6%"}}>
-                                    win
-                                    </div>
-                                    <div className="column" style={{width:"10.6%"}}>
-                                    lose
-                                    </div>
-                                    <div className="column" style={{width:"10.6%"}}>
-                                    
-                                    </div>
-                                </div>
-                              <div style={{height:"35vh", overflowY:"auto", paddingRight: "10px"}}>
-                              {
-                                   gameHistory && gameHistory.map((player, index) => (
-                                      <div  className="fl-item" style={{paddingTop:"10px"}}>
-                                          <div className="item flex">
-                                              <div className="column">
-                                                <div style={{display:"flex", justifyContent: "center"}}>
-                                                  <span style={{color:"#FFFFFF", paddingLeft:'10px', fontWeight:"700"}}>BID AND WIN</span>
-                                                </div>
+      <table className="table electra-table">
+        <thead>
+          <tr className="th-title">
+            <th className="column">game type</th>
+            <th className="column" style={{width:"34.6%"}}>date and time</th>
+            <th className="column" >bid amount</th>
+            <th className="column" style={{width:"10.6%"}}>win</th>
+            <th className="column" style={{width:"10.6%"}}>lose</th>
+            <th className="column" style={{width:"10.6%"}}></th>
+          </tr>
+        </thead>
 
-                                              </div>
-                                              <div className="column" style={{width:"34.6%"}}>
-                                                <div style={{display:"flex", justifyContent: "center"}}>
-                                                  <span style={{color:"#FFFFFF", paddingLeft:'10px', fontWeight:"700"}}>{player.startTime}</span>
-                                                </div>
+        <tbody style={{ overflowY: "auto", paddingRight: "10px" }}>
 
-                                              </div>
+            {gameHistory && gameHistory.length > 0 && gameHistory.map((player, index) => (
+            <tr key={index} className="item">
 
-                                              <div className="column" >
-                                                <div style={{display:"flex", justifyContent: "center"}}>
-                                                  <span style={{color:"#FFFFFF", paddingLeft:'10px', fontWeight:"700"}}>{player.bidAmount}</span>
-                                                </div>
+          <td className="column">
+                <div>
+                <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
+                <span style={{color:"#FFFFFF", paddingLeft:'10px', fontWeight:"700"}}>BID AND WIN</span>
+                </div>
+                </div>
 
-                                              </div>
+              </td>
 
-                                              <div className="column"style={{width:"10.6%"}}>
-                                                <div style={{display:"flex", justifyContent: "center"}}>
-                                                  <span style={{color:"#70D77A", paddingLeft:'10px', fontWeight:"700"}}> {player.win}</span>
-                                                </div>
+              <td className="column" style={{width:"34.6%"}}>
+                <div>
+                <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
+                <span style={{color:"#FFFFFF", paddingLeft:'10px', fontWeight:"700"}}>{player.startTime}</span>
+                </div>
+                </div>
 
-                                              </div>
-                                              <div className="column" style={{width:"10.6%"}}>
-                                              <div style={{display:"flex", justifyContent: "center"}}>
-                                                  <span style={{color:"#D77070", paddingLeft:'10px', fontWeight:"700"}}> {player.loss}</span>
-                                                </div>
-                                              </div>
+              </td>
 
-                                              <div className="column"style={{width:"10.6%"}}>
-                                                <div style={{display:"flex", justifyContent: "center"}}>
-                                                <img
+              <td className="column">
+                <div>
+                <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
+                <span style={{color:"#FFFFFF", paddingLeft:'10px', fontWeight:"700"}}>{player.bidAmount}</span>
+                </div>
+                </div>
+
+              </td>
+
+              <td className="column" style={{width:"10.6%"}}>
+                <div>
+                <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
+                <span style={{color:"#70D77A", paddingLeft:'10px', fontWeight:"700"}}> {player.win}</span>
+                </div>
+                </div>
+
+              </td>
+              <td className="column" style={{width:"10.6%"}}>
+                <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
+                <span style={{color:"#D77070", paddingLeft:'10px', fontWeight:"700"}}> {player.loss}</span>
+                </div>
+              </td>
+
+              <td className="column" style={{width:"10.6%"}}>
+                <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
+                <img
                           className="coin-image"
                           id="logo_header"
                           src={"/assets/electra/gold-coin.png"}
                           alt=""
                           style={{width:"2vw" , paddingLeft:"3px"}}
                       />
-                                                  
-                                                      </div>
+                </div>
+              </td>
 
-                                              </div>
-
-
-                                          </div>
-                                      </div>
-                                    ))
-                                }
-                              </div>
-
-                        
-                            </div>
-
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
     </div>
   );

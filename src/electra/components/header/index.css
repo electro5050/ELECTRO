@@ -127,6 +127,7 @@
 
   .main-header .dropdown-button-icon{
     padding: 10px;
+    cursor: pointer;
   }
 
   .main-header.dropdown-button-icon:hover{

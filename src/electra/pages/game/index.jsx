@@ -33,6 +33,8 @@ const GamePage = () => {
   });
   const [authError, setAuthError] = useState(false);
   const [rankingData, setRankingData] = useState([]);
+  const [collapsed, setCollapsed] = useState(false);
+
 
 
   useEffect(() => {
@@ -136,22 +138,36 @@ const GamePage = () => {
         }
       };
 
+      
+  const handleCollapse = () => {
+    // Close the user modal
+    setCollapsed((prevCollapsed) => !prevCollapsed);
+  };
+
+  const [chatStatus, setChatStatus] = useState(true);
+
+
+  const handleChatToggle = () => {
+    // Close the user modal
+    setChatStatus((prevchatStatus) => !prevchatStatus);
+  };
+
     return (
-        <div style={backgroundStyle} className='main-game-container'>
+        <div style={backgroundStyle} className={`main-game-container ${collapsed ? 'collapse' : ''}`}>
         <div style={{ display: 'flex' }}>
-            <div style={{width: "15vw", height:"100vh"}}>
-                <NavBar handleLinkClick={handleLinkClick} activeTab={activeTab}/>
+            <div >
+                <NavBar handleLinkClick={handleLinkClick} activeTab={activeTab} handleCollapse={handleCollapse}/>
             </div>
             <div style={{width: "85vw"}}>
-                <Headers handleLinkClick={handleLinkClick}  selectedHeader={activeTab} gameState={gameState}/>
+                <Headers handleLinkClick={handleLinkClick}  selectedHeader={activeTab} gameState={gameState} handleChatToggle={handleChatToggle}/>
 
                 <div style={{display: "flex"}}>
 
-                  <div style={{padding: "1vh", width: "65vw"}}>
+                  <div style={{padding: "1vh", width: chatStatus?"65vw":  "85vw"}}>
                     {renderComponent()}
                   </div>
 
-                  <div style={{width: "20vw", maxHeight:"90vh"}}>
+                  <div style={{width: "20vw", maxHeight:"90vh", display:chatStatus?"block":  "none"}}>
                         <Chat />
                   </div>
                 </div>

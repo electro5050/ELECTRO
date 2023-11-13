@@ -22,59 +22,52 @@ const headerStyle = {
 const TopWinners = ({rankingData}) => {
 
   return (
-    <div className="game-view-top-winners" style={{height:"70vh", background:"rgba(0, 0, 0, 0.60)", marginTop:"1vh", borderRadius: "20px"}}>
+    <div className="game-view-portfolio-table" style={{height:"70vh", background:"#43415B", marginTop:"1vh", borderRadius: "20px"}}>
 
-          <div className="table-ranking">
-                                <div className="flex th-title">
-                                    <div className="column">
-                                    bid amount
-                                    </div>
-                                    <div className="column">
-                                    win
-                                    </div>
-                                    <div className="column">
-                                    lose
-                                    </div>
-                                </div>
-                              <div style={{height:"65vh", overflowY:"auto", paddingRight: "10px"}}>
-                              {
-                                   rankingData && rankingData.map((player, index) => (
-                                      <div  className="fl-item">
-                                          <div className="item flex">
-                                              <div className="infor-item flex column">
-                                                  <div className="media">
-                                                      <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'2vw'}/>
-                                                  </div>
-                                                  <div className='margin-vertical-center'>
-                                                    {player.bidAmount}
-                                                  </div>
-                                              </div>
-                                              <div className="column">
-                                                <div style={{display:"flex", justifyContent: "center"}}>
-                                                {/* <div style={{...circleStyle, border: "3px solid #C0C0C0"}}>
-                                                  <FontAwesomeIcon icon={faDollarSign} style={{...iconStyle, color: '#C0C0C0'}} />
-                                                </div> */}
-                                                  <span style={{color:"#70D77A", paddingLeft:'10px', fontWeight:"700"}}> {player.win}</span>
-                                                </div>
+<table className="table electra-table">
+        <thead>
+          <tr className="th-title">
+            <th className="column">Bid Amount</th>
+            <th className="column">Win</th>
+            <th className="column">Lose</th>
+          </tr>
+        </thead>
 
-                                              </div>
-                                              <div className="column">
-                                              <div style={{display:"flex", justifyContent: "center"}}>
-                                              {/* <div style={{...circleStyle, border: "3px solid #DDA83E"}}>
-                                              <FontAwesomeIcon icon={faDollarSign} style={{...iconStyle, color: '#DDA83E'}} />
-                                                </div> */}
-                                                  <span style={{color:"#D77070", paddingLeft:'10px', fontWeight:"700"}}> {player.loss}</span>
-                                                </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                    ))
-                                }
-                              </div>
+        <tbody style={{ maxHeight: "20vh", overflowY: "auto", paddingRight: "10px" }}>
+          {rankingData && rankingData.length > 0 && rankingData.map((player, index) => (
+            <tr key={index} className="item">
+              <td className="column">
+                <div>
+                <div className="user-view">
+                  <div className="media-user">
+                    <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'2vw'} />
+                  </div>
+                  <div className=''>
+                  {player.bidAmount}
+                  </div>
+                </div>
+                </div>
 
-                        
-                            </div>
 
+              </td>
+              <td className="column">
+                <div>
+                <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
+
+                  <span style={{color:"#70D77A", paddingLeft:'10px', fontWeight:"700"}}> {player.win}</span>
+                </div>
+                </div>
+
+              </td>
+              <td className="column">
+                <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
+                  <span style={{color:"#D77070", paddingLeft:'10px', fontWeight:"700"}}> {player.loss}</span>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
     </div>
   );

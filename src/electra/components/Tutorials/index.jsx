@@ -6,7 +6,7 @@ import TopSection from 'electra/components/Common/Games/TopSection';
 
 const containerStyle = {
   background: 'rgb(0, 0, 0)',
-  height: '30vh',
+  height: '20vh',
   borderRadius: '0.6vw',
   width: '30%',
   display: 'flex',
@@ -19,7 +19,7 @@ const GameComponent = ({}) => {
   return (
     <div className="win-history">
       <TopSection  />
-      <div className="container" style={{background:"rgba(40, 40, 40, 0.60)", borderRadius: "1.2vw", height: "70vh", overflowY: "auto"}}>
+      <div className="container" style={{background:"rgba(40, 40, 40, 0.60)", borderRadius: "1.2vw", height: "70vh", overflowY: "auto", overflowX:"hidden"}}>
       <div className="row" style={{justifyContent: "space-evenly"}}>
         <div className="col-3 m-3" style={containerStyle}>
         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none" style={{width: "20%"}}>

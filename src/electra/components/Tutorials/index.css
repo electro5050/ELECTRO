@@ -1,0 +1,17 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+  
+  /* Styles for the col-2 class */
+  .col-3 {
+    flex: 0 0 28%;
+    max-width: 28%;
+  }
+  
+  /* Styles for the m-3 class (margin) */
+  .m-3 {
+    margin: 1rem;
+  }

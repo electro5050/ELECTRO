@@ -32,7 +32,8 @@ const ButtonGroupContainer = {
   justifyContent: "space-around",
   flexDirection: "column",
   height: "calc(100% - 20px)",
-  margin:"20px"
+  margin:"2%",
+  width: "100%"
 }
 
 const CenterStyle={
@@ -43,21 +44,21 @@ const CenterStyle={
 const TextStyle={
   color: '#FFF',
   textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-  fontFamily: 'cursive',
-  fontSize: '1.8vw',
+  fontSize: '2rem',
   fontStyle: 'normal',
   fontWeight: 900,
   lineHeight: 'normal',
+  marginLeft:"10%"
 }
 
 const buttonStyle={
-  borderRadius: "5px", boxShadow: "0px 4px 40px 0px #FFF", minWidth: "60%", height: "8vh",
+  borderRadius: "5px", boxShadow: "0px 4px 40px 0px #FFF", width: "fit-content", height: "auto",
   display: "flex",
   alignItems: "center",
   padding: "0 5px",
   justifyContent: "space-around",
-  cursor:"pointer"
-
+  cursor:"pointer",
+  padding:"5%"
 }
 
 const CoinMultiplyButtonStyle={
@@ -90,7 +91,7 @@ const DropDownStyles = {
     fontSize: '16px',
     padding: '3px',
     color: "white",
-    width:"60px"
+    width:"100%"
   },
   dropdownArrow: {
     position: 'absolute',
@@ -212,9 +213,9 @@ console.log('gameId:', gameState ? gameState.gameId : 'gameState is undefined');
 
   return (
     <div className="game-controller" style={gameContollersStyle}>
-       <div style={circleStyle}>
+       {/* <div style={circleStyle}>
         <FontAwesomeIcon icon={faInfo} style={iconStyle} />
-      </div>
+      </div> */}
       <div style={ButtonGroupContainer}>
         <div style={CenterStyle}>
           <div style={{...buttonStyle, background: "#D9D4D4"}} onClick={() => {
@@ -230,10 +231,10 @@ console.log('gameId:', gameState ? gameState.gameId : 'gameState is undefined');
                           id="logo_header"
                           src={"/assets/electra/silver-coin.png"}
                           alt=""
-                          style={{width:"2vw" , paddingLeft:"3px"}}
+                          style={{width:"2vw" , marginLeft:"10%"}}
                       />
 
-              <span style={{...TextStyle, paddingLeft:"3px"}}>
+              <span style={{...TextStyle, marginRight:"10%"}}>
               {result}
               </span>
           </div>

@@ -1,52 +1,62 @@
-.game-view-top-history-profile .table-ranking{
+
+/* .game-view-top-history-profile .electra-table{
     margin: 0 !important;
     padding: 5px !important;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 70%;
+    justify-content: start;
+    height: 100%;
     margin-right: 10px !important;
-}
+} */
 
-.game-view-top-history-profile .table-ranking .th-title {
+.game-view-top-history-profile .electra-table .th-title {
     border-bottom: none !important;
     padding-bottom: 0 !important;
-    margin-bottom: 5px !important;
-    margin-top: 5px !important;
-    width: 100%;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
 }
 
-.game-view-top-history-profile .table-ranking .th-title .column {
+.game-view-top-history-profile .electra-table .th-title .column {
     text-align: center;
-    /* width: 16.6%; */
-    font-size: 0.7vw;
-}
-
-.game-view-top-history-profile  .table-ranking .item .column {
-    text-align: center;
-    /* width: 16.6%; */
-    justify-content: center;
-    font-size: 1vw;
-}
-
-.game-view-top-history-profile .table-ranking .item {
-    align-items: center;
-    background: #282828;
-    box-shadow: none !important;
-    border-radius: 30px;
+    font-size: 1.8em;
     padding: 0;
-    height: 40px;
-    margin-bottom: 0;
-    width: 100%;
 }
 
-.game-view-top-history-profile .table-ranking .fl-item:not(:first-child) {
-    margin-top: 10px;
+.game-view-top-history-profile  .electra-table .item .column {
+    text-align: center;
+    justify-content: center;
+    font-size: 1vw;   
+}
+
+.game-view-top-history-profile .electra-table .item .column:first-child {
+    border-top-left-radius: 300px;
+    border-bottom-left-radius: 300px;
+  }
+  
+  /* Select the last column inside .game-view-top-history-profile .electra-table .item */
+  .game-view-top-history-profile .electra-table .item .column:last-child {
+    border-top-right-radius: 300px;
+    border-bottom-right-radius: 300px;
   }
 
-.game-view-top-history-profile .table-ranking .item .infor-item .media {
-    width: auto; 
-    height: 30px;
+.game-view-top-history-profile .electra-table .item {
+    /* align-items: center; */
+
+    box-shadow: none !important;
+    padding: 10px;
+    margin: 10;
+    background: #282828;
+}
+
+.game-view-top-history-profile .electra-table .item .column{
+    margin-top: 10px;
+}
+
+
+
+
+.game-view-top-history-profile .electra-table .item  .media-user {
+   margin-right: 10px;
 }
 
 .game-view-top-history-profile .margin-vertical-center {
@@ -54,7 +64,8 @@
     margin-bottom: auto;
 }
 
-.game-view-top-history-profile .table-ranking .item .column span {
-    font-size: 0.8vw;
+.game-view-top-history-profile  .electra-table {
+    max-height: 70%;
 }
+
 
