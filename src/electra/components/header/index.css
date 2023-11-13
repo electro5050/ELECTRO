@@ -13,6 +13,18 @@
     padding: 30px;
 }
 
+.main-header-mobile{
+  min-height: 8vh;
+  height: 8vh;
+  width: 100%;
+  background: rgba(40, 40, 40, 0.6);
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px;
+}
+
+
 .main-header .sub-header{
     display: flex;
     justify-content: space-between;

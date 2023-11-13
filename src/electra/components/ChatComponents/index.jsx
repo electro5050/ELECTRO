@@ -43,7 +43,7 @@ const sendButtonStyle={
 }
 
 const iconSendButtonStyle = {
-  fontSize: '0.9vw',
+  fontSize: '1.1em',
   color: 'white',
   fontWeight:"900"
 };
@@ -142,10 +142,10 @@ const ChatBox = () => {
     };
 
     return (
-        <div className="game-chat-main" style={{ height: "100%" }}>
+        <div className="game-chat-main" style={{ height: "100%", width:"100%" }}>
             <div className="game-chat-box" style={{ overflowY: "auto", height: "80%", background: "rgba(27, 27, 27, 0.80)", padding: "1vh" }} ref={chatWindowRef}>
                 <div className="game-chat-header" style={{ marginBottom: "10px" }}>
-                    <span style={{ color: "#FBF4B6", fontSize: "0.8vw", fontWeight: "bold", fontFamily: "sans-serif" }}>
+                    <span style={{ color: "#FBF4B6", fontSize: "1em", fontWeight: "bold", fontFamily: "sans-serif" }}>
                         electro community
                     </span>
                     <div style={circleStyle}>

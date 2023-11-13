@@ -36,12 +36,12 @@
     background-color: #010101; /* Background color */
     padding: 5px;
     color: white;
-    font-size: 0.7vw;
+    font-size: 0.9em;
   }
 
   .game-chat-main  .custom-text-box::placeholder {
     color: white; /* Change the placeholder text color to red */
-    font-size: 0.7vw;
+    font-size: 0.8em;
     
   }
   

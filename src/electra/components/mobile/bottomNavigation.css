@@ -1,0 +1,18 @@
+/* BottomNavigation.css */
+.bottom-navigation {
+    position: fixed;
+    bottom: 1vh;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: transparent;
+    padding: 10px;
+    max-height: 10vh;
+  }
+  
+  .bottom-navigation a {
+    color: white;
+    text-decoration: none;
+  }
+  

@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Headers from 'electra/components/header';
+import MobileHeaders from 'electra/components/header/mobileHeader';
+
+import BottomNavigation from 'electra/components/mobile/bottomNaviagation';
+
 import NavBar from 'electra/components/navbar';
+import MobileMenu from 'electra/components/sidebar/mobile';
+import TopSectionMobile from 'electra/components/Common/Games/TopSectionMobile';
 // import Footer from '@components/footer/Footer';
 // import heroSliderData from 'assets/fake-data/data-slidergm';
 // import Slider from 'components/slider/Slider';
@@ -11,18 +17,38 @@ import NavBar from 'electra/components/navbar';
 // import { Modal, Button } from 'react-bootstrap';
 // import './index.css';
 // import { Container, Row, Col } from 'react-bootstrap';
-import GameComponent from 'electra/components/Games'
+import GameComponent from 'electra/components/Games';
+import MobileGameComponent from 'electra/components/Games/mobileGame';
+
 import Chat from 'electra/components/ChatComponents';
 import WinHistoryComponent from 'electra/components/WinHistory'
 import PortfolioComponent from 'electra/components/PortFolio'
+import MobilePortfolioComponent from 'electra/components/PortFolio/Mobile'
+
 import ProfileComponent from 'electra/components/Profile'
+import MobileProfileComponent from 'electra/components/Profile/mobile'
+
 import TutorialComponent from 'electra/components/Tutorials'
+import MobileTutorialComponent from 'electra/components/Tutorials/Mobile'
+
 import VIPMembershipComponent from 'electra/components/Membership'
 import ContactUsComponent from 'electra/components/ContactUs'
 import ReferralComponent from 'electra/components/Referral'
 
 
 const GamePage = () => {
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  // Update window width on resize
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const isMobile = windowWidth < 768;
+
   const [activeTab, SetTab] = useState('Games');
   const [data, setData] = useState([]);
   const [ws, setWs] = useState(null);
@@ -134,7 +160,39 @@ const GamePage = () => {
             return <ProfileComponent />;
 
           default:
-            return null;
+            return <GameComponent />;
+        }
+      };
+
+      const renderMobileComponent = () => {
+        switch (activeTab) {
+          case 'Games':
+            return <MobileGameComponent />;
+          case 'Menu':
+              return <MobileMenu handleLinkClick={handleLinkClick}/>;
+
+          case 'Chat':
+                return  <Chat />;
+          case 'Tutorials':
+            return <MobileTutorialComponent />;
+          case 'VIP Membership':
+            return <VIPMembershipComponent />;
+          case 'Portfolio':
+            return <MobilePortfolioComponent />;
+          // case 'LiveSupport':
+          //   return <LiveSupportComponent />;
+          case 'Contact us':
+            return <ContactUsComponent />;
+          case 'Win History':
+            return <WinHistoryComponent />;
+          case 'Referal':
+            return <ReferralComponent />;
+
+          case 'Profile':
+            return <MobileProfileComponent />;
+
+          default:
+            return <MobileGameComponent />;
         }
       };
 
@@ -152,30 +210,46 @@ const GamePage = () => {
     setChatStatus((prevchatStatus) => !prevchatStatus);
   };
 
-    return (
+  return (
+    <>
+      {isMobile ? (
+        // Render mobile-specific components
         <div style={backgroundStyle} className={`main-game-container ${collapsed ? 'collapse' : ''}`}>
-        <div style={{ display: 'flex' }}>
-            <div >
-                <NavBar handleLinkClick={handleLinkClick} activeTab={activeTab} handleCollapse={handleCollapse}/>
+            <MobileHeaders handleLinkClick={handleLinkClick} selectedHeader={activeTab} gameState={gameState} handleChatToggle={handleChatToggle} />
+
+            <TopSectionMobile />
+
+            <div style={{ height: "80vh", maxHeight: "80vh", overflowY:"auto"}}>
+              {renderMobileComponent()}
             </div>
-            <div style={{width: "85vw"}}>
-                <Headers handleLinkClick={handleLinkClick}  selectedHeader={activeTab} gameState={gameState} handleChatToggle={handleChatToggle}/>
-
-                <div style={{display: "flex"}}>
-
-                  <div style={{padding: "1vh", width: chatStatus?"65vw":  "85vw"}}>
-                    {renderComponent()}
-                  </div>
-
-                  <div style={{width: "20vw", maxHeight:"90vh", display:chatStatus?"block":  "none"}}>
-                        <Chat />
-                  </div>
-                </div>
-            </div>
+            <BottomNavigation handleLinkClick={handleLinkClick} />
         </div>
-       
-      </div>
-    );
+      ) : (
+        // Render desktop-specific components
+        <div style={backgroundStyle} className={`main-game-container ${collapsed ? 'collapse' : ''}`}>
+          <div style={{ display: 'flex' }}>
+            <div>
+              <NavBar handleLinkClick={handleLinkClick} activeTab={activeTab} handleCollapse={handleCollapse} />
+            </div>
+            <div style={{ width: "85vw" }}>
+              <Headers handleLinkClick={handleLinkClick} selectedHeader={activeTab} gameState={gameState} handleChatToggle={handleChatToggle} />
+  
+              <div style={{ display: "flex" }}>
+                <div style={{ padding: "1vh", width: chatStatus ? "65vw" : "85vw" }}>
+                  {renderComponent()}
+                </div>
+  
+                <div style={{ width: "20vw", maxHeight: "90vh", display: chatStatus ? "block" : "none" }}>
+                  <Chat />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+  
   };
 
-export default GamePage
+export default GamePage;

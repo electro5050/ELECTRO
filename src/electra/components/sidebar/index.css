@@ -8,6 +8,10 @@
   height:100vh
 }
 
+.game-sidebar.mobile{
+  width: 90vw;
+}
+
 .game-sidebar.collapse{
   /* width: auto; */
 }
