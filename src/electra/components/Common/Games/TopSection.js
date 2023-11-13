@@ -12,6 +12,7 @@ const GameTopSection = () => {
 
   const [user, setUser] = useState([]);
   const [userAvatar, setUserAvatar] = useState('null');
+  const [profileImage,setProfileImage]=useState('')
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -26,8 +27,9 @@ const GameTopSection = () => {
       .then(response => response.json())
       .then(data => {
           if (data && typeof data === 'object') {
-              setUser([data]); // Existing code
-              setUserAvatar(data.avatar); // Store the avatar filename
+              setUser([data]);
+              setUserAvatar(data.avatar); 
+              setProfileImage(data.profilePictureUrl)
           }
       })
       .catch(error => {
@@ -41,7 +43,7 @@ console.log('user' ,user )
   return (
     <div className="game-view-top-section" style={{height:"15vh"}}>
       <div style={avatharContainerStyle}>
-        <Avathar imageUrl={userAvatar ? userAvatar : "assets/Avatars/avathar_1.png"}  imageSize={'2vw'}/>
+        <Avathar imageUrl={profileImage || userAvatar || "assets/Avatars/avathar_1.png"} imageSize={'2vw'}/>
         <span style={{paddingLeft:"10px",fontSize: "1vw"}}>
          Hi {user && user[0] ? user[0].name : 'Loading...'}, welcome back!
         </span>
