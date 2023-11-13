@@ -24,6 +24,34 @@ const TopWinners = ({rankingData}) => {
   const [gameHistory, setGameHistory] = useState(rankingData);
   const token = localStorage.getItem('token');
 
+  const [profileImage,setProfileImage]=useState('')
+  const [userAvatar, setUserAvatar] = useState('null');
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      fetch('http://192.168.29.85:3000/users', {
+          method: 'GET',
+          headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data && typeof data === 'object') {
+              setUser([data]); 
+              setUserAvatar(data.avatar);// Store the avatar filename
+              setProfileImage(data.profilePictureUrl) 
+          }
+      })
+      .catch(error => {
+          console.error('Error fetching user data:', error);
+      });
+    }
+  }, [token]);
+
   useEffect(() => {
       fetch('http://192.168.29.85:3000/usergamehistory', {
           method: 'GET',
@@ -47,7 +75,7 @@ const TopWinners = ({rankingData}) => {
     <div className="game-view-top-history-profile" style={{height:"30vh", background:"#43415B", marginTop:"4vh", borderRadius: "20px"}}>
         
 <div style={headerStyle}>
-  <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'2vw'} />
+  <Avathar  imageUrl={profileImage || userAvatar || "assets/Avatars/avathar_1.png"} imageSize={'2vw'} />
     <span  style={{marginLeft:"10px"}}>Your Game History</span>
       </div>
 

@@ -10,6 +10,7 @@ const flexCenterStype = {
   alignItems: "center",
 
 };
+const token = localStorage.getItem('token');
 
 
 
@@ -17,8 +18,37 @@ const Headers = ({selectedHeader, handleLinkClick ,handleChatToggle, gameState={
   const { pathname } = useLocation();
   const [coinBalance, setCoinBalance] = useState(null);
 
+  const [user, setUser] = useState([]);
+  const [userAvatar, setUserAvatar] = useState('null');
+  const [profileImage,setProfileImage]=useState('')
+
   useEffect(() => {
-    // Assuming you have a function to get a user's token for authorization
+    const token = localStorage.getItem('token');
+    if (token) {
+      fetch('http://192.168.29.85:3000/users', {
+          method: 'GET',
+          headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data && typeof data === 'object') {
+              setUser([data]);
+              setUserAvatar(data.avatar); 
+              setProfileImage(data.profilePictureUrl)
+          }
+      })
+      .catch(error => {
+          console.error('Error fetching user data:', error);
+      });
+    }
+  }, [token]);
+
+
+
+  useEffect(() => {
     const token = localStorage.getItem('token');
 
     fetch('http://192.168.29.85:3000/coinbalance', {
@@ -104,11 +134,11 @@ const Headers = ({selectedHeader, handleLinkClick ,handleChatToggle, gameState={
                   <div className="dropdown-content">
 
                     <div style={{...flexCenterStype,   marginBottom:'30px'}}>
-                        <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'4vw'}/>
+                        <Avathar imageUrl={profileImage || userAvatar || "assets/Avatars/avathar_1.png"}imageSize={'4vw'}/>
                         <div style={{paddingLeft:"10px"}}>
                             <div style={{display:"flex", alignItems: "center"}}>
                                 <div style={{fontSize: "max(1vw, 14px)", color:"white", fontWeight:"800"}}>
-                                    Name
+                                {user && user[0] ? user[0].name : 'Loading...'}
                                 </div>
                             </div>
                             <div style={{fontSize: "max(0.7vw, 10px)", color:"#B7B7B7", marginTop: "10px"}}>
