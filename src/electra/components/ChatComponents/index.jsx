@@ -1,14 +1,13 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
-import { Link, useLocation } from 'react-router-dom';
-import SideBar from 'electra/components/sidebar';
-import './index.css';
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfo, faPaperPlane  } from '@fortawesome/free-solid-svg-icons';
+import { faInfo, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import ChatSection from 'electra/components/ChatComponents/chatBox';
+import './index.css';
 
-
+// Styles
 const circleStyle = {
   width: '15px',
   height: '15px',
@@ -49,196 +48,136 @@ const iconSendButtonStyle = {
   fontWeight:"900"
 };
 
-
-const socket = io('http://192.168.29.85:3002', {
-  reconnectionAttempts: 5,
-  reconnectionDelay: 2000,
-  reconnectionDelayMax: 10000,
-});
-
-socket.on('connect', () => {
-  console.log('Successfully connected to the server!');
-});
-
-socket.on('reconnect_failed', () => {
-  console.error('Reconnection failed after several attempts.');
-});
-
-socket.on('disconnect', (reason) => {
-  console.warn('Disconnected. Reason:', reason);
-});
-
-socket.on('reconnect', (attemptNumber) => {
-  console.log(`Reconnected after ${attemptNumber} attempts.`);
-});
-
-socket.on('connect_error', (error) => {
-  console.error('Connection error:', error);
-});
-
-socket.on('connect_timeout', (timeout) => {
-  console.error('Connection timeout:', timeout);
-});
-
-function getCurrentTime(){
-  const now = new Date();
-  const hours = now.getHours();
-  const minutes = now.getMinutes();
-
-  // Format hours and minutes with leading zeros if needed
-  const formattedHours = hours;
-  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-
-  // Create the time string in "hh:mm" format
-  const timeString = `${formattedHours}:${formattedMinutes}`;
-
-  return timeString;
+function getCurrentTime() {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const formattedHours = hours;
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+    return `${formattedHours}:${formattedMinutes}`;
 }
 
 const ChatBox = () => {
-  const [messages, setMessages] = useState([]);
-  const [message, setMessage] = useState('');
-  const chatWindowRef = useRef(null);
+    const [messages, setMessages] = useState([]);
+    const [message, setMessage] = useState('');
+    const chatWindowRef = useRef(null);
+    const token = localStorage.getItem('token');
+    const [user, setUser] = useState([]);
 
- 
-  const token = localStorage.getItem('token');
+    useEffect(() => {
+        fetch('http://192.168.29.85:3000/users', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data && typeof data === 'object') {
+                setUser([data]);
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching user data:', error);
+        });
 
-  const [user, setUser] = useState([]);
+        axios.get('http://192.168.29.85:3000/get-messages', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        })
+        .then(response => {
+            setMessages(response.data.map(msg => ({
+                text: msg.message,
+                user: msg.sender.name,
+                time: new Date(msg.timestamp).toLocaleTimeString(),
+                type: 'received'
+            })));
+        })
+        .catch(error => {
+            console.error('Error fetching messages:', error);
+        });
+    }, [token]);
 
-  useEffect(() => {
-    fetch('http://192.168.29.85:3000/users', {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data && typeof data === 'object') {
-            setUser([data]); // Set the user state with an array containing the single user object
-        }
-    })
-    .catch(error => {
-        console.error('Error fetching user data:', error);
-    });
-}, []);
+    const socket = useRef(io('http://192.168.29.85:3002', {
+        reconnectionAttempts: 5,
+        reconnectionDelay: 2000,
+        reconnectionDelayMax: 10000,
+    })).current;
 
-  const socket = useRef(io('http://192.168.29.85:3002', {
-    reconnectionAttempts: 5,
-    reconnectionDelay: 2000,
-    reconnectionDelayMax: 10000,
-  })).current;
+    useEffect(() => {
+        socket.on('message', (msg) => {
+            // Add logic to prevent adding message if it's sent by the same user
+        });
 
-  useEffect(() => {
-    socket.on('message', (msg) => {
-      setMessages((prevMessages) => [...prevMessages, { text: msg, user: 'received', time:getCurrentTime() }]);
-    });
+        return () => {
+            socket.off('message');
+        };
+    }, [socket]);
 
-    return () => {
-      socket.off('message');
+    useEffect(() => {
+        chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
+    }, [messages]);
+
+    const handleMessageChange = (e) => {
+        setMessage(e.target.value);
     };
-  }, [socket]);
 
-  useEffect(() => {
-    chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
-  }, [messages]);
+    const sendMessage = async () => {
+        if (message.trim() !== '') {
+            try {
+                await axios.post('http://192.168.29.85:3000/send-message', {
+                    message
+                }, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
 
-  const handleMessageChange = (e) => {
-    setMessage(e.target.value);
-  };
+                setMessages(prevMessages => [...prevMessages, {
+                    text: message, user: 'sent', time: getCurrentTime()
+                }]);
+                setMessage('');
+            } catch (error) {
+                console.error('Error sending message:', error);
+            }
+        }
+    };
 
-  const sendMessage = () => {
-    if (message.trim() !== '') {
-      socket.emit('message', message);
-      setMessages((prevMessages) => [...prevMessages, { text: message, user: 'sent', time:getCurrentTime() }]);
-      setMessage('');
-    }
-  };
-
-  return (
-    <div className="game-chat-main" style={{ height: "100%" }}>
-      <div 
-        className="game-chat-box" 
-        style={{ overflowY: "auto", height: "80%", background: "rgba(27, 27, 27, 0.80)", padding: "1vh" }} 
-        ref={chatWindowRef}
-      >
-        <div className="game-chat-header" style={{ marginBottom: "10px" }}>
-          <span style={{ color: "#FBF4B6", fontSize: "0.8vw", fontWeight: "bold", fontFamily: "sans-serif" }}>
-            electro community
-          </span>
-          <div style={circleStyle}>
-            <FontAwesomeIcon icon={faInfo} style={iconStyle} />
-          </div>
+    return (
+        <div className="game-chat-main" style={{ height: "100%" }}>
+            <div className="game-chat-box" style={{ overflowY: "auto", height: "80%", background: "rgba(27, 27, 27, 0.80)", padding: "1vh" }} ref={chatWindowRef}>
+                <div className="game-chat-header" style={{ marginBottom: "10px" }}>
+                    <span style={{ color: "#FBF4B6", fontSize: "0.8vw", fontWeight: "bold", fontFamily: "sans-serif" }}>
+                        electro community
+                    </span>
+                    <div style={circleStyle}>
+                        <FontAwesomeIcon icon={faInfo} style={iconStyle} />
+                    </div>
+                </div>
+                <div>
+                    {messages.map((msg, index) => (
+                        <ChatSection key={index} chatDetails={{
+                            name: user && user[0] ? user[0].name : 'Loading...',
+                            time: msg.time,
+                            message: msg.text,
+                            type: msg.type
+                        }}/>
+                    ))}
+                </div>
+            </div>
+            <div style={{ height: "18%", background: "rgba(27, 27, 27, 0.80)", marginTop: "1%", borderRadius: "5px" }}>
+                <div style={{ padding: "10px", display: "flex" }}>
+                    <input type="text" value={message} className="custom-text-box" placeholder="Type Here..." onChange={handleMessageChange} />
+                    <button style={sendButtonStyle} onClick={sendMessage}>
+                        <FontAwesomeIcon icon={faPaperPlane} style={iconSendButtonStyle} />
+                    </button>
+                </div>
+            </div>
         </div>
-    <div>
-    {/* <ChatSection 
-        key={1}
-        chatDetails={{
-            name:gameHistory.length > 0 ? gameHistory[0].username : 'Loading...',        // Assuming 'user' can represent 'name'. Adjust accordingly.
-            time: "9:10am",           // Placeholder, adjust to real value if available.
-            message: "test game chat"
-        }}
-    />
-
-<ChatSection 
-        key={1}
-        chatDetails={{
-            name:gameHistory.length > 0 ? gameHistory[0].username : 'Loading...',        // Assuming 'user' can represent 'name'. Adjust accordingly.
-            time: "9:10am",           // Placeholder, adjust to real value if available.
-            message: "test"
-        }}
-    />
-
-<ChatSection 
-        key={1}
-        chatDetails={{
-            name:gameHistory.length > 0 ? gameHistory[0].username : 'Loading...',        // Assuming 'user' can represent 'name'. Adjust accordingly.
-            time: "9:10am",           // Placeholder, adjust to real value if available.
-            message: "abcdf dsajda jdksada dksajd jsdasds sadjas asjdsad "
-        }}
-    />
-
-<ChatSection 
-        key={1}
-        chatDetails={{
-            name:gameHistory.length > 0 ? gameHistory[0].username : 'Loading...',        // Assuming 'user' can represent 'name'. Adjust accordingly.
-            time: "9:10am",           // Placeholder, adjust to real value if available.
-            message: "1000.000",
-            type:"win"
-        }}
-    /> */}
-
-        {messages.map((msg, index) => (
-    <ChatSection 
-        key={index}
-        chatDetails={{
-            name:user && user[0] ? user[0].name : 'Loading...',        // Assuming 'user' can represent 'name'. Adjust accordingly.
-            time: msg.time,           // Placeholder, adjust to real value if available.
-            message: msg.text,
-            type: msg.type
-        }}
-    />
-))}
-</div>
-
-      </div>
-
-      <div style={{ height: "18%", background: "rgba(27, 27, 27, 0.80)", marginTop: "1%", borderRadius: "5px" }}>
-        <div style={{ padding: "10px", display: "flex" }}>
-          <input
-            type="text"
-            className="custom-text-box"
-            placeholder="Type Here..."
-            onChange={handleMessageChange}
-          />
-          <button style={sendButtonStyle} onClick={sendMessage}>
-            <FontAwesomeIcon icon={faPaperPlane} style={iconSendButtonStyle} />
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default ChatBox;
+
+
+
+
+
