@@ -155,7 +155,7 @@ const ChatBox = () => {
                 <div>
                     {messages.map((msg, index) => (
                         <ChatSection key={index} chatDetails={{
-                            name: user && user[0] ? user[0].name : 'Loading...',
+                            name: msg.user ? msg.user : 'Loading...',
                             time: msg.time,
                             message: msg.text,
                             type: msg.type

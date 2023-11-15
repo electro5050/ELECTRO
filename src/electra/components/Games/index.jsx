@@ -37,67 +37,98 @@ const GameComponent = ({}) => {
   const [rankingData, setRankingData] = useState([]);
 
 
-  useEffect(() => {
-    const websocket = new WebSocket("ws://192.168.29.85:5000");
+  const [user, setUser] = useState([]);
+ 
+  
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      fetch('http://192.168.29.85:3000/users', {
+          method: 'GET',
+          headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data && typeof data === 'object') {
+              setUser(data.id); 
+              
+          }
+      })
+      .catch(error => {
+          console.error('Error fetching user data:', error);
+      });
+    }
+  }, []);
+
+  console.log("user.id",user)
+
+  useEffect(() => {
+    const websocket = new WebSocket("ws://192.168.29.85:5000");// Replace with actual user ID retrieval method
+    
     websocket.onopen = () => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            websocket.send(JSON.stringify({ type: 'auth', token: token }));
-        }
+      const token = localStorage.getItem('token');
+      if (token) {
+        websocket.send(JSON.stringify({ type: 'auth', token: token }));
+      }
     };
 
     websocket.onmessage = (event) => {
       const message = JSON.parse(event.data);
       console.log("Received WebSocket message:", event.data);
+     
   
-      if (message.type && message.type === 'winners') {
-          setRankingData(message.winners);
+  
+      if (message.type === 'winners') {
+        setRankingData(message.winners);
+        console.log("Received winners message:", message)
+        const currentUserId = user
+        const isCurrentUserWinner = message.winners.some(winners => winners.userId === currentUserId);
+        if (isCurrentUserWinner) {
+          SetIsWinModal(true); // Open the modal if the current user is a winner
+        }
+      } else if (message.type === 'valueUpdate') {
+        console.log("Received valueUpdate message:", message);
+        // Here, handle the value update. You might want to update a state or perform some action
+        // For example, if you're tracking the game's progress or other values:
+         setData(prevData => [...prevData, message.value]);
       } else if (message.gameId) {
-          setGameState(prevState => ({ ...prevState, gameId: message.gameId }));
+        setGameState(prevState => ({ ...prevState, gameId: message.gameId }));
       } else if (message.message) {
+        setGameState(prevState => ({
+          ...prevState,
+          endGameMessage: message.message,
+          gameEnded: true,
+          gameId: message.gameId
+        }));
+  
+        setData([]); // Reset data
+  
+        setTimeout(() => {
           setGameState(prevState => ({
-              ...prevState,
-              endGameMessage: message.message,
-              gameEnded: true,
-              gameId: message.gameId
+            ...prevState,
+            gameEnded: false,
+            endGameMessage: ""
           }));
-  
-          setData([]);
-  
-          setTimeout(() => {
-              setGameState(prevState => ({
-                  ...prevState,
-                  gameEnded: false,
-                  endGameMessage: ""
-              }));
-          }, 10000);
-      } else {
-          // Only update if the message value is different
-          if (!data.includes(message.value)) {
-              setData(prevData => [...prevData, message.value]);
-          }
+        }, 10000);
       }
-  };
+    };
   
-
     websocket.onerror = (error) => {
-        console.error("WebSocket Error:", error);
+      console.error("WebSocket Error:", error);
+      setAuthError(true); // Handle WebSocket error
     };
-
+  
     setWs(websocket);
-
-    const token = localStorage.getItem('token');
-    if (token) {
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    } else {
-        setAuthError(true);
-    }
-
+  
     return () => {
-        websocket.close();
+      websocket.close();
     };
-},[] )
+  }, []);
+  
 
 
 useEffect(() => {
@@ -118,7 +149,7 @@ useEffect(() => {
  
 
 
-const [winModel, SetIsWinModal] = useState(true);
+const [winModel, SetIsWinModal] = useState(false);
 
 
 const closeWinModal = () => {

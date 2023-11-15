@@ -139,7 +139,7 @@ async def game_cycle():
 
                     print(f"Update result for user {userId}: {result.modified_count} records modified.")
                     winners.append({
-                        "userId": userId,
+                        "userId":userId,
                         "bidAmount": data['value'],
                         "winningBonus": bonus
                     })
@@ -148,9 +148,11 @@ async def game_cycle():
         winning_message = {
             "type": "winners",
             "winning_color": winning_color,
-            "winners": winners
+            "winners": winners,
+            
         }
         await send_data_to_clients(winning_message)
+        print(winners)
 
         # Update the game document with end time, winning color, and winners
         game_doc["end_time"] = datetime.now()
@@ -409,4 +411,5 @@ asyncio.get_event_loop().run_forever()
 
 # asyncio.get_event_loop().run_until_complete(start_server)
 # asyncio.get_event_loop().run_forever()
+
 

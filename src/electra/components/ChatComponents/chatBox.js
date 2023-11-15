@@ -16,6 +16,7 @@ const ChatSection = ({chatDetails}) => {
     const [user, setUser] = useState([]);
     const [userAvatar, setUserAvatar] = useState('null');
     const [profileImage,setProfileImage]=useState('')
+    
   
     useEffect(() => {
       const token = localStorage.getItem('token');
@@ -39,7 +40,7 @@ const ChatSection = ({chatDetails}) => {
             console.error('Error fetching user data:', error);
         });
       }
-    }, [token]);
+    }, []);
 
 
   return (
