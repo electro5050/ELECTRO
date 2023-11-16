@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
  import './Graph.css';
 import axios from 'axios';
@@ -16,6 +16,7 @@ function getNextExponentialValue(number) {
 function LineChart({data}) {
 
     const [chartDom, setChartDom] = useState(null);
+    const chartContainerRef = useRef(null);
 
     const option = {
        
@@ -71,10 +72,15 @@ function LineChart({data}) {
     
         // Add the resize event listener
         window.addEventListener('resize', handleResize);
+
+        const resizeObserver = new ResizeObserver(handleResize);
+
+        resizeObserver.observe(chartContainerRef.current);
     
         // Return a cleanup function to remove the listener when the component is unmounted
         return () => {
             window.removeEventListener('resize', handleResize);
+            resizeObserver.disconnect();
         };
     }, []);
     
@@ -175,7 +181,7 @@ function LineChart({data}) {
       }
 
     return (
-        <div style={{height:"100%"}}>
+        <div style={{height:"100%"}}  ref={chartContainerRef}>
             <div className="game-chart">
                 <div class="images">
                     <img class="top-image" src="/assets/electra/silver-coin.png" alt="Top Image" />
