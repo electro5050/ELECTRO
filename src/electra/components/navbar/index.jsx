@@ -14,8 +14,8 @@ const NavBar = ({handleLinkClick, activeTab}) => {
             <img
                 className="background"
                 id="logo_header"
-                src={"assets/electra/logo.png"}
-                srcSet={"assets/electra/logo.png"}
+                src={"assets/electra/logo_dark.png"}
+                srcSet={"assets/electra/logo_dark.png"}
                 alt="electra"
             />
         </div>

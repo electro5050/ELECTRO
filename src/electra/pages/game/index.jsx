@@ -222,7 +222,7 @@ const GamePage = () => {
             <div style={{ height: "80vh", maxHeight: "80vh", overflowY:"auto"}}>
               {renderMobileComponent()}
             </div>
-            <BottomNavigation handleLinkClick={handleLinkClick} />
+            <BottomNavigation handleLinkClick={handleLinkClick} selectedMenu={activeTab}  />
         </div>
       ) : (
         // Render desktop-specific components

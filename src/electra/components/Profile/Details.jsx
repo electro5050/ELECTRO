@@ -176,6 +176,13 @@ const handleAvatarSelect = async () => {
 };
 
 
+const getSelectedAvatharStyle = (avatarPath) => {
+  return selectedAvatar === avatarPath ? {
+    ...avatarStyle,
+    border: "2px solid red",
+   } : {...avatarStyle};
+};
+
 
   return (
     <div style={{display:"flex", justifyContent:"space-between"}}>
@@ -210,7 +217,7 @@ const handleAvatarSelect = async () => {
         { [...Array(avatharCount).keys()].map((number) => {
             const avatarPath = `assets/Avatars/avathar_${number + 1}.png`;
             return (
-              <div key={number} style={avatarStyle} className="avathar-conainer-rounded" onClick={() => handleAvatarClick(avatarPath)}>
+              <div key={number} style={getSelectedAvatharStyle(avatarPath)} className="avathar-conainer-rounded" onClick={() => handleAvatarClick(avatarPath)}>
                 <img src={avatarPath} alt={`Avatar ${number + 1}`} style={{ height: "90%", marginTop: "10%" }} />
               </div>
             );

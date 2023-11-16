@@ -8,14 +8,14 @@ const imageStyle = {
   objectFit: 'contain',
 };
 
-const BottomNavigation = ({handleLinkClick}) => {
+const BottomNavigation = ({handleLinkClick, selectedMenu}) => {
   return (
     <div className="bottom-navigation">
-      <img src={"assets/MenuIcons/menu.png"} alt="" style={imageStyle} onClick={() => handleLinkClick("Menu")} />
-      <img src={"assets/MenuIcons/profile.png"} alt="" style={imageStyle} onClick={() => handleLinkClick("Profile")}  />
-      <img src={"assets/MenuIcons/coin.png"} alt="" style={imageStyle} />
-      <img src={"assets/MenuIcons/wallet.png"} alt="" style={imageStyle} />
-      <img src={"assets/MenuIcons/message.png"} alt="" style={imageStyle} onClick={() => handleLinkClick("Chat")}  />
+      <img src={`assets/MenuIcons/menu${selectedMenu=="Menu" ? "_1" : ""}.png`} alt="" style={imageStyle} onClick={() => handleLinkClick("Menu")} />
+      <img src={`assets/MenuIcons/profile${selectedMenu=="Profile" ? "_1" : ""}.png`} alt="" style={imageStyle} onClick={() => handleLinkClick("Profile")}  />
+      <img src={`assets/MenuIcons/coin${selectedMenu=="Coin" ? "_1" : ""}.png`} alt="" style={imageStyle} />
+      <img src={`assets/MenuIcons/wallet${selectedMenu=="Chat" ? "_1" : ""}.png`} alt="" style={imageStyle} />
+      <img src={`assets/MenuIcons/message${selectedMenu=="Chat" ? "_1" : ""}.png`} alt="" style={imageStyle} onClick={() => handleLinkClick("Chat")}  />
     </div>
   );
 };

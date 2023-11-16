@@ -10,6 +10,7 @@
 
 .game-sidebar.mobile{
   width: 90vw;
+  height:100%;
 }
 
 .game-sidebar.collapse{

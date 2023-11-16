@@ -48,7 +48,7 @@ let rankingData=[
 const ProfileUpdate = ({user}) => {
 
   return (
-    <div className="profile-page-main" style={{height:'88vh', background:"rgba(40, 40, 40, 0.60)", borderRadius:"1vw", padding:"1vw",   
+    <div className="profile-page-main" style={{height:'80vh', background:"rgba(40, 40, 40, 0.60)", borderRadius:"1vw", padding:"1vw",   
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-around',}}>

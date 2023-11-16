@@ -31,7 +31,8 @@ const avatharButton = {
   padding: '10px',
   textAlign: 'center',
   float: 'right',
-  color: "#fff799"
+  color: "#fff799",
+  cursor:"pointer"
 };
 
 
@@ -167,12 +168,19 @@ const handleAvatarSelect = async () => {
       data,
       { headers: headers }
     );
-    console.log(response.data); 
     alert('Avatar updated successfully!');
   } catch (error) {
     console.error('Error updating avatar:', error);
     alert('Failed to update avatar.');
   }
+};
+
+
+const getSelectedAvatharStyle = (avatarPath) => {
+  return selectedAvatar === avatarPath ? {
+    ...avatarStyle,
+    border: "2px solid red",
+   } : {...avatarStyle};
 };
 
 
@@ -209,8 +217,9 @@ const handleAvatarSelect = async () => {
            
         { [...Array(avatharCount).keys()].map((number) => {
             const avatarPath = `assets/Avatars/avathar_${number + 1}.png`;
+            const avatarClassName = `avathar-conainer-rounded${selectedAvatar == avatarPath? "selected" :""}`;
             return (
-              <div key={number} style={avatarStyle} className="avathar-conainer-rounded" onClick={() => handleAvatarClick(avatarPath)}>
+              <div key={number} style={getSelectedAvatharStyle(avatarPath)} className={avatarClassName} onClick={() => handleAvatarClick(avatarPath)}>
                 <img src={avatarPath} alt={`Avatar ${number + 1}`} style={{ height: "90%", marginTop: "10%" }} />
               </div>
             );

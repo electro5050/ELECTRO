@@ -18,11 +18,6 @@ const gameChartContainer = {
 const graphContainerStyle = {
   width: "100%", // Set the width of the container
   height:"25vh", // Set the height of the container
-  backgroundImage: 'url(/assets/electra/silver-graph.png), url(/assets/electra/gold-graph.png)', // Set the two background images
-  backgroundSize: '100% 50%', // Set the size of each background image
-  backgroundRepeat: 'no-repeat', // Prevent image repetition
-  backgroundPosition: '0% 0%, 0% 100%', // Position the two background images vertically
-  border: "1px solid rgba(255, 255, 255, 0.5)"
 };
 
 const ButtonControllserStyle = {
@@ -113,7 +108,6 @@ const GameChart = () => {
       </div> */}
       <div style={graphContainerStyle}>
         <Graph data={data} setAuthError={setAuthError} gameState={gameState} setGameState={setGameState} authError={authError} />
-        <ProgressBar progressValue={30} />
       </div>
 
       <div style={ButtonControllserStyle}>
