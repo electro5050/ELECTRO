@@ -4,6 +4,7 @@ import Login from "./Login";
 import SignUp from "./SignUp";
 import GamePage from "electra/pages/game";
 import CoinPage from "electra/pages/buy-coin";
+import MobileLanding from "mobileview/pages/mobile/Landing";
 
 const routes = [
   { path: '/', component: <Home01 />},
@@ -12,6 +13,7 @@ const routes = [
   { path: '/sign-up', component: <SignUp />},
   { path: '/game', component: <GamePage />},
   { path: '/coin', component: <CoinPage />},
+  { path: '/mobile', component: <MobileLanding />},
 ]
 
 export default routes;
