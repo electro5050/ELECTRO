@@ -6,12 +6,11 @@ import Footer from '../components/footer/Footer';
 import Payment from '../components/Upi/Payment'
 import heroSliderData from '../assets/fake-data/data-slider';
 import Slider from '../components/slider/Slider';
-import Graph from '../electra/components/Common/Games/Graph';
+import Graph from '../components/slider/Graph'
 import SignUp from './SignUp';
-import Ranking from '../electra/components/Common/Games/TopWinnersTable'
+import Ranking from './Ranking';
 import Picture from '../components/Baners/Baners'
 import Steps from '../components/steps/Steps'
-import Boxlanding from '../assets/images/steps/1f1ea7d3585693763707c478e5d8579a.png'
 // import liveAuctionData from '../assets/fake-data/data-live-auction';
 // import LiveAuction from '../components/layouts/LiveAuction';
 // import TopSeller from '../components/layouts/TopSeller';
@@ -22,18 +21,6 @@ import Boxlanding from '../assets/images/steps/1f1ea7d3585693763707c478e5d8579a.
 // import popularCollectionData from '../assets/fake-data/data-popular-collection';
 // import Create from '../components/layouts/Create';
 import { Element } from 'react-scroll';
-import Live from '../assets/images/grandient/WhatsApp Image 2023-11-16 at 2.07.57 PM.jpeg'
-
-const graphContainerStyle = {
-    width: "70%", // Set the width of the container
-    height:"95%", // Set the height of the container
-    backgroundImage: 'url(/assets/electra/silver-graph.png), url(/assets/electra/gold-graph.png)', // Set the two background images
-    backgroundSize: '100% 50%', // Set the size of each background image
-    backgroundRepeat: 'no-repeat', // Prevent image repetition
-    backgroundPosition: '0% 0%, 0% 100%', // Position the two background images vertically
-    border: "1px solid rgba(255, 255, 255, 0.5)"
-  };
-
 const Home01 = () => {
     const [data, setData] = useState([]);
     const [ws, setWs] = useState(null);
@@ -107,44 +94,12 @@ const Home01 = () => {
           websocket.close();
       };
   },[] )
-
- 
     return (
-        <div className='home-landing'>
+        <div className='home-1'>
             <Header gameState={gameState}/>
             <Slider data={heroSliderData} />
-            <div className='landing-graph'>
-                
-           
-            <div style ={{width:'70vw' , height:'70vh', display:"flex", justifyContent:"center",alignItems:'center',marginLeft:'12vw'}} >
-            <div  style ={graphContainerStyle}>
             <Graph data={data} setAuthError={setAuthError} gameState={gameState} setGameState={setGameState} authError={authError} gameId={gameState.gameId} />
-
-            </div>
-            </div>
-            </div>
-            <div className='mainlatest' style={{width: '50%',marginLeft:'23%',height:'50%'}}>
-                <div className='latest'>
-                    <div className='tableicon'>
-                    <img src={Boxlanding} alt="" />
-
-                    </div>
-                    
-                <h2>Latest winnings</h2>
-                <div className='livebutton'>
-                    <img src={Live} />
-                </div>
-                
-
-                </div>
-                <div className='landing-ranking'>
-                <Ranking rankingData={rankingData} />
-
-                </div>
-                
-            
-                </div>
-          
+            <Ranking rankingData={rankingData} />
 
             {/* <LiveAuction data={liveAuctionData} /> */}
             {/* <TopSeller data={topSellerData} /> */}

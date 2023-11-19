@@ -18,9 +18,9 @@ const SliderStyle4 = () => {
     return (
         <div>
             <section className="flat-title-page style3 mainslider">
-                {/* <img className="bgr-gradient gradient1" src={shape1} alt="Axies" />
+                <img className="bgr-gradient gradient1" src={shape1} alt="Axies" />
                 <img className="bgr-gradient gradient2" src={shape2} alt="Axies" />
-                <img className="bgr-gradient gradient3" src={shape3} alt="Axies" /> */}
+                <img className="bgr-gradient gradient3" src={shape3} alt="Axies" />
                 <div className="overlay"></div>
                 <div className="themesflat-container ">
                         <div className="wrap-heading flat-slider flex">

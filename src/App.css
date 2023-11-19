@@ -1,3 +1,7 @@
+body{
+  color: white !important;
+}
+
 .App {
   text-align: center;
 }
@@ -59,3 +63,168 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #B1A8A3;
 }
+
+/* @font-face {
+  font-family: 'YourFontName';
+  src: url('./fonts/yourfont.woff') format('woff'),
+       url('./fonts/yourfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+@font-face {
+  font-family: 'electra';
+  src: url('assets/fonts/Carthage Pro Regular.otf') format('opentype'),
+       url('assets/fonts/Carthage Pro Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: electra !important;
+}
+
+.d-center{
+display: flex;
+justify-content: center;
+}
+
+.d-between{
+  display: flex;
+  justify-content: space-between;
+  }
+  
+.v-cen{
+align-items: center;
+}
+
+.m-10{
+margin: 10px;
+}
+
+.p-10{
+  padding: 10px;
+  }
+
+.electra-table{
+  border-width: 0;
+  border: none;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-spacing:  0px 10px;
+}
+
+.electra-table {
+  width: 98%;
+  display: block;
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+
+.vertical-flex-sw{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.font-5{
+  font-size: calc(5px + 0.5vw + 0.5vh)!important;
+}
+
+.font-4{
+  font-size: calc(4px + 0.4vw + 0.4vh)!important;
+}
+
+.font-6{
+  font-size: calc(6px + 0.6vw + 0.6vh)!important;
+}
+
+
+.font-8{
+  font-size: calc(8px + 0.8vw + 0.8vh) !important;
+}
+
+.font-10{
+  font-size: calc(10px + 1vw + 1vh) !important;
+}
+
+
+.electra-table span,  .electra-table div{
+  font-size: calc(5px + 0.5vw + 0.5vh);
+  word-break: break-all;
+}
+
+@media only screen and (max-width: 767px) {
+  .electra-table span,  .electra-table div{
+    font-size: calc(8px + 0.8vw + 0.8vh);
+    word-break: break-all;
+  }
+  .font-5{
+    font-size: calc(8px + 0.8vw + 0.8vh) !important;
+  }
+
+  .font-4{
+    font-size: calc(6px + 0.6vw + 0.6vh)!important;
+  }
+  
+  .font-8{
+    font-size: calc(11px + 1.1vw + 1.1vh)!important;
+  }
+
+  .font-6{
+    font-size: calc(9px + 0.9vw + 0.9vh)!important;
+  }
+  .font-10{
+    font-size: calc(10px + 1.6vw + 1.6vh) !important;
+  }
+  
+  
+}
+
+
+
+.electra-table thead,
+.electra-table tbody {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.electra-table thead{
+
+}
+/* .electra-table tbody{
+  max-height: 100%;
+  overflow-y: scroll;
+} */
+
+.electra-table th, .electra-table td{
+  /* border-width: 0; */
+  border: none;
+  text-align: center;
+}
+
+.electra-table tr{
+  margin-top: 10px;
+}
+
+.electra-table .user-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.electra-table td {
+  vertical-align: middle;
+}
+
+
+
+iframe[title="chat widget"] {
+  top: 0px !important;
+  right: 0px !important;
+  bottom: 0px !important;
+  left: 0px !important;
+}
+
+

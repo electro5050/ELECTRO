@@ -4,16 +4,17 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 const imageStyle = {
   width: '100%',
-  height: '100%',
-  objectFit: 'cover',
+  height: '90%',
+  objectFit: 'contain',
+  marginTop: "10%"
 };
 
-function Avathar({ imageUrl, imageSize, isEditable }) {
+function Avathar({ imageUrl, imageSize, editIconClick }) {
   const imageContainerStyle = {
     width: imageSize,
     height: imageSize,
     border: '1px solid #000',
-    backgroundColor: '#ccc',
+    backgroundColor: 'rgb(255 247 153)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -24,18 +25,18 @@ function Avathar({ imageUrl, imageSize, isEditable }) {
 
   const editIconStyle = {
     position: 'absolute',
-    paddingBottom: '5px',
-    paddingTop: '5px',
+    paddingBottom: '12%',
+    paddingTop: '12%',
     bottom:0,
     cursor: 'pointer',
     background: "rgba(36, 36, 36, 0.7)",
-    width: "100%"
+    width: "100%",
   };
 
   return (
     <div style={imageContainerStyle}>
       <img src={imageUrl} alt="" style={imageStyle} />
-      {isEditable && <FontAwesomeIcon icon={faEdit} style={editIconStyle} />}
+      {editIconClick && <FontAwesomeIcon className='font-4' icon={faEdit} style={editIconStyle} onClick={editIconClick} />}
     </div>
   );
 }

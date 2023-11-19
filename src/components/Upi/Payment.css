@@ -2,21 +2,21 @@
   display: flex;
   justify-content: center;
   align-items: center; /* Align vertically in the center */
-  padding: 1.5vw;
+  padding: 20px;
   margin-bottom: 35%;
   border-radius: 30px;
   background: rgba(243, 187, 41, 0.85);
-  width: 64.5vw;
-  height:45%;
-  margin-left: 14.2%;
-  margin-top: 2%;
-  position: relative;
+  width: 80%;
+  
+  margin-left: 10%;
+  margin-top: 0%;
+  
 
 }
 
 .secure {
   font-family: Gilroy;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 700;
   color: #068FFF;
   line-height: normal;
@@ -28,7 +28,7 @@
 
 .wayto {
   font-family: Gilroy;
-  font-size: 2.5rem;
+  font-size: 44px;
   font-weight: 300;
   color: rgba(255, 255, 255, 1);
   line-height: normal;
@@ -40,18 +40,16 @@
   color: #fff;
   border: none; /* Remove border */
   border-radius: 6px; /* Remove border-radius */
-  width: 14vw;
  
 }
 
 .gateway {
   border-radius: 30px;
   color: #080808; /* Changed the text color to white */
-  margin-left: 5vw; /* Adjust margin as needed to move the container to the right */
+  margin-left: 5%; /* Adjust margin as needed to move the container to the right */
   /* margin-bottom: 10vh; */
   background-color: #000000;
-  position: relative;
-  display: flex;
+  
 }
 
 /* Add responsive styles for different screen sizes as needed */
@@ -76,23 +74,12 @@
 }
 .easy{
   color: #000000;
-  font-size: 4rem;
-  
-  
-  font-weight: 600;
-  
-  line-height: normal;
-  margin-bottom: 1vw;
-
 }
 .grandient02{
   width:100%;
-  height: auto;
-  /* background: url('../../assets/images/grandient/Ellipse\ 41.png');
+  height: 100vh;
+  background: url('../../assets/images/grandient/Ellipse\ 41.png');
   background-size: cover;
-  background-position: center; */
-  display: flex;
-  position: relative;
-  top: 7vh;
+  background-position: center;
   
 }

@@ -10,9 +10,6 @@ import shape1 from '../../assets/images/backgroup-secsion/bg-gradient1.png'
 import shape2 from '../../assets/images/backgroup-secsion/bg-gradient2.png'
 import shape3 from '../../assets/images/backgroup-secsion/bg-gradient3.png'
 import imgbg from '../../assets/images/backgroup-secsion/img_bg_page_title.jpg'
-import Button from 'react-bootstrap/Button';
-import Arrow from '../../assets/images/coins/arrow-right.svg'
-import '../slider/Slider.css';
 
 
 const Slider = props => {
@@ -47,16 +44,16 @@ Slider.propTypes = {
 }
 const SliderItem = props => (
     <div className="flat-title-page" style={{backgroundImage: `url(${imgbg})`}}>
-        {/* <img className="bgr-gradient gradient1" src={shape1} alt="Axies" />
+        <img className="bgr-gradient gradient1" src={shape1} alt="Axies" />
         <img className="bgr-gradient gradient2" src={shape2} alt="Axies" />
-        <img className="bgr-gradient gradient3" src={shape3} alt="Axies" /> */}
-        {/* <div className="shape item-w-16"></div>
+        <img className="bgr-gradient gradient3" src={shape3} alt="Axies" />
+        <div className="shape item-w-16"></div>
         <div className="shape item-w-22"></div>
         <div className="shape item-w-32"></div>
-        <div className="shape item-w-48"></div> */}
-        {/* <div className="shape style2 item-w-51"></div>
+        <div className="shape item-w-48"></div>
+        <div className="shape style2 item-w-51"></div>
         <div className="shape style2 item-w-51 position2"></div>
-        <div className="shape item-w-68"></div> */}
+        <div className="shape item-w-68"></div>
         <div className="overlay"></div>
         <div className="swiper-container mainslider home">
             <div className="swiper-wrapper">
@@ -71,17 +68,12 @@ const SliderItem = props => (
                                     <h1 className="heading">{props.item.title_3}</h1>
                                     <p className="sub-heading">{props.item.description}
                                     </p>
-                                    <div className='landing-bidding'>
-                                    <button type="button" class="btn btn-secondary">BID NOW <img src={Arrow }alt="" /></button>
-
-                                    </div>
-                                    
                                    
                                 </div>
-                                {/* <div className="image">
+                                <div className="image">
                                     <img className="img-bg" src={props.item.imgbg} alt="axies" />
                                     <img src={props.item.img} alt="axies" />
-                                </div> */}
+                                </div>
                             </div>   
                         </div>					                           
                     </div>

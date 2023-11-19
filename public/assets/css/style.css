@@ -10,7 +10,7 @@
 @import "animate.css";
 @import "font-awesome.css";
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import "bootstrap.css";
+/* @import "bootstrap.css"; */
 /**
   	* Reset Browsers
     * General
@@ -2191,7 +2191,7 @@ header{
 -------------------------------------------------------------- */
 #footer {
     padding: 80px 0 80px;
-    background: var(black);
+    background: var(--bg-section);
 }
 
 #footer.style-2 {
@@ -2199,10 +2199,10 @@ header{
 }
 .home-5 #footer , 
 .home-3 #footer{
-    background: #090909 !important;
+    background: #fff !important;
 }
 .home-6 #footer {
-    background: var(black) !important;
+    background: var(--bg-section) !important;
 }
 .is_dark .home-5 #footer,
 .is_dark .home-3 #footer {

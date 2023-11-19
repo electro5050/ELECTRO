@@ -21,97 +21,136 @@ const headerStyle = {
   alignItems: "center"
 };
 const TopWinners = ({rankingData}) => {
+  const [gameHistory, setGameHistory] = useState(rankingData);
+  const token = localStorage.getItem('token');
+
+  const [profileImage,setProfileImage]=useState('')
+  const [userAvatar, setUserAvatar] = useState('null');
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      fetch('http://192.168.29.85:3000/users', {
+          method: 'GET',
+          headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data && typeof data === 'object') {
+              setUser([data]); 
+              setUserAvatar(data.avatar);// Store the avatar filename
+              setProfileImage(data.profilePictureUrl) 
+          }
+      })
+      .catch(error => {
+          console.error('Error fetching user data:', error);
+      });
+    }
+  }, [token]);
+
+  useEffect(() => {
+      fetch('http://192.168.29.85:3000/usergamehistory', {
+          method: 'GET',
+          headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data && Array.isArray(data)) {
+              setGameHistory(data);
+          }
+      })
+      .catch(error => {
+          console.error('Error fetching user game history:', error);
+      });
+  }, []);
 
   return (
-    <div className="game-view-top-history-profile" style={{height:"40vh", background:"#43415B", marginTop:"4vh", borderRadius: "20px"}}>
+    <div className="game-view-top-history-profile" style={{height:"30vh", background:"#43415B", marginTop:"4vh", borderRadius: "20px"}}>
         
 <div style={headerStyle}>
-  <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'2vw'} />
-    <span  style={{marginLeft:"10px"}}>Your Game History</span>
+  <Avathar  imageUrl={profileImage || userAvatar || "assets/Avatars/avathar_1.png"} imageSize={'calc(10px + 1vw + 1vh)'} />
+    <span  style={{marginLeft:"10px"}} className="font-6">Your Game History</span>
       </div>
 
-          <div className="table-ranking">
-                                <div className="flex th-title">
-                                    <div className="column">
-                                    game type
-                                    </div>
-                                    <div className="column" style={{width:"34.6%"}}>
-                                    date and time
-                                    </div>
-                                    <div className="column">
-                                    bid amount
-                                    </div>
-                                    <div className="column" style={{width:"10.6%"}}>
-                                    win
-                                    </div>
-                                    <div className="column" style={{width:"10.6%"}}>
-                                    lose
-                                    </div>
-                                    <div className="column" style={{width:"10.6%"}}>
-                                    
-                                    </div>
-                                </div>
-                              <div style={{height:"35vh", overflowY:"auto", paddingRight: "10px"}}>
-                              {
-                                   rankingData && rankingData.map((player, index) => (
-                                      <div  className="fl-item" style={{paddingTop:"10px"}}>
-                                          <div className="item flex">
-                                              <div className="column">
-                                                <div style={{display:"flex", justifyContent: "center"}}>
-                                                  <span style={{color:"#FFFFFF", paddingLeft:'10px', fontWeight:"700"}}>BID AND WIN</span>
-                                                </div>
+      <table className="table electra-table">
+        <tbody style={{ overflowY: "auto", paddingRight: "10px" }}>
 
-                                              </div>
-                                              <div className="column" style={{width:"34.6%"}}>
-                                                <div style={{display:"flex", justifyContent: "center"}}>
-                                                  <span style={{color:"#FFFFFF", paddingLeft:'10px', fontWeight:"700"}}>{player.datetime}</span>
-                                                </div>
+        <tr className="th-title font-6"  style={{ position: 'sticky', top: '0', zIndex: '1', background:"#43415B" }}>
+            <th className="column left-align">game type</th>
+            <th className="column" style={{width:"34.6%"}}>date and time</th>
+            <th className="column" >bid amount</th>
+            <th className="column" style={{width:"10.6%"}}>win</th>
+            <th className="column" style={{width:"10.6%"}}>lose</th>
+            <th className="column" style={{width:"10.6%"}}></th>
+          </tr>
 
-                                              </div>
+            {gameHistory && gameHistory.length > 0 && gameHistory.map((player, index) => (
+            <tr key={index} className="item font-5">
 
-                                              <div className="column" >
-                                                <div style={{display:"flex", justifyContent: "center"}}>
-                                                  <span style={{color:"#FFFFFF", paddingLeft:'10px', fontWeight:"700"}}>{player.amount}</span>
-                                                </div>
+          <td className="column">
+                <div>
+                <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
+                <span style={{color:"#FFFFFF", paddingLeft:'10px'}}>BID AND WIN</span>
+                </div>
+                </div>
 
-                                              </div>
+              </td>
 
-                                              <div className="column"style={{width:"10.6%"}}>
-                                                <div style={{display:"flex", justifyContent: "center"}}>
-                                                  <span style={{color:"#70D77A", paddingLeft:'10px', fontWeight:"700"}}>+{player.isWin ? 2 * player.amount : ''}</span>
-                                                </div>
+              <td className="column" style={{width:"34.6%"}}>
+                <div>
+                <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
+                <span style={{color:"#FFFFFF", paddingLeft:'10px'}}>{player.startTime}</span>
+                </div>
+                </div>
 
-                                              </div>
-                                              <div className="column" style={{width:"10.6%"}}>
-                                              <div style={{display:"flex", justifyContent: "center"}}>
-                                                  <span style={{color:"#D77070", paddingLeft:'10px', fontWeight:"700"}}>-{!player.isWin ? player.amount : ''}</span>
-                                                </div>
-                                              </div>
+              </td>
 
-                                              <div className="column"style={{width:"10.6%"}}>
-                                                <div style={{display:"flex", justifyContent: "center"}}>
-                                                <img
+              <td className="column">
+                <div>
+                <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
+                <span style={{color:"#FFFFFF", paddingLeft:'10px'}}>{player.bidAmount}</span>
+                </div>
+                </div>
+
+              </td>
+
+              <td className="column" style={{width:"10.6%"}}>
+                <div>
+                <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
+                <span style={{color:"#70D77A", paddingLeft:'10px'}}> {player.win}</span>
+                </div>
+                </div>
+
+              </td>
+              <td className="column" style={{width:"10.6%"}}>
+                <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
+                <span style={{color:"#D77070", paddingLeft:'10px'}}> {player.loss}</span>
+                </div>
+              </td>
+
+              <td className="column" style={{width:"10.6%"}}>
+                <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
+                <img
                           className="coin-image"
                           id="logo_header"
                           src={"/assets/electra/gold-coin.png"}
                           alt=""
-                          style={{width:"2vw" , paddingLeft:"3px"}}
+                          style={{width:"calc(10px + 1vw + 1vh)" , paddingLeft:"3px"}}
                       />
-                                                  
-                                                      </div>
+                </div>
+              </td>
 
-                                              </div>
-
-
-                                          </div>
-                                      </div>
-                                    ))
-                                }
-                              </div>
-
-                        
-                            </div>
-
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
     </div>
   );

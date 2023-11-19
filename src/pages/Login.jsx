@@ -5,6 +5,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
+import SignUp from './SignUp';
 
 const Login = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -38,7 +39,7 @@ const Login = () => {
             localStorage.setItem('token', data.token);
             axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
             login();  
-            navigate('/home-02');
+            navigate('/game');
         } catch (error) {
             console.error('Error during login:', error.response?.data || error.message);
         }
@@ -109,8 +110,11 @@ const Login = () => {
                     </div>
                 </div>
             </section>
+            <div> <SignUp/> </div>
             <Footer />
         </div>
+
+        
     );
 };
 

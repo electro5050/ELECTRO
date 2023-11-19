@@ -1717,8 +1717,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  /* height: 100%; */
-  /* background-color: rgb(52 52 68/30%); */
+  height: 100%;
+  background-color: rgb(52 52 68/30%);
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
@@ -1745,13 +1745,12 @@
 }
 
 .is_dark .flat-slider .heading .s1 {
-  color: #fff;
-  /* background: linear-gradient(-45deg, #ffbd0c, #ffbd0c, #ffbd0c, #ffbd0c); */
+  color: #14141f;
+  background: linear-gradient(-45deg, #e250e5, #4b50e6, #e250e5, #4b50e6);
   background-size: 100% 100%;
   -webkit-background-clip: text;
   -webkit-text-stroke: 3px transparent;
-  -webkit-text-fill-color: #fff;
-  text-shadow: 8px 5px 10px rgba(255, 188, 14, 0.5);
+  -webkit-text-fill-color: #14141f;
 }
 
 .flat-slider .heading .fill {

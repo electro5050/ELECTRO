@@ -32,7 +32,9 @@ const ButtonGroupContainer = {
   justifyContent: "space-around",
   flexDirection: "column",
   height: "calc(100% - 20px)",
-  margin:"20px"
+  padding:"2%",
+  width: "100%",
+  maxWidth: "fit-content"
 }
 
 const CenterStyle={
@@ -40,23 +42,27 @@ const CenterStyle={
   justifyContent: "center"
 }
 
+const StartStyle={
+  display: "flex",
+  justifyContent: "center"
+}
+
 const TextStyle={
-  color: '#FFF',
-  textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-  fontFamily: 'cursive',
-  fontSize: '1.8vw',
+  color: 'black',
+  fontSize: 'calc(8px + 0.8vh + 0.8vw)',
   fontStyle: 'normal',
   fontWeight: 900,
   lineHeight: 'normal',
+  marginLeft:"10px"
 }
 
 const buttonStyle={
-  borderRadius: "5px", boxShadow: "0px 4px 40px 0px #FFF", minWidth: "60%", height: "8vh",
+  borderRadius: "5px", width: "100%", height: "auto",
   display: "flex",
   alignItems: "center",
-  padding: "0 5px",
-  justifyContent: "space-around"
-
+  justifyContent: "flex-start",
+  cursor:"pointer",
+  padding:"2% 0"
 }
 
 const CoinMultiplyButtonStyle={
@@ -65,7 +71,8 @@ const CoinMultiplyButtonStyle={
   border: "1px solid white",
   padding:"2px",
   width: "30px",
-  marginLeft:"5px"
+  marginLeft:"0",
+  fontSize: 'calc(4px + 0.4vh + 0.4vw)',
 }
 
 const DropDownStyles = {
@@ -79,6 +86,8 @@ const DropDownStyles = {
     padding: '0',
     cursor: 'pointer',
     userSelect: 'none',
+    width:'100%',
+
   },
   dropdown: {
     appearance: 'none',
@@ -86,10 +95,11 @@ const DropDownStyles = {
     MozAppearance: 'none',
     backgroundColor: 'transparent',
     border: 'none',
-    fontSize: '16px',
-    padding: '3px',
+    fontSize: 'calc(4px + 0.4vh + 0.4vw)',
+    padding: '2%',
     color: "white",
-    width:"60px"
+    width:"100%",
+    lineHeight: "normal",
   },
   dropdownArrow: {
     position: 'absolute',
@@ -103,96 +113,120 @@ const switchRoomStyle={
   borderRadius: "5px",
   boxShadow: "0px 3px 4px 0px rgba(0, 0, 0, 0.60)",
   backgroundColor:"#363636",
-  padding:"2px 5px",
-  marginLeft:"5px"
+  padding:"1% 2%",
+  fontSize: 'calc(4px + 0.4vh + 0.4vw)',
+}
+
+function getBidAmountStyle(type){
+  let switchRoomStyle={
+    borderRadius: "5px",
+    boxShadow: "0px 3px 4px 0px rgba(0, 0, 0, 0.60)",
+    background:"#D9D4D4",
+    padding:"1% 2%",
+    border:"none",
+    color:"black",
+    width:"100%",
+    textAlign:"left",
+    fontSize: 'calc(4px + 0.4vh + 0.4vw)',
+    fontWeight:"900"
+  };
+  if(type == 'Red'){
+    switchRoomStyle.background = '#D9D4D4';
+  }
+
+  else  if(type == 'Green'){
+    switchRoomStyle.background = '#FFD700';
+  }
+
+  return switchRoomStyle;
 }
 
 
 const GameControllerButtons = ({BidValue,data, gameState, setGameState, authError, setAuthError,gameId}) => {
   const [result, setResult] = useState(1);
-  const [selectedValue, setSelectedValue] = useState(1);
+  // const [selectedValue, setSelectedValue] = useState(1);
   const [buttonType, setButtonType] = useState("");
   const [textFieldData, setTextFieldData] = useState("");
   const [showSwitchRoomButton, setShowSwitchRoomButton] = useState(false);
-  
+  const [totalBidAmount, setTotalBidAmount] = useState({amount:0, type:null});
 
 
   useEffect(() => {
+    setTotalBidAmount({amount:2050, type:"Red"});
     const timer = setTimeout(() => {
-        setShowSwitchRoomButton(true);
+      setShowSwitchRoomButton(true);
     }, 24000); // 24 seconds
 
-    // Clean up the timer if the component is unmounted before 24 seconds
     return () => {
-        clearTimeout(timer);
+      clearTimeout(timer);
     };
-}, [gameState.gameEnded]); // Empty dependency array ensures this runs only once after initial render
+  }, [gameState.gameEnded]);
 
-
-useEffect(() => {
-  if (gameState.gameEnded) {
-      setShowSwitchRoomButton(false);
-  }
-}, [gameState.gameEnded]);
-
-
-
-  useEffect(() => {
-    if (buttonType) {
-      sendDataToAPI();
-    }
-  }, []);
 
   const handleDropdownChange = (event) => {
-    const newValue = parseInt(event.target.value);
-    setSelectedValue(newValue);
+    let newValue = parseInt(event.target.value, 10);
+    if(isNaN(newValue) || newValue < 1){
+      newValue = 1;
+    }
+    // setSelectedValue(newValue);
     setResult(newValue);
+    setTextFieldData(event.target.value);
   };
+
+  
 
   const handleMultiply = () => {
     setResult(result * 2);
   };
 
   const handleDivide = () => {
-    if(result >= 2)
-      {
-        const newResult = result / 2;
-        setResult(Math.floor(newResult));
-      }
+    if (result >= 2) {
+      setResult(Math.floor(result / 2));
+    }
   };
 
+  
+  useEffect(() => {
+    setTextFieldData(result);
+  }, [result]);
 
   const handleButtonClick = (type) => {
     setButtonType(type);
-};
+    sendDataToAPI(type); // Sending the type as a parameter to the function
+  };
 
-const sendDataToAPI = () => {
-  // Check if gameState or gameState.gameId is undefined
-  if (!gameState || gameState.gameId === undefined) {
-    console.error('gameState or gameId is undefined!');
-    return;
-  }
+  const sendDataToAPI = (type) => {
+    
+    if (!gameState || gameState.gameId === undefined) {
+      console.error('gameState or gameId is undefined!');
+      return;
+    }
 
-  axios.post('http://192.168.29.85:3000/bid', {
-      coinCount: textFieldData,
-      buttonType: buttonType,
+    // if (typeof textFieldData === 'string' && textFieldData.trim() === '') {
+    //   console.error("Coin count is empty");
+    //   return;
+    // }
+
+    axios.post('http://192.168.29.85:3000/bid', {
+      coinCount: result,
+      buttonType: type,
       gameId: gameState.gameId
-  })
-  .then(response => {
+    })
+    .then(response => {
       setGameState({
-          ...gameState,
-          activeGameButton: buttonType
+        ...gameState,
+        activeGameButton: type
       });
       console.log("Data sent successfully:", response.data);
-  })
-  .catch(error => {
+    })
+    .catch(error => {
       console.error("Error sending data:", error);
       if (error.response && error.response.status === 401) {
-          console.log('Authentication error. Please login again.');
-          setAuthError(true);
+        console.log('Authentication error. Please login again.');
+        setAuthError(true);
       }
-  });
-};
+    });
+  };
 
 const handleSwitchRoom = () => {
   const userIdFromLocalStorage = localStorage.getItem('userId');
@@ -206,20 +240,18 @@ const handleSwitchRoom = () => {
       console.error("Error switching room:", error);
   });
 };
-console.log('gameState:', gameState);
-console.log('gameId:', gameState ? gameState.gameId : 'gameState is undefined');
-
 
   return (
     <div className="game-controller" style={gameContollersStyle}>
-       <div style={circleStyle}>
+       {/* <div style={circleStyle}>
         <FontAwesomeIcon icon={faInfo} style={iconStyle} />
-      </div>
+      </div> */}
       <div style={ButtonGroupContainer}>
         <div style={CenterStyle}>
           <div style={{...buttonStyle, background: "#D9D4D4"}} onClick={() => {
-    handleButtonClick("Green");
-    sendDataToAPI();
+            if(buttonType != 'Red')
+              handleButtonClick("Green");
+    // sendDataToAPI();
 }} >
               <span style={TextStyle}>
                   Bid
@@ -229,29 +261,30 @@ console.log('gameId:', gameState ? gameState.gameId : 'gameState is undefined');
                           id="logo_header"
                           src={"/assets/electra/silver-coin.png"}
                           alt=""
-                          style={{width:"2vw" , paddingLeft:"3px"}}
+                          style={{width:"calc(6px + 0.6vh + 0.6vw)" , marginLeft:"3px"}}
                       />
 
-              <span style={{...TextStyle, paddingLeft:"3px"}}>
+              <span style={{...TextStyle}}>
               {result}
               </span>
           </div>
         </div>
 
         <div style={CenterStyle}>
-          <div>
-            <div style={DropDownStyles.dropdownContainer}>
-              <select value={textFieldData} onChange={(e) => { setTextFieldData(e.target.value);handleDropdownChange(e);}} style={DropDownStyles.dropdown}>
+          <div style={{width:"100%"}}>
+            <div style={{...DropDownStyles.dropdownContainer, marginBottom:'10px'}}>
+              {/* <select value={textFieldData} onChange={(e) => {handleDropdownChange(e);}} style={DropDownStyles.dropdown}>
                 <option value={1}>1</option>
                 <option value={10}>10</option>
                 <option value={50}>50</option>
                 <option value={100}>100</option>
                 <option value={500}>500</option>
                 <option value={1000}>1000</option>
-              </select>
-              <span style={DropDownStyles.dropdownArrow}>
+              </select> */}
+              <input style={DropDownStyles.dropdown} type="number" onChange={(e) => {handleDropdownChange(e);}} value={textFieldData} />
+              {/* <span style={DropDownStyles.dropdownArrow}>
                 <FontAwesomeIcon icon={faAngleDown} />
-              </span>
+              </span> */}
           </div>
             <button onClick={handleMultiply} style={CoinMultiplyButtonStyle}>x2</button>
             <button onClick={handleDivide} style={CoinMultiplyButtonStyle}>/2</button>
@@ -259,9 +292,18 @@ console.log('gameId:', gameState ? gameState.gameId : 'gameState is undefined');
         </div>
 
         <div style={CenterStyle}>
+             {totalBidAmount.amount > 0 && totalBidAmount.type != null  && (
+           <button  style={getBidAmountStyle(totalBidAmount.type)} >
+            {totalBidAmount.amount}</button>
+             )}
+        </div>
+
+
+        <div style={CenterStyle}>
           <div style={{...buttonStyle, background: "#FFD700"}} onClick={() => {
+            if(buttonType != 'Green')
            handleButtonClick("Red");
-           sendDataToAPI();
+          //  sendDataToAPI();
                }}  >
               <span style={TextStyle}>
                   Bid
@@ -271,17 +313,17 @@ console.log('gameId:', gameState ? gameState.gameId : 'gameState is undefined');
                           id="logo_header"
                           src={"/assets/electra/gold-coin.png"}
                           alt=""
-                          style={{width:"2vw" , paddingLeft:"3px"}}
+                          style={{width:"calc(6px + 0.6vh + 0.6vw)" , marginLeft:"3px"}}
                       />
 
-              <span style={{...TextStyle, paddingLeft:"3px"}}>
+              <span style={{...TextStyle}}>
               {result}
               </span>
           </div>
         </div>
 
-        <div style={CenterStyle}>
-             {showSwitchRoomButton && (
+        <div >
+             {(showSwitchRoomButton || true) && (
            <button onClick={handleSwitchRoom} style={switchRoomStyle}>switch room</button>
              )}
         </div>

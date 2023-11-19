@@ -1,4 +1,27 @@
 .game-chart {
     width: 100%; 
     height: 100%; 
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.5)
 }
+
+.game-chart  .images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .game-chart .top-image, .game-chart .bottom-image {
+    width: 50px; /* Adjust the width of the images */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .game-chart #chart-container {
+     z-index: 1; /* Ensure content is above images */
+  }

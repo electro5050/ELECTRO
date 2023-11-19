@@ -1,26 +1,20 @@
-
-
+/* baner.css */
 .garndient{
   width: 100%;
-  height: auto;
-  /* background: url('../../assets/images/grandient/Ellipse\ 38\ \(2\).png');
+  height: 170vh;
+  background: url('../../assets/images/grandient/Ellipse\ 38\ \(2\).png');
   background-size: cover;
-  background-position: center; */
-  position: relative;
-  display: flex;
-  top:20vh;
+  background-position: center;
 }
 .baner-page {
   height: 140vh;
   width: 80%;
   border-radius: 2270px;
-  margin-left: 14vh;
+  margin-left: 25vh;
   margin-top: 0vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  
  
   
 }
@@ -33,193 +27,116 @@
   align-items: center;
   width: 100%;
   max-width: 80%;
-  position: relative;
-  flex-direction: column;
 }
 
-.baner-first {
-  height: 48vh;
-  width: 65vw;
+.baner-first,
+.baner-2nd {
+  height: 50vh;
+  width: 38%;
   border-radius: 30px;
   border: 2px solid rgba(255, 255, 255, 0.50);
   background: url('../../assets/images/baners/7b15e980925f5b2039af3b47e1066542.png');
   background-size: cover;
   background-position: center;
-  margin-left: 73vw;
+  margin-right: 13%;
   margin-bottom: 60vh;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 }
 
 .text01 {
-  text-align:center;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  
-  
-
+  text-align: center;
 }
-/* .text2{
-  text-align:center;
-  display: flex;
-  flex-direction: row;
-  position: relative;
-} */
 
 .text-a {
-  color: #FFF;
-  /* text-shadow: 1px 1px 12px rgba(0, 0, 0, 80); */
+  color: rgba(0, 0, 0, 0.80);
+  text-shadow: 0px 4px 40px #FEF7C3;
   font-family: Poppins;
-  font-size: 3.5rem;
+  font-size: 24px;
   font-style: normal;
-  font-weight: 600;
-  line-height: 1;
-  display: flex;
+  font-weight: 700;
+  line-height: 1.5;
+  display: block;
   margin: 10px 0;
-  justify-content: center;
-  position: relative;
-  top: 5vw;
-  text-shadow: 2px 2px 10px #000;
-  
 }
 
 .text-b {
   color: #FDFB81;
   text-shadow: 0px -20px 70px rgba(253, 251, 129, 0.90), 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-family: Poppins;
-  font-size: 5.2rem;
+  font-size: 36px;
   font-style: normal;
   font-weight: 700;
   line-height: 1.2;
-  display: flex;
-  text-align: center;
-  position: relative;
- left: 27vw;
- top: 5vw;
- text-shadow: 2px 2px 10px #FDFB81;
-  
-  
+  display: block;
+  margin: 10px 0;
 }
 .text-c{
-  width: 30vw;
+  width: 574px;
 height: 64px;
 flex-shrink: 0;
 color: #FFF;
-display: flex;
+
 font-family: Poppins;
-font-size: 3.0rem;
+font-size: 30px;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
 padding-right: 20%;
-position: relative;
-text-align: center;
-left: 24vw;
-top: 5vw;
-text-shadow: 2px 2px 10px #000;
+position: absolute;
 }
 .plybutton {
   color: #FFF;
   text-align: center;
   font-family: Poppins;
-  font-size: 1.5rem;
+  font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   border-radius: 10px;
- border-color:#a8a3a3 ;
-background: linear-gradient(180deg, #F5C945 0%, #484209 100%);
-box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.60);
+  background: #BE5ACE;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.50);
-  width: 10vw;
-  height: 6vh;
+  width: 133.617px;
+  height: 46.04px;
   flex-shrink: 0;
-  margin-top: 20%;
-  position: relative;
-  display: flex;
-  justify-content: center; /* Align text horizontally in the center */
-  align-items: center; /* Align text vertically in the center */
-  margin-left: 8vw;
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden; /* Hide overflowing text */
-  text-overflow: ellipsis; /* Add ellipsis (...) if text overflows */
-  bottom: 6vw;
-  left: 18vw;
-  
+  margin-top: 15%;
 }
-.baner-second{
-  height: 50vh;
-  width: 30vw;
-  border-radius: 30px;
-  border: 2px solid rgba(255, 255, 255, 0.50);
-  background: url('../../assets/images/baners/7b15e980925f5b2039af3b47e1066542.png');
-  background-size: cover;
-  background-position: center;
-  margin-right: 1%;
-  margin-bottom: 60vh;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  top: 30vw;
-}
-
-
 
 .text02 {
   color: #FFF;
   text-align: center;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-family: Poppins;
-  font-size: 2.3rem;
+  font-size: 24px;
   font-style: normal;
   font-weight: 700;
   line-height: 1.5;
-  display: flex;
+  display: block;
   margin: 10px 0;
-  text-shadow: 2px 2px 10px rgba(255, 255, 255, 1);
-  position: relative;
-
 }
 
 .plybutton2 {
   color: #FFF;
   text-align: center;
   font-family: Poppins;
-  font-size: 1.5rem;
+  font-size: 16px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   border-radius: 10px;
-  background: #393939;
+  background: rgba(57, 57, 57, 1);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.50);
-  width: 8vw;
-  height: 5vh;
+  width: 130.617px;
+  height: 41.04px;
   flex-shrink: 0;
-  margin-top: 20%;
-  position: relative;
-  display: flex;
-  justify-content:center; /* Align text horizontally in the center */
-  align-items: center; /* Align text vertically in the center */
-  margin-left: 8vw;
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden; /* Hide overflowing text */
-  text-overflow: ellipsis; /* Add ellipsis (...) if text overflows */
-  top: 11vh;
-  right: 2vw;
-  border-color: #393939;
+  margin-left: 13vh;
 }
 
 .baner-3 {
   height: 48vh;
-  width: 66vw;
+  width: 57%;
   background-color: #FFF;
-  position: relative;
-  margin-top: 60vh;
-  margin-right: 15vh;
+  position: absolute;
+  margin-top: 80vh;
+  margin-right: 17vh;
   border-radius: 30px;
   border: 2px solid rgba(255, 255, 255, 0.50);
   background: url('../../assets/images/baners/b22923a8f4ea6b5833c3eb52d46f3057.png');
@@ -228,12 +145,11 @@ box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.60);
   display: flex; /* Added display: flex to center the text */
   justify-content: center; /* Added justify-content to center the text */
   align-items: start; /* Added align-items to center the text */
-  right: 28.5vw;
 }
 .text03{
   text-align: start;
-  position: relative;
-  display: flex
+  position: absolute;
+  margin-right: 55vh;
 
 }
 
@@ -248,10 +164,9 @@ box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.60);
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  position: relative;
+  position: absolute;
   margin-top: 5vh;
-  display: flex;
-  left: 13vw;
+  display: block;
   
   
   
@@ -270,10 +185,9 @@ box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.60);
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  position: relative;
+  
   margin: 10vh 0; /* Adjust the margin to create space */
-  display: flex;
-  left: 5vw;
+  display: block;
   
 }
 .text-g{
@@ -287,9 +201,7 @@ font-size: 30px;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
-position: relative;
-display: flex;
-left: 10vw;
+
 
 }
 .text-h{
@@ -303,13 +215,11 @@ font-size: 30px;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
-position:relative;
-display: flex;
-left: 10vw;
+position:absolute;
 }
 .onvery{
   position: absolute;
-  bottom: 4vh;
+  bottom: 8vh;
 }
 .endtext{
   text-align: end;
@@ -317,8 +227,8 @@ left: 10vw;
   
 }
 .text-i{
-  display: flex;
-  position: relative;
+  margin-left: 18vh;
+  margin-top: 20vh;
   width: 563.344px;
 height: 96px;
 flex-shrink: 0;
@@ -329,8 +239,6 @@ font-size: 30px;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
-left: 10vw;
-top: 10vw;
 }
 .plybutton03{
   color: #FFF;
@@ -342,55 +250,12 @@ top: 10vw;
   line-height: normal;
   border-radius: 10px;
   background: #FFBC0E;
-border-color: #FFBC0E;
+
   box-shadow: 0px 5px 12px 0px #000, 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   width: 130.617px;
   height: 41.04px;
   flex-shrink: 0;
   margin-right: 14%;
-  position: relative;
-  display: flex;
-  justify-content: center; /* Align text horizontally in the center */
-  align-items: center; /* Align text vertically in the center */
-  left: 17vw;
-  top: 10vw;
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden; /* Hide overflowing text */
-  text-overflow: ellipsis;
   
-}
-
-
-
-
-@media screen and (max-width: 767px) {
-  .baner-page {
-    height: auto;
-    width: 90%; /* Adjust width as needed */
-    border-radius: 30px; /* Make sure it's visually appealing */
-    margin: 10vh auto;
-  }
-
-  .banners-container {
-    flex-direction: row; /* Stack banners vertically for mobile */
-    align-items: center; /* Center banners */
-    display: flex;
-    width: 100%;
-    max-width: 80%;
-    position: relative;
-  }
-
-  /* Adjust styles for individual banner sections */
-  .baner-first,
-  .baner-second,
-  .baner-3 {
-    height: 50vh;
-    width: auto; /* Adjust the width for mobile */
-    margin-bottom: 20vh; /* Adjust margins for mobile */
-    
-  }
-
-  /* Add styles for text and buttons within the banners for mobile */
-  /* ... */
 }
 
