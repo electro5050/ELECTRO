@@ -2191,7 +2191,7 @@ header{
 -------------------------------------------------------------- */
 #footer {
     padding: 80px 0 80px;
-    background: var(--bg-section);
+    background: var(black);
 }
 
 #footer.style-2 {
@@ -2199,10 +2199,10 @@ header{
 }
 .home-5 #footer , 
 .home-3 #footer{
-    background: #fff !important;
+    background: #090909 !important;
 }
 .home-6 #footer {
-    background: var(--bg-section) !important;
+    background: var(black) !important;
 }
 .is_dark .home-5 #footer,
 .is_dark .home-3 #footer {

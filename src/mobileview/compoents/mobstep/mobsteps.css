@@ -1,0 +1,61 @@
+.mob-step-container{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+.mob-mainbox-container{
+    display: flex;
+    position: relative;
+    width: auto;
+    height: auto;
+
+}
+.mob-mainbox{
+    width: auto;
+    height: auto;
+    position: relative;
+    align-items: center;
+    
+    display: flex;
+    justify-content:center;
+    flex-direction:column;
+}
+.mob-texts{
+    display: flex;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    
+    
+}
+.mob-method{
+    position: relative;
+    text-align: center;
+    color: #FFF;
+    text-align: center; 
+    font-family: Poppins;
+    
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    top: 59px;
+    width: 426px;
+    height: 126px;
+    flex-shrink: 0;
+    font-size: x-large;
+    justify-content: center;
+   
+}
+.mob-innerbox{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction:row;
+    align-items: center;
+    margin-top: 8vh;
+    gap: 20px;
+   
+    
+}

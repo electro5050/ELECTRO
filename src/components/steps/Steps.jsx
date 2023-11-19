@@ -11,9 +11,14 @@ function Steps() {
      <div className='mainbox-container'>
         <div className='mainbox'>
             <div className='texts'>
-                <h2 className='method'>“ How to earn ?” </h2>
-                <h2 classname='method2'>Follow these simple steps</h2>
-                <div className='innerbox'>
+                <div className='method'>
+                <h2 >“ How to earn ?” <br></br>Follow these simple steps</h2>
+
+                </div>
+               
+                
+            </div>
+            <div className='innerbox'>
                     <div className='innerbox1'>
                         <div className='pic-a'>
                         <img src={Step1 }></img>
@@ -21,7 +26,7 @@ function Steps() {
                         
 
                     </div>
-                    <p className='outer1'>signup</p>
+                    
 
                     <div className='innerbox2'>
                         <div className='pic-b'>
@@ -30,7 +35,7 @@ function Steps() {
                         
 
                     </div>
-                    <p className='outer2'>buy coins</p>
+                   
 
                     <div className='innerbox3'>
                         <div className='pic-b'>
@@ -39,7 +44,7 @@ function Steps() {
                         
 
                     </div>
-                    <p className='outer3'>participate</p>
+                    
 
                     <div className='innerbox4'>
                         <div className='pic-c'>
@@ -48,7 +53,7 @@ function Steps() {
                         
 
                     </div>
-                    <p className='outer4'>bid and win</p>
+                   
 
                     <div className='innerbox5'>
                         <div className='pic-d'>
@@ -57,15 +62,12 @@ function Steps() {
                         
 
                     </div>
-                    <p className='outer5'>redeem coins</p>
+                   
                     
                     
                         
                     
                 </div>
-                
-
-            </div>
         </div>
 
     </div>

@@ -1,0 +1,83 @@
+.upi-main-container{
+    width:auto;
+  height: auto;
+
+  display: flex;
+  position: relative;
+  top: 7vh;
+}
+.upi-payment{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 20px;
+    background: rgba(243, 187, 41, 0.85);
+    width: 410px;
+    height: 437px;
+    flex-shrink: 0;
+    left: 13px;
+}
+.upi-secure{
+    display: flex;
+    position: relative;
+    justify-content: start;
+    flex-direction: column;
+    align-items: start;
+}
+.upi-easy{
+    display: flex;
+    position: relative;
+    display: flex;
+    width: 196px;
+    height: 109px;
+    justify-content: start;
+    flex-shrink: 0;
+    color: #000;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    top: 80px;
+    left: 8vw;
+}
+.upi-wayto{
+    display: flex;
+    position: relative;
+    text-align: center;
+    display: flex;
+    width: 196px;
+    height: 109px;
+    color: #000;
+    font-family: Poppins;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal; 
+    bottom: 6px; 
+    left: 9vw;
+
+}
+.upi-buycoins{
+    display: flex;
+    position: relative;
+    bottom: 130px;
+    left: 190px;
+    background-color: #000000;
+    color: #fff;
+    border: none; /* Remove border */
+    border-radius: 6px; /* Remove border-radius */
+    
+}
+.upi-gateway{
+    display: flex;
+    position: relative;
+    bottom: 90px;
+    width: 350px;
+    left: 5vw;
+  
+    
+}
+ 

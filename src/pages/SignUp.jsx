@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; 
 import { Link } from 'react-router-dom';
+import './signup.css'
 
 const SignUp = () => {
     const [formData, setFormData] = useState({ name: '', email: '', password: '' });
@@ -38,7 +39,7 @@ const SignUp = () => {
                 localStorage.setItem('token', data.token);
                 axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
             }
-            navigate('/game');
+            navigate('/home-02');
         } catch (error) {
             console.error('Error during signup:', error.response?.data || error.message);
         }
@@ -46,11 +47,11 @@ const SignUp = () => {
 
     return (
         <div>
-            <section className="tf-login tf-section">
+            <section className="signup-container">
                 <div className="themesflat-container">
                     <div className="row">
                         <div className="col-12">
-                            <h2 className="tf-title-heading ct style-1">Signup</h2>
+                            <h2 className="signup-start">Get started!</h2>
                             <div className="flat-form box-login-social">
                                 <ul>
                                     <li>

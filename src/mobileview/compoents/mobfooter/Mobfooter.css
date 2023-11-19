@@ -1,0 +1,122 @@
+.mob-footer {
+    position: relative;
+    
+    align-items: center;
+    justify-content:center;
+   
+    padding: 20px 5px;
+    color: (56, 49, 78, 1), rgba(56, 49, 78, 0);
+    text-align: center;
+    padding-bottom: 5%;
+    
+    font-size: larger;
+    
+    margin-left: 1.8vw;
+    display: flex;
+    flex-direction: column;
+    top: 10vh;
+   
+  }
+  
+  .mob-mainhd {
+   
+    color: #E9D4D4;
+text-align: center;
+font-family: Poppins;
+font-size: 1.3em;
+font-style: normal;
+font-weight: 600;
+display: inline-flex;
+padding: 20px;
+position: relative;
+margin-left: .4vw;
+
+
+
+
+
+
+
+  }
+  
+  .mob-footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5.5rem;
+     /* Add margin between links and line */
+     position: relative;
+     margin-left: 3px;
+  }
+  
+  .footer-link {
+    text-decoration: none;
+    color: white;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    padding: 1vw 1vw;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  
+   /* .footer-link:hover {
+    border-color: white;
+    color: rgba(200, 200, 200, 1);
+  } */
+   
+  .mob-long-line {
+    width: 100%;
+height: .1rem;
+    background-color: rgba(200, 200, 200, 0.3);
+    margin: 0 auto; /* Center the line */
+    margin-top: 2vh;
+   
+    position: relative;
+  }
+  .logo-dark{
+    padding-bottom: 3%;
+  }
+  .footer-llp{
+    font-size: 1.1rem;
+    padding: 10px ;
+    position: relative;
+   
+  }
+  .footer-main{
+    position: relative;
+    width: 100%;
+    height: 30%;
+    top: 5vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    right: 1px;
+    
+    
+  }
+  .mob-social-communities{
+    margin-bottom: 1vw;
+    color: #E9D4D4;
+text-align: center;
+font-family: Poppins;
+font-size: 1.3em;
+font-style: normal;
+font-weight: 600;
+display: inline-flex;
+padding: 20px;
+position: relative;
+margin-left: .4vw;
+
+  }
+  .mob-community-link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+     /* Add margin between links and line */
+     position: relative;
+     margin-left: 3px;
+     bottom: 1vh;
+  }
+  
+  
+

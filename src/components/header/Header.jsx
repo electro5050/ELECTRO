@@ -12,15 +12,25 @@ import Chatpage from '../../pages/Chatpage'
 import '../header/Header.css'
 import { Link as ScrollLink } from 'react-scroll';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 
 const Header = (gameState={gameState}) => {
   const { pathname } = useLocation();
   const [coinBalance, setCoinBalance] = useState(null);
   const[chatOpen, setChatOpen] = useState(false)
+  const navigate = useNavigate();
+  const SignUpRef = useRef(null);
 
 
   const headerRef = useRef(null);
+
+  const handleScrollToSignUp = () => {
+    if (SignUpRef.current) { 
+      SignUpRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
 
   useEffect(() => {
     // Assuming you have a function to get a user's token for authorization
@@ -56,22 +66,22 @@ const Header = (gameState={gameState}) => {
 
 
 
-  // useEffect(() => {
-  //   window.addEventListener('scroll', isSticky);
-  //   return () => {
-  //     window.removeEventListener('scroll', isSticky);
-  //   };
-  // });
-  // const isSticky = (e) => {
-  //   const header = document.querySelector('.js-header');
-  //   const scrollTop = window.scrollY;
-  //   scrollTop >= 300
-  //     ? header.classList.add('is-fixed')
-  //     : header.classList.remove('is-fixed');
-  //   scrollTop >= 400
-  //     ? header.classList.add('is-small')
-  //     : header.classList.remove('is-small');
-  // };
+  useEffect(() => {
+    window.addEventListener('scroll', isSticky);
+    return () => {
+      window.removeEventListener('scroll', isSticky);
+    };
+  });
+  const isSticky = (e) => {
+    const header = document.querySelector('.js-header');
+    const scrollTop = window.scrollY;
+    scrollTop >= 300
+      ? header.classList.add('is-fixed')
+      : header.classList.remove('is-fixed');
+    scrollTop >= 400
+      ? header.classList.add('is-small')
+      : header.classList.remove('is-small');
+  };
 
   const menuLeft = useRef(null);
   const btnToggle = useRef(null);
@@ -163,8 +173,8 @@ const Header = (gameState={gameState}) => {
                   </ul>
                 </nav> */}
                 <div className="flat-search-btn flex">
-                  <div className='login'>
-                  <Button variant="outline-primary">Log In</Button>{' '}
+                  <div className='entrybutton'>
+                  <Button variant="outline-primary" onClick={() => navigate('/login')}>Log In</Button>{' '}
 
                   </div>
                
@@ -180,9 +190,12 @@ const Header = (gameState={gameState}) => {
                   {/* <p className="sc-button header-slider style style-1 wallet fl-button pri-1">
                       <span>{coinBalance ? `${coinBalance} $` : 'Wallet connect'}</span>
                   </p> */}
-                  <div className='signup'>
-                  <Button variant="primary">Sign up</Button>{' '}
+                  <div className='signupentry'  ref={SignUpRef}>
+                  <Button variant="primary" onClick={handleScrollToSignUp} scroll to SignUP>
+                             Sign up
+                  </Button>
 
+                 
                   </div>
                  
 

@@ -53,7 +53,7 @@ const SliderItem = props => (
         <div className="overlay"></div>
         <div className="swiper-container mainslider home">
             <div className="swiper-wrapper">
-                <div className="swiper-slide">
+                {/* <div className="swiper-slide"> */}
                     <div className="slider-item">	
                         <div className="themesflat-container ">
                             <div className="wrap-heading flat-slider flex">
@@ -79,7 +79,7 @@ const SliderItem = props => (
                         </div>					                           
                     </div>
                 </div>
-            </div>
+            {/* </div> */}
         </div>        
     </div>
     
