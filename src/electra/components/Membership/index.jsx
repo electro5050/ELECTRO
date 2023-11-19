@@ -14,27 +14,27 @@ const containerStyle = {
   justifyContent: 'center',
 };
 
-const GameComponent = ({}) => {
+const GameComponent = ({isMobile}) => {
   
   return (
     <div className="membership-game">
-      <TopSection  />
+      {!isMobile && <TopSection  />}
       <div className="container" style={{background:"rgba(40, 40, 40, 0.60)", borderRadius: "1.2vw", height: "70vh", overflowY: "auto", 
       fontWeight:"700", color: "white", padding:"2vw"}}>
 
-          <div style={{width:"100%", textAlign:"center", fontSize:"2vw"}}>
+          <div style={{width:"100%", textAlign:"center"}} className="font-10">
             membership coming soon..
           </div>
 
-          <div style={{width:"100%", textAlign:"center", fontSize:"1vw", marginTop:"0.5vh"}}>
+          <div style={{width:"100%", textAlign:"center", marginTop:"0.5vh"}} className="font-6">
           stay tuned...
           </div>
 
-          <div style={{width:"100%", textAlign:"left", fontSize:"2vw", marginTop:"2vh"}}>
+          <div style={{width:"100%", textAlign:"left", marginTop:"2vh"}} className="font-10">
           Want to have early access to VIP Membership?
           </div>
 
-          <div style={{width:"100%", textAlign:"left", fontSize:"1vw", marginTop:"0.5vh"}}>
+          <div style={{width:"100%", textAlign:"left", marginTop:"0.5vh"}} className="font-6">
           here's how you can avail it
           </div>
 

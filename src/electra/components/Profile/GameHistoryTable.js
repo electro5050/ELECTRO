@@ -75,31 +75,29 @@ const TopWinners = ({rankingData}) => {
     <div className="game-view-top-history-profile" style={{height:"30vh", background:"#43415B", marginTop:"4vh", borderRadius: "20px"}}>
         
 <div style={headerStyle}>
-  <Avathar  imageUrl={profileImage || userAvatar || "assets/Avatars/avathar_1.png"} imageSize={'2vw'} />
-    <span  style={{marginLeft:"10px"}}>Your Game History</span>
+  <Avathar  imageUrl={profileImage || userAvatar || "assets/Avatars/avathar_1.png"} imageSize={'calc(10px + 1vw + 1vh)'} />
+    <span  style={{marginLeft:"10px"}} className="font-6">Your Game History</span>
       </div>
 
       <table className="table electra-table">
-        <thead>
-          <tr className="th-title">
-            <th className="column">game type</th>
+        <tbody style={{ overflowY: "auto", paddingRight: "10px" }}>
+
+        <tr className="th-title font-6"  style={{ position: 'sticky', top: '0', zIndex: '1', background:"#43415B" }}>
+            <th className="column left-align">game type</th>
             <th className="column" style={{width:"34.6%"}}>date and time</th>
             <th className="column" >bid amount</th>
             <th className="column" style={{width:"10.6%"}}>win</th>
             <th className="column" style={{width:"10.6%"}}>lose</th>
             <th className="column" style={{width:"10.6%"}}></th>
           </tr>
-        </thead>
-
-        <tbody style={{ overflowY: "auto", paddingRight: "10px" }}>
 
             {gameHistory && gameHistory.length > 0 && gameHistory.map((player, index) => (
-            <tr key={index} className="item">
+            <tr key={index} className="item font-5">
 
           <td className="column">
                 <div>
                 <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
-                <span style={{color:"#FFFFFF", paddingLeft:'10px', fontWeight:"700"}}>BID AND WIN</span>
+                <span style={{color:"#FFFFFF", paddingLeft:'10px'}}>BID AND WIN</span>
                 </div>
                 </div>
 
@@ -108,7 +106,7 @@ const TopWinners = ({rankingData}) => {
               <td className="column" style={{width:"34.6%"}}>
                 <div>
                 <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
-                <span style={{color:"#FFFFFF", paddingLeft:'10px', fontWeight:"700"}}>{player.startTime}</span>
+                <span style={{color:"#FFFFFF", paddingLeft:'10px'}}>{player.startTime}</span>
                 </div>
                 </div>
 
@@ -117,7 +115,7 @@ const TopWinners = ({rankingData}) => {
               <td className="column">
                 <div>
                 <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
-                <span style={{color:"#FFFFFF", paddingLeft:'10px', fontWeight:"700"}}>{player.bidAmount}</span>
+                <span style={{color:"#FFFFFF", paddingLeft:'10px'}}>{player.bidAmount}</span>
                 </div>
                 </div>
 
@@ -126,14 +124,14 @@ const TopWinners = ({rankingData}) => {
               <td className="column" style={{width:"10.6%"}}>
                 <div>
                 <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
-                <span style={{color:"#70D77A", paddingLeft:'10px', fontWeight:"700"}}> {player.win}</span>
+                <span style={{color:"#70D77A", paddingLeft:'10px'}}> {player.win}</span>
                 </div>
                 </div>
 
               </td>
               <td className="column" style={{width:"10.6%"}}>
                 <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
-                <span style={{color:"#D77070", paddingLeft:'10px', fontWeight:"700"}}> {player.loss}</span>
+                <span style={{color:"#D77070", paddingLeft:'10px'}}> {player.loss}</span>
                 </div>
               </td>
 
@@ -144,7 +142,7 @@ const TopWinners = ({rankingData}) => {
                           id="logo_header"
                           src={"/assets/electra/gold-coin.png"}
                           alt=""
-                          style={{width:"2vw" , paddingLeft:"3px"}}
+                          style={{width:"calc(10px + 1vw + 1vh)" , paddingLeft:"3px"}}
                       />
                 </div>
               </td>

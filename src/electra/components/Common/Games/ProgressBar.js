@@ -59,9 +59,9 @@ const ProgressBar = ({ progressValue, firstColor, secondColor }) => {
         </div>
       </div>
       <div style={labelsStyle}>
-        <div style={{ position: "absolute", color:"#C0C0C0" }}>silver</div>
+        <div style={{ position: "absolute", color:"#C0C0C0" }}>|</div>
         {<div style={{ width: "100%", display: "flex", justifyContent: "center", position: "absolute" }}>|</div>}
-        {<div style={{ width: "100%", display: "flex", justifyContent: "end", position: "absolute", color:"#FFD700" }}>gold</div>}
+        {<div style={{ width: "100%", display: "flex", justifyContent: "end", position: "absolute", color:"#FFD700" }}>|</div>}
       </div>
     </div>
   );

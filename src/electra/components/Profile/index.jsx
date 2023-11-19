@@ -17,26 +17,30 @@ const avatharContainerStyle = {
 
 let rankingData=[
   {
-    amount: 180,
+    bidAmount: 180,
     startTime: '24/20/2023 10:00:30 am',
-    isWin: true
+    win: 0,
+    loss: 180
   },
   {
-    amount: 180,
+    bidAmount: 180,
     startTime: '24/20/2023 10:00:30 am',
-    isWin: true
-  },
-
-  {
-    amount: 180,
-    startTime: '24/20/2023 10:00:30 am',
-    isWin: true
+    win: 0,
+    loss: 180
   },
 
   {
-    amount: 180,
+    bidAmount: 180,
     startTime: '24/20/2023 10:00:30 am',
-    isWin: true
+    win: 0,
+    loss: 180
+  },
+
+  {
+    bidAmount: 180,
+    startTime: '24/20/2023 10:00:30 am',
+    win: 360,
+    loss: 0
   },
 
 

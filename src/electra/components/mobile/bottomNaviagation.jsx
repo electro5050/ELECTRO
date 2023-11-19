@@ -14,7 +14,7 @@ const BottomNavigation = ({handleLinkClick, selectedMenu}) => {
       <img src={`assets/MenuIcons/menu${selectedMenu=="Menu" ? "_1" : ""}.png`} alt="" style={imageStyle} onClick={() => handleLinkClick("Menu")} />
       <img src={`assets/MenuIcons/profile${selectedMenu=="Profile" ? "_1" : ""}.png`} alt="" style={imageStyle} onClick={() => handleLinkClick("Profile")}  />
       <img src={`assets/MenuIcons/coin${selectedMenu=="Coin" ? "_1" : ""}.png`} alt="" style={imageStyle} />
-      <img src={`assets/MenuIcons/wallet${selectedMenu=="Chat" ? "_1" : ""}.png`} alt="" style={imageStyle} />
+      <img src={`assets/MenuIcons/wallet${selectedMenu=="wallet" ? "_1" : ""}.png`} alt="" style={imageStyle} />
       <img src={`assets/MenuIcons/message${selectedMenu=="Chat" ? "_1" : ""}.png`} alt="" style={imageStyle} onClick={() => handleLinkClick("Chat")}  />
     </div>
   );

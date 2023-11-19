@@ -19,10 +19,10 @@ const passwordChangeCommnDivStyle = {
 const InputStyle = {
   padding: 0,
   margin: 0,
-  height: '0.7vw',
+  height: 'calc(4px + 0.4vw + 0.4vh)',
+  fontSize:"calc(4px + 0.4vw + 0.4vh)",
   border: 'none',
   width: 'min-content',
-  fontSize: '0.7vw',
   color:"white",
   width:"100%"
 };
@@ -59,7 +59,7 @@ const AccountInfo = ({userDate}) => {
     background: 'rgba(39, 30, 6, 0.70)',
     maxHeight:'40vh',
     padding:"20px"
-    }}>
+    }} className="font-4"> 
 
       <div style={{...avatharContainerStyle, justifyContent:'space-between'}}>
           <div>

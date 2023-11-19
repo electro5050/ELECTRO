@@ -143,16 +143,17 @@ const ChatBox = () => {
 
     return (
         <div className="game-chat-main" style={{ height: "100%", width:"100%" }}>
-            <div className="game-chat-box" style={{ overflowY: "auto", height: "80%", background: "rgba(27, 27, 27, 0.80)", padding: "1vh" }} ref={chatWindowRef}>
+            <div className="game-chat-box" style={{ overflowY: "auto", height: "80%", background: "rgba(0, 0, 0, 0.80)", padding: "1vh" }} ref={chatWindowRef}>
                 <div className="game-chat-header" style={{ marginBottom: "10px" }}>
-                    <span style={{ color: "#FBF4B6", fontSize: "1em", fontWeight: "bold", fontFamily: "sans-serif" }}>
-                        electro community
+                    <span style={{ color: "#FBF4B6", fontWeight: "bold", fontFamily: "sans-serif" }} className="font-5">
+                        Electro Community
                     </span>
-                    <div style={circleStyle}>
+                    {/* <div style={circleStyle}>
                         <FontAwesomeIcon icon={faInfo} style={iconStyle} />
-                    </div>
+                    </div> */}
                 </div>
                 <div>
+
                     {messages.map((msg, index) => (
                         <ChatSection key={index} chatDetails={{
                             name: msg.user ? msg.user : 'Loading...',
@@ -163,9 +164,9 @@ const ChatBox = () => {
                     ))}
                 </div>
             </div>
-            <div style={{ height: "18%", background: "rgba(27, 27, 27, 0.80)", marginTop: "1%", borderRadius: "5px" }}>
+            <div style={{ height: "18%", background: "rgba(0, 0, 0, 0.80)", marginTop: "1%", borderRadius: "5px" }}>
                 <div style={{ padding: "10px", display: "flex" }}>
-                    <input type="text" value={message} className="custom-text-box" placeholder="Type Here..." onChange={handleMessageChange} />
+                    <input type="text" value={message} className="custom-text-box font-4" placeholder="Type Here..." onChange={handleMessageChange} />
                     <button style={sendButtonStyle} onClick={sendMessage}>
                         <FontAwesomeIcon icon={faPaperPlane} style={iconSendButtonStyle} />
                     </button>

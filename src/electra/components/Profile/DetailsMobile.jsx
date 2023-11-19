@@ -13,8 +13,8 @@ const avatharContainerStyle = {
 
 
 const avatarStyle = {
-  width: '6vw',
-  height: '6vw',
+  width: 'calc(25px + 2.5vh + 2.5vw)',
+  height: 'calc(25px + 2.5vh + 2.5vw)',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -192,12 +192,12 @@ const getSelectedAvatharStyle = (avatarPath) => {
       <Avathar 
           imageUrl={profileImage || userAvatar || "assets/Avatars/avathar_1.png"}
 
-          imageSize={'10vh'} 
+          imageSize={'calc(30px + 3vh + 3vw)'} 
           editIconClick={ImageEditButtonClick} 
         />
       
         <Modal isOpen={isImagePopUpOpen} onClose={closeAvatharEditModal}>
-          <span style={{fontSize:"max(13px, 0.8vw)", color:"white"}}>Choose your avathar</span>
+          <span style={{color:"white"}} className="font-6">Choose your avathar</span>
           <div style={{width: "77vw", marginTop:"2vh" , display: "flex", flexWrap: "wrap", maxHeight: "30vh", 
           overflowY: "scroll", marginBottom:"2vh"}}>
             <div style={{...avatarStyle, color:'black'}} className={"avathar-conainer-rounded"} onClick={handleFileUpload}>
@@ -228,21 +228,21 @@ const getSelectedAvatharStyle = (avatarPath) => {
 
 
           </div>
-          <div onClick={handleAvatarSelect} style={avatharButton}>apply new avatar</div>
+          <div onClick={handleAvatarSelect} style={avatharButton} className="font-4">apply new avatar</div>
       </Modal>
       </div>
 
       
       <div style={{paddingLeft:"10px"}}>
           <div style={{display:"flex", alignItems: "center"}}>
-              <div style={{fontSize: "1.4em", color:"white", fontWeight:"800"}}>
+              <div style={{color:"white", fontWeight:"800"}}  className="font-6">
               {user && user[0] ? user[0].name : 'Loading...'}
               </div>
-              <div style={{marginLeft:"10px", fontSize: "2em"}}>
+              <div style={{marginLeft:"10px"}}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="1.2em"
-                height="1.2em"
+                width="calc(10px + 1vh + 1vw)"
+                height="calc(10px + 1vh + 1vw)"
                 viewBox="0 0 28 28"
                 fill="none"
               >
@@ -273,7 +273,7 @@ const getSelectedAvatharStyle = (avatarPath) => {
               </svg>
               </div>
           </div>
-          <div style={{fontSize: "1.2em", color:"#B7B7B7", marginTop: "10px"}}>
+          <div style={{color:"#B7B7B7", marginTop: "10px"}} className="font-5">
             User ID: {user && user[0] ? user[0].id : 'Loading...'}
           </div>
       </div>  

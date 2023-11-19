@@ -25,6 +25,71 @@ const shareButtonStyle = {
     fontWeight: 700
   };
 
+
+  const exampleRankingData = [
+    {
+      userId: "User1",
+      bidAmount: 100,
+      winningBonus: 50,
+    },
+    {
+      userId: "User2",
+      bidAmount: 150,
+      winningBonus: 75,
+    },
+    {
+      userId: "User3",
+      bidAmount: 120,
+      winningBonus: 60,
+    },
+    {
+      userId: "User1",
+      bidAmount: 100,
+      winningBonus: 50,
+    },
+    {
+      userId: "User2",
+      bidAmount: 150,
+      winningBonus: 75,
+    },
+    {
+      userId: "User3",
+      bidAmount: 120,
+      winningBonus: 60,
+    },
+    {
+      userId: "User1",
+      bidAmount: 100,
+      winningBonus: 50,
+    },
+    {
+      userId: "User2",
+      bidAmount: 150,
+      winningBonus: 75,
+    },
+    {
+      userId: "User3",
+      bidAmount: 120,
+      winningBonus: 60,
+    },
+    {
+      userId: "User1",
+      bidAmount: 100,
+      winningBonus: 50,
+    },
+    {
+      userId: "User2",
+      bidAmount: 150,
+      winningBonus: 75,
+    },
+    {
+      userId: "User3",
+      bidAmount: 120,
+      winningBonus: 60,
+    },
+    // Add more data as needed
+  ];
+
 const GameComponent = ({}) => {
   const [data, setData] = useState([]);
   const [ws, setWs] = useState(null);
@@ -34,7 +99,7 @@ const GameComponent = ({}) => {
       activeGameButton: ""
   });
   const [authError, setAuthError] = useState(false);
-  const [rankingData, setRankingData] = useState([]);
+  const [rankingData, setRankingData] = useState(exampleRankingData);
 
 
   const [user, setUser] = useState([]);
@@ -63,8 +128,6 @@ const GameComponent = ({}) => {
       });
     }
   }, []);
-
-  console.log("user.id",user)
 
   useEffect(() => {
     const websocket = new WebSocket("ws://192.168.29.85:5000");// Replace with actual user ID retrieval method
@@ -130,25 +193,6 @@ const GameComponent = ({}) => {
   }, []);
   
 
-
-useEffect(() => {
-  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-  var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-  s1.async = true;
-  s1.src = 'https://embed.tawk.to/653ff927a84dd54dc486d3b7/1he0uahf0';
-  s1.charset = 'UTF-8';
-  s1.setAttribute('crossorigin', '*');
-  s0.parentNode.insertBefore(s1, s0);
-
-  // Cleanup on component unmount
-  return () => {
-      s0.parentNode.removeChild(s1);
-  };
-
-}, [])
- 
-
-
 const [winModel, SetIsWinModal] = useState(false);
 
 
@@ -160,9 +204,12 @@ const closeWinModal = () => {
 
 
 
-    <div className="game-view">
+    <div className="game-view" >
       <TopSection />
+      <div style={{  height:"45vh"}}>
       <GameChart />
+      </div>
+
       <TopWinnersTable rankingData={rankingData} />
 
         

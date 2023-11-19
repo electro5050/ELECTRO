@@ -9,17 +9,19 @@ import TopWinners from './TopWinnersTable';
 
 const gameChartContainer = {
   borderRadius: "10px",
-  background: "rgba(0, 0, 0, 0.60)",
+  background: "rgba(0, 0, 0, 0.9)",
   boxShadow: "4px 4px 50px 0px #33375F",
-  height:"45vh",
+  height:"100%",
   width:"100%",
-  padding:"20px",
+  padding:"0",
   display: "flex"
 };
 
 const graphContainerStyle = {
   width: "70%", // Set the width of the container
-  height:"95%", // Set the height of the container
+  height:"95%",
+  padding:"20px"
+  // Set the height of the container
   // backgroundImage: 'url(/assets/electra/silver-graph.png), url(/assets/electra/gold-graph.png)', // Set the two background images
   // backgroundSize: '100% 50%', // Set the size of each background image
   // backgroundRepeat: 'no-repeat', // Prevent image repetition

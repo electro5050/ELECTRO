@@ -3,14 +3,15 @@ import React, { useState } from 'react';
 
 
 const InputStyle = {
-    padding: 0,
-    margin: 0,
-    height: '0.7vw',
-    border: 'none',
-    width: '90%',
-    fontSize: '0.7vw',
-    color:"white"
-  };
+  padding: 0,
+  margin: 0,
+  height: 'calc(6px + 0.6vw + 0.6vh)',
+  fontSize:"calc(6px + 0.6vw + 0.6vh)",
+  border: 'none',
+  width: 'min-content',
+  color:"white",
+  width:"100%"
+};
 
 const PasswordInput = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,7 +22,7 @@ const PasswordInput = () => {
   };
 
   return (
-    <div>
+    <div style={{display:"flex", justifyContent:"space-between"}}>
       <input
         type={showPassword ? 'text' : 'password'}
         placeholder=""

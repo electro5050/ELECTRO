@@ -18,14 +18,13 @@
 
 .game-view-top-history-profile .electra-table .th-title .column {
     text-align: center;
-    font-size: 1.8em;
     padding: 0;
 }
 
 .game-view-top-history-profile  .electra-table .item .column {
     text-align: center;
     justify-content: center;
-    font-size: 1vw;   
+
 }
 
 .game-view-top-history-profile .electra-table .item .column:first-child {

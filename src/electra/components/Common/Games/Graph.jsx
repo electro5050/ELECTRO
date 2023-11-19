@@ -5,11 +5,8 @@ import axios from 'axios';
 import ProgressBar from 'electra/components/Common/Games/ProgressBar';
 
 function getNextExponentialValue(number) {
-    console.log(number);
-
     const remainder = number % 1000;
     const nextMultipleOf100 = remainder === 0 ? number : number + (1000 - remainder);
-    console.log(nextMultipleOf100);
     return nextMultipleOf100;
   }
 
@@ -98,7 +95,6 @@ function LineChart({data}) {
 
 
       useEffect(() => {
-        console.log(seconds);
         if (seconds === 0) {
           setFakeData({ axis: 10000, gold: [], silver: [], silverMax: 0, goldMax: 0, goldSum:0, silverSum: 0 });
         } 
@@ -128,7 +124,6 @@ function LineChart({data}) {
       }, [seconds]);
 
     useEffect(() => {
-        console.log(fakeData);
         chartDom && chartDom.setOption({
             ...option,
             yAxis: {

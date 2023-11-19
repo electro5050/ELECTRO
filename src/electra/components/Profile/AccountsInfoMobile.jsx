@@ -19,19 +19,20 @@ const passwordChangeCommnDivStyle = {
 const InputStyle = {
   padding: 0,
   margin: 0,
-  height: '0.7vw',
+  height: 'calc(6px + 0.6vw + 0.6vh)',
+  fontSize:"calc(6px + 0.6vw + 0.6vh)",
   border: 'none',
   width: 'min-content',
-  fontSize: '0.7vw',
   color:"white",
   width:"100%"
 };
+
 
 const passwordChangeButton = {
   borderRadius: '12px',
   background: '#FFD700',
   boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset',
-  width: '10vw',
+  width: '30vw',
   padding: '5px',
   textAlign: 'center',
   float: 'right',
@@ -59,7 +60,7 @@ const AccountInfo = ({userDate}) => {
     background: 'rgba(34, 34, 34, 0.95)',
     maxHeight:'100%',
     padding:"20px"
-    }}>
+    }} className="font-4">
 
       <div style={{...avatharContainerStyle, justifyContent:'space-between'}}>
           <div>
@@ -196,8 +197,8 @@ const AccountInfo = ({userDate}) => {
 
 
       <Modal isOpen={isPasswordPopUpOpen} onClose={closePasswordChangeModal}>
-              <div style={{width:'30vw'}}>
-                <div style={{fontSize:"max(13px, 0.8vw)", color:"white"}}>current password</div>
+              <div style={{width:'70vw'}} className="font-5">
+                <div style={{color:"white"}} >current password</div>
                       <div style={{width:"100%",
                       borderRadius: '4px',
                       background: 'rgba(0, 0, 0, 0.90)',

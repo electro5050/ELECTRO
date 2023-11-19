@@ -21,24 +21,30 @@ const iconStyle = {
 
 const TopWinners = ({ rankingData }) => {
   return (
-    <div className="game-view-top-winner table-responsive" style={{ height: "27vh", background: "rgba(0, 0, 0, 0.60)", marginTop: "1vh", borderRadius: "20px" }}>
+    <div className="game-view-top-winner table-responsive" style={{ height: "20vh", background: "rgba(0, 0, 0, 0.90)", marginTop: "1vh", borderRadius: "20px" }}>
      <table className="table electra-table">
-        <thead>
+        {/* <thead>
           <tr className="th-title">
             <th className="column" style={{width: "50%"}}>Bidder</th>
             <th className="column">Bid Amount</th>
             <th className="column">Win Amount</th>
           </tr>
-        </thead>
+        </thead> */}
 
         <tbody style={{ maxHeight: "20vh", overflowY: "auto", paddingRight: "10px" }}>
+        <tr className="th-title font-4"  style={{ position: 'sticky', top: '0', zIndex: '1', background:" rgba(0, 0, 0, 0.7)" }}>
+            <th className="column left-align" style={{paddingLeft:"2%", width:"40%"}}>Bidder</th>
+            <th className="column">Bid Amount</th>
+            <th className="column">Win Amount</th>
+          </tr>
+
           {rankingData && rankingData.length > 0 && rankingData.map((player, index) => (
-            <tr key={index} className="item">
-              <td className="column" style={{width: "50%"}}>
+            <tr key={index} className="item font-5">
+              <td className="column">
                 <div>
-                <div className="user-view">
-                  <div className="media-user">
-                    <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'2vw'} />
+                <div className="user-view left-align">
+                  <div className="media-user ">
+                    <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'calc(16px + 1.6vh + 1.6vw)'} />
                   </div>
                   <div className=''>
                     {player.userId}

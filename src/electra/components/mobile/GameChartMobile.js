@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const gameChartContainer = {
   borderRadius: "10px",
-  background: "rgba(0, 0, 0, 0.60)",
+  background: "rgba(0, 0, 0, 0.90)",
   boxShadow: "4px 4px 50px 0px #33375F",
   width:"100%",
   padding:"20px",

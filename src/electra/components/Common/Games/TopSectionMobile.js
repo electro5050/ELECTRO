@@ -43,11 +43,11 @@ const GameTopSection = ({handleLinkClick}) => {
       <div style={avatharContainerStyle}>
         <Avathar imageUrl={profileImage || userAvatar || "assets/Avatars/avathar_1.png"} imageSize={'5vh'}/>
         <div style={{marginLeft:"5px"}}>
-            <span style={{fontSize: "2rem", fontWeight: "700"}}>
+            <span style={{fontWeight: "700"}}  className="font-8">
                 BID AND WIN
             </span>
             <br />
-            <span style={{fontSize: "1rem", fontWeight: "500"}}>
+            <span style={{fontWeight: "500"}} className="font-5">
                 welcome back
             </span>
         </div>
@@ -60,11 +60,11 @@ const GameTopSection = ({handleLinkClick}) => {
                 src={"assets/electra/tressure.png"}
                 srcSet={"assets/electra/tressure.png"}
                 alt="electra"
-                style={{width:"6vh",   transform: "scaleX(-1)"}}
+                style={{width:"calc(18px + 1.8vh + 1.8vw)",   transform: "scaleX(-1)"}}
             />
             <a href="#" className='referal-anchor'>
            
-              <span style={{color:"white", fontSize: "2rem",   textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'}}>refer and earn</span>
+              <span style={{color:"white",   textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'}} className="font-5">refer and earn</span>
             </a>
         </div>
       </div>

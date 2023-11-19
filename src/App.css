@@ -122,14 +122,64 @@ margin: 10px;
   max-height: 100%;
 }
 
-.electra-table span,  .electra-table div{
-  font-size: 1em;
+
+.vertical-flex-sw{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.font-5{
+  font-size: calc(5px + 0.5vw + 0.5vh)!important;
 }
 
-@media only screen and (max-width: 768px) {
+.font-4{
+  font-size: calc(4px + 0.4vw + 0.4vh)!important;
+}
+
+.font-6{
+  font-size: calc(6px + 0.6vw + 0.6vh)!important;
+}
+
+
+.font-8{
+  font-size: calc(8px + 0.8vw + 0.8vh) !important;
+}
+
+.font-10{
+  font-size: calc(10px + 1vw + 1vh) !important;
+}
+
+
+.electra-table span,  .electra-table div{
+  font-size: calc(5px + 0.5vw + 0.5vh);
+  word-break: break-all;
+}
+
+@media only screen and (max-width: 767px) {
   .electra-table span,  .electra-table div{
-      font-size: 1.2em;
+    font-size: calc(8px + 0.8vw + 0.8vh);
+    word-break: break-all;
   }
+  .font-5{
+    font-size: calc(8px + 0.8vw + 0.8vh) !important;
+  }
+
+  .font-4{
+    font-size: calc(6px + 0.6vw + 0.6vh)!important;
+  }
+  
+  .font-8{
+    font-size: calc(11px + 1.1vw + 1.1vh)!important;
+  }
+
+  .font-6{
+    font-size: calc(9px + 0.9vw + 0.9vh)!important;
+  }
+  .font-10{
+    font-size: calc(10px + 1.6vw + 1.6vh) !important;
+  }
+  
+  
 }
 
 
@@ -166,6 +216,15 @@ margin: 10px;
 }
 .electra-table td {
   vertical-align: middle;
+}
+
+
+
+iframe[title="chat widget"] {
+  top: 0px !important;
+  right: 0px !important;
+  bottom: 0px !important;
+  left: 0px !important;
 }
 
 

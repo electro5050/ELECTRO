@@ -31,13 +31,12 @@ function Avathar({ imageUrl, imageSize, editIconClick }) {
     cursor: 'pointer',
     background: "rgba(36, 36, 36, 0.7)",
     width: "100%",
-    fontSize: "min(30px, 0.8vw)"
   };
 
   return (
     <div style={imageContainerStyle}>
       <img src={imageUrl} alt="" style={imageStyle} />
-      {editIconClick && <FontAwesomeIcon icon={faEdit} style={editIconStyle} onClick={editIconClick} />}
+      {editIconClick && <FontAwesomeIcon className='font-4' icon={faEdit} style={editIconStyle} onClick={editIconClick} />}
     </div>
   );
 }
