@@ -1,0 +1,60 @@
+body {
+    background-color: black;
+    color: white; /* Making default text color white for better visibility */
+  }
+  .latest{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+
+    color: #FFF;
+font-family: Poppins;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin-left: 17%;
+  }
+  
+  .tableicon{
+    width: 8vw;
+    height: auto;
+height: 154px;
+flex-shrink: 0;
+position: relative;
+display: flex;
+flex-direction: row;
+align-items: center;
+  }
+  .livebutton{
+    width: auto;
+    height: auto;
+
+flex-shrink: 0;
+position: relative;
+display: flex;
+flex-direction: row;
+align-items: center;
+margin-left: .5vw;
+top: .5vh;
+  
+  }
+  .mainlatest{
+    /* background: url('../assets/images/grandient/Ellipse\ 38\ \(2\).png');
+    background-size: cover;
+    background-position: center; */
+    
+   position: relative;
+  }
+ .landing-graph{
+  background: url('../assets/images/backgroup-secsion/43f743ecaf40a1f69e81949f977aa3bc.png');
+  background-size: cover;
+  background-position: center;
+  align-items: center;
+  display: flex;
+  /* padding:  0 15vw; */
+  
+  
+ }

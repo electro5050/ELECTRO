@@ -1,0 +1,56 @@
+/* Responsive Navbar Styles */
+.header_1 {
+  /* background: #141313;  */
+  padding: 10px 0; /* Adjust the padding as needed */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  text-decoration: none;
+  /* background-color: rgba(221, 170, 49, 1);
+  background-color: rgba(150, 22, 195, 1); */
+  border: none;
+}
+
+.main-logo img {
+  max-width: 100%; /* Ensure the logo scales properly */
+  height: auto;
+  margin-top: 15vh;
+}
+
+
+
+/* Style the Log In and Sign Up buttons */
+.entrybutton, .signupentry {
+  margin: 0 6px; /* Add space between buttons */
+  border-radius: 2px;
+  
+  
+ 
+}
+.entrybutton .btn, .signupentry .btn {
+  width: 80px; /* Adjust the width as needed */
+  height: 40px; /* Adjust the height as needed */
+  color: #FFF;
+
+text-align: center;
+font-family: Poppins;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+border-radius: 10px;
+}
+.signupentry .btn{
+  background-color: rgba(78, 79, 235, 1);
+  
+}
+
+.home-landing{
+  background: url('../../assets/images/backgroup-secsion/Landing\ by\ s.e.png');
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+    height: auto;
+}

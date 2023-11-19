@@ -1,0 +1,26 @@
+.signup-container{
+    /* background: url('../../src/assets/images/grandient/Ellipse\ 41.png'); */
+  /* background-size: cover;
+  background-position: left;
+  background-color: black; */
+  
+}
+.signup-start{
+    width: 30%;
+    height: 20%;
+
+flex-shrink: 0;
+
+position: relative;
+margin-left: 32.5vw;
+color: #FFD700;
+text-align: center;
+font-family: Poppins;
+font-size: 3rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+text-align: center;
+gap: 15%;
+top: 2rem;
+}

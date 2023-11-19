@@ -1,0 +1,166 @@
+.nav-mob{
+    display: flex;
+    position: relative;
+   
+ 
+
+  
+   
+    
+}
+.mob-logo{
+    display: flex;
+    position: relative;
+    align-items: start;
+    width: 15vw;
+    height: auto;
+
+flex-shrink: 0;
+}
+.mob-button{
+    display: flex;
+    position: relative;
+    align-items: end;
+    flex-direction: row;
+    
+}
+.mob-login .btn{
+    width: 64px;
+height: 24px;
+flex-shrink: 0;
+border-radius: 5px;
+border: 1px solid #332AA4;
+color: #FFF;
+text-align: center;
+font-family: Poppins;
+font-size: 1.2rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+display: flex;
+position: relative;
+left: 43.9vw;
+bottom: 2.4vh;
+
+
+}
+.mob-signup .btn{
+    width: 64px;
+    height: 24px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal; 
+    display: flex;
+    position: relative;
+    left: 50vw;
+    bottom: 2.5vh;
+    
+}
+.nav-mob-main{
+    background: url('../../assets/Image.PNG');
+    background-size: cover;
+    background-position: center;
+    height: 150vw;
+    width: 430px;
+    
+   
+}
+
+.mob-header{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    
+   
+}
+.mob-electro{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    text-align: center;
+    
+width: 168px;
+height: 38px;
+flex-direction: column;
+justify-content: center;
+flex-shrink: 0;
+color: #FFF;
+
+font-family: Poppins;
+font-size: 2rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: 2px;
+top:45vw;
+right: 23vw;
+}
+.mob-text{
+    display: flex;
+    position: relative;
+    justify-content: center;
+   
+width: 384px;
+height: 143px;
+flex-direction: column;
+justify-content: center;
+flex-shrink: 0;
+color: #FFF;
+text-align: center;
+text-shadow: 10px 20px 30px #e3b212;
+font-family: Poppins;
+font-size: 3.0rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+right: 23vw;
+top: 25vh;
+}
+.mob-every{
+    display: flex;
+    position: relative;
+    color: #F9F3F3;
+font-family: Poppins;
+font-size: 1.2rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: 0.9px;
+top: 23vh;
+left: 4vw;
+}
+.mob-bidnow{
+    width: 120px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    color: #474747;
+  
+  text-align: center;
+  font-family: Poppins;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  border-radius: 8px;
+background: #FFBC0E;
+text-align: center;
+display: flex;
+position: relative;
+top: 55vw;
+left: 7vw;
+border-color: #FFBC0E;
+justify-content: center;
+align-items: center;
+flex-direction: row;
+
+
+}
+

@@ -1,0 +1,383 @@
+.mob-banners-container{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+}
+.mob-baner-page ,.mob-banners-container{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+}
+.mob-baner-first{
+    display: flex;
+    position: relative;
+    width: 93vw;
+    height: 359px;
+    border-radius: 30px;
+    background: url('../../assets/mobbanner/mb.png');
+    background-size: cover;
+    background-position: center;
+    left: 1.5vw;
+    top: 1vh;
+}
+.mob-text01{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+}
+.mob-text-a{
+    display: flex;
+    position: relative;
+    display: flex;
+    width: 381px;
+    height: 94px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #FFF;
+    text-align: center;
+    text-shadow: 0px 14px 17px rgba(0, 0, 0, 0.25);
+    font-family: Poppins;
+    font-size: 1.9rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 33px; /* 183.333% */
+    right: 3.2vw;
+    
+    
+
+}
+.mob-text-b{
+    display: flex;
+    position: relative;
+   
+    width: 387.838px;
+    height: 84.753px;
+    flex-shrink: 0;
+    color: #FDFB81;
+    text-align: center;
+    text-shadow: 0px -20px 70px rgba(253, 251, 129, 0.90), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Poppins;
+    font-size: 54px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;  
+    left: 29vw;
+}
+.mob-text-c{
+    display: flex;
+    position: relative;
+    width: 387.838px;
+    height: 41.724px;
+    flex-shrink: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 2.2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    left: 27vw;    
+}
+.mob-plybutton{
+    display: flex;
+    position: relative;
+    width: 124px;
+    height: 33px;
+    flex-shrink: 0; 
+    border-radius: 20px;
+    background: linear-gradient(180deg, #F5C945 0%, #484209 100%);
+    box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.60);
+   border-color: #F5C945;
+    width: 131.564px;
+    height: 22.2px;
+    flex-shrink: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 1.1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    left: 28vw;
+    justify-content: center;
+    align-items: center;
+    
+  
+}
+.mob-baner-3{
+    display: flex;
+    position: relative;
+    width: 93vw;
+    height: 359px;
+    border-radius: 30px;
+    background: url('../../assets/mobbanner/ma.png');
+    background-size: cover;
+    background-position: center;
+    left: 1.5vw;
+    top: 2.5vh;
+}
+.mob-text03{
+    text-align: start;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+
+}
+.mob-text-e{
+    display: flex;
+    position: relative;
+    justify-content: start;
+    width: 100.759px;
+    height: 27.978px;
+    flex-shrink: 0;
+
+    color: #FFF;
+    text-shadow: 0px 5px 20px #FFF, 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Poppins;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    left: 4vw;
+    top: 15vh;
+}
+.mob-text-f{
+    display: flex;
+    position: relative;
+    justify-content: start;
+    width: 100.759px;
+    height: 27.978px;
+    flex-shrink: 0;
+
+    color: #FFD700;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Poppins;
+    font-size: 6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    left: 4vw;
+    top: 15vh; 
+}
+.mob-onvery{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    text-align: start;
+}
+.mob-text-g{
+    display: flex;
+    position: relative;
+    justify-content: start;
+    width: 100.759px;
+    height: 27.978px;
+    flex-shrink: 0;
+
+    color: #FFF;
+    text-shadow: 0px 5px 20px #FFF, 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Poppins;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    left: 4vw;
+    top: 20vh;
+}
+.mob-text-h{
+    display: flex;
+    position: relative;
+    justify-content: start;
+    width: 90.759px;
+    height: 27.978px;
+    flex-shrink: 0;
+
+    color: #FFF;
+    text-shadow: 0px 5px 20px #FFF, 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Poppins;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    left: 4vw;
+    top: 19vh; 
+}
+.mob-endtext{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    text-align: end;
+}
+.mob-text-i{
+    display: flex;
+    position: relative;
+    justify-content: start;
+   
+    flex-shrink: 0;
+
+    color: #FFF;
+    text-shadow: 0px 5px 20px #FFF, 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Poppins;
+    font-size: 1.9rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    left: 15vw;
+    margin-top: 25vh; 
+    justify-content: center;
+    text-align: center;
+}
+.mob-plybutton03{
+    display: flex;
+    position: relative;
+    width: 124px;
+    height: 33px;
+    flex-shrink: 0; 
+    border-radius: 20px;
+    background: linear-gradient(180deg, #F5C945 0%, #484209 100%);
+    box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.60);
+   border-color: #F5C945;
+    width: 131.564px;
+    height: 22.2px;
+    flex-shrink: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    left: 24vw;
+    justify-content: center;
+    align-items: center;
+    top: 2vh;
+}
+.mob-baner-2{
+    display: flex;
+    position: relative;
+    width: 93vw;
+    height: 359px;
+    border-radius: 30px;
+    background: url('../../assets/mobbanner/b1.png');
+    background-size: cover;
+    background-position: center;
+    left: 1.5vw;
+    top: 5vh;
+}
+.mob-text02{
+    text-align: start;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+}
+.mob-text-int{
+    display: flex;
+    position: relative;
+    justify-content: start;
+    width: 100.759px;
+    height: 27.978px;
+    flex-shrink: 0;
+
+    color: #FFF;
+    text-shadow: 0px 5px 20px #FFF, 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Poppins;
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    left: 4vw;
+    top: 5vh;
+    text-shadow: black;
+}
+.mob-text-vip{
+    display: flex;
+    position: relative;
+    justify-content: start;
+   
+    flex-shrink: 0;
+
+    color: #FFD700;
+text-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
+font-family: Poppins;
+font-size: 3rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+    left: 1vw;
+    top: 7vh;
+    text-shadow: black;  
+    justify-content: center;
+    align-items: center;
+}
+.mob-membership{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    position: relative;
+    flex-direction: column;
+    top: 35vw;
+    left: 3vw;
+}
+.mob-text-benefits{
+    width: 233px;
+height: 41px;
+flex-shrink: 0;
+color: #FFF;
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+font-family: Poppins;
+font-size: 2.2rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.mob-text-invest{
+    width: 233px;
+    height: 41px;
+    flex-shrink: 0;
+    color: #FFE073;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Poppins;
+    font-size: 2.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.mob-endtext{
+display: flex;
+position: relative;
+
+}
+.mob-winbutton{
+    display: flex;
+    position: relative;
+    width: 114px;
+    height: 33px;
+    flex-shrink: 0; 
+    border-radius: 20px;
+    background: linear-gradient(180deg, #F5C945 0%, #484209 100%);
+    box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.60);
+   border-color: #F5C945;
+    width: 131.564px;
+    height: 22.2px;
+    flex-shrink: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  
+    justify-content: center;
+    align-items: center;
+    top: 282px;
+    right: 10vw;
+  
+}
