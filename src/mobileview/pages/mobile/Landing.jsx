@@ -11,13 +11,13 @@ import SignUp from '../../../pages/SignUp';
 import Footer from '../../compoents/mobfooter/Mobfooter'
 
 const graphContainerStyle = {
-    width: "70%", // Set the width of the container
-    height:"95%", // Set the height of the container
-    backgroundImage: 'url(/assets/electra/silver-graph.png), url(/assets/electra/gold-graph.png)', // Set the two background images
-    backgroundSize: '100% 50%', // Set the size of each background image
-    backgroundRepeat: 'no-repeat', // Prevent image repetition
-    backgroundPosition: '0% 0%, 0% 100%', // Position the two background images vertically
-    border: "1px solid rgba(255, 255, 255, 0.5)"
+    width: "90%", // Set the width of the container
+    height:"50%", // Set the height of the container
+    // backgroundImage: 'url(/assets/electra/silver-graph.png), url(/assets/electra/gold-graph.png)', // Set the two background images
+    // backgroundSize: '100% 50%', // Set the size of each background image
+    // backgroundRepeat: 'no-repeat', // Prevent image repetition
+    // backgroundPosition: '0% 0%, 0% 100%', // Position the two background images vertically
+    // border: "1px solid rgba(255, 255, 255, 0.5)"
   };
 function Landing() {
     const [data, setData] = useState([]);
@@ -98,7 +98,7 @@ function Landing() {
       <div className='landing-graph'>
                 
            
-                <div style ={{width:'70vw' , height:'70vh', display:"flex", justifyContent:"center",alignItems:'center',marginLeft:'12vw'}} >
+                <div style ={{width:'100vw' , height:'50vh', display:"flex", justifyContent:"center",alignItems:'center',marginLeft:'12vw'}} >
                 <div  style ={graphContainerStyle}>
                 <Graph data={data} setAuthError={setAuthError} gameState={gameState} setGameState={setGameState} authError={authError} gameId={gameState.gameId} />
     
