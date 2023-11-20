@@ -25,22 +25,22 @@ const TopWinners = ({rankingData}) => {
     <div className="game-view-portfolio-table" style={{height:"70vh", background:"#43415B", marginTop:"1vh", borderRadius: "20px"}}>
 
 <table className="table electra-table">
-        <thead>
-          <tr className="th-title">
-            <th className="column">Bid Amount</th>
+
+        <tbody style={{ maxHeight: "20vh", overflowY: "auto", paddingRight: "10px" }}>
+
+        <tr className="th-title font-6"  style={{ position: 'sticky', top: '0', zIndex: '1', background:"#43415B" }}>
+        <th className="column">Bid Amount</th>
             <th className="column">Win</th>
             <th className="column">Lose</th>
           </tr>
-        </thead>
 
-        <tbody style={{ maxHeight: "20vh", overflowY: "auto", paddingRight: "10px" }}>
           {rankingData && rankingData.length > 0 && rankingData.map((player, index) => (
-            <tr key={index} className="item">
+            <tr key={index} className="item font-4">
               <td className="column">
                 <div>
                 <div className="user-view">
                   <div className="media-user">
-                    <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'2vw'} />
+                    <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'calc(12px + 1.2vh + 1.2vw)'} />
                   </div>
                   <div className=''>
                   {player.bidAmount}

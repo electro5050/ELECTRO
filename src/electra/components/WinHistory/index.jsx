@@ -5,10 +5,60 @@ import './index.css';
 import TopSection from 'electra/components/Common/Games/TopSection';
 import TopEarnersTable from 'electra/components/WinHistory/TopEarnersTable';
 
+const rankingData = [
+  {
+    username: "User1",
+    totalWin: 500,
+  },
+  {
+    username: "User2",
+    totalWin: 300,
+  },
+  {
+    username: "User3",
+    totalWin: 700,
+  },
+  {
+    username: "User1",
+    totalWin: 500,
+  },
+  {
+    username: "User2",
+    totalWin: 300,
+  },
+  {
+    username: "User3",
+    totalWin: 700,
+  },
+  {
+    username: "User1",
+    totalWin: 500,
+  },
+  {
+    username: "User2",
+    totalWin: 300,
+  },
+  {
+    username: "User3",
+    totalWin: 700,
+  },
+  {
+    username: "User1",
+    totalWin: 500,
+  },
+  {
+    username: "User2",
+    totalWin: 300,
+  },
+  {
+    username: "User3",
+    totalWin: 700,
+  },
+  // Add more data as needed
+];
 
-
-const GameComponent = ({}) => {
-  const [allUsersGameHistory, setAllUsersGameHistory] = useState([]);
+const GameComponent = ({isMobile}) => {
+  const [allUsersGameHistory, setAllUsersGameHistory] = useState(rankingData);
   const token = localStorage.getItem('token');
 
 
@@ -34,7 +84,7 @@ const GameComponent = ({}) => {
 
   return (
     <div className="win-history">
-      <TopSection />
+        {!isMobile && <TopSection  />}
       <TopEarnersTable rankingData={allUsersGameHistory} />
     </div>
   );

@@ -4,6 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faMessage, faUser } from '@fortawesome/free-solid-svg-icons';
 import './index.css';
 import Avathar from 'electra/components/Common/AvatharView';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import config from 'common/constants';
 
 const flexCenterStype = {
   display: "flex",
@@ -17,6 +20,7 @@ const token = localStorage.getItem('token');
 const Headers = ({selectedHeader, handleLinkClick ,handleChatToggle, gameState={}}) => {
   const { pathname } = useLocation();
   const [coinBalance, setCoinBalance] = useState(null);
+  const navigate = useNavigate();
 
   const [user, setUser] = useState([]);
   const [userAvatar, setUserAvatar] = useState('null');
@@ -25,7 +29,7 @@ const Headers = ({selectedHeader, handleLinkClick ,handleChatToggle, gameState={
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      fetch('http://192.168.29.85:3000/users', {
+      fetch(config.gameApiUrl + '/users', {
           method: 'GET',
           headers: {
               'Authorization': `Bearer ${token}`,
@@ -46,12 +50,16 @@ const Headers = ({selectedHeader, handleLinkClick ,handleChatToggle, gameState={
     }
   }, [token]);
 
-
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    delete axios.defaults.headers.common['Authorization'];
+    navigate('/login');
+};
 
   useEffect(() => {
     const token = localStorage.getItem('token');
 
-    fetch('http://192.168.29.85:3000/coinbalance', {
+    fetch(config.gameApiUrl + '/coinbalance', {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -172,7 +180,7 @@ const Headers = ({selectedHeader, handleLinkClick ,handleChatToggle, gameState={
                         </svg>
                         profile</a>
       
-                      <a onClick={() => handleLinkClick('Logout')}>
+                      <a onClick={handleLogout}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
                       <path d="M11.8889 10.3333L15 7.22222M15 7.22222L11.8889 4.11111M15 7.22222H4.11111M8.77778 10.3333V11.1111C8.77778 12.3998 7.73314 13.4444 6.44444 13.4444H3.33333C2.04467 13.4444 1 12.3998 1 11.1111V3.33333C1 2.04467 2.04467 1 3.33333 1H6.44444C7.73314 1 8.77778 2.04467 8.77778 3.33333V4.11111" stroke="#DFDDD5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>

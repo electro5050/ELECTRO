@@ -5,10 +5,87 @@ import './index.css';
 import TopSection from 'electra/components/Common/Games/TopSection';
 import GameHistoryTable from 'electra/components/PortFolio/GameHistoryTable';
 
+const rankingData = [
+  {
+    bidAmount: 100,
+    win: 5,
+    loss: 2,
+  },
+  {
+    bidAmount: 150,
+    win: 8,
+    loss: 3,
+  },
+  {
+    bidAmount: 80,
+    win: 4,
+    loss: 1,
+  },
+  {
+    bidAmount: 100,
+    win: 5,
+    loss: 2,
+  },
+  {
+    bidAmount: 150,
+    win: 8,
+    loss: 3,
+  },
+  {
+    bidAmount: 80,
+    win: 4,
+    loss: 1,
+  },
+  {
+    bidAmount: 100,
+    win: 5,
+    loss: 2,
+  },
+  {
+    bidAmount: 150,
+    win: 8,
+    loss: 3,
+  },
+  {
+    bidAmount: 80,
+    win: 4,
+    loss: 1,
+  },
+  {
+    bidAmount: 100,
+    win: 5,
+    loss: 2,
+  },
+  {
+    bidAmount: 150,
+    win: 8,
+    loss: 3,
+  },
+  {
+    bidAmount: 80,
+    win: 4,
+    loss: 1,
+  },
+  {
+    bidAmount: 100,
+    win: 5,
+    loss: 2,
+  },
+  {
+    bidAmount: 150,
+    win: 8,
+    loss: 3,
+  },
+  {
+    bidAmount: 80,
+    win: 4,
+    loss: 1,
+  },
+  // Add more data as needed
+];
 
-
-const GameComponent = ({}) => {
-  const [gameHistory, setGameHistory] = useState([]);
+const GameComponent = ({isMobile}) => {
+  const [gameHistory, setGameHistory] = useState(rankingData);
   const token = localStorage.getItem('token');
 
   useEffect(() => {
@@ -31,7 +108,7 @@ const GameComponent = ({}) => {
   }, []);
   return (
     <div className="win-history">
-      <TopSection  />
+      {!isMobile && <TopSection  />}
       <GameHistoryTable rankingData={gameHistory} />
     </div>
   );

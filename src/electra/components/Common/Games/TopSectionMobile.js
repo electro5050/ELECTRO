@@ -10,38 +10,16 @@ const avatharContainerStyle = {
 const token = localStorage.getItem('token');
 const GameTopSection = ({handleLinkClick}) => {
 
-  const [user, setUser] = useState([]);
-  const [userAvatar, setUserAvatar] = useState('null');
-  const [profileImage,setProfileImage]=useState('')
-
+  const [user, setUser] = useState(null);
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      fetch('http://192.168.29.85:3000/users', {
-          method: 'GET',
-          headers: {
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json'
-          }
-      })
-      .then(response => response.json())
-      .then(data => {
-          if (data && typeof data === 'object') {
-              setUser([data]);
-              setUserAvatar(data.avatar); 
-              setProfileImage(data.profilePictureUrl)
-          }
-      })
-      .catch(error => {
-          console.error('Error fetching user data:', error);
-      });
-    }
-  }, [token]);
+    const localUser = JSON.parse(localStorage.getItem('user'));
+    setUser(localUser); 
+  }, []);
 
   return (
     <div className='d-between m-10'>
       <div style={avatharContainerStyle}>
-        <Avathar imageUrl={profileImage || userAvatar || "assets/Avatars/avathar_1.png"} imageSize={'5vh'}/>
+        <Avathar imageUrl={(user && user.profilePictureUrl) || "assets/Avatars/avathar_1.png"} imageSize={'5vh'}/>
         <div style={{marginLeft:"5px"}}>
             <span style={{fontWeight: "700"}}  className="font-8">
                 BID AND WIN

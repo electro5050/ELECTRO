@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
 import SignUp from './SignUp';
+import config from 'common/constants';
 
 const Login = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -35,8 +36,9 @@ const Login = () => {
         }
 
         try {
-            const { data } = await axios.post('http://192.168.29.85:3001/auth/login', formData);
+            const { data } = await axios.post(config.apiUrl+'/auth/login', formData);
             localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
             axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
             login();  
             navigate('/game');

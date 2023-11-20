@@ -8,49 +8,25 @@ const avatharContainerStyle = {
     display: "flex",
     alignItems: "flex-start"
 };
-const token = localStorage.getItem('token');
-
 
 const ChatSection = ({chatDetails}) => {
 
-    const [user, setUser] = useState([]);
-    const [userAvatar, setUserAvatar] = useState('null');
-    const [profileImage,setProfileImage]=useState('')
-    
+    const [user, setUser] = useState(null);
   
     useEffect(() => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        fetch('http://192.168.29.85:3000/users', {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data && typeof data === 'object') {
-                setUser([data]); 
-                setUserAvatar(data.avatar);// Store the avatar filename
-                setProfileImage(data.profilePictureUrl) 
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching user data:', error);
-        });
-      }
+      const user = JSON.parse(localStorage.getItem('user'));
+      setUser(user); 
     }, []);
 
 
   return (
     <div className="chat-section" style={{overflowY:"auto", height:"100%", marginBottom:"10px"}}>
         <div style={avatharContainerStyle}>
-        <Avathar imageUrl={profileImage || userAvatar || "assets/Avatars/avathar_1.png"}imageSize={'calc(8px + 0.8vw + 0.8vh'}/>
+        <Avathar imageUrl={(chatDetails.user && chatDetails.user.profilePictureUrl) || "assets/Avatars/avathar_1.png"}imageSize={'calc(8px + 0.8vw + 0.8vh'}/>
         <div style={{paddingLeft:"10px",  width: chatDetails.type == 'win' ? '100%' : '100%'}}>
             <div style={{display:"flex", justifyContent:"space-between", alignItems: "end"}}>
                 <div className='font-5'>
-                    {chatDetails.name}
+                    {chatDetails.user.name}
                 </div>
                 <div style={{marginLeft:"10px" }} className="font-4">
                     {chatDetails.time}

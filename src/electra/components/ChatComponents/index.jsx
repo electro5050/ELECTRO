@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfo, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import ChatSection from 'electra/components/ChatComponents/chatBox';
 import './index.css';
+import config from 'common/constants';
 
 // Styles
 const circleStyle = {
@@ -65,7 +66,7 @@ const ChatBox = () => {
     const [user, setUser] = useState([]);
 
     useEffect(() => {
-        fetch('http://192.168.29.85:3000/users', {
+        fetch(config.gameApiUrl + '/users', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -82,13 +83,13 @@ const ChatBox = () => {
             console.error('Error fetching user data:', error);
         });
 
-        axios.get('http://192.168.29.85:3000/get-messages', {
+        axios.get(config.gameApiUrl + '/get-messages', {
             headers: { 'Authorization': `Bearer ${token}` }
         })
         .then(response => {
             setMessages(response.data.map(msg => ({
                 text: msg.message,
-                user: msg.sender.name,
+                user: msg.sender,
                 time: new Date(msg.timestamp).toLocaleTimeString(),
                 type: 'received'
             })));
@@ -98,7 +99,7 @@ const ChatBox = () => {
         });
     }, [token]);
 
-    const socket = useRef(io('http://192.168.29.85:3002', {
+    const socket = useRef(io(config.chatSocketUrl, {
         reconnectionAttempts: 5,
         reconnectionDelay: 2000,
         reconnectionDelayMax: 10000,
@@ -107,6 +108,10 @@ const ChatBox = () => {
     useEffect(() => {
         socket.on('message', (msg) => {
             // Add logic to prevent adding message if it's sent by the same user
+            let jsonObject = JSON.parse(msg);
+            setMessages(prevMessages => [...prevMessages, {
+                text: jsonObject.message, user: jsonObject.user, time: getCurrentTime()
+            }]);
         });
 
         return () => {
@@ -125,15 +130,15 @@ const ChatBox = () => {
     const sendMessage = async () => {
         if (message.trim() !== '') {
             try {
-                await axios.post('http://192.168.29.85:3000/send-message', {
+                await axios.post(config.gameApiUrl + '/send-message', {
                     message
                 }, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
+                let msgString = JSON.stringify({user: JSON.parse(localStorage.getItem('user')), message: message});
 
-                setMessages(prevMessages => [...prevMessages, {
-                    text: message, user: 'sent', time: getCurrentTime()
-                }]);
+                socket.emit('message', msgString);
+
                 setMessage('');
             } catch (error) {
                 console.error('Error sending message:', error);
@@ -156,7 +161,7 @@ const ChatBox = () => {
 
                     {messages.map((msg, index) => (
                         <ChatSection key={index} chatDetails={{
-                            name: msg.user ? msg.user : 'Loading...',
+                            user: msg.user,
                             time: msg.time,
                             message: msg.text,
                             type: msg.type

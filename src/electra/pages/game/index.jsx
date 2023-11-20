@@ -37,12 +37,15 @@ import ReferralComponent from 'electra/components/Referral'
 import TawkItem from 'electra/components/ChatComponents/tawkItem';
 import OrientationLock from 'electra/pages/orientationLock'; 
 import GameChart from 'electra/components/Common/Games/GameChart';
+import { useNavigate } from 'react-router-dom';
+import config from 'common/constants';
 
 
 const GamePage = () => {
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isMobile, setIsMobile] = useState(false);
+  const navigate = useNavigate();
 
   // Update window width on resize
   useEffect(() => {
@@ -70,6 +73,30 @@ const GamePage = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   const [isLock, setIslock] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/login');
+    }
+    else{
+      fetch(config.gameApiUrl+ '/users', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+      localStorage.setItem('user', JSON.stringify(data));
+    })
+    .catch(error => {
+        navigate('/login');
+    });
+    }
+
+  },[] );
 
   useEffect(() => {
     const websocket = new WebSocket("ws://192.168.29.85:5000");
@@ -190,9 +217,9 @@ const GamePage = () => {
           // case 'LiveSupport':
           //   return <LiveSupportComponent />;
           case 'Contact us':
-            return <ContactUsComponent />;
+            return <ContactUsComponent isMobile={true} />;
           case 'Win History':
-            return <WinHistoryComponent />;
+            return <WinHistoryComponent isMobile={true} />;
           case 'Referal':
             return <ReferralComponent />;
 

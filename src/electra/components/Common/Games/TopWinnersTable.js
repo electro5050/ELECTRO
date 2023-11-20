@@ -32,7 +32,7 @@ const TopWinners = ({ rankingData }) => {
         </thead> */}
 
         <tbody style={{ maxHeight: "20vh", overflowY: "auto", paddingRight: "10px" }}>
-        <tr className="th-title font-4"  style={{ position: 'sticky', top: '0', zIndex: '1', background:" rgba(0, 0, 0, 0.7)" }}>
+        <tr className="th-title font-6"  style={{ position: 'sticky', top: '0', zIndex: '1', background:" rgba(0, 0, 0, 0.7)" }}>
             <th className="column left-align" style={{paddingLeft:"2%", width:"40%"}}>Bidder</th>
             <th className="column">Bid Amount</th>
             <th className="column">Win Amount</th>
@@ -44,7 +44,7 @@ const TopWinners = ({ rankingData }) => {
                 <div>
                 <div className="user-view left-align">
                   <div className="media-user ">
-                    <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'calc(16px + 1.6vh + 1.6vw)'} />
+                    <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'calc(10px + 1vh + 1vw)'} />
                   </div>
                   <div className=''>
                     {player.userId}
