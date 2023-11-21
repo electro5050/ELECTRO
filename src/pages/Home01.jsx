@@ -11,7 +11,7 @@ import SignUp from './SignUp';
 import Ranking from '../electra/components/Common/Games/TopWinnersTable'
 import Picture from '../components/Baners/Baners'
 import Steps from '../components/steps/Steps'
-import Boxlanding from '../assets/images/steps/1f1ea7d3585693763707c478e5d8579a.png'
+import Boxlanding from '../assets/images/steps/box.png'
 // import liveAuctionData from '../assets/fake-data/data-live-auction';
 // import LiveAuction from '../components/layouts/LiveAuction';
 // import TopSeller from '../components/layouts/TopSeller';
@@ -22,11 +22,11 @@ import Boxlanding from '../assets/images/steps/1f1ea7d3585693763707c478e5d8579a.
 // import popularCollectionData from '../assets/fake-data/data-popular-collection';
 // import Create from '../components/layouts/Create';
 import { Element } from 'react-scroll';
-import Live from '../assets/images/grandient/WhatsApp Image 2023-11-16 at 2.07.57 PM.jpeg'
+import Live from '../assets/images/grandient/live.jpeg'
 
 const graphContainerStyle = {
     width: "70%", // Set the width of the container
-    height:"95%", // Set the height of the container
+    height:"85%", // Set the height of the container
     // backgroundImage: 'url(/assets/electra/silver-graph.png), url(/assets/electra/gold-graph.png)', // Set the two background images
     // backgroundSize: '100% 50%', // Set the size of each background image
     // backgroundRepeat: 'no-repeat', // Prevent image repetition
@@ -116,8 +116,9 @@ const Home01 = () => {
             <div className='landing-graph'>
                 
            
-            <div style ={{width:'70vw' , height:'70vh', display:"flex", justifyContent:"center",alignItems:'center',marginLeft:'12vw'}} >
+            <div style ={{width:'90vw' , height:'60vh', display:"flex", justifyContent:"center",alignItems:'center',}} >
             <div  style ={graphContainerStyle}>
+                
             <Graph data={data} setAuthError={setAuthError} gameState={gameState} setGameState={setGameState} authError={authError} gameId={gameState.gameId} />
 
             </div>
@@ -137,7 +138,7 @@ const Home01 = () => {
                 
 
                 </div>
-                <div className='landing-ranking'>
+                <div className='landing-ranking' style={{width:'50vw' , height:'30vh', display:"flex", justifyContent:"center",alignItems:'center',right:'5vw' }} >
                 <Ranking rankingData={rankingData} />
 
                 </div>

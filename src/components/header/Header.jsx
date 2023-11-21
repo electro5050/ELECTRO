@@ -25,11 +25,11 @@ const Header = (gameState={gameState}) => {
 
   const headerRef = useRef(null);
 
-  const handleScrollToSignUp = () => {
-    if (SignUpRef.current) { 
-      SignUpRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  // const handleScrollToSignUp = () => {
+  //   if (SignUpRef.current) { 
+  //     SignUpRef.current.scrollIntoView({ behavior: 'smooth' });
+  //   }
+  // };
   
 
   useEffect(() => {
@@ -191,7 +191,7 @@ const Header = (gameState={gameState}) => {
                       <span>{coinBalance ? `${coinBalance} $` : 'Wallet connect'}</span>
                   </p> */}
                   <div className='signupentry'  ref={SignUpRef}>
-                  <Button variant="primary" onClick={handleScrollToSignUp} scroll to SignUP>
+                  <Button variant="primary" onClick={() => navigate('/sign-up')}>
                              Sign up
                   </Button>
 

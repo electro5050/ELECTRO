@@ -65,11 +65,11 @@ const SliderItem = props => (
                         <div className="themesflat-container ">
                             <div className="wrap-heading flat-slider flex">
                                 <div className="content">
-                                    <h2 className="heading">{props.item.title_1}</h2>	
-                                    <h1 className="heading mb-style"><span className="tf-text s1">{props.item.title_2}</span>                                          
+                                    <h2 className="heading" style={{fontSize:'4rem',letterSpacing:'2px'}}>{props.item.title_1}</h2>	
+                                    <h1 className="heading mb-style" style={{fontSize:'5.3rem',letterSpacing:'2px'}}><span className="tf-text s1">{props.item.title_2}</span>                                          
                                     </h1>
-                                    <h1 className="heading">{props.item.title_3}</h1>
-                                    <p className="sub-heading">{props.item.description}
+                                    <h1 className="heading" style={{fontSize:'4.5rem',letterSpacing:'4px',}}>{props.item.title_3}</h1>
+                                    <p className="sub-heading">{props.item.description} 
                                     </p>
                                     <div className='landing-bidding'>
                                     <button type="button" class="btn btn-secondary">BID NOW <img src={Arrow }alt="" /></button>

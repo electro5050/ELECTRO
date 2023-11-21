@@ -1,13 +1,13 @@
-.signup-container{
-    /* background: url('../../src/assets/images/grandient/Ellipse\ 41.png'); */
-  /* background-size: cover;
-  background-position: left;
-  background-color: black; */
-  
-}
+
 .signup-start{
     width: 30%;
     height: 20%;
+    white-space: nowrap; 
+   
+    text-overflow: ellipsis; 
+    
+    text-align: center;
+    justify-content: center;
 
 flex-shrink: 0;
 
@@ -22,5 +22,14 @@ font-weight: 700;
 line-height: normal;
 text-align: center;
 gap: 15%;
-top: 2rem;
+top: 3rem;
 }
+.forgot-pass{
+  color: #fff;
+}
+.signup-inner{
+  width: 100% ;
+  height: 100% ;
+
+} 
+

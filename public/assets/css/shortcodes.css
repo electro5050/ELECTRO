@@ -1751,7 +1751,9 @@
   -webkit-background-clip: text;
   -webkit-text-stroke: 3px transparent;
   -webkit-text-fill-color: #fff;
-  text-shadow: 8px 5px 10px rgba(255, 188, 14, 0.5);
+  text-shadow: 1px 10px 50px #ffbc0e;
+ 
+
 }
 
 .flat-slider .heading .fill {
@@ -1973,13 +1975,13 @@
 .flat-title-page.inner {
   padding: 139px 0 59px;
   position: relative;
-  background: url(../images/backgroup-secsion/img_bg_page_title_inner.jpg)
-    center center no-repeat;
+  /* background: url(../images/backgroup-secsion/img_bg_page_title_inner.jpg)
+    center center no-repeat; */
   background-size: cover;
 }
 .is_dark .flat-title-page.inner {
-  background: url(../images/backgroup-secsion/img_bg_page_title_dark.jpg) center
-    center no-repeat;
+  /* background: url(../images/backgroup-secsion/img_bg_page_title_dark.jpg) center
+    center no-repeat; */
   background-size: cover;
 }
 .page-title-heading .heading {
@@ -3382,6 +3384,7 @@ section.today-picks {
   border-radius: 8px;
   padding: 9px 20px;
   margin-bottom: 24px;
+  
 }
 
 .form-inner form input,
@@ -6751,7 +6754,7 @@ button.accordion-button {
 
 .flat-title-page.style3 {
   padding: 105px 0 0;
-  background: url(../images/backgroup-secsion/bg-h7.jpg) center center no-repeat;
+  /* background: url(../images/backgroup-secsion/bg-h7.jpg) center center no-repeat; */
   background-size: cover;
 }
 

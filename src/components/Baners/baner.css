@@ -1,396 +1,455 @@
-
-
-.garndient{
-  width: 100%;
-  height: auto;
-  /* background: url('../../assets/images/grandient/Ellipse\ 38\ \(2\).png');
-  background-size: cover;
-  background-position: center; */
+.banners-container{
+  display: flex;
   position: relative;
-  display: flex;
-  top:20vh;
-}
-.baner-page {
-  height: 140vh;
-  width: 80%;
-  border-radius: 2270px;
-  margin-left: 14vh;
-  margin-top: 0vh;
-  display: flex;
   justify-content: center;
-  align-items: center;
+  flex-direction: column;
+}
+.baner-page ,.mob-banners-container{
+  display: flex;
   position: relative;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  left: 2vw;
+}
+.baner-first{
+  display: flex;
+  position: relative;
+  width: 90vw;
+  height: 359px;
+  border-radius: 30px;
+  background: url('../../../src/assets/images/baners/b1.png');
+  background-size: cover;
+  background-position: center;
+  left: 1.5vw;
+  top: 1vh;
+  
+}
+.text01{
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+}
+.text-a{
+  display: flex;
+  position: relative;
+  display: flex;
+  width: 83vw;
+  height: 10vh;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #FFF;
+  text-align: center;
+  left: 3vw;
+ 
+  text-align: center;
+  font-size: 2.8rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 33px; /* 183.333% */
+  background-color: rgb(0, 0, 0,0.9);
+  border-radius: 25px;
+  opacity: 0.7;
+  
+  
+  
   
  
   
-}
-
-
-
-
-.banners-container {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  max-width: 80%;
-  position: relative;
-  flex-direction: column;
-}
-
-.baner-first {
-  height: 48vh;
-  width: 65vw;
-  border-radius: 30px;
-  border: 2px solid rgba(255, 255, 255, 0.50);
-  background: url('../../assets/images/baners/7b15e980925f5b2039af3b47e1066542.png');
-  background-size: cover;
-  background-position: center;
-  margin-left: 73vw;
-  margin-bottom: 60vh;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.text01 {
-  text-align:center;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  
   
 
 }
-/* .text2{
-  text-align:center;
-  display: flex;
-  flex-direction: row;
-  position: relative;
-} */
 
-.text-a {
-  color: #FFF;
-  /* text-shadow: 1px 1px 12px rgba(0, 0, 0, 80); */
-  font-family: Poppins;
-  font-size: 3.5rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 1;
+.text-b{
   display: flex;
-  margin: 10px 0;
-  justify-content: center;
   position: relative;
-  top: 5vw;
-  text-shadow: 2px 2px 10px #000;
-  
-}
-
-.text-b {
+ 
+  width: 387.838px;
+  height: 84.753px;
+  flex-shrink: 0;
   color: #FDFB81;
+  text-align: center;
   text-shadow: 0px -20px 70px rgba(253, 251, 129, 0.90), 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-family: Poppins;
-  font-size: 5.2rem;
+  
+  font-size: 54px;
   font-style: normal;
   font-weight: 700;
-  line-height: 1.2;
-  display: flex;
-  text-align: center;
-  position: relative;
- left: 27vw;
- top: 5vw;
- text-shadow: 2px 2px 10px #FDFB81;
-  
-  
+  line-height: normal;  
+  left: 38vw;
 }
 .text-c{
-  width: 30vw;
-height: 64px;
-flex-shrink: 0;
-color: #FFF;
-display: flex;
-font-family: Poppins;
-font-size: 3.0rem;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-padding-right: 20%;
-position: relative;
-text-align: center;
-left: 24vw;
-top: 5vw;
-text-shadow: 2px 2px 10px #000;
-}
-.plybutton {
+  display: flex;
+  position: relative;
+  width: 38vw;
+  height: 41.724px;
+  flex-shrink: 0;
   color: #FFF;
   text-align: center;
-  font-family: Poppins;
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  border-radius: 10px;
- border-color:#a8a3a3 ;
-background: linear-gradient(180deg, #F5C945 0%, #484209 100%);
-box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.60);
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.50);
-  width: 10vw;
-  height: 6vh;
-  flex-shrink: 0;
-  margin-top: 20%;
-  position: relative;
-  display: flex;
-  justify-content: center; /* Align text horizontally in the center */
-  align-items: center; /* Align text vertically in the center */
-  margin-left: 8vw;
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden; /* Hide overflowing text */
-  text-overflow: ellipsis; /* Add ellipsis (...) if text overflows */
-  bottom: 6vw;
-  left: 18vw;
   
-}
-.baner-second{
-  height: 50vh;
-  width: 30vw;
-  border-radius: 30px;
-  border: 2px solid rgba(255, 255, 255, 0.50);
-  background: url('../../assets/images/baners/7b15e980925f5b2039af3b47e1066542.png');
-  background-size: cover;
-  background-position: center;
-  margin-right: 1%;
-  margin-bottom: 60vh;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  top: 30vw;
-}
-
-
-
-.text02 {
-  color: #FFF;
-  text-align: center;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-family: Poppins;
-  font-size: 2.3rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 1.5;
-  display: flex;
-  margin: 10px 0;
-  text-shadow: 2px 2px 10px rgba(255, 255, 255, 1);
-  position: relative;
-
-}
-
-.plybutton2 {
-  color: #FFF;
-  text-align: center;
-  font-family: Poppins;
-  font-size: 1.5rem;
+  font-size: 2.9rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  border-radius: 10px;
-  background: #393939;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.50);
-  width: 8vw;
-  height: 5vh;
-  flex-shrink: 0;
-  margin-top: 20%;
-  position: relative;
-  display: flex;
-  justify-content:center; /* Align text horizontally in the center */
-  align-items: center; /* Align text vertically in the center */
-  margin-left: 8vw;
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden; /* Hide overflowing text */
-  text-overflow: ellipsis; /* Add ellipsis (...) if text overflows */
-  top: 11vh;
-  right: 2vw;
-  border-color: #393939;
+  left: 36vw; 
+  bottom: 2vh;
+   
 }
-
-.baner-3 {
-  height: 48vh;
-  width: 66vw;
-  background-color: #FFF;
+.plybutton{
+  display: flex;
   position: relative;
-  margin-top: 60vh;
-  margin-right: 15vh;
+  width: 11vw;
+  height: 4vh;
+  flex-shrink: 0; 
+  border-radius: 12px;
+  background: linear-gradient(180deg, #F5C945 0%, #484209 100%);
+  box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.60);
+ border-color: #F5C945;
+  
+  flex-shrink: 0;
+  color: #FFF;
+  text-align: center;
+  
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  left: 37vw;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  text-align: center;
+  
+
+}
+.baner-3{
+  display: flex;
+  position: relative;
+  width: 90vw;
+  height: 359px;
   border-radius: 30px;
-  border: 2px solid rgba(255, 255, 255, 0.50);
-  background: url('../../assets/images/baners/b22923a8f4ea6b5833c3eb52d46f3057.png');
+  background: url('../../../src/assets/images/baners/b4.png');
   background-size: cover;
   background-position: center;
-  display: flex; /* Added display: flex to center the text */
-  justify-content: center; /* Added justify-content to center the text */
-  align-items: start; /* Added align-items to center the text */
-  right: 28.5vw;
+  left: 1.5vw;
+  top: 8.5vh;
+  
 }
 .text03{
   text-align: start;
   position: relative;
-  display: flex
+  display: flex;
+  flex-direction: column;
+
 
 }
-
-.text-e {
-  width: 84.678px;
-  height: 44px;
+.text-e{
+  display: flex;
+  position: relative;
+  justify-content: start;
+  width: 100.759px;
+  height: 27.978px;
   flex-shrink: 0;
+
   color: #FFF;
-  text-shadow: 0px 5px 20px #FFF, 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-family: Poppins;
-  font-size: 30px;
+ 
+  
+  font-size: 3rem;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400;
   line-height: normal;
-  position: relative;
-  margin-top: 5vh;
-  display: flex;
-  left: 13vw;
-  
-  
-  
-  
-  
+  left: 4vw;
+  top: 15vh;
 }
-
-.text-f {
-  width: 346.944px;
-  height: 128px;
-  flex-shrink: 0;
-  color: #FFD700;
-  text-shadow: 0px 5px 20px #FFF, 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-family: Poppins;
-  font-size: 70px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  position: relative;
-  margin: 10vh 0; /* Adjust the margin to create space */
+.text-f{
   display: flex;
-  left: 5vw;
+  position: relative;
+  justify-content: start;
+  width: 100.759px;
+  height: 27.978px;
+  flex-shrink: 0;
+
+  color: #FFD700;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Poppins;
+  font-size: 7rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  left: 3.5vw;
+  top: 16vh;
+   
+}
+.onvery{
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  text-align: start;
+  top: 1vh;
+  
   
 }
 .text-g{
-  width: 242.273px;
-height: 41px;
-flex-shrink: 0;
-color: #FFF;
-text-shadow: 0px 5px 20px #FFF, 0px 4px 4px rgba(0, 0, 0, 0.25);
-font-family: Poppins;
-font-size: 30px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-position: relative;
-display: flex;
-left: 10vw;
+  display: flex;
+  position: relative;
+  justify-content: start;
+  width: 100.759px;
+  height: 27.978px;
+  flex-shrink: 0;
 
+  color: #FFF;
+  
+  
+  font-size: 2.9rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  left: 4vw;
+  top: 21vh;
+  flex-direction: row;
+  white-space: nowrap; 
+  
+  text-overflow: ellipsis; 
+  text-align: center;
+ 
 }
 .text-h{
-  width: 331.655px;
-height: 44px;
-flex-shrink: 0;
-color: #FFF;
-text-shadow: 0px 5px 20px #FFF, 0px 4px 4px rgba(0, 0, 0, 0.25);
-font-family: Poppins;
-font-size: 30px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-position:relative;
-display: flex;
-left: 10vw;
-}
-.onvery{
-  position: absolute;
-  bottom: 4vh;
+  display: flex;
+  position: relative;
+  justify-content: start;
+  width: 90.759px;
+  height: 27.978px;
+  flex-shrink: 0;
+
+  color: #FFF;
+  
+  font-family: Poppins;
+  font-size: 2.9rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  left: 4vw;
+  top: 20vh;
+  white-space: nowrap; 
+   
+  text-overflow: ellipsis; 
+  text-align: center;
+  
+  
 }
 .endtext{
+  display: flex;
+  position: relative;
+  flex-direction: column;
   text-align: end;
-  
-  
 }
 .text-i{
   display: flex;
   position: relative;
-  width: 563.344px;
-height: 96px;
-flex-shrink: 0;
-color: #FFF;
-text-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25), 0px 2px 10px rgba(252, 252, 252, 0.50);
-font-family: Poppins;
-font-size: 30px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-left: 10vw;
-top: 10vw;
+  justify-content: start;
+  
+ 
+  flex-shrink: 0;
+
+  color: #FFF;
+  text-shadow: 0px 5px 20px #FFF, 0px 4px 4px rgba(0, 0, 0, 0.25);
+  
+  font-size: 2.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  left: 55vw;
+  margin-top: 25vh; 
+  justify-content: center;
+  text-align: center;
+  background-color: #0b0b0b;
+  border-radius: 10px;
+  opacity: .8;
+  white-space: nowrap; 
+   
+  text-overflow: ellipsis; 
+  text-align: center;
+  
+
+  
 }
 .plybutton03{
+  display: flex;
+  position: relative;
+  width: 124px;
+  height: 33px;
+  flex-shrink: 0; 
+  border-radius: 10px;
+  background: #FFBC0E;
+  
+ border-color: #F5C945;
+ 
+  flex-shrink: 0;
   color: #FFF;
   text-align: center;
-  font-family: Poppins;
-  font-size: 20px;
+  
+  font-size: 1.5rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  border-radius: 10px;
-  background: #FFBC0E;
-border-color: #FFBC0E;
-  box-shadow: 0px 5px 12px 0px #000, 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  width: 130.617px;
-  height: 41.04px;
-  flex-shrink: 0;
-  margin-right: 14%;
+  left: 59vw;
+  justify-content: center;
+  align-items: center;
+  top: 2vh;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  text-align: center;
+}
+.baner-2{
+  display: flex;
+  position: relative;
+  width: 90vw;
+  height: 359px;
+  border-radius: 30px;
+  background: url('../../assets/images/baners/b7.png');
+  background-size: cover;
+  background-position: center;
+  left: 1.5vw;
+  top: 15vh;
+}
+.text02{
+  text-align: start;
   position: relative;
   display: flex;
-  justify-content: center; /* Align text horizontally in the center */
-  align-items: center; /* Align text vertically in the center */
-  left: 17vw;
+  flex-direction: column;
+
+}
+.text-int{
+  display: flex;
+  position: relative;
+  justify-content: start;
+  width: 100.759px;
+  height: 27.978px;
+  flex-shrink: 0;
+
+  color: #FFF;
+  
+  
+  font-size: 2.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  left: 2vw;
+  top: 7vh;
+  text-shadow: black;
+}
+.text-vip{
+  display: flex;
+  position: relative;
+  justify-content: start;
+  width: 50vw;
+  height: 13vh;
+  flex-shrink: 0;
+  text-align: start;
+
+  color: #FFD700;
+  text-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
+
+  font-size: 6rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  opacity: .6;
+  top: 7vh;
+  background-color: #0b0b0b; 
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  letter-spacing: 8px;
+}
+.membership{
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  position: relative;
+  flex-direction: column;
   top: 10vw;
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden; /* Hide overflowing text */
-  text-overflow: ellipsis;
+  left: 3vw;
   
 }
+.text-benefits{
+  width: 30vw;
+height: 4vh;
+flex-shrink: 0;
+color: #FFF;
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-
-
-
-@media screen and (max-width: 767px) {
-  .baner-page {
-    height: auto;
-    width: 90%; /* Adjust width as needed */
-    border-radius: 30px; /* Make sure it's visually appealing */
-    margin: 10vh auto;
-  }
-
-  .banners-container {
-    flex-direction: row; /* Stack banners vertically for mobile */
-    align-items: center; /* Center banners */
-    display: flex;
-    width: 100%;
-    max-width: 80%;
-    position: relative;
-  }
-
-  /* Adjust styles for individual banner sections */
-  .baner-first,
-  .baner-second,
-  .baner-3 {
-    height: 50vh;
-    width: auto; /* Adjust the width for mobile */
-    margin-bottom: 20vh; /* Adjust margins for mobile */
-    
-  }
-
-  /* Add styles for text and buttons within the banners for mobile */
-  /* ... */
+font-size: 3.2rem;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
 }
+.text-invest{
+  width: 60px;
+  height: 20vh;
+  flex-shrink: 0;
+  color: #FFE073;
 
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  font-size: 3.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  white-space: nowrap; 
+  
+  text-overflow: ellipsis; 
+  text-align: center;
+  
+}
+.endtext{
+display: flex;
+position: relative;
+
+}
+.winbutton{
+  display: flex;
+  position: relative;
+ 
+  flex-shrink: 0; 
+  border-radius: 20px;
+  background: #FFBC0E;
+  
+ border-color: #F5C945;
+ width: 10vw;
+ height: 7vh;
+  flex-shrink: 0;
+  color: #FFF;
+  text-align: center;
+ 
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  justify-content: center;
+  align-items: center;
+  top: 282px;
+  left: 10vw;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  text-align: center;
+  border-radius: 10px;
+
+}
+/* Example CSS */
+/* .mob-banner-main .mob-baner-first,
+.mob-banner-main .mob-baner-3,
+.mob-banner-main .mob-baner-2 {
+transition: background-image 0.3s ease;
+} */
+
+
+
+ 

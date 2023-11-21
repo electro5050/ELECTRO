@@ -3,9 +3,10 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; 
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
-import Header from '../components/header/Header';
-import Footer from '../components/footer/Footer';
-import SignUp from './SignUp';
+import Logo from '../assets/images/logo/logo_dark.png';
+ import Footer from '../components/footer/Footer';
+ 
+// import SignUp from './SignUp';
 
 const Login = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -46,29 +47,30 @@ const Login = () => {
     };
 
     return (
-        <div>
-            <Header />
-            <section className="flat-title-page inner">
+        
+        <div  >
+            <img src={Logo} style={{width:'10vw'}}></img>
+            {/* <section className="flat-title-page inner">
                 <div className="overlay"></div>
-            </section>
-            <section className="tf-login tf-section">
-                <div className="themesflat-container">
+            </section> */}
+            <section className="tf-login tf-section" style={{backgroundColor:'black'}} >
+                <div className="themesflat-container" >
                     <div className="row">
-                        <div className="col-12">
+                        <div className="col-12" style ={{width:'100vw' , height:'auto', }}>
 
                             <div className="flat-form box-login-social">                            
                                 <ul>
                                     <li>
-                                        <Link to="#" className="sc-button style-2 fl-button pri-3">
+                                        {/* <Link to="#" className="sc-button style-2 fl-button pri-3">
                                             <i className="icon-fl-google-2"></i>
                                             <span>Google</span>
-                                        </Link>
+                                        </Link> */}
                                     </li>
                                     <li>
-                                        <Link to="#" className="sc-button style-2 fl-button pri-3">
+                                        {/* <Link to="#" className="sc-button style-2 fl-button pri-3">
                                             <i className="icon-fl-facebook"></i>
                                             <span>Facebook</span>
-                                        </Link>
+                                        </Link> */}
                                     </li>
                                 </ul>
                             </div>
@@ -110,7 +112,7 @@ const Login = () => {
                     </div>
                 </div>
             </section>
-            <div> <SignUp/> </div>
+            {/* <div> <SignUp/> </div> */}
             <Footer />
         </div>
 

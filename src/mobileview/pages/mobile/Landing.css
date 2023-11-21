@@ -2,7 +2,57 @@
     background: url('../../assets/Landing\ by\ s.e.png');
     background-size: cover;
     background-position: center;
-    width: 430px;
-    height: 4300px;
+    width: 100%;
+    height: auto;
     border-radius: 30px;
+}
+.mob-latest{
+    display: flex;
+    position: relative;
+    flex-direction: row;
+
+}
+.mob-tableicon{
+    display: flex;
+    position: relative;
+    width: 14vw;
+    height: 7vh;
+    align-items: center;
+    top: 1vw;
+}
+.mob-winning{
+    display: flex;
+    position: relative;
+    width: 5vw;
+    height: 58.817px;
+    flex-shrink: 0;
+    color: #FFF;
+   
+    font-size: 1.7rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap; 
+    left: 13vw;
+    top:1vh;
+
+    text-overflow: ellipsis; 
+
+}
+.mob-ranking{
+    display: flex;
+    position: relative;
+    
+    
+}
+.mob-livebutton{
+    display: flex;
+    position: relative;
+    left: 27vw;
+    width: 11vw;
+    height: 2vh;
+    top: 33px;
 }

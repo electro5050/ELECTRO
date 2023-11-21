@@ -6,33 +6,37 @@
   margin-bottom: 35%;
   border-radius: 30px;
   background: rgba(243, 187, 41, 0.85);
-  width: 64.5vw;
+  width: 90.5vw;
   height:45%;
-  margin-left: 14.2%;
-  margin-top: 2%;
+  left: 3vw;
+  margin-top: 7%;
   position: relative;
 
 }
 
 .secure {
-  font-family: Gilroy;
-  font-size: 20px;
-  font-weight: 700;
-  color: #068FFF;
-  line-height: normal;
+  
   display: flex;
+  position: relative;
+  justify-content: start;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: start;
 }
 
+
 .wayto {
-  font-family: Gilroy;
-  font-size: 2.5rem;
+  
+  font-size: 1.9rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 1);
   line-height: normal;
   margin-bottom: 10px;
+  color: #080808;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  display: flex;
+  left: 2vw;
 }
 
 .buycoins{
@@ -40,8 +44,13 @@
   color: #fff;
   border: none; /* Remove border */
   border-radius: 6px; /* Remove border-radius */
-  width: 14vw;
- 
+  width: 12vw;
+  white-space: nowrap; 
+  text-align: center;
+  text-overflow: ellipsis; 
+  text-align: center;
+ justify-content: center;
+ font-size: 1.2rem;
 }
 
 .gateway {
@@ -54,35 +63,20 @@
   display: flex;
 }
 
-/* Add responsive styles for different screen sizes as needed */
-@media (max-width: 768px) {
-  .secure {
-    font-size: 30px;
-    font-weight: 700;
-    color: #000000;
-  }
 
-  .wayto {
-    font-size: 20px;
-  }
-
-  .dpbuttn {
-    font-size: 16px;
-  }
-
-  .gateway {
-    margin-left: 10px; /* Adjust margin as needed for smaller screens */
-  }
-}
+   
 .easy{
   color: #000000;
-  font-size: 4rem;
-  
+  font-size: 2.6rem;
+  align-items: center;
   
   font-weight: 600;
   
   line-height: normal;
   margin-bottom: 1vw;
+  display: flex;
+  position: relative;
+  left: 1vw;
 
 }
 .grandient02{

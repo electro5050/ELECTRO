@@ -19,8 +19,8 @@ function Mobsteps() {
                 
             </div>
             <div className='mob-innerbox'>
-                    <div className='innerbox1'>
-                        <div className='pic-a'>
+                    <div className='mob-innerbox1'>
+                        <div className='mob-pic-a'>
                         <img src={Step1 }></img>
                         </div>
                         
@@ -28,8 +28,8 @@ function Mobsteps() {
                     </div>
                     
 
-                    <div className='innerbox2'>
-                        <div className='pic-b'>
+                    <div className='mob-innerbox2'>
+                        <div className='mob-pic-b'>
                         <img src={Step2  }></img>
                         </div>
                         
@@ -37,8 +37,8 @@ function Mobsteps() {
                     </div>
                    
 
-                    <div className='innerbox3'>
-                        <div className='pic-b'>
+                    <div className='mob-innerbox3'>
+                        <div className='mob-pic-b'>
                         <img src={Steps5} alt="" />
                         </div>
                         
@@ -46,8 +46,8 @@ function Mobsteps() {
                     </div>
                     
 
-                    <div className='innerbox4'>
-                        <div className='pic-c'>
+                    <div className='mob-innerbox4'>
+                        <div className='mob-pic-c'>
                         <img src={Step3  }></img>
                         </div>
                         
@@ -55,8 +55,8 @@ function Mobsteps() {
                     </div>
                    
 
-                    <div className='innerbox5'>
-                        <div className='pic-d'>
+                    <div className='mob-innerbox5'>
+                        <div className='mob-pic-d'>
                         <img src={Step4 }></img>
                         </div>
                         

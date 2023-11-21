@@ -1,6 +1,6 @@
 import React from 'react'
 import './Mobupi.css'
-import img from '../../assets/paymnet/Group 287 (1).png'
+import img from '../../assets/paymnet/upi.png'
 function Mobupi() {
   return (
     <div className='upi-main-container'>

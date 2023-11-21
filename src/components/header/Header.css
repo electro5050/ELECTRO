@@ -30,23 +30,35 @@
  
 }
 .entrybutton .btn, .signupentry .btn {
-  width: 80px; /* Adjust the width as needed */
-  height: 40px; /* Adjust the height as needed */
+  width: 6vw; /* Adjust the width as needed */
+  height: 6vh; /* Adjust the height as needed */
   color: #FFF;
 
 text-align: center;
-font-family: Poppins;
-font-size: 1.5rem;
-font-style: normal;
+
+font-size: 1.3rem;
+
 font-weight: 600;
 line-height: normal;
 border-radius: 10px;
+align-items: center;
+text-align: center;
+display: flex;
+justify-content: center;
+white-space: nowrap; 
+overflow: hidden; 
+text-overflow: ellipsis; 
+
+
 }
 .signupentry .btn{
   background-color: rgba(78, 79, 235, 1);
   
 }
-
+.entrybutton .btn{
+  background-color:transparent;
+  
+}
 .home-landing{
   background: url('../../assets/images/backgroup-secsion/Landing\ by\ s.e.png');
   background-size: cover;
@@ -54,3 +66,44 @@ border-radius: 10px;
   width: 100vw;
     height: auto;
 }
+.landing-graph{
+  background: url('../../../src/mobileview/assets/garph.png');
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+    height: auto;
+    
+}
+.latest{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+}
+.tableicon{
+  display: flex;
+  position: relative;
+  align-items: center;
+  width: 5vw;
+}
+.livebutton{
+  display: flex;
+  position: relative;
+  width: 3vw;
+  height: 3.3vh;
+  left: .5vw;
+  top: .6vh;
+  color: #FFF;
+  font-size: 1.3rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+  background-color: #BB2E2E;;
+  text-align: center;
+  justify-content: center;
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflowing text */
+  text-overflow: ellipsis; 
+  
+}
+

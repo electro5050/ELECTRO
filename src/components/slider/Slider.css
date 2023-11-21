@@ -1,17 +1,25 @@
 .landing-bidding .btn{
-    width: 120px; /* Adjust the width as needed */
-    height: 30px; /* Adjust the height as needed */
-    color: #474747;
+    width:5vw; /* Adjust the width as needed */
+    height: 3vh; /* Adjust the height as needed */
+    color: #000;
   
   text-align: center;
-  font-family: Poppins;
+  
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
   border-radius: 8px;
 background: #FFBC0E;
-text-align: center;
+
+display: flex;
+position: relative;
+border: #FFBC0E;
+white-space: nowrap; 
+overflow: hidden; 
+text-overflow: ellipsis; 
+justify-content: center;
+
 
   }
   

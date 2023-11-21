@@ -50,25 +50,26 @@ const SignUp = () => {
             <section className="signup-container">
                 <div className="themesflat-container">
                     <div className="row">
-                        <div className="col-12">
+                        <div className="signup-inner">
                             <h2 className="signup-start">Get started!</h2>
                             <div className="flat-form box-login-social">
                                 <ul>
-                                    <li>
+                                    {/* <li>
                                         <Link to="#" className="sc-button style-2 fl-button pri-3">
                                             <i className="icon-fl-google-2"></i>
                                             <span>Google</span>
                                         </Link>
-                                    </li>
-                                    <li>
+                                    </li> */}
+                                    {/* <li>
                                         <Link to="#" className="sc-button style-2 fl-button pri-3">
                                             <i className="icon-fl-facebook"></i>
                                             <span>Facebook</span>
                                         </Link>
-                                    </li>
+                                    </li> */}
                                 </ul>
                             </div>
                             <div className="flat-form box-login-email">
+                                <div className='signup-inner'>
                                 <div className="form-inner">
                                     <form onSubmit={handleSignUp}>
                                         <div>
@@ -117,6 +118,7 @@ const SignUp = () => {
                                         </div>
                                         <button type="submit" className="submit">SignUp</button>
                                     </form>
+                                </div>
                                 </div>
                             </div>
                         </div>

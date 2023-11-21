@@ -9,6 +9,9 @@ import Mobupi from '../../compoents/mobpayment/Mobupi'
 import Step from '../../compoents/mobstep/Mobsteps'
 import SignUp from '../../../pages/SignUp';
 import Footer from '../../compoents/mobfooter/Mobfooter'
+import Boxlanding from '../../assets/box.png'
+import Live from '../../assets/live.jpeg'
+
 
 const graphContainerStyle = {
     width: "90%", // Set the width of the container
@@ -98,17 +101,37 @@ function Landing() {
       <div className='landing-graph'>
                 
            
-                <div style ={{width:'100vw' , height:'50vh', display:"flex", justifyContent:"center",alignItems:'center',marginLeft:'12vw'}} >
+                <div style ={{width:'80vw' , height:'40vh', display:"flex", justifyContent:"center",alignItems:'center',marginLeft:'10vw' }} >
                 <div  style ={graphContainerStyle}>
                 <Graph data={data} setAuthError={setAuthError} gameState={gameState} setGameState={setGameState} authError={authError} gameId={gameState.gameId} />
     
                 </div>
                 </div>
                 </div>
-                <div className='landing-ranking'>
+
+                <div className='mob-mainlatest' style={{width: '50%',marginLeft:'23%',height:'50%'}}>
+                <div className='mob-latest'>
+                    <div className='mob-tableicon'>
+                    <img src={Boxlanding} alt="" />
+
+                    </div>
+
+                    
+                <h2 className='mob-winning'>Latest winnings</h2>
+                <div className='mob-livebutton'>
+                    <img src={Live} />
+                </div>
+                
+
+                </div>
+                <div className='mob-ranking' style={{width:'90vw' , height:'30vh', display:"flex", justifyContent:"center",alignItems:'center',right:'17vw' }}>
                 <Ranking rankingData={rankingData} />
 
                 </div>
+                
+            
+                </div>
+                
       <Mobbanner/>
       <Mobupi/>
       <Step/>
