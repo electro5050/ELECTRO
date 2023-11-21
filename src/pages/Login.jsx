@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from 'common/electra_axios';
 import { useNavigate } from 'react-router-dom'; 
-import { useAuth } from '../contexts/AuthContext';
+// import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/images/logo/logo_dark.png';
- import Footer from '../components/footer/Footer';
- 
-// import SignUp from './SignUp';
+import Header from '../components/header/Header';
+import Footer from '../components/footer/Footer';
+import SignUp from './SignUp';
+import config from 'common/constants';
 
 const Login = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
     const [errors, setErrors] = useState({});
-    const { login } = useAuth();
+    // const { login } = useAuth();
     const navigate = useNavigate();
 
     const validateForm = () => {
@@ -36,10 +37,11 @@ const Login = () => {
         }
 
         try {
-            const { data } = await axios.post('http://192.168.29.85:3001/auth/login', formData);
+            const { data } = await axios.post(config.apiUrl+'/auth/login', formData);
             localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
             axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
-            login();  
+            // login();  
             navigate('/game');
         } catch (error) {
             console.error('Error during login:', error.response?.data || error.message);

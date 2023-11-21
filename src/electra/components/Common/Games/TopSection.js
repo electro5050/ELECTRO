@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import SideBar from 'electra/components/sidebar';
 import Avathar from 'electra/components/Common/AvatharView';
+import config from 'common/constants';
 
 const avatharContainerStyle = {
     display: "flex",
@@ -10,42 +11,15 @@ const avatharContainerStyle = {
 const token = localStorage.getItem('token');
 const GameTopSection = () => {
 
-  const [user, setUser] = useState([]);
-  const [userAvatar, setUserAvatar] = useState('null');
-  const [profileImage,setProfileImage]=useState('')
+  const localUser = JSON.parse(localStorage.getItem('user'));
+  const [user, setUser] = useState(localUser || null);
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      fetch('http://192.168.29.85:3000/users', {
-          method: 'GET',
-          headers: {
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json'
-          }
-      })
-      .then(response => response.json())
-      .then(data => {
-          if (data && typeof data === 'object') {
-              setUser([data]);
-              setUserAvatar(data.avatar); 
-              setProfileImage(data.profilePictureUrl)
-          }
-      })
-      .catch(error => {
-          console.error('Error fetching user data:', error);
-      });
-    }
-  }, [token]);
-
-
-console.log('user' ,user )
   return (
     <div className="game-view-top-section" style={{height:"15vh",     position: "relative"}}>
       <div style={avatharContainerStyle}>
-        <Avathar imageUrl={profileImage || userAvatar || "assets/Avatars/avathar_1.png"} imageSize={'calc(16px + 1.6vh + 1.6vw)'}/>
+        <Avathar imageUrl={(user && user.profilePictureUrl) || "assets/Avatars/avathar_1.png"} imageSize={'calc(16px + 1.6vh + 1.6vw)'}/>
         <span style={{paddingLeft:"10px"}} className="font-5">
-         Hi {user && user[0] ? user[0].name : 'Loading...'}, welcome back!
+         Hi {user && user ? user.name : 'Loading...'}, welcome back!
         </span>
       </div>
         <div style={{marginTop:"5px"}}>

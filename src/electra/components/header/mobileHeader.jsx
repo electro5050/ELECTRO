@@ -14,69 +14,10 @@ const token = localStorage.getItem('token');
 
 
 
-const Headers = ({selectedHeader, handleLinkClick ,handleChatToggle, gameState={}}) => {
-  const { pathname } = useLocation();
-  const [coinBalance, setCoinBalance] = useState(null);
+const Headers = ({selectedHeader, handleLinkClick,}) => {
 
-  const [user, setUser] = useState([]);
-  const [userAvatar, setUserAvatar] = useState('null');
-  const [profileImage,setProfileImage]=useState('')
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      fetch('http://192.168.29.85:3000/users', {
-          method: 'GET',
-          headers: {
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json'
-          }
-      })
-      .then(response => response.json())
-      .then(data => {
-          if (data && typeof data === 'object') {
-              setUser([data]);
-              setUserAvatar(data.avatar); 
-              setProfileImage(data.profilePictureUrl)
-          }
-      })
-      .catch(error => {
-          console.error('Error fetching user data:', error);
-      });
-    }
-  }, [token]);
-
-
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-
-    fetch('http://192.168.29.85:3000/coinbalance', {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => {
-        const contentType = response.headers.get("content-type");
-        if (response.ok && contentType && contentType.includes("application/json")) {
-            return response.json();
-        } else {
-            console.error('Unexpected response:', response);
-            throw new Error(`Server responded with status: ${response.status} and content type: ${contentType}`);
-        }
-    })
-    
-    .then(data => {
-        if (data.coinbalance) {
-            setCoinBalance(data.coinbalance);
-        }
-    })
-    .catch(error => {
-        console.error('Error fetching coin balance:', error);
-    });
-}, [gameState]);
+  const localUser = JSON.parse(localStorage.getItem('user'));
+  const [user, setUser] = useState(localUser || null);
 
   return (
     <div className='main-header main-header-mobile'>
@@ -108,7 +49,7 @@ const Headers = ({selectedHeader, handleLinkClick ,handleChatToggle, gameState={
                       />
                       <span className='wallet-value'>
                     
-                      {coinBalance ? `${coinBalance} $` : '000'}
+                      {(user && user.coinbalance) ? `${user.coinbalance} $` : '000'}
                       </span>
                   </div>
 

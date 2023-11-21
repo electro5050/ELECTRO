@@ -1,17 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
  import './Graph.css';
-import axios from 'axios';
+import axios from 'common/electra_axios';
 import ProgressBar from 'electra/components/Common/Games/ProgressBar';
+import { connect } from 'react-redux';
 
 function getNextExponentialValue(number) {
-    const remainder = number % 1000;
-    const nextMultipleOf100 = remainder === 0 ? number : number + (1000 - remainder);
+    const remainder = number % 500;
+    let  nextMultipleOf100 = remainder === 0 ? number : number + (500 - remainder);
+    if(nextMultipleOf100 < 100){
+      nextMultipleOf100 = 100;
+    }
     return nextMultipleOf100;
   }
 
-function LineChart({data}) {
+  const calculateMaxValue = (data, key) => {
+    return Math.max(...data.map(item => item[key]));
+  };
 
+function LineChart({websocketData }) {
     const [chartDom, setChartDom] = useState(null);
     const chartContainerRef = useRef(null);
 
@@ -82,48 +89,73 @@ function LineChart({data}) {
     }, []);
     
 
-    const [seconds, setSeconds] = useState(0);
+    // const [seconds, setSeconds] = useState(0);
     const [fakeData, setFakeData] = useState({axis:10000, gold:[], silver:[], silverMax:0, goldMax: 0, goldSum:0, silverSum: 0});
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-          setSeconds((prevSeconds) => (prevSeconds + 1) % 40);
-        }, 1000);
+    // useEffect(() => {
+    //     const intervalId = setInterval(() => {
+    //       setSeconds((prevSeconds) => (prevSeconds + 1) % 40);
+    //     }, 1000);
     
-        // Cleanup interval on component unmount
-        return () => clearInterval(intervalId);
-      }, []); 
+    //     // Cleanup interval on component unmount
+    //     return () => clearInterval(intervalId);
+    //   }, []); 
 
 
       useEffect(() => {
-        if (seconds === 0) {
-          setFakeData({ axis: 10000, gold: [], silver: [], silverMax: 0, goldMax: 0, goldSum:0, silverSum: 0 });
-        } 
-        else if (seconds <= 30){
-          let silverValue = Math.floor(Math.random() * 1000) + 1;
-          let goldValue = Math.floor(Math.random() * 1000) + 1;
-          setFakeData((prevFakeData) => {
-            // Create new arrays to avoid mutation
-            let NewSilverMax = Math.max(silverValue, prevFakeData.silverMax );
-            let NewGoldMax = Math.max(goldValue, prevFakeData.goldMax );
-
-            let MaxAxisValue = getNextExponentialValue(Math.max(NewSilverMax, NewGoldMax));
-            const newSilver = [...prevFakeData.silver, silverValue];
-            const newGold = [...prevFakeData.gold, - goldValue];
-            return {
-              ...prevFakeData,
-              goldSum: prevFakeData.goldSum+goldValue,
-              silverSum: prevFakeData.silverSum+silverValue,
-              axis: MaxAxisValue,
-              silverMax: NewSilverMax,
-              goldMax: NewGoldMax,
-              silver: newSilver,
-              gold: newGold,
-            };
-          });
+        if(!websocketData){
+          return;
         }
-      }, [seconds]);
+        if (websocketData.type === 'live') {
+          // let chartData = websocketData.chartData;
+
+          let chartData = websocketData.chartData.map(item => ({
+            silver: item.silver + 10,
+            gold: item.gold + 10,
+          }));
+
+          const silverMax = calculateMaxValue(chartData, "silver");
+          const goldMax = calculateMaxValue(chartData, "gold");
+
+
+          const MaxAxisValue = getNextExponentialValue(Math.max(silverMax, goldMax));
+        
+          const goldValues = chartData.map(item => -1 * item.gold);
+          const silverValues = chartData.map(item => item.silver);
+
+          
+          // const goldSum = goldValues.reduce((sum, value) => sum + value, 0);
+          // const silverSum = silverValues.reduce((sum, value) => sum + value, 0);
+
+          setFakeData({ axis: MaxAxisValue, gold: goldValues, silver: silverValues, silverMax: silverMax, goldMax: goldMax, goldSum: websocketData.totalGold, silverSum: websocketData.totalSilver});
+        } 
+        else{
+          // alert(websocketData.type);
+          // let silverValue = Math.floor(Math.random() * 1000) + 1;
+          // let goldValue = Math.floor(Math.random() * 1000) + 1;
+          // setFakeData((prevFakeData) => {
+          //   // Create new arrays to avoid mutation
+          //   let NewSilverMax = Math.max(silverValue, prevFakeData.silverMax );
+          //   let NewGoldMax = Math.max(goldValue, prevFakeData.goldMax );
+
+          //   let MaxAxisValue = getNextExponentialValue(Math.max(NewSilverMax, NewGoldMax));
+          //   const newSilver = [...prevFakeData.silver, silverValue];
+          //   const newGold = [...prevFakeData.gold, - goldValue];
+          //   return {
+          //     ...prevFakeData,
+          //     goldSum: prevFakeData.goldSum+goldValue,
+          //     silverSum: prevFakeData.silverSum+silverValue,
+          //     axis: MaxAxisValue,
+          //     silverMax: NewSilverMax,
+          //     goldMax: NewGoldMax,
+          //     silver: newSilver,
+          //     gold: newGold,
+          //   };
+          // });
+        }
+      }, [websocketData]);
 
     useEffect(() => {
+      console.log(fakeData);
         chartDom && chartDom.setOption({
             ...option,
             yAxis: {
@@ -191,4 +223,13 @@ function LineChart({data}) {
   );
 }
 
-export default LineChart;
+
+
+// export default LineChart;
+
+// mapStateToProps function to connect the component to the Redux store
+const mapStateToProps = (state) => ({
+  websocketData: state.websocketReducer.websocketData,
+});
+
+export default connect(mapStateToProps)(LineChart);

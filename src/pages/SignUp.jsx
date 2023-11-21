@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from 'common/electra_axios';
 import { useNavigate } from 'react-router-dom'; 
 import { Link } from 'react-router-dom';
 import './signup.css'
+import config from 'common/constants';
 
 const SignUp = () => {
     const [formData, setFormData] = useState({ name: '', email: '', password: '' });
@@ -34,12 +35,13 @@ const SignUp = () => {
         }
 
         try {
-            const { data } = await axios.post('http://192.168.29.85:3001/auth/signup', formData);
+            const { data } = await axios.post(config.apiUrl+'/auth/signup', formData);
             if (data.token) {
                 localStorage.setItem('token', data.token);
+                localStorage.setItem('user', JSON.stringify(data.user));
                 axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+                navigate('/game');
             }
-            navigate('/home-02');
         } catch (error) {
             console.error('Error during signup:', error.response?.data || error.message);
         }

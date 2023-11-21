@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as echarts from 'echarts';
  import './Graph.css';
-import axios from 'axios';
+import axios from 'common/electra_axios';
 
 function LineChart({data, gameState, setGameState, authError, setAuthError,gameId}) {
 

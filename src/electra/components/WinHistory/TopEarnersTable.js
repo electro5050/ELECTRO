@@ -22,28 +22,26 @@ const headerStyle = {
 const TopWinners = ({rankingData}) => {
 
   return (
-    <div className="game-view-top-earners" style={{height:"70vh", background:"rgba(0, 0, 0, 0.60)", marginTop:"1vh", borderRadius: "20px"}}>
-      <div style={headerStyle}>
+    <div className="game-view-top-earners" style={{height:"70vh", background:"rgba(0, 0, 0, 0.80)", marginTop:"1vh", borderRadius: "20px"}}>
+      <div style={headerStyle} className="font-5">
         Top 10
       </div>
 
-      <table className="table electra-table">
-        <thead>
-          <tr className="th-title">
-            <th className="column" style={{width: "50%"}}> user ID </th>
+      <table className="table electra-table" style={{background:" rgba(0, 0, 0, 0.80)"}}>
+        <tbody style={{ maxHeight: "20vh", overflowY: "auto", paddingRight: "10px" }}>
+        <tr className="th-title font-5"  style={{ position: 'sticky', top: '0', zIndex: '1', background:" rgba(0, 0, 0, 0.80)" }}>
+            <th className="column" style={{width: "40%"}}> user ID </th>
             <th className="column">Win amount</th>
             <th className="column">Game</th>
           </tr>
-        </thead>
 
-        <tbody style={{ maxHeight: "20vh", overflowY: "auto", paddingRight: "10px" }}>
           {rankingData && rankingData.length > 0 && rankingData.map((player, index) => (
             <tr key={index} className="item">
-              <td className="column" style={{width: "50%"}}>
+              <td className="column" style={{width: "40%"}}>
                 <div>
                 <div className="user-view">
                   <div className="media-user">
-                    <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'2vw'} />
+                    <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'calc(12px + 1.2vh + 1.2vw)'} />
                   </div>
                   <div className=''>
                   {player.username}

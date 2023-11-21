@@ -67,14 +67,14 @@ const AccountInfo = ({userDate}) => {
           </div>
           <div>
             {
-              !isEdit && (<>edit <FontAwesomeIcon icon={faEdit} onClick={() => setIsEdit(true)} style={{paddingLeft:"10px"}}/></>)
+              !isEdit && (<span onClick={() => setIsEdit(true)} style={{cursor:"pointer" }}>edit <FontAwesomeIcon icon={faEdit} style={{paddingLeft:"10px"}}/> </span>)
             }
 
             {
               isEdit && 
-              <span style={{color:"#FFD700", float:"right", cursor:"pointer" , textDecoration:"underline"}} onClick={() => alert("save")}>
+              <span style={{color:"#FFD700", float:"right", cursor:"pointer" , textDecoration:"underline"}} onClick={() => setIsEdit(false)} >
                 cancel
-                <FontAwesomeIcon icon={faTimes} onClick={() => setIsEdit(false)} style={{paddingLeft:"10px"}}/>
+                <FontAwesomeIcon icon={faTimes} style={{paddingLeft:"10px"}}/>
               </span>
 
             }
