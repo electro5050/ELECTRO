@@ -160,12 +160,8 @@ const GameControllerButtons = ({websocketData, setAuthError}) => {
     }
   }, [websocketData]);
 
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    const localUser = JSON.parse(localStorage.getItem('user'));
-    setUser(localUser); 
-  }, []);
-
+  const localUser = JSON.parse(localStorage.getItem('user'));
+  const [user, setUser] = useState(localUser || null);
 
   const handleDropdownChange = (event) => {
     let newValue = parseInt(event.target.value, 10);

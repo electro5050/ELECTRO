@@ -121,12 +121,8 @@ const GameComponent = ({websocketData}) => {
   const [rankingData, setRankingData] = useState([]);
 
 
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const localUser = JSON.parse(localStorage.getItem('user'));
-    setUser(localUser); 
-  }, []);
+  const localUser = JSON.parse(localStorage.getItem('user'));
+  const [user, setUser] = useState(localUser || null);
   
 const [gameEndModal, SetIsGameEndModal] = useState(false);
 const [gameCounter, SetGameCounter] = useState(0);
@@ -140,7 +136,17 @@ const closeGameEndModal = () => {
   useEffect(() => {
       let intervalId; // Declare intervalId outside the if block
 
-      if (websocketData && websocketData.type === 'gameEnded') {
+      if (user && websocketData && websocketData.type === 'gameEnded') {
+
+        const currentUserId =  user.userId;
+        const CurrentUserWinner = websocketData.winners.find(winners => winners.userId === currentUserId);
+  
+        if (CurrentUserWinner) {
+            let localUser = JSON.parse(localStorage.getItem('user'));
+            localUser.coinbalance += CurrentUserWinner.winningBonus;
+            localStorage.setItem('user', JSON.stringify(localUser));
+        }  
+
         setRankingData(websocketData.winners);
           SetIsGameEndModal(true);
           SetGameCounter(10);

@@ -22,14 +22,8 @@ const Headers = ({selectedHeader, handleLinkClick ,handleChatToggle, gameState={
   // const [coinBalance, setCoinBalance] = useState(null);
   const navigate = useNavigate();
 
-  const [user, setUser] = useState(null);
-  const [userAvatar, setUserAvatar] = useState('null');
-  const [profileImage,setProfileImage]=useState('')
-
-  useEffect(() => {
-    const localUser = JSON.parse(localStorage.getItem('user'));
-    setUser(localUser); 
-  }, []);
+  const localUser = JSON.parse(localStorage.getItem('user'));
+  const [user, setUser] = useState(localUser || null);
 
   const handleLogout = () => {
     localStorage.removeItem('token');

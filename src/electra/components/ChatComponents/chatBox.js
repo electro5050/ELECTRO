@@ -11,12 +11,8 @@ const avatharContainerStyle = {
 
 const ChatSection = ({chatDetails}) => {
 
-    const [user, setUser] = useState(null);
-  
-    useEffect(() => {
-      const user = JSON.parse(localStorage.getItem('user'));
-      setUser(user); 
-    }, []);
+    const localUser = JSON.parse(localStorage.getItem('user'));
+    const [user, setUser] = useState(localUser || null);
 
 
   return (

@@ -74,21 +74,15 @@ const GameComponent = ({websocketData}) => {
     const [rankingData, setRankingData] = useState([]);
     const token = localStorage.getItem('token');
 
-    const [user, setUser] = useState(null);
-
     const [winModel, SetIsWinModal] = useState(0);
 
     const closeWinModal = () => {
         SetIsWinModal(0)
     };
-    
 
-  
-    useEffect(() => {
-      const localUser = JSON.parse(localStorage.getItem('user'));
-      setUser(localUser); 
-    }, []);
-    
+    const localUser = JSON.parse(localStorage.getItem('user'));
+    const [user, setUser] = useState(localUser || null);
+
   const [gameEndModal, SetIsGameEndModal] = useState(false);
   const [gameCounter, SetGameCounter] = useState(0);
   
@@ -108,6 +102,12 @@ const GameComponent = ({websocketData}) => {
       
             if (CurrentUserWinner) {
               SetIsWinModal(CurrentUserWinner.winningBonus); // Open the modal if the current user is a winner
+
+              
+                let localUser = JSON.parse(localStorage.getItem('user'));
+                localUser.coinbalance += CurrentUserWinner.winningBonus;
+                localStorage.setItem('user', JSON.stringify(localUser));
+
             }
 
           setRankingData(websocketData.winners);

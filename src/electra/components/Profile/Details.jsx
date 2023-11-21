@@ -53,14 +53,10 @@ const Details = () => {
     }
   }, []);
 
-  const [user, setUser] = useState([]);
   const [profileImage,setProfileImage]=useState(null)
 
-  useEffect(() => {
-    const localUser = JSON.parse(localStorage.getItem('user'));
-    setUser(localUser); 
-  }, []);
-
+  const localUser = JSON.parse(localStorage.getItem('user'));
+  const [user, setUser] = useState(localUser || null);
   const [isImagePopUpOpen, setIsImagePopUpOpen] = useState(false);
 
   const ImageEditButtonClick = () => {

@@ -162,15 +162,13 @@ const GameControllerButtons = ({websocketData, setAuthError}) => {
     }
   }, [websocketData]);
 
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    const localUser = JSON.parse(localStorage.getItem('user'));
-    setUser(localUser); 
-  }, []);
-
+  const localUser = JSON.parse(localStorage.getItem('user'));
+  const [user, setUser] = useState(localUser || null);
 
   const handleDropdownChange = (event) => {
+    alert(event.target.value);
     let newValue = parseInt(event.target.value, 10);
+    alert(newValue);
     if(isNaN(newValue) || newValue < 1){
       newValue = 1;
     }
@@ -212,6 +210,7 @@ const GameControllerButtons = ({websocketData, setAuthError}) => {
   
   useEffect(() => {
     setTextFieldData(result);
+    console.log("user.coinbalance", user?.coinbalance);
     if(user && result>user.coinbalance){
       alert("Dont have enough coins, please buy coins");
       setResult(user.coinbalance);
@@ -241,6 +240,11 @@ const GameControllerButtons = ({websocketData, setAuthError}) => {
         amount: (prevState && prevState.amount) ? prevState.amount + result : result,
         type: type
       }));
+
+      let localUser = JSON.parse(localStorage.getItem('user'));
+      localUser.coinbalance -= result;
+      localStorage.setItem('user', JSON.stringify(localUser));
+
     })
     .catch(error => {
       console.error("Error sending data:", error);

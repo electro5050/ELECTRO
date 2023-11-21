@@ -65,12 +65,9 @@ const ChatBox = ({websocketData}) => {
     const [message, setMessage] = useState('');
     const chatWindowRef = useRef(null);
     const token = localStorage.getItem('token');
-    const [user, setUser] = useState(null);
-
-    useEffect(() => {
-        const localUser = JSON.parse(localStorage.getItem('user'));
-        setUser(localUser); 
-      }, []);
+    
+    const localUser = JSON.parse(localStorage.getItem('user'));
+    const [user, setUser] = useState(localUser || null);
       
     const [winModel, SetIsWinModal] = useState(0);
 

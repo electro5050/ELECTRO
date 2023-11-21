@@ -10,11 +10,8 @@ const avatharContainerStyle = {
 const token = localStorage.getItem('token');
 const GameTopSection = ({handleLinkClick}) => {
 
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    const localUser = JSON.parse(localStorage.getItem('user'));
-    setUser(localUser); 
-  }, []);
+  const localUser = JSON.parse(localStorage.getItem('user'));
+  const [user, setUser] = useState(localUser || null);
 
   return (
     <div className='d-between m-10'>
