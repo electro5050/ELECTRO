@@ -166,9 +166,7 @@ const GameControllerButtons = ({websocketData, setAuthError}) => {
   const [user, setUser] = useState(localUser || null);
 
   const handleDropdownChange = (event) => {
-    alert(event.target.value);
     let newValue = parseInt(event.target.value, 10);
-    alert(newValue);
     if(isNaN(newValue) || newValue < 1){
       newValue = 1;
     }
