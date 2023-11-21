@@ -23,10 +23,13 @@ import Boxlanding from '../assets/images/steps/box.png'
 // import Create from '../components/layouts/Create';
 import { Element } from 'react-scroll';
 import Live from '../assets/images/grandient/live.jpeg'
+import MobileLanding from "mobileview/pages/mobile/Landing";
+import { connect } from 'react-redux';
 
 const graphContainerStyle = {
     width: "70%", // Set the width of the container
     height:"85%", // Set the height of the container
+    background: "rgba(0, 0, 0, 0.8)",
     // backgroundImage: 'url(/assets/electra/silver-graph.png), url(/assets/electra/gold-graph.png)', // Set the two background images
     // backgroundSize: '100% 50%', // Set the size of each background image
     // backgroundRepeat: 'no-repeat', // Prevent image repetition
@@ -34,97 +37,56 @@ const graphContainerStyle = {
     // border: "1px solid rgba(255, 255, 255, 0.5)"
   };
 
-const Home01 = () => {
-    const [data, setData] = useState([]);
-    const [ws, setWs] = useState(null);
-    const [gameState, setGameState] = useState({
-        gameEnded: false,
-        endGameMessage: "",
-        activeGameButton: ""
-    });
+const Home01 = ({websocketData}) => {
     const [authError, setAuthError] = useState(false);
-    const [rankingData, setRankingData] = useState([]);
 
-  
+
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [isMobile, setIsMobile] = useState(false);
+    // Update window width on resize
     useEffect(() => {
-      const websocket = new WebSocket("ws://192.168.29.85:5000");
+      const handleResize = () => setWindowWidth(window.innerWidth);
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
   
-      websocket.onopen = () => {
-          const token = localStorage.getItem('token');
-          if (token) {
-              websocket.send(JSON.stringify({ type: 'auth', token: token }));
-          }
-      };
-  
-      websocket.onmessage = (event) => {
-        const message = JSON.parse(event.data);
-        console.log("Received WebSocket message:", event.data);
     
-        if (message.type && message.type === 'winners') {
-            setRankingData(message.winners);
-        } else if (message.gameId) {
-            setGameState(prevState => ({ ...prevState, gameId: message.gameId }));
-        } else if (message.message) {
-            setGameState(prevState => ({
-                ...prevState,
-                endGameMessage: message.message,
-                gameEnded: true,
-                gameId: message.gameId
-            }));
-    
-            setData([]);
-    
-            setTimeout(() => {
-                setGameState(prevState => ({
-                    ...prevState,
-                    gameEnded: false,
-                    endGameMessage: ""
-                }));
-            }, 10000);
-        } else {
-            // Only update if the message value is different
-            if (!data.includes(message.value)) {
-                setData(prevData => [...prevData, message.value]);
-            }
-        }
-    };
-    
-  
-      websocket.onerror = (error) => {
-          console.error("WebSocket Error:", error);
-      };
-  
-      setWs(websocket);
-  
-      const token = localStorage.getItem('token');
-      if (token) {
-          axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      } else {
-          setAuthError(true);
-      }
-  
-      return () => {
-          websocket.close();
-      };
-  },[] )
+    useEffect(() => {
+        setIsMobile(windowWidth < 768)
+      }, [windowWidth]);
+
+
+      const [rankingData, setRankingData] = useState([]);
+
+  useEffect(() => {
+
+    if (websocketData && websocketData.type === 'gameEnded') { 
+
+      setRankingData(websocketData.winners);
+    }
+
+  }, [websocketData]);
 
  
     return (
+        <>
+     
+    {!isMobile ? (
         <div className='home-landing'>
-            <Header gameState={gameState}/>
+            <Header />
             <Slider data={heroSliderData} />
             <div className='landing-graph'>
                 
            
-            <div style ={{width:'90vw' , height:'60vh', display:"flex", justifyContent:"center",alignItems:'center',}} >
+            <div style ={{width:'100vw' , height:'60vh', display:"flex", justifyContent:"center",alignItems:'center',}} >
             <div  style ={graphContainerStyle}>
                 
-            <Graph data={data} setAuthError={setAuthError} gameState={gameState} setGameState={setGameState} authError={authError} gameId={gameState.gameId} />
+            <Graph  setAuthError={setAuthError} authError={authError}  />
 
             </div>
             </div>
             </div>
-            <div className='mainlatest' style={{width: '50%',marginLeft:'23%',height:'50%'}}>
+            <div className='mainlatest' style={{width: '50%',marginLeft:'auto',marginRight:'auto',height:'50%'}}>
                 <div className='latest'>
                     <div className='tableicon'>
                     <img src={Boxlanding} alt="" />
@@ -162,7 +124,15 @@ const Home01 = () => {
             <Footer />
            
         </div>
+        ) : <MobileLanding rankingData={rankingData}/>
+    }
+
+        </>
     );
 }
 
-export default Home01;
+const mapStateToProps = (state) => ({
+    websocketData: state.websocketReducer.websocketData,
+  });
+  
+  export default connect(mapStateToProps)(Home01);

@@ -1,6 +1,7 @@
 .nav-mob{
     display: flex;
-    position: relative;
+    justify-content: space-between;
+    /* position: relative; */
    
  
 
@@ -10,7 +11,7 @@
 }
 .mob-logo{
     display: flex;
-    position: relative;
+
     align-items: start;
     width: 15vw;
     height: auto;
@@ -19,9 +20,10 @@ flex-shrink: 0;
 }
 .mob-button{
     display: flex;
-    position: relative;
-    align-items: end;
+
+    align-items: center;
     flex-direction: row;
+    margin-right: 10%;
     
 }
 .mob-login .btn{
@@ -38,7 +40,6 @@ font-style: normal;
 font-weight: 400;
 line-height: normal;
 display: flex;
-position: relative;
 left: 38.9vw;
 bottom: 2vh;
 
@@ -64,7 +65,6 @@ text-overflow: ellipsis;
     font-weight: 400;
     line-height: normal; 
     display: flex;
-    position: relative;
     left: 40vw;
     bottom: 2vh;
     justify-content: center;
@@ -87,16 +87,17 @@ text-overflow: ellipsis;
 
 .mob-header{
     display: flex;
-    position: relative;
+    /* position: relative; */
     justify-content: center;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
+    height: 100%;
     
    
 }
 .mob-electro{
     display: flex;
-    position: relative;
+    /* position: relative; */
     justify-content: center;
     text-align: center;
     text-shadow: -1px -1px 0 black;
@@ -119,7 +120,6 @@ text-overflow: ellipsis;
 }
 .mob-text{
     display: flex;
-    position: relative;
     justify-content: center;
    
     width: 90vw;
@@ -140,7 +140,6 @@ text-overflow: ellipsis;
 }
 .mob-every{
     display: flex;
-    position: relative;
     color: #F9F3F3;
     text-align: center;
     align-items: center;
@@ -155,7 +154,7 @@ text-overflow: ellipsis;
 }
 .mob-bidnow{
 width: 30vw; /* Adjust the width as needed */
-height: 30vh; /* Adjust the height as needed */
+height: 3vh; /* Adjust the height as needed */
 color: #000;
   
 text-align: center;
@@ -168,7 +167,6 @@ border-radius: 8px;
 background: #FFBC0E;
 text-align: center;
 display: flex;
-position: relative;
 top: 55vw;
 
 border-color: #FFBC0E;

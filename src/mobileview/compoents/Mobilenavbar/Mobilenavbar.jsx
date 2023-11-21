@@ -25,6 +25,10 @@ function Mobilenavbar() {
             </div>
 
         </div>
+
+
+        </div>
+       
         <div className='mob-header'>
         <div className='mob-electro'>
             <h2>Electro5050</h2>
@@ -34,9 +38,6 @@ function Mobilenavbar() {
         </div>
 
         </div>
-
-        </div>
-       
 
       
     </div>

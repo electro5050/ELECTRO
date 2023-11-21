@@ -15,9 +15,7 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 
 
-const Header = (gameState={gameState}) => {
-  const { pathname } = useLocation();
-  const [coinBalance, setCoinBalance] = useState(null);
+const Header = () => {
   const[chatOpen, setChatOpen] = useState(false)
   const navigate = useNavigate();
   const SignUpRef = useRef(null);
@@ -31,38 +29,6 @@ const Header = (gameState={gameState}) => {
   //   }
   // };
   
-
-  useEffect(() => {
-    // Assuming you have a function to get a user's token for authorization
-    const token = localStorage.getItem('token');
-
-    fetch('http://192.168.29.85:3000/coinbalance', {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => {
-        const contentType = response.headers.get("content-type");
-        if (response.ok && contentType && contentType.includes("application/json")) {
-            return response.json();
-        } else {
-            console.error('Unexpected response:', response);
-            throw new Error(`Server responded with status: ${response.status} and content type: ${contentType}`);
-        }
-    })
-    
-    .then(data => {
-        if (data.coinbalance) {
-            setCoinBalance(data.coinbalance);
-        }
-    })
-    .catch(error => {
-        console.error('Error fetching coin balance:', error);
-    });
-}, [gameState]);
-
 
   const menuLeft = useRef(null);
   const btnToggle = useRef(null);

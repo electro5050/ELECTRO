@@ -17,7 +17,7 @@ const token = localStorage.getItem('token');
 
 
 
-const Headers = ({selectedHeader, handleLinkClick ,handleChatToggle, gameState={}}) => {
+const Headers = ({selectedHeader, handleLinkClick ,handleChatToggle}) => {
   const { pathname } = useLocation();
   // const [coinBalance, setCoinBalance] = useState(null);
   const navigate = useNavigate();

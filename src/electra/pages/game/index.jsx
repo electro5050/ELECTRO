@@ -61,15 +61,7 @@ const GamePage = () => {
 
 
   const [activeTab, SetTab] = useState('Games');
-  const [data, setData] = useState([]);
-  const [ws, setWs] = useState(null);
-  const [gameState, setGameState] = useState({
-      gameEnded: false,
-      endGameMessage: "",
-      activeGameButton: ""
-  });
-  const [authError, setAuthError] = useState(false);
-  const [rankingData, setRankingData] = useState([]);
+
   const [collapsed, setCollapsed] = useState(false);
 
   const [isLock, setIslock] = useState(false);
@@ -77,7 +69,7 @@ const GamePage = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
-      // navigate('/login');
+      navigate('/login');
     }
     else{
       fetch(config.gameApiUrl+ '/users', {
@@ -92,7 +84,7 @@ const GamePage = () => {
       localStorage.setItem('user', JSON.stringify(data));
     })
     .catch(error => {
-        // navigate('/login');
+        navigate('/login');
     });
     }
 
@@ -230,7 +222,7 @@ const GamePage = () => {
           {isMobile ? (
             // Render mobile-specific components
             <div style={backgroundStyle} className={`main-game-container ${collapsed ? 'collapse' : ''}`}>
-              <MobileHeaders handleLinkClick={handleLinkClick} selectedHeader={activeTab} gameState={gameState} handleChatToggle={handleChatToggle} />
+              <MobileHeaders handleLinkClick={handleLinkClick} selectedHeader={activeTab} handleChatToggle={handleChatToggle} />
               <TopSectionMobile />
               <div style={{ height: "80vh", maxHeight: "80vh", overflowY: "auto" }}>
                 {renderMobileComponent()}
@@ -245,7 +237,7 @@ const GamePage = () => {
                   <NavBar handleLinkClick={handleLinkClick} activeTab={activeTab} handleCollapse={handleCollapse} />
                 </div>
                 <div style={{ width: "85vw" }}>
-                  <Headers handleLinkClick={handleLinkClick} selectedHeader={activeTab} gameState={gameState} handleChatToggle={handleChatToggle} />
+                  <Headers handleLinkClick={handleLinkClick} selectedHeader={activeTab} handleChatToggle={handleChatToggle} />
                   <div style={{ display: "flex" }}>
                     <div style={{ padding: "1vh", width: chatStatus ? "65vw" : "80vw" }}>
                       {renderComponent()}
