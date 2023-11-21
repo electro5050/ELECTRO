@@ -4,7 +4,7 @@ import SideBar from 'electra/components/sidebar';
 import Graph from 'electra/components/Common/Games/Graph';
 import GameControllerButtons from 'electra/components/mobile/GameControllerButtons';
 import ProgressBar from 'electra/components/Common/Games/ProgressBar';
-import axios from 'axios';
+import axios from 'common/electra_axios';
 
 const gameChartContainer = {
   borderRadius: "10px",

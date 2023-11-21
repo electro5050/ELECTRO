@@ -2,7 +2,7 @@ import React, { useState, useRef ,useEffect  } from 'react';
 
 import Avathar from 'electra/components/Common/AvatharView';
 import Modal from './model';
-import axios from 'axios';
+import axios from 'common/electra_axios';
 import { jwtDecode } from 'jwt-decode';
 import config from 'common/constants';
 
@@ -37,7 +37,6 @@ const avatharButton = {
 
 
 const Details = () => {
-
   const token = localStorage.getItem('token');
   const [uploading,setUploading] = useState(false);
   const [uploadError,setUploadError] = useState(null);

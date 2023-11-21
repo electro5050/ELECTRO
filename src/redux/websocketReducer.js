@@ -1,21 +1,22 @@
-import { RECEIVE_MESSAGE } from './websocketActions';
+import { UPDATE_WEBSOCKET_GAME_DATA } from './websocketActions';
 
+// Initial State
 const initialState = {
-    messages: [],
-    winningMessage: null,  // Add this to handle winning messages
-};
-
-const webSocketReducer = (state = initialState, action) => {
+    websocketData: null,
+  };
+  
+  // Reducer
+  const websocketReducer = (state = initialState, action) => {
     switch (action.type) {
-        case RECEIVE_MESSAGE:
-            return {
-                ...state,
-                messages: [...state.messages, action.payload],
-                winningMessage: action.payload.winningMessage, // Update this line
-            };
-        default:
-            return state;
+      case UPDATE_WEBSOCKET_GAME_DATA:
+        return {
+          ...state,
+          websocketData: action.payload,
+        };
+      default:
+        return state;
     }
-};
-
-export default webSocketReducer;
+  };
+  
+  export default websocketReducer;
+  

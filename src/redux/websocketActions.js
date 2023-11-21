@@ -1,9 +1,10 @@
 // Action Types
-export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
+// Action Types
+export const UPDATE_WEBSOCKET_GAME_DATA = 'UPDATE_WEBSOCKET_GAME_DATA';
 
-// Action Creators
-export const receiveMessage = (message) => ({
-    type: RECEIVE_MESSAGE,
-    payload: message,
+// Action Creator
+export const updateWebSocketData = (data) => ({
+  type: UPDATE_WEBSOCKET_GAME_DATA,
+  payload: data,
 });
 

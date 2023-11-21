@@ -5,7 +5,7 @@ import { faBell, faMessage, faUser } from '@fortawesome/free-solid-svg-icons';
 import './index.css';
 import Avathar from 'electra/components/Common/AvatharView';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from 'common/electra_axios';
 import config from 'common/constants';
 
 const flexCenterStype = {
@@ -19,36 +19,17 @@ const token = localStorage.getItem('token');
 
 const Headers = ({selectedHeader, handleLinkClick ,handleChatToggle, gameState={}}) => {
   const { pathname } = useLocation();
-  const [coinBalance, setCoinBalance] = useState(null);
+  // const [coinBalance, setCoinBalance] = useState(null);
   const navigate = useNavigate();
 
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState(null);
   const [userAvatar, setUserAvatar] = useState('null');
   const [profileImage,setProfileImage]=useState('')
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      fetch(config.gameApiUrl + '/users', {
-          method: 'GET',
-          headers: {
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json'
-          }
-      })
-      .then(response => response.json())
-      .then(data => {
-          if (data && typeof data === 'object') {
-              setUser([data]);
-              setUserAvatar(data.avatar); 
-              setProfileImage(data.profilePictureUrl)
-          }
-      })
-      .catch(error => {
-          console.error('Error fetching user data:', error);
-      });
-    }
-  }, [token]);
+    const localUser = JSON.parse(localStorage.getItem('user'));
+    setUser(localUser); 
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -56,35 +37,35 @@ const Headers = ({selectedHeader, handleLinkClick ,handleChatToggle, gameState={
     navigate('/login');
 };
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
+//   useEffect(() => {
+//     const token = localStorage.getItem('token');
 
-    fetch(config.gameApiUrl + '/coinbalance', {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => {
-        const contentType = response.headers.get("content-type");
-        if (response.ok && contentType && contentType.includes("application/json")) {
-            return response.json();
-        } else {
-            console.error('Unexpected response:', response);
-            throw new Error(`Server responded with status: ${response.status} and content type: ${contentType}`);
-        }
-    })
+//     fetch(config.gameApiUrl + '/coinbalance', {
+//         method: 'GET',
+//         headers: {
+//             'Authorization': `Bearer ${token}`,
+//             'Content-Type': 'application/json'
+//         }
+//     })
+//     .then(response => {
+//         const contentType = response.headers.get("content-type");
+//         if (response.ok && contentType && contentType.includes("application/json")) {
+//             return response.json();
+//         } else {
+//             console.error('Unexpected response:', response);
+//             throw new Error(`Server responded with status: ${response.status} and content type: ${contentType}`);
+//         }
+//     })
     
-    .then(data => {
-        if (data.coinbalance) {
-            setCoinBalance(data.coinbalance);
-        }
-    })
-    .catch(error => {
-        console.error('Error fetching coin balance:', error);
-    });
-}, [gameState]);
+//     .then(data => {
+//         if (data.coinbalance) {
+//             setCoinBalance(data.coinbalance);
+//         }
+//     })
+//     .catch(error => {
+//         console.error('Error fetching coin balance:', error);
+//     });
+// }, [gameState]);
 
   return (
     <div className='main-header'>
@@ -113,7 +94,7 @@ const Headers = ({selectedHeader, handleLinkClick ,handleChatToggle, gameState={
                       />
                       <span className='wallet-value'>
                     
-                      {coinBalance ? `${coinBalance} $` : '000'}
+                      {(user && user.coinbalance) ? `${user.coinbalance} $` : '000'}
                       </span>
                   </div>
 
@@ -142,7 +123,7 @@ const Headers = ({selectedHeader, handleLinkClick ,handleChatToggle, gameState={
                   <div className="dropdown-content">
 
                     <div style={{...flexCenterStype,   marginBottom:'30px'}}>
-                        <Avathar imageUrl={profileImage || userAvatar || "assets/Avatars/avathar_1.png"}imageSize={'4vw'}/>
+                        <Avathar imageUrl={(user && user.profilePictureUrl) || "assets/Avatars/avathar_1.png"}imageSize={'4vw'}/>
                         <div style={{paddingLeft:"10px"}}>
                             <div style={{display:"flex", alignItems: "center"}}>
                                 <div style={{fontSize: "max(1vw, 14px)", color:"white", fontWeight:"800"}}>

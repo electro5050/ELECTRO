@@ -4,6 +4,8 @@ import './GameHistoryTable.css';
 import Avathar from 'electra/components/Common/AvatharView';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDollarSign  } from '@fortawesome/free-solid-svg-icons';
+import config from 'common/constants';
+
 
 const circleStyle = {
   width: '25px',
@@ -24,36 +26,15 @@ const TopWinners = ({rankingData}) => {
   const [gameHistory, setGameHistory] = useState(rankingData);
   const token = localStorage.getItem('token');
 
-  const [profileImage,setProfileImage]=useState('')
-  const [userAvatar, setUserAvatar] = useState('null');
-  const [user, setUser] = useState([]);
+
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const localUser = JSON.parse(localStorage.getItem('user'));
+    setUser(localUser); 
+  }, []);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      fetch('http://192.168.29.85:3000/users', {
-          method: 'GET',
-          headers: {
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json'
-          }
-      })
-      .then(response => response.json())
-      .then(data => {
-          if (data && typeof data === 'object') {
-              setUser([data]); 
-              setUserAvatar(data.avatar);// Store the avatar filename
-              setProfileImage(data.profilePictureUrl) 
-          }
-      })
-      .catch(error => {
-          console.error('Error fetching user data:', error);
-      });
-    }
-  }, [token]);
-
-  useEffect(() => {
-      fetch('http://192.168.29.85:3000/usergamehistory', {
+      fetch(config.gameApiUrl + '/usergamehistory', {
           method: 'GET',
           headers: {
               'Authorization': `Bearer ${token}`,
@@ -75,7 +56,7 @@ const TopWinners = ({rankingData}) => {
     <div className="game-view-top-history-profile" style={{height:"30vh", background:"#43415B", marginTop:"4vh", borderRadius: "20px"}}>
         
 <div style={headerStyle}>
-  <Avathar  imageUrl={profileImage || userAvatar || "assets/Avatars/avathar_1.png"} imageSize={'calc(10px + 1vw + 1vh)'} />
+  <Avathar  imageUrl={(user && user.profilePictureUrl) || "assets/Avatars/avathar_1.png"} imageSize={'calc(10px + 1vw + 1vh)'} />
     <span  style={{marginLeft:"10px"}} className="font-6">Your Game History</span>
       </div>
 

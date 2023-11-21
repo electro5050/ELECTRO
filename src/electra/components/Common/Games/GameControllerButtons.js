@@ -2,7 +2,9 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfo, faAngleDown  } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios';
+import axios from 'common/electra_axios';
+import { connect } from 'react-redux';
+import config from 'common/constants';
 
 const gameContollersStyle = {
     padding:"10px",
@@ -130,11 +132,11 @@ function getBidAmountStyle(type){
     fontSize: 'calc(4px + 0.4vh + 0.4vw)',
     fontWeight:"900"
   };
-  if(type == 'Red'){
+  if(type == 'silver'){
     switchRoomStyle.background = '#D9D4D4';
   }
 
-  else  if(type == 'Green'){
+  else  if(type == 'gold'){
     switchRoomStyle.background = '#FFD700';
   }
 
@@ -142,25 +144,29 @@ function getBidAmountStyle(type){
 }
 
 
-const GameControllerButtons = ({BidValue,data, gameState, setGameState, authError, setAuthError,gameId}) => {
+const GameControllerButtons = ({websocketData, setAuthError}) => {
   const [result, setResult] = useState(1);
   // const [selectedValue, setSelectedValue] = useState(1);
-  const [buttonType, setButtonType] = useState("");
-  const [textFieldData, setTextFieldData] = useState("");
-  const [showSwitchRoomButton, setShowSwitchRoomButton] = useState(false);
-  const [totalBidAmount, setTotalBidAmount] = useState({amount:0, type:null});
+  // const [buttonType, setButtonType] = useState("");
+  const [textFieldData, setTextFieldData] = useState(1);
+
+  const [currentGameState, setCurrentGameState] = useState(null);
+  // const [showSwitchRoomButton, setShowSwitchRoomButton] = useState(false);
+  // const [totalBidAmount, setTotalBidAmount] = useState({amount:0, type:null});
 
 
   useEffect(() => {
-    setTotalBidAmount({amount:2050, type:"Red"});
-    const timer = setTimeout(() => {
-      setShowSwitchRoomButton(true);
-    }, 24000); // 24 seconds
+    if (websocketData && websocketData.type === 'gameEnded') {
+      setCurrentGameState(null);
+      setResult(1);
+    }
+  }, [websocketData]);
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [gameState.gameEnded]);
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const localUser = JSON.parse(localStorage.getItem('user'));
+    setUser(localUser); 
+  }, []);
 
 
   const handleDropdownChange = (event) => {
@@ -185,39 +191,56 @@ const GameControllerButtons = ({BidValue,data, gameState, setGameState, authErro
     }
   };
 
+  const IsGameOngoing = () => {
+    if (websocketData && websocketData.gameId && (websocketData.type == "live" || websocketData.type == "gameStart")) {
+      return true;
+    }
+  };
+
+  const IsSwitchRoomEnable = () => {
+    if (IsGameOngoing()  && websocketData.type == "live" && websocketData.chartData.length > 24 && currentGameState) {
+      return true;
+    }
+  };
+
+  const IsGameButtonValid = (type) => {
+    if (IsGameOngoing() && !(currentGameState && currentGameState.type != type) && !IsSwitchRoomEnable()) {
+      return true;
+    }
+  };
+
   
   useEffect(() => {
     setTextFieldData(result);
+    if(user && result>user.coinbalance){
+      alert("Dont have enough coins, please buy coins");
+      setResult(user.coinbalance);
+    }
   }, [result]);
 
   const handleButtonClick = (type) => {
-    setButtonType(type);
+    // setButtonType(type);
     sendDataToAPI(type); // Sending the type as a parameter to the function
   };
 
   const sendDataToAPI = (type) => {
     
-    if (!gameState || gameState.gameId === undefined) {
+    if (!websocketData || websocketData.gameId === undefined) {
       console.error('gameState or gameId is undefined!');
+
       return;
     }
 
-    // if (typeof textFieldData === 'string' && textFieldData.trim() === '') {
-    //   console.error("Coin count is empty");
-    //   return;
-    // }
-
-    axios.post('http://192.168.29.85:3000/bid', {
+    axios.post(config.gameApiUrl + '/bid', {
       coinCount: result,
       buttonType: type,
-      gameId: gameState.gameId
+      gameId: websocketData.gameId
     })
     .then(response => {
-      setGameState({
-        ...gameState,
-        activeGameButton: type
-      });
-      console.log("Data sent successfully:", response.data);
+      setCurrentGameState(prevState => ({
+        amount: (prevState && prevState.amount) ? prevState.amount + result : result,
+        type: type
+      }));
     })
     .catch(error => {
       console.error("Error sending data:", error);
@@ -229,12 +252,16 @@ const GameControllerButtons = ({BidValue,data, gameState, setGameState, authErro
   };
 
 const handleSwitchRoom = () => {
-  const userIdFromLocalStorage = localStorage.getItem('userId');
-  axios.post('http://192.168.29.85:3000/switch', {
-      userId: userIdFromLocalStorage
+  // const userIdFromLocalStorage = JSON.parse(localStorage.getItem('user')).id;
+  axios.post(config.gameApiUrl + '/switch', {
+      gameId: websocketData.gameId
   })
   .then(response => {
-      console.log("Switch room success:", response.data); 
+    setCurrentGameState(prevState => ({
+      amount: prevState.amount,
+      type: prevState.type === "gold" ? "silver" : "gold"
+    }));
+
   })
   .catch(error => {
       console.error("Error switching room:", error);
@@ -248,11 +275,12 @@ const handleSwitchRoom = () => {
       </div> */}
       <div style={ButtonGroupContainer}>
         <div style={CenterStyle}>
-          <div style={{...buttonStyle, background: "#D9D4D4"}} onClick={() => {
-            if(buttonType != 'Red')
-              handleButtonClick("Green");
-    // sendDataToAPI();
-}} >
+          <div style={{...buttonStyle, background: "#D9D4D4", cursor: IsGameButtonValid("silver")  ?  "pointer" : "not-allowed"}} onClick={() => {
+              if(IsGameButtonValid("silver")){
+                handleButtonClick("silver");
+              }
+
+          }} >
               <span style={TextStyle}>
                   Bid
               </span>
@@ -292,19 +320,20 @@ const handleSwitchRoom = () => {
         </div>
 
         <div style={CenterStyle}>
-             {totalBidAmount.amount > 0 && totalBidAmount.type != null  && (
-           <button  style={getBidAmountStyle(totalBidAmount.type)} >
-            {totalBidAmount.amount}</button>
+             {currentGameState && currentGameState.amount > 0 && currentGameState.type != null  && (
+           <button  style={getBidAmountStyle(currentGameState.type)} >
+            {currentGameState.amount}</button>
              )}
         </div>
 
 
         <div style={CenterStyle}>
-          <div style={{...buttonStyle, background: "#FFD700"}} onClick={() => {
-            if(buttonType != 'Green')
-           handleButtonClick("Red");
-          //  sendDataToAPI();
-               }}  >
+          <div style={{...buttonStyle, background: "#FFD700" , cursor: IsGameButtonValid("gold")  ?  "pointer" : "not-allowed"}} onClick={() => {
+              if(IsGameButtonValid("gold") ){
+                handleButtonClick("gold");
+              }
+
+            }}  >
               <span style={TextStyle}>
                   Bid
               </span>
@@ -323,7 +352,7 @@ const handleSwitchRoom = () => {
         </div>
 
         <div >
-             {(showSwitchRoomButton || true) && (
+             {IsSwitchRoomEnable() && (
            <button onClick={handleSwitchRoom} style={switchRoomStyle}>switch room</button>
              )}
         </div>
@@ -335,4 +364,8 @@ const handleSwitchRoom = () => {
   );
 };
 
-export default GameControllerButtons;
+const mapStateToProps = (state) => ({
+  websocketData: state.websocketReducer.websocketData,
+});
+
+export default connect(mapStateToProps)(GameControllerButtons);

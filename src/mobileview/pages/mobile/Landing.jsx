@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import axios from 'axios';
+import axios from 'common/electra_axios';
 import './Landing.css'
 import  Mobilenavbar from'../../compoents/Mobilenavbar/Mobilenavbar'
 import Graph from '../../../electra/components/Common/Games/Graph';

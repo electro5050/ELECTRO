@@ -41,8 +41,9 @@ router.post('/signup', async (req, res) => {
       token,
       user: {
         id: newUser.id,
-        name: newUser.name,
-        email: newUser.email
+        ...newUser.toObject()
+        // name: newUser.name,
+        // email: newUser.email
       }
     });
   } catch (err) {
@@ -84,18 +85,15 @@ router.post('/login', async (req, res) => {
       { expiresIn: 3600 } // Expires in 1 hour
     );
 
-    console.log("Generated Token for Login:", token);
-
     res.json({
       token,
       user: {
         id: user.id,
-        name: user.name,
-        email: user.email
+        ...user.toObject()
+        // name: user.name,
+        // email: user.email
       }
     });
-
-    console.log("Token sent to client:", token);
 
   } catch (err) {
     console.error("Error during login:", err);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from 'common/electra_axios';
 import Headers from 'electra/components/header';
 import MobileHeaders from 'electra/components/header/mobileHeader';
 
@@ -77,7 +77,7 @@ const GamePage = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
-      navigate('/login');
+      // navigate('/login');
     }
     else{
       fetch(config.gameApiUrl+ '/users', {
@@ -92,73 +92,12 @@ const GamePage = () => {
       localStorage.setItem('user', JSON.stringify(data));
     })
     .catch(error => {
-        navigate('/login');
+        // navigate('/login');
     });
     }
 
   },[] );
 
-  useEffect(() => {
-    const websocket = new WebSocket("ws://192.168.29.85:5000");
-
-    websocket.onopen = () => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            websocket.send(JSON.stringify({ type: 'auth', token: token }));
-        }
-    };
-
-    websocket.onmessage = (event) => {
-      const message = JSON.parse(event.data);
-      console.log("Received WebSocket message:", event.data);
-  
-      if (message.type && message.type === 'winners') {
-          setRankingData(message.winners);
-      } else if (message.gameId) {
-          setGameState(prevState => ({ ...prevState, gameId: message.gameId }));
-      } else if (message.message) {
-          setGameState(prevState => ({
-              ...prevState,
-              endGameMessage: message.message,
-              gameEnded: true,
-              gameId: message.gameId
-          }));
-  
-          setData([]);
-  
-          setTimeout(() => {
-              setGameState(prevState => ({
-                  ...prevState,
-                  gameEnded: false,
-                  endGameMessage: ""
-              }));
-          }, 10000);
-      } else {
-          // Only update if the message value is different
-          if (!data.includes(message.value)) {
-              setData(prevData => [...prevData, message.value]);
-          }
-      }
-  };
-  
-
-    websocket.onerror = (error) => {
-        console.error("WebSocket Error:", error);
-    };
-
-    setWs(websocket);
-
-    const token = localStorage.getItem('token');
-    if (token) {
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    } else {
-        setAuthError(true);
-    }
-
-    return () => {
-        websocket.close();
-    };
-},[] )
 
   const handleLinkClick = (name) => {
     SetTab(name);

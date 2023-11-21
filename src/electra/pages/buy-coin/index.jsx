@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from 'common/electra_axios';
 import Headers from 'electra/components/header';
 import NavBar from 'electra/components/navbar';
 // import Footer from '@components/footer/Footer';

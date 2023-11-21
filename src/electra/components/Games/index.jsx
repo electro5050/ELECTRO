@@ -5,26 +5,53 @@ import './index.css';
 import TopSection from 'electra/components/Common/Games/TopSection';
 import GameChart from 'electra/components/Common/Games/GameChart';
 import TopWinnersTable from 'electra/components/Common/Games/TopWinnersTable';
-import axios from 'axios';
+import axios from 'common/electra_axios';
 import Modal from './model'
+import { connect } from 'react-redux';
 
-const shareButtonStyle = {
-    borderRadius: '10px',
-    background: 'linear-gradient(0deg, rgb(255, 255, 255) 0%, rgba(244, 225, 124, 0.9) 100%)',
-    backdropFilter: 'blur(50px)',
-    width: 'fit-content',
-    height: '20px',
+
+  const containerStyle = {
     display: 'flex',
-    textAlign: 'center',
-    justifyContent: 'center',
-    color: 'black',
+    flexDirection: 'column',
     alignItems: 'center',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    padding: '10px 20px',
-    fontWeight: 700
+    justifyContent: 'center',
+    borderRadius:"2vw",
+    height: '30vw',
+    width:"30vw",
+    background: 'transparent',
+    position: 'relative',
   };
 
+  const textDivStyle = {
+    position: 'absolute',
+    top: '50%', // Adjust as needed
+    transform: 'translateY(-50%)',
+    opacity: 1,
+    color: 'white',
+    fontSize:"calc(50px + 5vw + 5vh)",
+    fontWeight:"800"
+    // Additional styles for the text div as needed
+  };
+
+  const textDivStyleSpan = {
+    position: 'absolute',
+    top: '15%', // Adjust as needed
+    transform: 'translateY(-50%)',
+    opacity: 1,
+    color: 'white',
+  }
+
+  const blackDivStyle = {
+    borderRadius:"2vw",
+    border:"1px solid yellow",
+    position: 'absolute',
+    width: '100%', // Full width
+    height: '100%', // Adjust the height as needed
+    // background: 'yellow', // Background color for the black div
+    opacity: 0.9,
+    background: 'black',
+    // Additional styles for the black div as needed
+  };
 
   const exampleRankingData = [
     {
@@ -90,115 +117,49 @@ const shareButtonStyle = {
     // Add more data as needed
   ];
 
-const GameComponent = ({}) => {
-  const [data, setData] = useState([]);
-  const [ws, setWs] = useState(null);
-  const [gameState, setGameState] = useState({
-      gameEnded: false,
-      endGameMessage: "",
-      activeGameButton: ""
-  });
-  const [authError, setAuthError] = useState(false);
-  const [rankingData, setRankingData] = useState(exampleRankingData);
+const GameComponent = ({websocketData}) => {
+  const [rankingData, setRankingData] = useState([]);
 
 
-  const [user, setUser] = useState([]);
- 
-  
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      fetch('http://192.168.29.85:3000/users', {
-          method: 'GET',
-          headers: {
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json'
-          }
-      })
-      .then(response => response.json())
-      .then(data => {
-          if (data && typeof data === 'object') {
-              setUser(data.id); 
-              
-          }
-      })
-      .catch(error => {
-          console.error('Error fetching user data:', error);
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    const websocket = new WebSocket("ws://192.168.29.85:5000");// Replace with actual user ID retrieval method
-    
-    websocket.onopen = () => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        websocket.send(JSON.stringify({ type: 'auth', token: token }));
-      }
-    };
-
-    websocket.onmessage = (event) => {
-      const message = JSON.parse(event.data);
-      console.log("Received WebSocket message:", event.data);
-     
-  
-  
-      if (message.type === 'winners') {
-        setRankingData(message.winners);
-        console.log("Received winners message:", message)
-        const currentUserId = user
-        const isCurrentUserWinner = message.winners.some(winners => winners.userId === currentUserId);
-        if (isCurrentUserWinner) {
-          SetIsWinModal(true); // Open the modal if the current user is a winner
-        }
-      } else if (message.type === 'valueUpdate') {
-        console.log("Received valueUpdate message:", message);
-        // Here, handle the value update. You might want to update a state or perform some action
-        // For example, if you're tracking the game's progress or other values:
-         setData(prevData => [...prevData, message.value]);
-      } else if (message.gameId) {
-        setGameState(prevState => ({ ...prevState, gameId: message.gameId }));
-      } else if (message.message) {
-        setGameState(prevState => ({
-          ...prevState,
-          endGameMessage: message.message,
-          gameEnded: true,
-          gameId: message.gameId
-        }));
-  
-        setData([]); // Reset data
-  
-        setTimeout(() => {
-          setGameState(prevState => ({
-            ...prevState,
-            gameEnded: false,
-            endGameMessage: ""
-          }));
-        }, 10000);
-      }
-    };
-  
-    websocket.onerror = (error) => {
-      console.error("WebSocket Error:", error);
-      setAuthError(true); // Handle WebSocket error
-    };
-  
-    setWs(websocket);
-  
-    return () => {
-      websocket.close();
-    };
+    const localUser = JSON.parse(localStorage.getItem('user'));
+    setUser(localUser); 
   }, []);
   
+const [gameEndModal, SetIsGameEndModal] = useState(false);
+const [gameCounter, SetGameCounter] = useState(0);
 
-const [winModel, SetIsWinModal] = useState(false);
 
-
-const closeWinModal = () => {
-    SetIsWinModal(false)
+const closeGameEndModal = () => {
+  SetIsGameEndModal(false)
 };
+
+ 
+  useEffect(() => {
+      let intervalId; // Declare intervalId outside the if block
+
+      if (websocketData && websocketData.type === 'gameEnded') {
+        setRankingData(websocketData.winners);
+          SetIsGameEndModal(true);
+          SetGameCounter(10);
+
+          const decrementCounter = () => {
+            SetGameCounter(prevCounter => Math.max(0, prevCounter - 1));
+          };
+
+          // Set up an interval to call decrementCounter every second
+          intervalId = setInterval(decrementCounter, 1000);
+        
+      } else {
+        closeGameEndModal();
+      }
+
+      // Cleanup the interval when the component is unmounted or when the condition is not met
+      return () => clearInterval(intervalId);
+    }, [websocketData]);
+
 
   return (
 
@@ -213,20 +174,35 @@ const closeWinModal = () => {
       <TopWinnersTable rankingData={rankingData} />
 
         
-      <Modal isOpen={winModel} onClose={closeWinModal}>
-            <div>
-            <img src={"assets/electra/win-shield.png"}  alt=""  style={{height:"50vh"}}/>
-            <div style={shareButtonStyle}>
-                    share &nbsp;&nbsp;
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
-                    <path d="M7.5 0V3C1.5 3 0 6.075 0 10.5C0.78 7.53 3 6 6 6H7.5V9L12 4.26L7.5 0Z" fill="#6D6520"/>
-                    </svg>
-            </div>
+
+
+        <Modal isOpen={gameEndModal} onClose={closeGameEndModal}>
+
+        <div style={containerStyle}>
+
+
+          <div style={blackDivStyle}>
+            {/* Content for the black div goes here */}
+            <img src={"assets/electra/logo_dark.png"} alt={`pic`} style={{ height: "100%", width:'100%', opacity:"0.2" }}/>
+          </div>
+{/* 
+          <div style={textDivStyle} className="font-10"> */}
+            <div style={textDivStyleSpan} className="font-10">
+            next bid starts in...
             </div>
 
+            <div style={textDivStyle}>
+              {gameCounter}
+            </div>
+        </div>
         </Modal>
+
     </div>
   );
 };
 
-export default GameComponent;
+const mapStateToProps = (state) => ({
+  websocketData: state.websocketReducer.websocketData,
+});
+
+export default connect(mapStateToProps)(GameComponent);

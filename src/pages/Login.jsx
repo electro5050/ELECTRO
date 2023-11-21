@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from 'common/electra_axios';
 import { useNavigate } from 'react-router-dom'; 
-import { useAuth } from '../contexts/AuthContext';
+// import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
@@ -11,7 +11,7 @@ import config from 'common/constants';
 const Login = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
     const [errors, setErrors] = useState({});
-    const { login } = useAuth();
+    // const { login } = useAuth();
     const navigate = useNavigate();
 
     const validateForm = () => {
@@ -40,7 +40,7 @@ const Login = () => {
             localStorage.setItem('token', data.token);
             localStorage.setItem('user', JSON.stringify(data.user));
             axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
-            login();  
+            // login();  
             navigate('/game');
         } catch (error) {
             console.error('Error during login:', error.response?.data || error.message);

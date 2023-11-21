@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from 'common/electra_axios';
 import EditProfile from './EditProfile';
 
 function Profile() {

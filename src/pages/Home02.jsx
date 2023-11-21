@@ -1,6 +1,6 @@
 
 import React, { useState,useEffect } from 'react';
-import axios from 'axios';
+import axios from 'common/electra_axios';
 import Headers from '../components/header/Headergm';
 // import Footer from '../components/footer/Footer';
 import heroSliderData from '../assets/fake-data/data-slidergm';

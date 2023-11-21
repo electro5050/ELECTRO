@@ -1,6 +1,6 @@
 
 import React, { useState,useEffect } from 'react';
-import axios from 'axios';
+import axios from 'common/electra_axios';
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
 import Payment from '../components/Upi/Payment'
