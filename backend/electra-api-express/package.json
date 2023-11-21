@@ -97,7 +97,8 @@
     "xmlhttprequest-ssl": "^1.6.3",
     "yeast": "^0.1.2",
     "mongoose": "^8.0.1",
-    "jsonwebtoken":"^9.0.2"
+    "jsonwebtoken":"^9.0.2",
+    "dotenv": "^16.3.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
