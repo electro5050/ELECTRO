@@ -15,7 +15,7 @@ pubsub.subscribe('game_queue')
 active_websockets = set()
 
 # MongoDB setup
-mongo_uri = "MONGO_URI=mongodb://electra:electra5050@docdb-2023-11-21-09-53-39.cluster-cp0ip1rsquov.ap-south-1.docdb.amazonaws.com:27017/?tls=true&tlsCAFile=global-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false"
+mongo_uri = "mongodb://electra:electra5050@docdb-2023-11-21-09-53-39.cluster-cp0ip1rsquov.ap-south-1.docdb.amazonaws.com:27017/?tls=true&tlsCAFile=global-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false"
 mongo_client = MongoClient(mongo_uri, ssl=True)
 db = mongo_client['test']
 
