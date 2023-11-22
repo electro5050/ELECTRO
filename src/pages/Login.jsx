@@ -45,6 +45,7 @@ const Login = () => {
             navigate('/game');
         } catch (error) {
             console.error('Error during login:', error.response?.data || error.message);
+            alert("login failed")
         }
     };
 

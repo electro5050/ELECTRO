@@ -25,7 +25,7 @@ const Headers = ({userData, selectedHeader, handleLinkClick ,handleChatToggle })
   
   const handleLogout = () => {
     localStorage.removeItem('token');
-    delete axios.defaults.headers.common['Authorization'];
+    localStorage.removeItem('user');
     navigate('/login');
 };
 

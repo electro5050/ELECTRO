@@ -5,6 +5,7 @@ import { faBell, faMessage, faUser } from '@fortawesome/free-solid-svg-icons';
 import './index.css';
 import Avathar from 'electra/components/Common/AvatharView';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const flexCenterStype = {
   display: "flex",
@@ -13,12 +14,19 @@ const flexCenterStype = {
 };
 
 const Headers = ({userData, electedHeader, handleLinkClick,}) => {
-
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   
   useEffect(() => {
     setUser(userData);
   }, [userData]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    navigate('/login');
+};
+
 
   return (
     <div className='main-header main-header-mobile'>
@@ -57,7 +65,18 @@ const Headers = ({userData, electedHeader, handleLinkClick,}) => {
               
 
               </div>
+            </div>  
+            
+            
+            <div onClick={handleLogout} className='vertical-center actions-icon' style={{...flexCenterStype, width: "min(200px, 15vw)", justifyContent: "flex-end"}}>
+              <div className='dropdown-button-icon'>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+                      <path d="M11.8889 10.3333L15 7.22222M15 7.22222L11.8889 4.11111M15 7.22222H4.11111M8.77778 10.3333V11.1111C8.77778 12.3998 7.73314 13.4444 6.44444 13.4444H3.33333C2.04467 13.4444 1 12.3998 1 11.1111V3.33333C1 2.04467 2.04467 1 3.33333 1H6.44444C7.73314 1 8.77778 2.04467 8.77778 3.33333V4.11111" stroke="#DFDDD5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+              </div>
+
             </div>
+
 
       </div>
     </div>
