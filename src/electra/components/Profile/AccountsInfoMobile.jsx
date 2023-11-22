@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Avathar from 'electra/components/Common/AvatharView';
 import Modal from './model';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import PasswordInput from './PasswordInput';
+import { connect } from 'react-redux';
 
 const avatharContainerStyle = {
   display: "flex",
@@ -40,11 +41,18 @@ const passwordChangeButton = {
 };
 
 
-const AccountInfo = ({userDate}) => {
+const AccountInfo = ({userData}) => {
 
   const [isEdit, setIsEdit] = useState(false);
   const [isPasswordPopUpOpen, setIsPasswordOpen] = useState(false);
-  const [name, setName] = useState("shafeer");
+  const [name, setName] = useState("");
+
+  const [user, setUser] = useState(null);
+  
+  useEffect(() => {
+    setUser(userData);
+    setName(userData?.name);
+  }, [userData]);
 
   const OnSubmitClieck = () => {
     alert("save");
@@ -116,7 +124,7 @@ const AccountInfo = ({userDate}) => {
                 background: isEdit ? 'red' : 'rgba(0, 0, 0, 0.90)',
                 padding:"1.5%"
               }}>
-                <label>shafeer3218@gmail.com {isEdit && <span style={{float:"right"}}>email cannot be changed</span>}</label>
+                <label>{user?.email} {isEdit && <span style={{float:"right"}}>email cannot be changed</span>}</label>
           </div>
       </div>
 
@@ -251,4 +259,8 @@ const AccountInfo = ({userDate}) => {
   );
 };
 
-export default AccountInfo;
+const mapStateToProps = (state) => ({
+  userData: state.userReducer.userData,
+});
+
+export default connect(mapStateToProps)(AccountInfo);

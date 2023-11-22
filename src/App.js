@@ -5,20 +5,10 @@ import routes from './pages/index'
 // import { AuthProvider } from './contexts/AuthContext.jsx';
 import axios from 'common/electra_axios';
 import config from 'common/constants';
-import { Provider, useDispatch  } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
-import websocketReducer from 'redux/websocketReducer';
+import { useDispatch  } from 'react-redux';
 import {updateWebSocketData} from 'redux/websocketActions';
 
-const rootReducer = combineReducers({
-    websocketReducer,
-  });
-
-  const store = createStore(rootReducer);
-
 function App() {
-
-    
 
   const [data, setData] = useState([]);
   const [ws, setWs] = useState(null);
@@ -43,7 +33,6 @@ function App() {
     };
 
     websocket.onmessage = (event) => {
-        console.log("socket_data", event.data);
         const message = JSON.parse(event.data);
         dispatch(updateWebSocketData(message));     
     };

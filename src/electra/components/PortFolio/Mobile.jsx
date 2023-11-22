@@ -4,6 +4,8 @@ import SideBar from 'electra/components/sidebar';
 import './index.css';
 import TopSection from 'electra/components/Common/Games/TopSection';
 import GameHistoryTable from 'electra/components/PortFolio/GameHistoryTable';
+import config from 'common/constants';
+
 
 const rankingData = [
   {
@@ -86,11 +88,11 @@ const rankingData = [
 
 
 const GameComponent = ({}) => {
-  const [gameHistory, setGameHistory] = useState(rankingData);
+  const [gameHistory, setGameHistory] = useState([]);
   const token = localStorage.getItem('token');
 
   useEffect(() => {
-      fetch('http://192.168.29.85:3000/usergamehistory', {
+      fetch(config.gameApiUrl+ '/usergamehistory', {
           method: 'GET',
           headers: {
               'Authorization': `Bearer ${token}`,

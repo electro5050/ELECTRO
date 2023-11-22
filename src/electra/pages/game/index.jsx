@@ -39,9 +39,12 @@ import OrientationLock from 'electra/pages/orientationLock';
 import GameChart from 'electra/components/Common/Games/GameChart';
 import { useNavigate } from 'react-router-dom';
 import config from 'common/constants';
-
+import {updateUserData} from 'redux/userActionActions';
+import { useDispatch  } from 'react-redux';
 
 const GamePage = () => {
+
+  const dispatch = useDispatch();
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isMobile, setIsMobile] = useState(false);
@@ -82,6 +85,7 @@ const GamePage = () => {
     .then(response => response.json())
     .then(data => {
       localStorage.setItem('user', JSON.stringify(data));
+      dispatch(updateUserData(data));   
     })
     .catch(error => {
         navigate('/login');
@@ -223,7 +227,7 @@ const GamePage = () => {
             // Render mobile-specific components
             <div style={backgroundStyle} className={`main-game-container ${collapsed ? 'collapse' : ''}`}>
               <MobileHeaders handleLinkClick={handleLinkClick} selectedHeader={activeTab} handleChatToggle={handleChatToggle} />
-              <TopSectionMobile />
+              <TopSectionMobile handleLinkClick={handleLinkClick}  />
               <div style={{ height: "80vh", maxHeight: "80vh", overflowY: "auto" }}>
                 {renderMobileComponent()}
               </div>

@@ -3,9 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 import SideBar from 'electra/components/sidebar';
 import Graph from 'electra/components/Common/Games/Graph';
 import GameControllerButtons from 'electra/components/Common/Games/GameControllerButtons';
-import ProgressBar from 'electra/components/Common/Games/ProgressBar';
-import axios from 'common/electra_axios';
-import TopWinners from './TopWinnersTable';
 
 const gameChartContainer = {
   borderRadius: "10px",

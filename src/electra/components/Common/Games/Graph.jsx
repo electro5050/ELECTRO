@@ -6,10 +6,10 @@ import ProgressBar from 'electra/components/Common/Games/ProgressBar';
 import { connect } from 'react-redux';
 
 function getNextExponentialValue(number) {
-    const remainder = number % 500;
-    let  nextMultipleOf100 = remainder === 0 ? number : number + (500 - remainder);
-    if(nextMultipleOf100 < 100){
-      nextMultipleOf100 = 100;
+    const remainder = number % 10;
+    let  nextMultipleOf100 = remainder === 0 ? number : number + (10 - remainder);
+    if(nextMultipleOf100 < 10){
+      nextMultipleOf100 = 10;
     }
     return nextMultipleOf100;
   }
@@ -108,9 +108,14 @@ function LineChart({websocketData }) {
         if (websocketData.type === 'live') {
           // let chartData = websocketData.chartData;
 
+          let thresholdValue = 0;
+          if(websocketData.totalGold == 0 && websocketData.totalSilver == 0){
+            thresholdValue = 0.1;
+          }
+
           let chartData = websocketData.chartData.map(item => ({
-            silver: item.silver + 10,
-            gold: item.gold + 10,
+            silver: item.silver + thresholdValue,
+            gold: item.gold + thresholdValue,
           }));
 
           const silverMax = calculateMaxValue(chartData, "silver");
@@ -155,7 +160,6 @@ function LineChart({websocketData }) {
       }, [websocketData]);
 
     useEffect(() => {
-      console.log(fakeData);
         chartDom && chartDom.setOption({
             ...option,
             yAxis: {

@@ -8,10 +8,12 @@ import ScrollToTop from './ScrollToTop';
 import { Provider  } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 import websocketReducer from 'redux/websocketReducer';
+import userReducer from 'redux/userActionReducer';
 
 
 const rootReducer = combineReducers({
   websocketReducer,
+  userReducer
 });
 
 const store = createStore(rootReducer);

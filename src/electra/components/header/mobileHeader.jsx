@@ -4,20 +4,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faMessage, faUser } from '@fortawesome/free-solid-svg-icons';
 import './index.css';
 import Avathar from 'electra/components/Common/AvatharView';
+import { connect } from 'react-redux';
 
 const flexCenterStype = {
   display: "flex",
   alignItems: "center",
 
 };
-const token = localStorage.getItem('token');
 
+const Headers = ({userData, electedHeader, handleLinkClick,}) => {
 
-
-const Headers = ({selectedHeader, handleLinkClick,}) => {
-
-  const localUser = JSON.parse(localStorage.getItem('user'));
-  const [user, setUser] = useState(localUser || null);
+  const [user, setUser] = useState(null);
+  
+  useEffect(() => {
+    setUser(userData);
+  }, [userData]);
 
   return (
     <div className='main-header main-header-mobile'>
@@ -64,4 +65,9 @@ const Headers = ({selectedHeader, handleLinkClick,}) => {
   );
 };
 
-export default Headers;
+const mapStateToProps = (state) => ({
+  userData: state.userReducer.userData,
+});
+
+export default connect(mapStateToProps)(Headers);
+

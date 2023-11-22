@@ -5,6 +5,9 @@ import Modal from './model';
 import axios from 'common/electra_axios';
 import { jwtDecode } from 'jwt-decode';
 import config from 'common/constants';
+import { connect } from 'react-redux';
+import {updateUserData} from 'redux/userActionActions';
+import { useDispatch  } from 'react-redux';
 
 const avatharContainerStyle = {
   display: "flex",
@@ -36,8 +39,8 @@ const avatharButton = {
 };
 
 
-const Details = () => {
-
+const Details = ({userData}) => {
+  const dispatch = useDispatch();
   const token = localStorage.getItem('token');
   const [uploading,setUploading] = useState(false);
   const [uploadError,setUploadError] = useState(null);
@@ -55,8 +58,12 @@ const Details = () => {
 
   const [profileImage,setProfileImage]=useState(null)
 
-  const localUser = JSON.parse(localStorage.getItem('user'));
-  const [user, setUser] = useState(localUser || null);
+  const [user, setUser] = useState(null);
+  
+    useEffect(() => {
+      setUser(userData);
+    }, [userData]);
+
   const [isImagePopUpOpen, setIsImagePopUpOpen] = useState(false);
 
   const ImageEditButtonClick = () => {
@@ -160,6 +167,7 @@ const handleAvatarSelect = async () => {
     let localUser = JSON.parse(localStorage.getItem('user'));
     localUser.profilePictureUrl = data.avatarFileName;
     localStorage.setItem('user', JSON.stringify(localUser));
+    dispatch(updateUserData(localUser));  
     setUser(localUser); 
     closeAvatharEditModal();
   } catch (error) {
@@ -286,7 +294,11 @@ const getSelectedAvatharStyle = (avatarPath) => {
   );
 };
 
-export default Details;
+const mapStateToProps = (state) => ({
+  userData: state.userReducer.userData,
+});
+
+export default connect(mapStateToProps)(Details);
 
 
  

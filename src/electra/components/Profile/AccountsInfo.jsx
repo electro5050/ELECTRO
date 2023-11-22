@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Avathar from 'electra/components/Common/AvatharView';
 import Modal from './model';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import PasswordInput from './PasswordInput';
+import { connect } from 'react-redux';
 
 const avatharContainerStyle = {
   display: "flex",
@@ -20,11 +21,14 @@ const InputStyle = {
   padding: 0,
   margin: 0,
   height: 'calc(4px + 0.4vw + 0.4vh)',
-  fontSize:"calc(4px + 0.4vw + 0.4vh)",
+  fontSize:"calc(4px + 0.1vw + 0.14vh)",
   border: 'none',
   width: 'min-content',
   color:"white",
-  width:"100%"
+  width:"100%",
+  '::placeholder': {
+    fontSize:"calc(4px + 0.1vw + 0.14vh)",
+  },
 };
 
 const passwordChangeButton = {
@@ -39,11 +43,18 @@ const passwordChangeButton = {
 };
 
 
-const AccountInfo = ({userDate}) => {
+const AccountInfo = ({userData}) => {
 
   const [isEdit, setIsEdit] = useState(false);
   const [isPasswordPopUpOpen, setIsPasswordOpen] = useState(false);
-  const [name, setName] = useState("shafeer");
+  const [name, setName] = useState(null);
+
+  const [user, setUser] = useState(null);
+  
+  useEffect(() => {
+    setUser(userData);
+    setName(userData?.name);
+  }, [userData]);
 
   const OnSubmitClieck = () => {
     alert("save");
@@ -104,9 +115,9 @@ const AccountInfo = ({userDate}) => {
                 padding:"1.5%"
               }}>
                 {isEdit ? (
-           <input type="text" placeholder="Enter Name" value={name} style={InputStyle} handleChange={()=>{setName()}} />
+           <input type="text" placeholder="Enter Name" value={name} style={InputStyle} handleChange={()=>{setName()}} className="font-4" />
             ) : (
-              <label>{name}</label>
+              <label>{user?.name}</label>
             )}
           </div>
       </div>
@@ -130,7 +141,7 @@ const AccountInfo = ({userDate}) => {
                 background: isEdit ? 'red' : 'rgba(0, 0, 0, 0.90)',
                 padding:"1.5%"
               }}>
-                <label>shafeer3218@gmail.com {isEdit && <span style={{float:"right"}}>email cannot be changed</span>}</label>
+                <label>{user?.email} {isEdit && <span style={{float:"right"}}>email cannot be changed</span>}</label>
           </div>
       </div>
 
@@ -177,9 +188,9 @@ const AccountInfo = ({userDate}) => {
                 padding:"1.5%"
               }}>
                 {isEdit ? (
-           <input type="text" placeholder="Enter Name" value={"95382037289"} style={InputStyle} />
+           <input type="text" placeholder="Enter Name" value={"############"} style={InputStyle} />
             ) : (
-              <label>95382037289</label>
+              <label>############</label>
             )}
           </div>
       </div>
@@ -248,4 +259,8 @@ const AccountInfo = ({userDate}) => {
   );
 };
 
-export default AccountInfo;
+const mapStateToProps = (state) => ({
+  userData: state.userReducer.userData,
+});
+
+export default connect(mapStateToProps)(AccountInfo);

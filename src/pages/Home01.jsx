@@ -86,7 +86,7 @@ const Home01 = ({websocketData}) => {
             </div>
             </div>
             </div>
-            <div className='mainlatest' style={{width: '50%',marginLeft:'auto',marginRight:'auto',height:'50%'}}>
+            <div className='mainlatest' style={{width: '70%',marginLeft:'auto',marginRight:'auto',height:'50%'}}>
                 <div className='latest'>
                     <div className='tableicon'>
                     <img src={Boxlanding} alt="" />
@@ -100,8 +100,12 @@ const Home01 = ({websocketData}) => {
                 
 
                 </div>
-                <div className='landing-ranking' style={{width:'50vw' , height:'30vh', display:"flex", justifyContent:"center",alignItems:'center',right:'5vw' }} >
+                <div className='landing-ranking' style={{width:'70vw' , height:'70vh', display:"flex", justifyContent:"center",alignItems:'center',right:'5vw' }} >
+                
+                <div style={{height:'80%'}}>
                 <Ranking rankingData={rankingData} />
+                </div>
+            
 
                 </div>
                 

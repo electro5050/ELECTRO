@@ -21,7 +21,7 @@ const iconStyle = {
 
 const TopWinners = ({ rankingData }) => {
   return (
-    <div className="game-view-top-winner table-responsive" style={{ height: "20vh", background: "rgba(0, 0, 0, 0.90)", marginTop: "1vh", borderRadius: "20px" }}>
+    <div className="game-view-top-winner table-responsive" style={{ height: "100%", background: "rgba(0, 0, 0, 0.90)", marginTop: "1vh", borderRadius: "20px" }}>
      <table className="table electra-table">
         {/* <thead>
           <tr className="th-title">
@@ -31,7 +31,7 @@ const TopWinners = ({ rankingData }) => {
           </tr>
         </thead> */}
 
-        <tbody style={{ maxHeight: "20vh", overflowY: "auto", paddingRight: "10px" }}>
+        <tbody style={{ maxHeight: "27vh", overflowY: "auto", paddingRight: "10px" }}>
         <tr className="th-title font-6"  style={{ position: 'sticky', top: '0', zIndex: '1', background:" rgba(0, 0, 0, 0.7)" }}>
             <th className="column left-align" style={{paddingLeft:"2%", width:"40%"}}>Bidder</th>
             <th className="column">Bid Amount</th>

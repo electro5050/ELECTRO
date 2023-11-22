@@ -4,6 +4,7 @@ import SideBar from 'electra/components/sidebar';
 import './index.css';
 import TopSection from 'electra/components/Common/Games/TopSection';
 import TopEarnersTable from 'electra/components/WinHistory/TopEarnersTable';
+import config from 'common/constants';
 
 const rankingData = [
   {
@@ -58,13 +59,13 @@ const rankingData = [
 ];
 
 const GameComponent = ({isMobile}) => {
-  const [allUsersGameHistory, setAllUsersGameHistory] = useState(rankingData);
+  const [allUsersGameHistory, setAllUsersGameHistory] = useState([]);
   const token = localStorage.getItem('token');
 
 
 
   useEffect(() => {
-      fetch('http://192.168.29.85:3000/allusersgamehistory', {
+      fetch(config.gameApiUrl+ '/allusersgamehistory', {
           method: 'GET',
           headers: {
               'Authorization': `Bearer ${token}`,
@@ -76,6 +77,7 @@ const GameComponent = ({isMobile}) => {
           if (data && Array.isArray(data)) {
               setAllUsersGameHistory(data);
           }
+          console.log(data);
       })
       .catch(error => {
           console.error('Error fetching all users game history:', error);

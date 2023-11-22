@@ -30,7 +30,7 @@ const TopWinners = ({rankingData}) => {
       <table className="table electra-table" style={{background:" rgba(0, 0, 0, 0.80)"}}>
         <tbody style={{ maxHeight: "20vh", overflowY: "auto", paddingRight: "10px" }}>
         <tr className="th-title font-5"  style={{ position: 'sticky', top: '0', zIndex: '1', background:" rgba(0, 0, 0, 0.80)" }}>
-            <th className="column" style={{width: "40%"}}> user ID </th>
+            <th className="column left-align" style={{width: "40%",paddingLeft:"2%", }}> user ID </th>
             <th className="column">Win amount</th>
             <th className="column">Game</th>
           </tr>
@@ -39,7 +39,7 @@ const TopWinners = ({rankingData}) => {
             <tr key={index} className="item">
               <td className="column" style={{width: "40%"}}>
                 <div>
-                <div className="user-view">
+                <div className="user-view left-align">
                   <div className="media-user">
                     <Avathar imageUrl="assets/electra/avathar_test.png" imageSize={'calc(12px + 1.2vh + 1.2vw)'} />
                   </div>

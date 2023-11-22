@@ -3,16 +3,19 @@ import { Link, useLocation } from 'react-router-dom';
 import Avathar from 'electra/components/Common/AvatharView';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfo  } from '@fortawesome/free-solid-svg-icons';
+import { connect } from 'react-redux';
 
 const avatharContainerStyle = {
     display: "flex",
     alignItems: "flex-start"
 };
 
-const ChatSection = ({chatDetails}) => {
+const ChatSection = ({chatDetails, userData}) => {
 
-    const localUser = JSON.parse(localStorage.getItem('user'));
-    const [user, setUser] = useState(localUser || null);
+    const [user, setUser] = useState(null);
+    useEffect(() => {
+        setUser(userData);
+    }, [userData]);
 
 
   return (
@@ -89,4 +92,9 @@ const ChatSection = ({chatDetails}) => {
   );
 };
 
-export default ChatSection;
+const mapStateToProps = (state) => ({
+    userData: state.userReducer.userData,
+  });
+  
+  export default connect(mapStateToProps)(ChatSection);
+  

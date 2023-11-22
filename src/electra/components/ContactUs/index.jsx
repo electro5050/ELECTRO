@@ -19,7 +19,7 @@ const GameComponent = ({isMobile}) => {
   return (
     <div className="membership-game">
          {!isMobile && <TopSection  />}
-      <div className="container" style={{background:"rgba(40, 40, 40, 0.60)", borderRadius: "1.2vw", height: "70vh", overflowY: "auto", 
+      <div className="container" style={{background:"rgba(40, 40, 40, 0.90)", borderRadius: "1.2vw", height: "70vh", overflowY: "auto", 
       fontWeight:"700", color: "white", padding:"1.2em"}}>
 
           <div style={{width:"100%", textAlign:"center"}} className="font-10">

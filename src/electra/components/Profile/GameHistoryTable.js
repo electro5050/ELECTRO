@@ -5,7 +5,7 @@ import Avathar from 'electra/components/Common/AvatharView';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDollarSign  } from '@fortawesome/free-solid-svg-icons';
 import config from 'common/constants';
-
+import { connect } from 'react-redux';
 
 const circleStyle = {
   width: '25px',
@@ -22,11 +22,37 @@ const headerStyle = {
   padding: "10px",
   alignItems: "center"
 };
-const TopWinners = ({rankingData}) => {
-  const [gameHistory, setGameHistory] = useState(rankingData);
+
+function formatTimestamp(timestamp) {
+  const date = new Date(timestamp);
+
+  const formattedDate =
+    `${
+      date.getDate().toString().padStart(2, '0')
+    }/${
+      (date.getMonth() + 1).toString().padStart(2, '0')
+    }/${
+      date.getFullYear()
+    } ${
+      date.toLocaleString('en-US', {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+      }).toLowerCase()
+    }`;
+
+  return formattedDate;
+}
+
+const TopWinners = ({userData}) => {
+  const [gameHistory, setGameHistory] = useState([]);
   const token = localStorage.getItem('token');
-  const localUser = JSON.parse(localStorage.getItem('user'));
-  const [user, setUser] = useState(localUser || null);
+
+  const [user, setUser] = useState(null);
+  
+  useEffect(() => {
+    setUser(userData);
+  }, [userData]);
 
   useEffect(() => {
       fetch(config.gameApiUrl + '/usergamehistory', {
@@ -41,6 +67,8 @@ const TopWinners = ({rankingData}) => {
           if (data && Array.isArray(data)) {
               setGameHistory(data);
           }
+
+          console.log(data);
       })
       .catch(error => {
           console.error('Error fetching user game history:', error);
@@ -82,7 +110,7 @@ const TopWinners = ({rankingData}) => {
               <td className="column" style={{width:"34.6%"}}>
                 <div>
                 <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
-                <span style={{color:"#FFFFFF", paddingLeft:'10px'}}>{player.startTime}</span>
+                <span style={{color:"#FFFFFF", paddingLeft:'10px'}}>{formatTimestamp(player.startTime)}</span>
                 </div>
                 </div>
 
@@ -132,4 +160,8 @@ const TopWinners = ({rankingData}) => {
   );
 };
 
-export default TopWinners;
+const mapStateToProps = (state) => ({
+  userData: state.userReducer.userData,
+});
+
+export default connect(mapStateToProps)(TopWinners);

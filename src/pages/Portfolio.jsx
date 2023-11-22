@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import config from 'common/constants';
 
 const Portfolio = () => {
   const [gameHistory, setGameHistory] = useState([]);
   const token = localStorage.getItem('token');
 
   useEffect(() => {
-      fetch('http://192.168.29.85:3000/usergamehistory', {
+      fetch(config.gameApiUrl+ '/usergamehistory', {
           method: 'GET',
           headers: {
               'Authorization': `Bearer ${token}`,

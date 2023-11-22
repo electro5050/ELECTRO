@@ -60,14 +60,16 @@ function getFormatedTime(date) {
     return `${formattedHours}:${formattedMinutes}`;
 }
 
-const ChatBox = ({websocketData}) => {
+const ChatBox = ({userData, websocketData}) => {
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState('');
     const chatWindowRef = useRef(null);
     const token = localStorage.getItem('token');
-    
-    const localUser = JSON.parse(localStorage.getItem('user'));
-    const [user, setUser] = useState(localUser || null);
+
+    const [user, setUser] = useState(null);
+    useEffect(() => {
+        setUser(userData);
+    }, [userData]);
       
     const [winModel, SetIsWinModal] = useState(0);
 
@@ -144,7 +146,7 @@ const ChatBox = ({websocketData}) => {
             }, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
-            let msgString = JSON.stringify({user: JSON.parse(localStorage.getItem('user')), message: ogMessage, type: msgType});
+            let msgString = JSON.stringify({user: user, message: ogMessage, type: msgType});
 
             socket.emit('message', msgString);
 
@@ -225,6 +227,7 @@ const ChatBox = ({websocketData}) => {
 
 const mapStateToProps = (state) => ({
     websocketData: state.websocketReducer.websocketData,
+    userData: state.userReducer.userData,
   });
   
   export default connect(mapStateToProps)(ChatBox);

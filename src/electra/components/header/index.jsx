@@ -7,59 +7,28 @@ import Avathar from 'electra/components/Common/AvatharView';
 import { useNavigate } from 'react-router-dom';
 import axios from 'common/electra_axios';
 import config from 'common/constants';
+import { connect } from 'react-redux';
 
 const flexCenterStype = {
   display: "flex",
   alignItems: "center",
-
 };
-const token = localStorage.getItem('token');
 
 
-
-const Headers = ({selectedHeader, handleLinkClick ,handleChatToggle}) => {
-  const { pathname } = useLocation();
-  // const [coinBalance, setCoinBalance] = useState(null);
+const Headers = ({userData, selectedHeader, handleLinkClick ,handleChatToggle }) => {
   const navigate = useNavigate();
-
-  const localUser = JSON.parse(localStorage.getItem('user'));
-  const [user, setUser] = useState(localUser || null);
-
+  const [user, setUser] = useState(null);
+  
+  useEffect(() => {
+    setUser(userData);
+  }, [userData]);
+  
   const handleLogout = () => {
     localStorage.removeItem('token');
     delete axios.defaults.headers.common['Authorization'];
     navigate('/login');
 };
 
-//   useEffect(() => {
-//     const token = localStorage.getItem('token');
-
-//     fetch(config.gameApiUrl + '/coinbalance', {
-//         method: 'GET',
-//         headers: {
-//             'Authorization': `Bearer ${token}`,
-//             'Content-Type': 'application/json'
-//         }
-//     })
-//     .then(response => {
-//         const contentType = response.headers.get("content-type");
-//         if (response.ok && contentType && contentType.includes("application/json")) {
-//             return response.json();
-//         } else {
-//             console.error('Unexpected response:', response);
-//             throw new Error(`Server responded with status: ${response.status} and content type: ${contentType}`);
-//         }
-//     })
-    
-//     .then(data => {
-//         if (data.coinbalance) {
-//             setCoinBalance(data.coinbalance);
-//         }
-//     })
-//     .catch(error => {
-//         console.error('Error fetching coin balance:', error);
-//     });
-// }, [gameState]);
 
   return (
     <div className='main-header'>
@@ -121,11 +90,11 @@ const Headers = ({selectedHeader, handleLinkClick ,handleChatToggle}) => {
                         <div style={{paddingLeft:"10px"}}>
                             <div style={{display:"flex", alignItems: "center"}}>
                                 <div style={{fontSize: "max(1vw, 14px)", color:"white", fontWeight:"800"}}>
-                                {user && user[0] ? user[0].name : 'Loading...'}
+                                {user && user ? user.name : 'Loading...'}
                                 </div>
                             </div>
                             <div style={{fontSize: "max(0.7vw, 10px)", color:"#B7B7B7", marginTop: "10px"}}>
-                                member since october 2023
+                                member of electro
                             </div>
                         </div>  
 
@@ -177,4 +146,8 @@ const Headers = ({selectedHeader, handleLinkClick ,handleChatToggle}) => {
   );
 };
 
-export default Headers;
+const mapStateToProps = (state) => ({
+  userData: state.userReducer.userData,
+});
+
+export default connect(mapStateToProps)(Headers);

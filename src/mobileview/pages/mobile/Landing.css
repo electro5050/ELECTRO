@@ -8,13 +8,13 @@
 }
 .mob-latest{
     display: flex;
-    position: relative;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
 
 }
 .mob-tableicon{
     display: flex;
-    position: relative;
     width: 14vw;
     height: 7vh;
     align-items: center;
@@ -22,9 +22,6 @@
 }
 .mob-winning{
     display: flex;
-    position: relative;
-    width: 5vw;
-    height: 58.817px;
     flex-shrink: 0;
     color: #FFF;
    
@@ -36,23 +33,18 @@
     align-items: center;
     text-align: center;
     white-space: nowrap; 
-    left: 13vw;
-    top:1vh;
 
     text-overflow: ellipsis; 
 
 }
 .mob-ranking{
     display: flex;
-    position: relative;
     
     
 }
 .mob-livebutton{
     display: flex;
-    position: relative;
-    left: 27vw;
     width: 11vw;
     height: 2vh;
-    top: 33px;
+    margin-left: 4px;
 }

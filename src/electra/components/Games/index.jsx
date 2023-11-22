@@ -8,6 +8,8 @@ import TopWinnersTable from 'electra/components/Common/Games/TopWinnersTable';
 import axios from 'common/electra_axios';
 import Modal from './model'
 import { connect } from 'react-redux';
+import {updateUserData} from 'redux/userActionActions';
+import { useDispatch  } from 'react-redux';
 
 
   const containerStyle = {
@@ -53,6 +55,7 @@ import { connect } from 'react-redux';
     // Additional styles for the black div as needed
   };
 
+  
   const exampleRankingData = [
     {
       userId: "User1",
@@ -117,12 +120,14 @@ import { connect } from 'react-redux';
     // Add more data as needed
   ];
 
-const GameComponent = ({websocketData}) => {
+const GameComponent = ({userData, websocketData}) => {
   const [rankingData, setRankingData] = useState([]);
+  const dispatch = useDispatch();
 
-
-  const localUser = JSON.parse(localStorage.getItem('user'));
-  const [user, setUser] = useState(localUser || null);
+    const [user, setUser] = useState(null);
+    useEffect(() => {
+      setUser(userData);
+    }, [userData]);
   
 const [gameEndModal, SetIsGameEndModal] = useState(false);
 const [gameCounter, SetGameCounter] = useState(0);
@@ -145,6 +150,7 @@ const closeGameEndModal = () => {
             let localUser = JSON.parse(localStorage.getItem('user'));
             localUser.coinbalance += CurrentUserWinner.winningBonus;
             localStorage.setItem('user', JSON.stringify(localUser));
+            dispatch(updateUserData(localUser));   
         }  
 
         setRankingData(websocketData.winners);
@@ -209,6 +215,7 @@ const closeGameEndModal = () => {
 
 const mapStateToProps = (state) => ({
   websocketData: state.websocketReducer.websocketData,
+  userData: state.userReducer.userData,
 });
 
 export default connect(mapStateToProps)(GameComponent);

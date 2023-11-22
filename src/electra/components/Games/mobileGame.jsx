@@ -8,7 +8,8 @@ import axios from 'common/electra_axios';
 import Modal from './model'
 import { connect } from 'react-redux';
 import config from 'common/constants';
-
+import {updateUserData} from 'redux/userActionActions';
+import { useDispatch  } from 'react-redux';
 
 const containerStyle = {
     display: 'flex',
@@ -70,9 +71,74 @@ const containerStyle = {
     fontWeight: 700
   };
 
-const GameComponent = ({websocketData}) => {
+  const exampleRankingData = [
+    {
+      userId: "User1",
+      bidAmount: 100,
+      winningBonus: 50,
+    },
+    {
+      userId: "User2",
+      bidAmount: 150,
+      winningBonus: 75,
+    },
+    {
+      userId: "User3",
+      bidAmount: 120,
+      winningBonus: 60,
+    },
+    {
+      userId: "User1",
+      bidAmount: 100,
+      winningBonus: 50,
+    },
+    {
+      userId: "User2",
+      bidAmount: 150,
+      winningBonus: 75,
+    },
+    {
+      userId: "User3",
+      bidAmount: 120,
+      winningBonus: 60,
+    },
+    {
+      userId: "User1",
+      bidAmount: 100,
+      winningBonus: 50,
+    },
+    {
+      userId: "User2",
+      bidAmount: 150,
+      winningBonus: 75,
+    },
+    {
+      userId: "User3",
+      bidAmount: 120,
+      winningBonus: 60,
+    },
+    {
+      userId: "User1",
+      bidAmount: 100,
+      winningBonus: 50,
+    },
+    {
+      userId: "User2",
+      bidAmount: 150,
+      winningBonus: 75,
+    },
+    {
+      userId: "User3",
+      bidAmount: 120,
+      winningBonus: 60,
+    },
+    // Add more data as needed
+  ];
+
+const GameComponent = ({userData, websocketData}) => {
     const [rankingData, setRankingData] = useState([]);
     const token = localStorage.getItem('token');
+    const dispatch = useDispatch();
 
     const [winModel, SetIsWinModal] = useState(0);
 
@@ -80,8 +146,11 @@ const GameComponent = ({websocketData}) => {
         SetIsWinModal(0)
     };
 
-    const localUser = JSON.parse(localStorage.getItem('user'));
-    const [user, setUser] = useState(localUser || null);
+    const [user, setUser] = useState(null);
+  
+    useEffect(() => {
+      setUser(userData);
+    }, [userData]);
 
   const [gameEndModal, SetIsGameEndModal] = useState(false);
   const [gameCounter, SetGameCounter] = useState(0);
@@ -107,6 +176,7 @@ const GameComponent = ({websocketData}) => {
                 let localUser = JSON.parse(localStorage.getItem('user'));
                 localUser.coinbalance += CurrentUserWinner.winningBonus;
                 localStorage.setItem('user', JSON.stringify(localUser));
+                dispatch(updateUserData(localUser));   
 
             }
 
@@ -153,7 +223,12 @@ const GameComponent = ({websocketData}) => {
     <div className="game-view">
 
       <GameChart />
-      <TopWinnersTable rankingData={rankingData} />
+
+      <div style={{height:'25vh', display:"flex", justifyContent:"center",alignItems:'center' }} >
+        <TopWinnersTable rankingData={rankingData} />
+
+      </div>
+
 
       <Modal isOpen={gameEndModal} onClose={closeGameEndModal}>
 
@@ -194,6 +269,7 @@ const GameComponent = ({websocketData}) => {
 
 const mapStateToProps = (state) => ({
     websocketData: state.websocketReducer.websocketData,
+    userData: state.userReducer.userData,
   });
   
   export default connect(mapStateToProps)(GameComponent);

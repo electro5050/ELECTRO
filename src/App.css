@@ -164,20 +164,41 @@ margin: 10px;
     font-size: calc(8px + 0.8vw + 0.8vh) !important;
   }
 
+  .font-5::placeholder {
+    font-size: calc(8px + 0.8vw + 0.8vh) !important;
+  }
+
   .font-4{
     font-size: calc(6px + 0.6vw + 0.6vh)!important;
   }
+
+  .font-4::placeholder {
+    font-size: calc(1px + 0.1vw + 0.1vh)!important;
+  }
   
   .font-8{
+    font-size: calc(11px + 1.1vw + 1.1vh)!important;
+  }
+  .font-8::placeholder {
     font-size: calc(11px + 1.1vw + 1.1vh)!important;
   }
 
   .font-6{
     font-size: calc(9px + 0.9vw + 0.9vh)!important;
   }
+
+  .font-6::placeholder {
+    font-size: calc(9px + 0.9vw + 0.9vh)!important;
+  }
+
   .font-10{
     font-size: calc(10px + 1.6vw + 1.6vh) !important;
   }
+
+  .font-10::placeholder {
+    font-size: calc(10px + 1.6vw + 1.6vh) !important;
+  }
+
   
   
 }
@@ -226,5 +247,12 @@ iframe[title="chat widget"] {
   bottom: 0px !important;
   left: 0px !important;
 }
+
+.left-align {
+  text-align: left !important;
+  justify-content: flex-start !important;
+}
+
+
 
 

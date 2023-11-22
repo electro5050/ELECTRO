@@ -31,17 +31,12 @@
     /* font-size: 1vw;    */
 }
 
-.game-view-top-winner  .left-align {
-    text-align: left !important;
-    justify-content: flex-start !important;
-}
-
 .game-view-top-winner .electra-table .item .column:first-child {
     border-top-left-radius: 300px;
     border-bottom-left-radius: 300px;
   }
   
-  /* Select the last column inside .game-view-top-winner .electra-table .item */
+/* Select the last column inside .game-view-top-winner .electra-table .item */
   .game-view-top-winner .electra-table .item .column:last-child {
     border-top-right-radius: 300px;
     border-bottom-right-radius: 300px;

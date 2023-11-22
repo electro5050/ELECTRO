@@ -42,7 +42,7 @@ function Landing({rankingData}) {
                 </div>
                 </div>
 
-                <div className='mob-mainlatest' style={{width: '50%',marginLeft:'23%',height:'50%'}}>
+                <div className='mob-mainlatest' style={{height:'50%'}}>
                 <div className='mob-latest'>
                     <div className='mob-tableicon'>
                     <img src={Boxlanding} alt="" />
@@ -57,8 +57,10 @@ function Landing({rankingData}) {
                 
 
                 </div>
-                <div className='mob-ranking' style={{width:'90vw' , height:'30vh', display:"flex", justifyContent:"center",alignItems:'center',right:'17vw' }}>
+                <div className='mob-ranking' style={{width:'90vw' , height:'40vh', display:"flex", justifyContent:"center",alignItems:'center',right:'17vw',     marginLeft: "auto", marginRight: "auto" }}>
+                <div style={{height:'80%'}}>
                 <Ranking rankingData={rankingData} />
+                </div>
 
                 </div>
                 

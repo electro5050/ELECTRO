@@ -2,16 +2,18 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import SideBar from 'electra/components/sidebar';
 import Avathar from 'electra/components/Common/AvatharView';
+import { connect } from 'react-redux';
 
 const avatharContainerStyle = {
     display: "flex",
     alignItems: "center"
 };
-const token = localStorage.getItem('token');
-const GameTopSection = ({handleLinkClick}) => {
 
-  const localUser = JSON.parse(localStorage.getItem('user'));
-  const [user, setUser] = useState(localUser || null);
+const GameTopSection = ({userData, handleLinkClick}) => {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    setUser(userData);
+  }, [userData]);
 
   return (
     <div className='d-between m-10'>
@@ -47,4 +49,8 @@ const GameTopSection = ({handleLinkClick}) => {
   );
 };
 
-export default GameTopSection;
+const mapStateToProps = (state) => ({
+  userData: state.userReducer.userData,
+});
+
+export default connect(mapStateToProps)(GameTopSection);

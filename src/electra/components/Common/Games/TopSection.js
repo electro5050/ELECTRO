@@ -3,16 +3,19 @@ import { Link, useLocation } from 'react-router-dom';
 import SideBar from 'electra/components/sidebar';
 import Avathar from 'electra/components/Common/AvatharView';
 import config from 'common/constants';
+import { connect } from 'react-redux';
 
 const avatharContainerStyle = {
     display: "flex",
     alignItems: "center"
 };
-const token = localStorage.getItem('token');
-const GameTopSection = () => {
 
-  const localUser = JSON.parse(localStorage.getItem('user'));
-  const [user, setUser] = useState(localUser || null);
+const GameTopSection = ({userData}) => {
+
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    setUser(userData);
+  }, [userData]);
 
   return (
     <div className="game-view-top-section" style={{height:"15vh",     position: "relative"}}>
@@ -27,7 +30,7 @@ const GameTopSection = () => {
                 BID AND WIN
             </span>
         </div>
-        <div style={{width: "100%", display: "flex", justifyContent: "center", position: "absolute"}}>
+        <div style={{width: "100%", display: "flex", justifyContent: "center", position: "absolute", bottom:"10%"}}>
         <span style={{fontWeight: "400", color:"#FBF4B6" }} className="font-6">
         Win every  <span style={{color:"#EFCA04"}}>30</span> seconds
       </span>
@@ -38,4 +41,8 @@ const GameTopSection = () => {
   );
 };
 
-export default GameTopSection;
+const mapStateToProps = (state) => ({
+  userData: state.userReducer.userData,
+});
+
+export default connect(mapStateToProps)(GameTopSection);

@@ -63,7 +63,7 @@ const ProfileUpdate = ({user}) => {
       <div className="profile-section" style={{height:'70vh', borderRadius:"1vw", padding:"2vh 4vw"}}>
 
         <AccountInfo />
-        <GameHistoryTable rankingData={rankingData} />
+        <GameHistoryTable />
       </div>
     </div>
 
