@@ -23,11 +23,7 @@ const Header = () => {
 
   const headerRef = useRef(null);
 
-  // const handleScrollToSignUp = () => {
-  //   if (SignUpRef.current) { 
-  //     SignUpRef.current.scrollIntoView({ behavior: 'smooth' });
-  //   }
-  // };
+ 
   
 
   const menuLeft = useRef(null);
@@ -49,6 +45,12 @@ const Header = () => {
 
   const handleChat =() => {
     setChatOpen(!chatOpen)
+  }
+  const handleScrollToSignUp = () => {
+    const signUpSection = document.getElementById('signUp-section'); // Replace 'signup-section' with the ID of your sign-up section
+    if (signUpSection) {
+      signUpSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
   return (
@@ -138,9 +140,7 @@ const Header = () => {
                       <span>{coinBalance ? `${coinBalance} $` : 'Wallet connect'}</span>
                   </p> */}
                   <div className='signupentry'  ref={SignUpRef}>
-                  <Button variant="primary" onClick={() => navigate('/sign-up')}>
-                             Sign up
-                  </Button>
+                  <Button variant="primary" onClick={handleScrollToSignUp}> Sign Up </Button>
 
                  
                   </div>
@@ -210,6 +210,7 @@ const Header = () => {
             </div>
           </div>
         </div>
+        <div id='signup-section'></div>
       </div>
       <DarkMode />
     </header>

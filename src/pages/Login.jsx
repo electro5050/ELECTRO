@@ -82,7 +82,7 @@ const Login = () => {
                                 <div className="box-title-login">
                                     <h5>Login</h5>
                                 </div>
-                                <div className="form-inner">
+                                <div className="form-inner" >
                                     <form onSubmit={handleLogin}>
                                         <input 
                                             type="email" 

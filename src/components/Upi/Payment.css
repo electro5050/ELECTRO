@@ -1,92 +1,135 @@
-.payment {
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Align vertically in the center */
-  padding: 1.5vw;
-  margin-bottom: 35%;
-  border-radius: 30px;
-  background: rgba(243, 187, 41, 0.85);
-  width: 90.5vw;
-  height:45%;
-  left: 3vw;
-  margin-top: 7%;
-  position: relative;
+.upi-container{
+  width:100vw;
+height: 80vh;
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+
+
+
+
 
 }
-
-.secure {
-  
+.upi-payment-box{
   display: flex;
-  position: relative;
+ align-items: start;
+  justify-content: start;
+  border-radius: 20px;
+  background: #D4A525;
+  width: 93vw;
+  height: 50vh;
+  flex-shrink: 0;
+
+ 
+}
+.secure{
+  display: flex;
+  width: 20vw;
+  height: 10vh;
   justify-content: start;
   flex-direction: column;
-  align-items: start;
-}
-
-
-.wayto {
+  align-items: center;
+  text-align: start;
+  margin-top: 10vh;
+ 
+ 
+} 
+ .easy{
+  display: flex;
   
-  font-size: 1.9rem;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 1);
-  line-height: normal;
-  margin-bottom: 10px;
-  color: #080808;
-  text-align: center;
+  
+  width: 20vw;
+ 
   justify-content: center;
-  position: relative;
-  display: flex;
-  left: 2vw;
-}
+  flex-shrink: 0;
+  color: #000;
+  text-align: center;
 
-.buycoins{
-  background-color: #000000;
-  color: #fff;
-  border: none; /* Remove border */
-  border-radius: 6px; /* Remove border-radius */
-  width: 12vw;
-  white-space: nowrap; 
-  text-align: center;
-  text-overflow: ellipsis; 
-  text-align: center;
+ 
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+ 
+ 
+} 
+.wayto{
+  display: flex;
  justify-content: center;
- font-size: 1.2rem;
+ align-items: start;
+  text-align: start;
+  
+  width: 20vw;
+  height: 10vh;
+  color: #000;
+  
+  
+  font-size: 2.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal; 
+  
+ 
+  
+
 }
 
-.gateway {
-  border-radius: 30px;
-  color: #080808; /* Changed the text color to white */
-  margin-left: 5vw; /* Adjust margin as needed to move the container to the right */
-  /* margin-bottom: 10vh; */
-  background-color: #000000;
-  position: relative;
+.upi-payment-button{
   display: flex;
-}
-
-
-   
-.easy{
-  color: #000000;
-  font-size: 2.6rem;
+  justify-content: center;
   align-items: center;
   
-  font-weight: 600;
+  width: 100vw;
+  margin-top: 3vh;
   
-  line-height: normal;
-  margin-bottom: 1vw;
-  display: flex;
-  position: relative;
-  left: 1vw;
+  
+  
+  
+  
+  
+  
+
+ 
 
 }
-.grandient02{
-  width:100%;
-  height: auto;
-  /* background: url('../../assets/images/grandient/Ellipse\ 41.png');
-  background-size: cover;
-  background-position: center; */
+
+.upi-payment-buycoins{
   display: flex;
-  position: relative;
-  top: 7vh;
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
   
+  
+  background-color: #000000;
+  color: #fff;
+  border: none; 
+  border-radius: 6px; 
+  width: 12vw;
+  height: 6.6vh;
+  white-space: nowrap; 
+  
+  text-overflow: ellipsis; 
+  
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  
+
+  
+}
+.desk-gateway{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 80%;
+} 
+.main-gateway{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+ 
 }

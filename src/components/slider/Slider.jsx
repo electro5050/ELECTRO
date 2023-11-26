@@ -13,9 +13,17 @@ import imgbg from '../../assets/images/backgroup-secsion/img_bg_page_title.jpg'
 import Button from 'react-bootstrap/Button';
 import Arrow from '../../assets/images/coins/arrow-right.svg'
 import '../slider/Slider.css';
+import { useNavigate } from 'react-router-dom';
 
-
+const handleScrollToSignUp = () => {
+    const signUpSection = document.getElementById('signUp-section'); // Replace 'signup-section' with the ID of your sign-up section
+    if (signUpSection) {
+      signUpSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 const Slider = props => {
+    const navigate = useNavigate();
+  
     const data = props.data
     return (
         <div className="mainslider" >
@@ -68,11 +76,11 @@ const SliderItem = props => (
                                     <h2 className="heading" style={{fontSize:'4rem',letterSpacing:'2px'}}>{props.item.title_1}</h2>	
                                     <h1 className="heading mb-style" style={{fontSize:'5.3rem',letterSpacing:'2px'}}><span className="tf-text s1">{props.item.title_2}</span>                                          
                                     </h1>
-                                    <h1 className="heading" style={{fontSize:'4.5rem',letterSpacing:'4px',}}>{props.item.title_3}</h1>
+                                    <h1 className="heading" style={{fontSize:'4rem',letterSpacing:'4px',}}>{props.item.title_3}</h1>
                                     <p className="sub-heading">{props.item.description} 
                                     </p>
                                     <div className='landing-bidding'>
-                                    <button type="button" class="btn btn-secondary">BID NOW <img src={Arrow }alt="" /></button>
+                                    <button type="button" class="btn btn-secondary" onClick={handleScrollToSignUp}>BID NOW <img src={Arrow }alt="" /></button>
 
                                     </div>
                                     

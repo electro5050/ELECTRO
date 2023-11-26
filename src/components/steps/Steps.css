@@ -5,13 +5,13 @@
   background-position: center; */
   width: 100%;
   
-    height: auto;
+    height: 70vh;
     
     border: none;
     outline: none;
     margin: 0;
     margin-top: 0%;
-    position: relative;
+   
     display: flex;
     bottom: 18vw;
     left: .5vw;
@@ -20,7 +20,7 @@
   .mainbox-container{
     width: 100%;
     height: auto;
-    position: relative;
+   
     display: flex;
     
     
@@ -31,7 +31,7 @@
   .mainbox{
     width: 100%;
     height: auto;
-    position: relative;
+   
     align-items: center;
     
     display: flex;
@@ -42,7 +42,7 @@
 
   .texts{
     display: flex;
-    position: relative;
+    
     text-align: center;
     justify-content: center;
     
@@ -52,7 +52,7 @@
 
   .method{
     
-    position: relative;
+   
     text-align: center;
     color: #FFF;
 text-align: center;
@@ -65,7 +65,7 @@ bottom: 2vh;
 right: 4.5vw;
   }
   .innerbox{
-    position: relative;
+  
     display: flex;
     justify-content: center;
     flex-direction:row;
@@ -75,7 +75,7 @@ right: 4.5vw;
     right: 2.5vw;
   }
   .innerbox1 {
-    position: relative;
+    
     width: 11.69vw;
     height: auto;
     flex-shrink: 0;

@@ -49,7 +49,8 @@ const SignUp = () => {
 
     return (
         <div>
-            <section className="signup-container">
+             <section id='signUp-section' className='signup-container'>
+           
                 <div className="themesflat-container">
                     <div className="row">
                         <div className="signup-inner">
@@ -126,7 +127,9 @@ const SignUp = () => {
                         </div>
                     </div>
                 </div>
+                
             </section>
+            
         </div>
     );
 };

@@ -1,75 +1,103 @@
 .upi-main-container{
-    width:auto;
-  height: auto;
+    width:100vw;
+  height: 55vh;
 
   display: flex;
-  position: relative;
-  top: 7vh;
+  justify-content: center;
+  align-items: start;
+ 
+ margin-top: 20vw;
+
   
 }
 .upi-payment{
     display: flex;
-    position: relative;
-    justify-content: center;
-    flex-direction: column;
+   align-items: start;
+    justify-content: start;
     border-radius: 20px;
-    background: rgba(243, 187, 41, 0.85);
+    background: #D4A525;
     width: 97vw;
-    height: 437px;
+    height: 59vh;
     flex-shrink: 0;
-    left: 4px;
+   
 }
-.upi-secure{
+  .upi-secure{
     display: flex;
-    position: relative;
+    width: 50vw;
+    height: 10vh;
     justify-content: start;
     flex-direction: column;
     align-items: start;
+    text-align: center;
+    margin-left: 10px;
+    margin-top: 10px;
+   
 }
 .upi-easy{
     display: flex;
-    position: relative;
-    display: flex;
-    width: 39vw;
-    height: 30vh;
+    
+    
+    width: 40vw;
+    /* height: 10vh; */
     justify-content: start;
     flex-shrink: 0;
     color: #000;
     text-align: center;
-    
-    font-size: 1.8rem;
+  
+   
+    font-size: 2rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    top: 20vh;
-    left: 8vw;
+   
+   
 }
 .upi-wayto{
     display: flex;
-    position: relative;
+   justify-content: start;
+   align-items: start;
     text-align: center;
-    display: flex;
-    width: 196px;
-    height: 109px;
+    
+    width: 40vw;
+    height: 10vh;
     color: #000;
+    
     
     font-size: 1.8rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal; 
-    bottom: 6vh; 
-    left: 9vw;
+   
+    
 
 }
+
+.upi-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 50vw;
+    
+    
+    margin-top: 10px;
+    
+    
+    
+    
+  
+   
+
+}
+
 .upi-buycoins{
     display: flex;
-    position: relative;
-    bottom: 22.5vh;
-    left: 49vw;
+    
+    
     background-color: #000000;
     color: #fff;
-    border: none; /* Remove border */
-    border-radius: 6px; /* Remove border-radius */
+    border: none; 
+    border-radius: 6px; 
     width: 35vw;
     height: 6.6vh;
     white-space: nowrap; 
@@ -78,15 +106,32 @@
     
     text-align: center;
     justify-content: center;
-    
-}
-.upi-gateway{
-    display: flex;
-    position: relative;
-    bottom: 19vh;
-    width: 90vw;
-    left: 3.5vw;
+    align-items: center;
+    bottom: 10px;
   
     
 }
- 
+ .upi-gateway{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 93vw;
+    
+    
+    
+   padding: 1px;
+   
+    
+   
+    
+    
+
+    
+    
+    
+   
+  
+    
+}
+  

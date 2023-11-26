@@ -24,6 +24,8 @@ flex-shrink: 0;
     align-items: center;
     flex-direction: row;
     margin-right: 10%;
+   
+    
     
 }
 .mob-login .btn{
@@ -31,7 +33,8 @@ flex-shrink: 0;
 height: 2vh;
 flex-shrink: 0;
 border-radius: 5px;
-border: 1px solid #332AA4;
+border: 1px solid #FFD700;
+background: #FFD700;
 color: #FFF;
 text-align: center;
 background-color: transparent;
@@ -42,6 +45,8 @@ line-height: normal;
 display: flex;
 left: 38.9vw;
 bottom: 2vh;
+margin-right: 10px;
+font-family: 'Poppins', sans-serif;
 
 justify-content: center;
 align-items: center;
@@ -57,7 +62,7 @@ text-overflow: ellipsis;
     flex-shrink: 0;
     border-radius: 5px;
     
-    color: #FFF;
+    color: #000;
     text-align: center;
    
     font-size: 1.2rem;
@@ -72,6 +77,9 @@ text-overflow: ellipsis;
     white-space: nowrap; /* Prevent text from wrapping */
     overflow: hidden; /* Hide overflowing text */
     text-overflow: ellipsis; 
+    font-family: 'Poppins', sans-serif;
+    border: 1px solid #FFD700;
+    background: #FFD700;
 
     
 }
@@ -95,16 +103,17 @@ text-overflow: ellipsis;
     
    
 }
+
 .mob-electro{
     display: flex;
     /* position: relative; */
     justify-content: center;
     text-align: center;
-    text-shadow: -1px -1px 0 black;
+    
     width: 50vw;
     height: 5vh;
     flex-direction: column;
-    justify-content: center;
+    
     flex-shrink: 0;
     color: #FFF;
     align-items: center;
@@ -115,9 +124,16 @@ text-overflow: ellipsis;
     font-weight: 600;
     line-height: normal;
     letter-spacing: 2px;
-    top:45vw;
-    right: 30vw;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    /* top:45vw;
+    right: 30vw; */
 }
+.electro-mob{
+    color: #fff; /* Text color */
+    -webkit-text-stroke: 1px #000;
+}
+
 .mob-text{
     display: flex;
     justify-content: center;
@@ -129,7 +145,8 @@ text-overflow: ellipsis;
     flex-shrink: 0;
     color: #FFF;
     text-align: center;
-    text-shadow: 1px 10px 50px #ffbc0e;
+    -webkit-text-stroke: 1px #FFD700;
+    
  
     font-size: 3.0rem;
     font-style: normal;
@@ -143,13 +160,17 @@ text-overflow: ellipsis;
     color: #F9F3F3;
     text-align: center;
     align-items: center;
+    white-space: nowrap; 
+     
+    text-overflow: ellipsis;
 
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     line-height: normal;
     letter-spacing: 0.9px;
     top: 24vh;
+   
    
 }
 .mob-bidnow{
@@ -167,7 +188,7 @@ border-radius: 8px;
 background: #FFBC0E;
 text-align: center;
 display: flex;
-top: 55vw;
+/* top: 55vw; */
 
 border-color: #FFBC0E;
 justify-content: center;
@@ -177,6 +198,7 @@ white-space: nowrap;
 overflow: hidden; 
 text-overflow: ellipsis; 
 text-align: center;
+margin-top: 10px;
 
 
 

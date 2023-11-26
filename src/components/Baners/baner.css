@@ -1,28 +1,31 @@
 .banners-container{
   display: flex;
-  position: relative;
+  /* position: relative; */
   justify-content: center;
   flex-direction: column;
 }
-.baner-page ,.mob-banners-container{
+.baner-page ,.banners-container{
   display: flex;
-  position: relative;
+  /* position: relative; */
   flex-direction: column;
   width: auto;
   height: auto;
-  left: 2vw;
+  align-items: center;
+  gap: 5vh;
+  
 }
 .baner-first{
   display: flex;
-  position: relative;
-  width: 90vw;
-  height: 359px;
+  /* position: relative; */
+  width: 93vw;
+  height: 400px;
   border-radius: 30px;
-  background: url('../../../src/assets/images/baners/b1.png');
+  background: url('../../assets/images/banners/b1.png');
   background-size: cover;
   background-position: center;
   left: 1.5vw;
   top: 1vh;
+ 
   
 }
 .text01{
@@ -35,23 +38,24 @@
   display: flex;
   position: relative;
   display: flex;
-  width: 83vw;
+  width: 93vw;
   height: 10vh;
   flex-direction: column;
   justify-content: center;
   flex-shrink: 0;
   color: #FFF;
   text-align: center;
-  left: 3vw;
+  font-family: 'Poppins', sans-serif;
  
   text-align: center;
-  font-size: 2.8rem;
+  font-size: 3rem;
   font-style: normal;
   font-weight: 700;
   line-height: 33px; /* 183.333% */
-  background-color: rgb(0, 0, 0,0.9);
-  border-radius: 25px;
-  opacity: 0.7;
+  align-items: center;
+  right: 10px;
+  
+ 
   
   
   
@@ -66,41 +70,80 @@
   display: flex;
   position: relative;
  
-  width: 387.838px;
+  width: 100vw;
   height: 84.753px;
   flex-shrink: 0;
-  color: #FDFB81;
+  
   text-align: center;
+ 
+
+  font-style: normal;
+ 
+  line-height: normal;  
+  
+  
+  align-items: center;
+  justify-content: center;
   text-shadow: 0px -20px 70px rgba(253, 251, 129, 0.90), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 6rem;
+  color: #FDFB81;
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 0px -20px 70px rgba(253, 251, 129, 0.90), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 700;
+  right: 15px;
+ 
+  
+  
+}
+.desk-background-container {
+  width: 92vw; /* Set the background container size to 50% of viewport width */
+  max-width: 100%;
+  background-color:  rgba(11, 11, 11, 0.7);
+  padding: 10px; /* Add padding for space around the text */
   
   font-size: 54px;
-  font-style: normal;
+  
+  
   font-weight: 700;
-  line-height: normal;  
-  left: 38vw;
+  border-radius: 25px;
+  margin-left: 2px;
+ 
+ 
+  
 }
+
 .text-c{
   display: flex;
   position: relative;
-  width: 38vw;
+  width: 100vw;
   height: 41.724px;
   flex-shrink: 0;
   color: #FFF;
   text-align: center;
-  
-  font-size: 2.9rem;
+  justify-content: center;
+  font-family: Poppins;
+  font-size: 3rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  left: 36vw; 
-  bottom: 2vh;
-   
+  right: 15px;
+     
 }
+.playbutton-1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  width: 100vw;
+  margin-top: 5px;
+}
+
+
 .plybutton{
   display: flex;
   position: relative;
-  width: 11vw;
-  height: 4vh;
+  width: 10vw;
+  height: 3vh;
   flex-shrink: 0; 
   border-radius: 12px;
   background: linear-gradient(180deg, #F5C945 0%, #484209 100%);
@@ -115,7 +158,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  left: 37vw;
+  /* left: 32vw; */
   justify-content: center;
   align-items: center;
   flex-direction: row;
@@ -128,208 +171,153 @@
 }
 .baner-3{
   display: flex;
-  position: relative;
-  width: 90vw;
-  height: 359px;
+  /* position: relative; */
+  width: 93vw;
+  height: 400px;
   border-radius: 30px;
-  background: url('../../../src/assets/images/baners/b4.png');
+  background: url('../../assets/images/banners/b2.png');
   background-size: cover;
   background-position: center;
   left: 1.5vw;
-  top: 8.5vh;
+  top: 2.5vh;
   
 }
+
 .text03{
   text-align: start;
   position: relative;
   display: flex;
   flex-direction: column;
+  
+  width: 25vw;
+  height: 30vh;
+  align-items: start;
+  padding: 10px;
+  background-color:  rgba(11, 11, 11, 0.7);
+  border-radius: 10px;
+  left: 5px;
+  top:10px
+  
+  
 
 
 }
+
+
 .text-e{
   display: flex;
   position: relative;
   justify-content: start;
-  width: 100.759px;
+  width: 100vw;
   height: 27.978px;
   flex-shrink: 0;
+  font-family: 'Poppins', sans-serif;
 
   color: #FFF;
  
   
-  font-size: 3rem;
+  font-size: 2rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   left: 4vw;
-  top: 15vh;
+  /* top: 15vh; */
 }
 .text-f{
   display: flex;
   position: relative;
   justify-content: start;
-  width: 100.759px;
-  height: 27.978px;
+  width: 100vw;
+  height: 2.59vh;
   flex-shrink: 0;
+  font-family: 'Poppins', sans-serif;
+ 
 
   color: #FFD700;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-family: Poppins;
-  font-size: 7rem;
+  font-size: 6rem;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   line-height: normal;
-  left: 3.5vw;
-  top: 16vh;
-   
+  left: 4vw;
+  /* top: 15vh;  */
+ 
 }
 .onvery{
   display: flex;
-  position: relative;
+  /* position: relative; */
   flex-direction: column;
   text-align: start;
-  top: 1vh;
-  
+ 
   
 }
 .text-g{
   display: flex;
   position: relative;
   justify-content: start;
-  width: 100.759px;
-  height: 27.978px;
+  width: 100vw;
+  height: 2.59vh;
   flex-shrink: 0;
 
   color: #FFF;
-  
-  
-  font-size: 2.9rem;
+  text-shadow: 0px 5px 20px #FFF, 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  left: 4vw;
-  top: 21vh;
-  flex-direction: row;
-  white-space: nowrap; 
-  
-  text-overflow: ellipsis; 
-  text-align: center;
+  left: 3vw;
+  top: 8vh;
  
 }
 .text-h{
   display: flex;
   position: relative;
   justify-content: start;
-  width: 90.759px;
-  height: 27.978px;
+  width: 100vw;
+  height: 2.59vh;
   flex-shrink: 0;
 
   color: #FFF;
   
-  font-family: Poppins;
-  font-size: 2.9rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  left: 4vw;
-  top: 20vh;
+  left: 3vw;
+  top: 10vh; 
   white-space: nowrap; 
    
-  text-overflow: ellipsis; 
-  text-align: center;
-  
-  
+  text-overflow: ellipsis;
 }
 .endtext{
   display: flex;
-  position: relative;
+  justify-content: end;
   flex-direction: column;
   text-align: end;
+  align-items: center;
+  
+  bottom: 20px;
+  
+  gap: 10px;
+  position: relative;
+  width: 100vw;
+ 
+
+  
+  
+  
 }
 .text-i{
   display: flex;
-  position: relative;
-  justify-content: start;
-  
+
  
-  flex-shrink: 0;
-
-  color: #FFF;
-  text-shadow: 0px 5px 20px #FFF, 0px 4px 4px rgba(0, 0, 0, 0.25);
-  
-  font-size: 2.2rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  left: 55vw;
-  margin-top: 25vh; 
-  justify-content: center;
-  text-align: center;
-  background-color: #0b0b0b;
-  border-radius: 10px;
-  opacity: .8;
-  white-space: nowrap; 
-   
-  text-overflow: ellipsis; 
-  text-align: center;
-  
-
-  
-}
-.plybutton03{
-  display: flex;
-  position: relative;
-  width: 124px;
-  height: 33px;
-  flex-shrink: 0; 
-  border-radius: 10px;
-  background: #FFBC0E;
-  
- border-color: #F5C945;
+  width: 30vw;
  
-  flex-shrink: 0;
-  color: #FFF;
-  text-align: center;
   
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  left: 59vw;
-  justify-content: center;
-  align-items: center;
-  top: 2vh;
-  white-space: nowrap; 
-  overflow: hidden; 
-  text-overflow: ellipsis; 
-  text-align: center;
-}
-.baner-2{
-  display: flex;
-  position: relative;
-  width: 90vw;
-  height: 359px;
-  border-radius: 30px;
-  background: url('../../assets/images/baners/b7.png');
-  background-size: cover;
-  background-position: center;
-  left: 1.5vw;
-  top: 15vh;
-}
-.text02{
-  text-align: start;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-
-}
-.text-int{
-  display: flex;
-  position: relative;
-  justify-content: start;
-  width: 100.759px;
-  height: 27.978px;
+ background-color:  rgba(11, 11, 11, 0.7);
   flex-shrink: 0;
 
   color: #FFF;
@@ -339,90 +327,177 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  left: 2vw;
-  top: 7vh;
+  
+  /* margin-top: 25vh;  */
+  justify-content: center;
+  text-align: center;
+  align-items: end;
+ 
+  border-radius: 10px;
+  /* white-space: nowrap; 
+  
+  text-overflow: ellipsis;  */
+  
+ 
+  
+  
+
+  
+ 
+  
+}
+
+.plybutton03{
+  display: flex;
+ 
+  width: 124px;
+  height: 33px;
+  flex-shrink: 0; 
+  border-radius: 10px;
+  background: linear-gradient(180deg, #F5C945 0%, #484209 100%);
+  box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.60);
+ border-color: #F5C945;
+ 
+  flex-shrink: 0;
+  color: #FFF;
+  
+  
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  
+  justify-content: start;
+  align-items: center;
+ 
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  text-align: center;
+  
+ 
+  
+  
+ 
+}
+.baner-2{
+  display: flex;
+  /* position: relative; */
+  width: 93vw;
+  height: 400px;
+  border-radius: 30px;
+  background: url('../../assets/images/banners/b3.png');
+  background-size: cover;
+  background-position: center;
+  left: 1.5vw;
+  top: 5vh;
+}
+.text02{
+  text-align: center;
+  /* position: relative; */
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+ 
+
+}
+.text-int{
+  display: flex;
+  position: relative;
+  justify-content: start;
+  width: 100vw;
+  height: 2.79vh;
+  flex-shrink: 0;
+
+  color: #FFF;
+  
+  font-family: Poppins;
+  font-size: 2.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  align-items: center;
+
+  top: 2vh;
   text-shadow: black;
+  left: 20px;
 }
 .text-vip{
   display: flex;
   position: relative;
   justify-content: start;
   width: 50vw;
-  height: 13vh;
+  height: 2.79vh;
+  
   flex-shrink: 0;
-  text-align: start;
 
   color: #FFD700;
   text-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
+  font-family: 'Poppins', sans-serif;
 
   font-size: 6rem;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   line-height: normal;
-  opacity: .6;
-  top: 7vh;
-  background-color: #0b0b0b; 
-  justify-content: center;
-  align-items: center;
-  border-radius: 15px;
-  letter-spacing: 8px;
+  
+  top: 5vh;
+  left: 20px;
+  text-align: start;
+  text-shadow: black;  
+  justify-content: start;
+  align-items: start;
+  letter-spacing: .3vw;
 }
 .membership{
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: start;
   position: relative;
   flex-direction: column;
-  top: 10vw;
-  left: 3vw;
+  top:150px;
+  left: 20px;
   
 }
 .text-benefits{
-  width: 30vw;
-height: 4vh;
+  width: 50vw;
+height: 5vh;
 flex-shrink: 0;
 color: #FFF;
 text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-font-size: 3.2rem;
+font-size: 2.2rem;
 font-style: normal;
 font-weight: 500;
 line-height: normal;
 }
 .text-invest{
-  width: 60px;
-  height: 20vh;
+  width: 100vw;
+  
   flex-shrink: 0;
   color: #FFE073;
 
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  text-align: center;
-  font-size: 3.2rem;
+  font-family: Poppins;
+  font-size: 2.2rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  white-space: nowrap; 
-  
-  text-overflow: ellipsis; 
-  text-align: center;
   
 }
-.endtext{
-display: flex;
-position: relative;
 
-}
+
 .winbutton{
   display: flex;
   position: relative;
  
   flex-shrink: 0; 
   border-radius: 20px;
-  background: #FFBC0E;
-  
+  background: linear-gradient(180deg, #F5C945 0%, #484209 100%);
+  box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.60);
  border-color: #F5C945;
- width: 10vw;
- height: 7vh;
+ width: 124px;
+ height: 33px;
   flex-shrink: 0;
   color: #FFF;
   text-align: center;
@@ -434,22 +509,45 @@ position: relative;
 
   justify-content: center;
   align-items: center;
-  top: 282px;
-  left: 10vw;
+  
   white-space: nowrap; 
   overflow: hidden; 
   text-overflow: ellipsis; 
   text-align: center;
   border-radius: 10px;
+  margin-left: 20px;
+  
 
 }
-/* Example CSS */
-/* .mob-banner-main .mob-baner-first,
-.mob-banner-main .mob-baner-3,
-.mob-banner-main .mob-baner-2 {
-transition: background-image 0.3s ease;
-} */
-
-
-
+.desk-text02-box{
+  background-color:  rgba(11, 11, 11, 0.7);
+  border-radius: 20px;
+  width: 50vw;
+  height: 40vh;
+  margin-left: 10px;
+  margin-top: 10px;
  
+  
+
+}
+.text02-desktop{
+  text-align: start;
+ 
+  display: flex;
+  flex-direction: column;
+ 
+
+}
+.win-button{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-top: 5px;
+  margin-left: 5px;
+  
+  
+}
+
+
+
+

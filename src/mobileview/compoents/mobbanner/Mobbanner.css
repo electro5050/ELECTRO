@@ -1,28 +1,31 @@
 .mob-banners-container{
     display: flex;
-    position: relative;
+    /* position: relative; */
     justify-content: center;
     flex-direction: column;
 }
 .mob-baner-page ,.mob-banners-container{
     display: flex;
-    position: relative;
+    /* position: relative; */
     flex-direction: column;
     width: auto;
     height: auto;
-    left: 1vw;
+    left: 1.1vw;
+    align-items: center;
+    gap: 10px;
 }
 .mob-baner-first{
     display: flex;
-    position: relative;
+    /* position: relative; */
     width: 93vw;
     height: 359px;
     border-radius: 30px;
-    background: url('../../assets/mobbanner/mb.png');
+    background: url('../../assets/banners/b1.png');
     background-size: cover;
     background-position: center;
     left: 1.5vw;
     top: 1vh;
+   
     
 }
 .mob-text01{
@@ -42,16 +45,17 @@
     flex-shrink: 0;
     color: #FFF;
     text-align: center;
-    
+    font-family: 'Poppins', sans-serif;
    
     text-align: center;
     font-size: 1.9rem;
     font-style: normal;
     font-weight: 700;
     line-height: 33px; /* 183.333% */
-    background-color: #0b0b0b;
-    border-radius: 25px;
-    opacity: 0.6;
+    align-items: center;
+    right: 10px;
+    
+   
     
     
     
@@ -66,33 +70,64 @@
     display: flex;
     position: relative;
    
-    width: 387.838px;
+    width: 100vw;
     height: 84.753px;
     flex-shrink: 0;
-    color: #FDFB81;
+    
     text-align: center;
-    text-shadow: 0px -20px 70px rgba(253, 251, 129, 0.90), 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: Poppins;
-    font-size: 54px;
+   
+  
     font-style: normal;
-    font-weight: 700;
+   
     line-height: normal;  
-    left: 29vw;
+    
+    
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0px -20px 70px rgba(253, 251, 129, 0.90), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 54px;
+    color: #FDFB81;
+    font-family: 'Poppins', sans-serif;
+    text-shadow: 0px -20px 70px rgba(253, 251, 129, 0.90), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-weight: 700;
+    right: 15px;
+   
+    
+    
 }
+.background-container {
+    width: 92vw; /* Set the background container size to 50% of viewport width */
+    max-width: 100%;
+    background-color:  rgba(11, 11, 11, 0.7);
+    padding: 10px; /* Add padding for space around the text */
+    
+    font-size: 54px;
+    
+    
+    font-weight: 700;
+    border-radius: 25px;
+    margin-left: 2px;
+   
+   
+    
+}
+
 .mob-text-c{
     display: flex;
     position: relative;
-    width: 387.838px;
+    width: 100vw;
     height: 41.724px;
     flex-shrink: 0;
     color: #FFF;
     text-align: center;
+    justify-content: center;
     font-family: Poppins;
     font-size: 2.2rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    left: 27vw;    
+    right: 15px;
+       
 }
 .mob-plybutton{
     display: flex;
@@ -113,7 +148,7 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    left: 28vw;
+    left: 32vw;
     justify-content: center;
     align-items: center;
     flex-direction: row;
@@ -126,30 +161,44 @@
 }
 .mob-baner-3{
     display: flex;
-    position: relative;
+    /* position: relative; */
     width: 93vw;
     height: 359px;
     border-radius: 30px;
-    background: url('../../assets/mobbanner/b1.png');
+    background: url('../../assets/banners/b2.png');
     background-size: cover;
     background-position: center;
     left: 1.5vw;
     top: 2.5vh;
     
 }
+
 .mob-text03{
     text-align: start;
     position: relative;
     display: flex;
     flex-direction: column;
+    
+    width: 50%;
+    height: 20vh;
+    align-items: start;
+    padding: 10px;
+    background-color:  rgba(11, 11, 11, 0.7);
+    border-radius: 10px;
+    left: 5px;
+    top:10px
+    
+    
 
 
 }
+
+
 .mob-text-e{
     display: flex;
     position: relative;
     justify-content: start;
-    width: 100.759px;
+    width: 100vw;
     height: 27.978px;
     flex-shrink: 0;
 
@@ -161,39 +210,42 @@
     font-weight: 400;
     line-height: normal;
     left: 4vw;
-    top: 15vh;
+    /* top: 15vh; */
 }
 .mob-text-f{
     display: flex;
     position: relative;
     justify-content: start;
-    width: 100.759px;
-    height: 27.978px;
+    width: 100px;
+    height: 2.59vh;
     flex-shrink: 0;
+   
 
     color: #FFD700;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-family: Poppins;
-    font-size: 6rem;
+    font-size: 500%;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     left: 4vw;
-    top: 15vh; 
+    /* top: 15vh;  */
+   
 }
 .mob-onvery{
     display: flex;
-    position: relative;
+    /* position: relative; */
     flex-direction: column;
     text-align: start;
+   
     
 }
 .mob-text-g{
     display: flex;
     position: relative;
     justify-content: start;
-    width: 100.759px;
-    height: 27.978px;
+    width: 100vw;
+    height: 2.59vh;
     flex-shrink: 0;
 
     color: #FFF;
@@ -204,92 +256,122 @@
     font-weight: 400;
     line-height: normal;
     left: 4vw;
-    top: 20vh;
+    top: 5vh;
    
 }
 .mob-text-h{
     display: flex;
     position: relative;
     justify-content: start;
-    width: 90.759px;
-    height: 27.978px;
+    width: 100vw;
+    height: 2.59vh;
     flex-shrink: 0;
 
     color: #FFF;
     
     font-family: Poppins;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     left: 4vw;
-    top: 19vh; 
+    top: 5vh; 
+    white-space: nowrap; 
+     
+    text-overflow: ellipsis;
 }
 .mob-endtext{
     display: flex;
-    position: relative;
+    justify-content: end;
     flex-direction: column;
     text-align: end;
+    right: 20px;
+    bottom: 20px;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+   
+
+    
+    
+    
 }
 .mob-text-i{
     display: flex;
-    position: relative;
+  
     justify-content: start;
-    
+    width: 50vw;
    
+    
+   background-color:  rgba(11, 11, 11, 0.7);
     flex-shrink: 0;
 
     color: #FFF;
-    text-shadow: 0px 5px 20px #FFF, 0px 4px 4px rgba(0, 0, 0, 0.25);
     
-    font-size: 1.9rem;
+    
+    font-size: 2rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    left: 15vw;
-    margin-top: 25vh; 
+    
+    /* margin-top: 25vh;  */
     justify-content: center;
     text-align: center;
-    background-color: #0b0b0b;
+   
     border-radius: 10px;
-    opacity: .8;
+    /* white-space: nowrap; 
+    
+    text-overflow: ellipsis;  */
+    
+   
+    
+    
+
+    
+   
     
 }
+
 .mob-plybutton03{
     display: flex;
-    position: relative;
+   
     width: 124px;
     height: 33px;
     flex-shrink: 0; 
     border-radius: 10px;
-    background: #FFBC0E;
-    
+    background: linear-gradient(180deg, #F5C945 0%, #484209 100%);
+    box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.60);
    border-color: #F5C945;
    
     flex-shrink: 0;
     color: #FFF;
-    text-align: center;
+    
     
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    left: 24vw;
-    justify-content: center;
+    
+    justify-content: start;
     align-items: center;
-    top: 2vh;
+   
     white-space: nowrap; 
     overflow: hidden; 
     text-overflow: ellipsis; 
     text-align: center;
+    
+   
+    
+    
+   
 }
 .mob-baner-2{
     display: flex;
-    position: relative;
+   /* position: relative; */
     width: 93vw;
     height: 359px;
     border-radius: 30px;
-    background: url('../../assets/mobbanner/b1.png');
+    background: url('../../assets/banners/b3.png');
     background-size: cover;
     background-position: center;
     left: 1.5vw;
@@ -297,17 +379,18 @@
 }
 .mob-text02{
     text-align: start;
-    position: relative;
+    /* position: relative; */
     display: flex;
     flex-direction: column;
+   
 
 }
 .mob-text-int{
     display: flex;
     position: relative;
     justify-content: start;
-    width: 100.759px;
-    height: 27.978px;
+    width: 100vw;
+    height: 2.79vh;
     flex-shrink: 0;
 
     color: #FFF;
@@ -318,13 +401,15 @@
     font-weight: 400;
     line-height: normal;
     left: 4vw;
-    top: 5vh;
+    top: 2vh;
     text-shadow: black;
 }
 .mob-text-vip{
     display: flex;
     position: relative;
     justify-content: start;
+    width: 100vw;
+    height: 2.79vh;
     
     flex-shrink: 0;
 
@@ -336,10 +421,11 @@
     font-weight: 700;
     line-height: normal;
     
-    top: 7vh;
+    top: 5vh;
+    left: 10px;
     text-shadow: black;  
-    justify-content: center;
-    align-items: center;
+    justify-content: start;
+    align-items: start;
 }
 .mob-membership{
     display: flex;
@@ -347,12 +433,12 @@
     align-items: start;
     position: relative;
     flex-direction: column;
-    top: 35vw;
+    top: 25vw;
     left: 3vw;
 }
 .mob-text-benefits{
-    width: 233px;
-height: 41px;
+    width: 100vw;
+height: 30px;
 flex-shrink: 0;
 color: #FFF;
 text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -363,8 +449,8 @@ font-weight: 500;
 line-height: normal;
 }
 .mob-text-invest{
-    width: 233px;
-    height: 41px;
+    width: 100vw;
+    
     flex-shrink: 0;
     color: #FFE073;
 
@@ -376,19 +462,16 @@ line-height: normal;
     line-height: normal;
     
 }
-.mob-endtext{
-display: flex;
-position: relative;
 
-}
+
 .mob-winbutton{
     display: flex;
     position: relative;
    
     flex-shrink: 0; 
     border-radius: 20px;
-    background: #FFBC0E;
-    
+    background: linear-gradient(180deg, #F5C945 0%, #484209 100%);
+    box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.60);
    border-color: #F5C945;
    width: 124px;
    height: 33px;
@@ -403,19 +486,35 @@ position: relative;
   
     justify-content: center;
     align-items: center;
-    top: 282px;
-    right: 10vw;
+    
     white-space: nowrap; 
     overflow: hidden; 
     text-overflow: ellipsis; 
     text-align: center;
     border-radius: 10px;
+    margin-left: 20px;
+    
   
 }
-/* Example CSS */
-/* .mob-banner-main .mob-baner-first,
-.mob-banner-main .mob-baner-3,
-.mob-banner-main .mob-baner-2 {
-  transition: background-image 0.3s ease;
-} */
+.text02-box{
+    background-color:  rgba(11, 11, 11, 0.7);
+    border-radius: 20px;
+    width: 80vw;
+    height: 30vh;
+    margin-left: 10px;
+    margin-top: 10px;
+    
+
+}
+.win-button-container{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-top: 2px;
+    
+    
+}
+
+
+
 

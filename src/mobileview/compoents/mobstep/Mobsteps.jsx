@@ -35,6 +35,22 @@ function Mobsteps() {
                         
 
                     </div>
+
+                    <div className='mob-innerbox4'>
+                        <div className='mob-pic-c'>
+                        <img src={Step3  }></img>
+                        </div>
+                        
+
+                    </div>
+
+                    <div className='mob-innerbox5'>
+                        <div className='mob-pic-d'>
+                        <img src={Step4 }></img>
+                        </div>
+                        
+
+                    </div>
                    
 
                     <div className='mob-innerbox3'>
@@ -46,22 +62,10 @@ function Mobsteps() {
                     </div>
                     
 
-                    <div className='mob-innerbox4'>
-                        <div className='mob-pic-c'>
-                        <img src={Step3  }></img>
-                        </div>
-                        
-
-                    </div>
+                   
                    
 
-                    <div className='mob-innerbox5'>
-                        <div className='mob-pic-d'>
-                        <img src={Step4 }></img>
-                        </div>
-                        
-
-                    </div>
+                   
                    
                     
                     

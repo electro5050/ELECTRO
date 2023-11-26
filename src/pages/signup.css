@@ -1,28 +1,22 @@
 
 .signup-start{
-    width: 30%;
-    height: 20%;
+    width: 100vw;
+    height: 5vh;
     white-space: nowrap; 
-   
     text-overflow: ellipsis; 
-    
-    text-align: center;
+    align-items: center;
     justify-content: center;
+    flex-shrink: 0;
+    color: #FFD700;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: center;
+    gap: 15%;
 
-flex-shrink: 0;
-
-position: relative;
-margin-left: 32.5vw;
-color: #FFD700;
-text-align: center;
-font-family: Poppins;
-font-size: 3rem;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-text-align: center;
-gap: 15%;
-top: 3rem;
 }
 .forgot-pass{
   color: #fff;
