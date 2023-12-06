@@ -1,13 +1,13 @@
-.terms-main-container{
+.mobabout-main-container{
     width: 100vw;
     height: 100%;
     display: flex;
-    background: url('../../assets/images/backgroup-secsion/Landing\ by\ s.e.png');
+    background: url('../../assets/Landing\ by\ s.e.png');
     background-size: cover;
     background-position: center;
     
 }
-.terms-main{
+.mobterms-main{
     width: 100vw;
     height: 100%;
     display: flex;
@@ -15,30 +15,29 @@
    
     
 }
-.terms-nav{
+.mobterms-nav{
     width: 100vw;
    display: flex; 
    flex-direction: row;
    
    
 }
-.terms-logo{
-    width: 10vw;
-    
-   
-    
+.mobterms-logo{
+    width: 25vw;
+    height: 10vh;
+    display: flex;
      
 }
-.term-home{
+.mobterm-home{
     display: flex;
-    width: 10vw;
+    width: 15vw;
     height: 20vh;
    
     align-items: start;
     justify-content: center;
     margin-top: 10px;
 }
-.home-link{
+.mobhome-link{
     display: flex;
     
     width: 21vw;
@@ -53,7 +52,7 @@
     font-weight: 900;
     line-height: normal;
 }
-.terms-button{
+.mobterms-button{
     display: flex;
     width: 90vw;
     height: 10vh;
@@ -63,7 +62,7 @@
     justify-content: end;
     gap: 10px;
 }
-.term-login .btn {
+.mobterm-login .btn {
     width: 6vw; /* Adjust the width as needed */
   height: 5vh; /* Adjust the height as needed */
   color: #FFF;
@@ -86,7 +85,7 @@ overflow: hidden;
 text-overflow: ellipsis; 
 background-color: transparent;
 }
-.term-signup .btn {
+.mobterm-signup .btn {
     width: 6vw; /* Adjust the width as needed */
     height: 5vh; /* Adjust the height as needed */
     color: #000;
@@ -109,14 +108,28 @@ background-color: transparent;
   text-overflow: ellipsis; 
   background-color:#FFD700;
 }
-.term-header{
+.mobterm-header{
     display: flex;
     width: 100vw;
     flex-direction: column;
     
    
 }
-.term-links{
+.mobabout{
+    display: flex;
+    width: 100vw;
+  
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+text-align: center;
+font-family: Poppins;
+font-size: 35px;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+}
+/* .term-links{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -140,16 +153,16 @@ font-size: 20px;
 font-style: normal;
 font-weight: 500;
 line-height: normal;
-}
-.terms-condition{
+} */
+.mobabout-condition{
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100vw;
    
-    margin-top: 30px;
+    margin-top: 10px;
 }
-.terms-text{
+.mobabout-text{
     display: flex;
     width: 80vw;
     height: auto;
@@ -163,17 +176,42 @@ line-height: normal;
     font-weight: 300;
     line-height: normal;   */
     padding: 10px;  
-    margin-top: 40px;
+    /* margin-top: 20px; */
     
     
 }
-.terms-contents{
+.mobabout-contents{
      color: #FFF;
     
-    font-family: Poppins;
+     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 300;
     line-height: normal;   
 }
    
+.mobabout-us{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80vw;
+    height: 20vh;
+    color: #FFF;
+text-align: center;
+font-family: 'Poppins', sans-serif;
+font-size: 17px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+margin-bottom: 5px;
+
+}
+.mobabout-heading{
+    color: #FFF;
+    
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal; 
+}

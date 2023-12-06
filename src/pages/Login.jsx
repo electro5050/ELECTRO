@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'common/electra_axios';
+
 import { useNavigate } from 'react-router-dom'; 
 // import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
@@ -51,7 +52,7 @@ const Login = () => {
 
     return (
         
-        <div  >
+             <div  className='login-container' >
             <img src={Logo} style={{width:'10vw'}}></img>
             {/* <section className="flat-title-page inner">
                 <div className="overlay"></div>
@@ -62,20 +63,7 @@ const Login = () => {
                         <div className="col-12" style ={{width:'100vw' , height:'auto', }}>
 
                             <div className="flat-form box-login-social">                            
-                                <ul>
-                                    <li>
-                                        {/* <Link to="#" className="sc-button style-2 fl-button pri-3">
-                                            <i className="icon-fl-google-2"></i>
-                                            <span>Google</span>
-                                        </Link> */}
-                                    </li>
-                                    <li>
-                                        {/* <Link to="#" className="sc-button style-2 fl-button pri-3">
-                                            <i className="icon-fl-facebook"></i>
-                                            <span>Facebook</span>
-                                        </Link> */}
-                                    </li>
-                                </ul>
+                             
                             </div>
 
                             <div className="flat-form box-login-email">

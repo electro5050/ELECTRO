@@ -119,6 +119,13 @@ const SignUp = () => {
                                             </label>
                                             <Link to="#" className="forgot-pass">Forgot Password ?</Link>
                                         </div>
+                                        <div className='signup-terms'>
+                                            <p className='sign-term'>By creating an account you agree to our    <Link to='/' className="conditions">Terms ,</Link>  <Link to='/' className="conditions"> Privacy Policy</Link></p>
+                                            <p className='sign-term'>By creating an account you confirm that you are <p className='eligble'>18+</p></p>
+                                            <p className='sign-term'>By creating an account you agree to our   <Link to='/' className="conditions">User Agreement  </Link></p>
+                                            <p className='sign-term'>By creating an account you agree to   <Link to= '/' className="conditions"> Responsible gaming </Link></p>
+                                        
+                                        </div>
                                         <button type="submit" className="submit">SignUp</button>
                                     </form>
                                 </div>

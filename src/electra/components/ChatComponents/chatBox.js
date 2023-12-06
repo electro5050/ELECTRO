@@ -22,7 +22,7 @@ const ChatSection = ({chatDetails, userData}) => {
     <div className="chat-section" style={{overflowY:"auto", height:"100%", marginBottom:"10px"}}>
         <div style={avatharContainerStyle}>
         <Avathar imageUrl={(chatDetails.user && chatDetails.user.profilePictureUrl) || "assets/Avatars/avathar_1.png"}imageSize={'calc(8px + 0.8vw + 0.8vh'}/>
-        <div style={{paddingLeft:"10px",  width: chatDetails.type == 'win' ? '100%' : '100%'}}>
+        <div style={{paddingLeft:"10px",  width: chatDetails.type == 'win' ? '80%' : '80%'}}>
             <div style={{display:"flex", justifyContent:"space-between", alignItems: "end"}}>
                 <div className='font-5'>
                     {chatDetails.user.name}
@@ -38,13 +38,13 @@ const ChatSection = ({chatDetails, userData}) => {
                     wow! moment
                     <div style={
                         {
-                            textAlign: 'center',
-                            padding: '0',
+                            // textAlign: 'center',
+                            // padding: '0',
                             // background: '#1B1B1B',
-                            marginTop:'0.5vw',
-                            marginBottom:'0.5vw',
-                            paddingBottom:"0.5vw",
-                            background: "linear-gradient(180deg, #F1C45D 0%, rgba(27, 27, 27, 0.00) 100%)"
+                            // marginTop:'0.5vw',
+                            // marginBottom:'0.5vw',
+                            // paddingBottom:"0.5vw",
+                            // background: "linear-gradient(180deg, #F1C45D 0%, rgba(27, 27, 27, 0.00) 100%)"
                         }
                     }>
                         {/* <div style={
@@ -54,7 +54,7 @@ const ChatSection = ({chatDetails, userData}) => {
                             }
                         }>
                         </div>  */}
-                        <img src={"assets/electra/win-shield.png"}  alt=""  style={{height:"10vw", marginTop:"calc(5px + 0.5vw + 0.5vh)"}}/>
+                        <img src={"assets/electra/win-shield.png"}  alt=""  style={{height:"4vw", marginTop:"calc(5px + 0.5vw + 0.5vh)"}}/>
                     </div> 
                     <div style={{display:"flex", justifyContent:"flex-start", padding:"2px 10px", alignItems:"center"}}>
                         {/* <div style={{display:"flex", alignItems:"center"}}>
@@ -70,9 +70,9 @@ const ChatSection = ({chatDetails, userData}) => {
                             id="logo_header"
                             src={"/assets/electra/gold-coin.png"}
                             alt="electra"
-                            style={{width:"calc(8px + 0.8vw + 0.8vh)" , padding:"0px 0px"}}
+                            style={{width:"calc(4px + 0.5vw + 0.6vh)" , padding:"0px 0px"}}
                         />
-                            <span style={{paddingLeft:"5px", color:"#70D77A", fontWeight:"900"}} className="font-6">+&nbsp;{chatDetails.message}</span>
+                            <span style={{paddingLeft:"5px", color:"#70D77A", fontWeight:"500"}} className="font-6">+&nbsp;{chatDetails.message}</span>
                         </div> 
                     </div>
                 </div>

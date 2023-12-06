@@ -24,7 +24,7 @@
     color: #E9D4D4;
 text-align: center;
 font-family: Poppins;
-font-size: 1.9em;
+font-size: 1.9rem;
 font-style: normal;
 font-weight: 600;
 display: inline-flex;
@@ -81,7 +81,7 @@ height: .1rem;
     font-size: small;
     padding: 20px ;
    
-    margin-left: 4vw;
+    margin-left: 2vw;
   }
   .footer-main{
    
@@ -113,10 +113,10 @@ margin-left: .4vw;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5.5rem;
+    gap: 2rem;
      /* Add margin between links and line */
     
-     margin-left: 3vw;
+     margin-left: 1vw;
   }
   
   

@@ -10,7 +10,7 @@ import { Button } from 'react-scroll';
 const heroSliderData = [
     {
         title_1: "Electro5050",
-        title_2: "world's First Bidding Game Platform",
+        title_2: "World's First Bidding Game Platform",
         title_3: "WIN EVERY 30 SECONDS",
         // description: "best place to show your gaming skills",
         // img: img1,

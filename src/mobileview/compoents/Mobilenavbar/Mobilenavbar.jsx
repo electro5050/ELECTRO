@@ -22,7 +22,7 @@ function Mobilenavbar() {
         </div>
         <div className='mob-button'>
             <div className='mob-login'>
-            <Button variant="outline-primary" onClick={() => navigate('/login')} >Log In</Button>{' '}
+            <Button variant="outline-primary" onClick={() => navigate('/loginmobile')} >Log In</Button>{' '}
             </div>
             <div className='mob-signup'>
             <Button variant="primary" onClick={handleScrollToSignUp}> Sign Up </Button>

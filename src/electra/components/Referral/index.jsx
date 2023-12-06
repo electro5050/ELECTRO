@@ -18,10 +18,10 @@ const overlayColor1 = 'rgba(255, 0, 0, 0.5)'; // First overlay color
 const overlayColor2 = 'rgba(0, 0, 0, 0.5)';
 
   const backgroundStyle = {
-    background: `url(/assets/electra/referal-bg.jpg), lightgray 50% / cover no-repeat`,
+     background: `url(/assets/electra/referal.png), lightgray 50% / cover no-repeat`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    height: '25vh',
+    height: '55vh',
     width: '100%',
     borderRadius: '1.5vw',
     border: '2px solid rgba(255, 255, 255, 0.5)',
@@ -47,9 +47,9 @@ const overlayColor2 = 'rgba(0, 0, 0, 0.5)';
     left: 0,
     width: '60%',
     textAlign: 'left',
-    fontSize: '2vw',
+    fontSize: '4vw',
     padding: '0.6vw',
-    color:"white",
+    color:"gold",
     position: 'absolute',
     display: "flex",
     alignItems: "center"
@@ -80,8 +80,8 @@ const GameComponent = ({}) => {
 
         <div style={backgroundStyle}>
               <div style={overlayStyle}></div> {/* Pseudo-element for the overlay */}
-              <div style={contentStyle}>
-                refer your friends and earn commission up to 100* free coins 1 free coin for a successful referral
+              <div style={contentStyle } >
+              REFER AND EARN<br></br>get up to 10% bonus 
               </div>
 
               <div style={linkStyle}>

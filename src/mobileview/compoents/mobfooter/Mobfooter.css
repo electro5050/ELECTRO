@@ -71,6 +71,8 @@ align-items: center;
 height: .1rem;
     background-color: rgba(200, 200, 200, 0.3);
     margin: 0 auto; /* Center the line */
+    
+    margin-top: 1vh;
    
     
     
