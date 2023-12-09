@@ -77,7 +77,7 @@ const SignUp = () => {
                                     <form onSubmit={handleSignUp}>
                                         <div>
                                             <input 
-                                                type="text" 
+                                                type="text" style={{color:'white'}}
                                                 name="name" 
                                                 tabIndex="1" 
                                                 aria-required="true" 
@@ -89,7 +89,7 @@ const SignUp = () => {
                                             {errors.name && <div className="error">{errors.name}</div>}
 
                                             <input 
-                                                type="email" 
+                                                type="email" style={{color:'white'}}
                                                 name="email" 
                                                 tabIndex="2" 
                                                 aria-required="true" 
@@ -101,7 +101,7 @@ const SignUp = () => {
                                             {errors.email && <div className="error">{errors.email}</div>}
 
                                             <input 
-                                                type="password" 
+                                                type="password" style={{color:'white'}}
                                                 name="password" 
                                                 tabIndex="3" 
                                                 aria-required="true" 

@@ -67,7 +67,7 @@ text-overflow: ellipsis;
   background-size: cover;
   background-position: center;
   width: 100vw;
-    height: auto;
+  height: auto;
 }
 .landing-graph{
   background: url('../../../src/mobileview/assets/garph.png');

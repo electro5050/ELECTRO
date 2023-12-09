@@ -69,7 +69,7 @@ const Header = () => {
                         src={logodark}
                         srcSet={`${logodark2x}`}
                         alt="nft-gaming"
-                        style={{ width: '25vh', height: '25vh',   }}
+                        style={{ width: '25vh',    }}
                         
                       />
                       <img
@@ -78,7 +78,7 @@ const Header = () => {
                         src={logoheader}
                         srcSet={`${logoheader2x}`}
                         alt="nft-gaming"
-                        style={{ width: '25vh',height:'25vh', }}
+                        style={{ width: '25vh', }}
                       />
                     </Link>
                   </div>

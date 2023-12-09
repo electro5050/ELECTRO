@@ -73,7 +73,7 @@ const Login = () => {
                                 <div className="form-inner" >
                                     <form onSubmit={handleLogin}>
                                         <input 
-                                            type="email" 
+                                            type="email" style={{color:'white'}}
                                             name="email" 
                                             placeholder="Your Email Address"
                                             value={formData.email} 
@@ -81,7 +81,7 @@ const Login = () => {
                                         />
                                         {errors.email && <div className="error">{errors.email}</div>}
                                         <input 
-                                            type="password" 
+                                            type="password" style={{color:'white'}}
                                             name="password" 
                                             placeholder="Enter Your Password" 
                                             value={formData.password} 

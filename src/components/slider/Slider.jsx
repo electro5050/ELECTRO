@@ -9,7 +9,7 @@ import 'swiper/scss/pagination';
 import shape1 from '../../assets/images/backgroup-secsion/bg-gradient1.png'
 import shape2 from '../../assets/images/backgroup-secsion/bg-gradient2.png'
 import shape3 from '../../assets/images/backgroup-secsion/bg-gradient3.png'
-import imgbg from '../../assets/images/backgroup-secsion/img_bg_page_title.jpg'
+import imgbg from '../../assets/images/backgroup-secsion/image.png'
 import Button from 'react-bootstrap/Button';
 import Arrow from '../../assets/images/coins/arrow-right.svg'
 import '../slider/Slider.css';
