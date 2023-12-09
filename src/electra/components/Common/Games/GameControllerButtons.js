@@ -7,6 +7,11 @@ import { connect } from 'react-redux';
 import config from 'common/constants';
 import {updateUserData} from 'redux/userActionActions';
 import { useDispatch  } from 'react-redux';
+import bidSound from '../../../../assets/sounds/bid button.wav';
+import switchSound from '../../../../assets/sounds/switch room.mp3';
+
+const BidSound = new Audio(bidSound);
+const SwitchSound = new Audio(switchSound);
 
 const gameContollersStyle = {
     padding:"10px",
@@ -256,6 +261,7 @@ const GameControllerButtons = ({userData, websocketData, setAuthError}) => {
 
   const handleButtonClick = (type) => {
     // setButtonType(type);
+    BidSound.play();
     sendDataToAPI(type); // Sending the type as a parameter to the function
   };
 
@@ -295,6 +301,7 @@ const GameControllerButtons = ({userData, websocketData, setAuthError}) => {
 
 const handleSwitchRoom = () => {
   // const userIdFromLocalStorage = JSON.parse(localStorage.getItem('user')).id;
+  SwitchSound.play();
   axios.post(config.gameApiUrl + '/switch', {
       gameId: websocketData.gameId
   })

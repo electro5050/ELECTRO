@@ -50,6 +50,11 @@ const AccountInfo = ({userData}) => {
   const [name, setName] = useState(null);
 
   const [user, setUser] = useState(null);
+
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmNewPassword, setConfirmNewPassword] = useState('');
+
   
   useEffect(() => {
     setUser(userData);
@@ -64,6 +69,44 @@ const AccountInfo = ({userData}) => {
   const closePasswordChangeModal = () => {
     setIsPasswordOpen(false)
   };
+
+  const handleChangePassword = async () => {
+    const token = localStorage.getItem('token');
+    if (newPassword !== confirmNewPassword) {
+      alert('New passwords do not match.');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:3000/change-password', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          current_password: currentPassword,
+          new_password: newPassword,
+          name: name,
+        }),
+      });
+
+      const data = await response.json();
+      if (response.status === 200) {
+        alert('Password changed successfully');
+        closePasswordChangeModal();
+      } else {
+        alert(data.message); // Display error message from the server
+      }
+    } catch (error) {
+      console.error('Error changing password:', error);
+      alert('Error changing password');
+    }
+  };
+  useEffect(() => {
+    console.log({ current_password: currentPassword, new_password: newPassword });
+  }, [currentPassword, newPassword]);
+
 
   return (
     <div style={{width:"100%",  borderRadius: '15px',
@@ -115,7 +158,8 @@ const AccountInfo = ({userData}) => {
                 padding:"1.5%"
               }}>
                 {isEdit ? (
-           <input type="text" placeholder="Enter Name" value={name} style={InputStyle} handleChange={()=>{setName()}} className="font-4" />
+           <input type="text" placeholder="Enter Name" value={name} onChange={(e) => setName(e.target.value)} style={InputStyle} className="font-4" />
+
             ) : (
               <label>{user?.name}</label>
             )}
@@ -193,11 +237,12 @@ const AccountInfo = ({userData}) => {
               <label>############</label>
             )}
           </div>
+          
       </div>
 
       {isEdit &&
       <div style={{marginTop:'1%'}}>
-      <span style={{color:"#FFD700", float:"right", cursor:"pointer" , textDecoration:"underline"}} onClick={() => alert("save")}>
+      <span style={{color:"#FFD700", float:"right", cursor:"pointer" , textDecoration:"underline"}} onClick={handleChangePassword}>
                 apply changes
               </span>
       </div>
@@ -213,7 +258,10 @@ const AccountInfo = ({userData}) => {
                       padding:"1.5%",
                       ...passwordChangeCommnDivStyle
                     }}>
-                     <PasswordInput />
+                     <PasswordInput value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} />
+
+
+
                 </div>
 
                 <div style={{fontSize:"max(13px, 0.8vw)", color:"white", ...passwordChangeCommnDivStyle}}>create new password</div>
@@ -224,7 +272,7 @@ const AccountInfo = ({userData}) => {
                       padding:"1.5%",
                       ...passwordChangeCommnDivStyle
                     }}>
-                    <PasswordInput />
+                    <PasswordInput value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
                 </div>
 
 
@@ -236,7 +284,7 @@ const AccountInfo = ({userData}) => {
                   padding:"1.5%",
                   ...passwordChangeCommnDivStyle
                 }}>
-                    <PasswordInput />
+                   <PasswordInput value={confirmNewPassword} onChange={(e) => setConfirmNewPassword(e.target.value)} />
                 </div>
 
 
@@ -249,7 +297,7 @@ const AccountInfo = ({userData}) => {
                 </div>
               
                 
-                <div onClick={closePasswordChangeModal} style={{...passwordChangeButton }}>set changes</div>
+                <div  onClick={handleChangePassword} style={{...passwordChangeButton }}>set changes</div>
               </div>
 
 

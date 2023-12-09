@@ -1,107 +1,121 @@
 const express = require('express');
-const {User} = require('../models/User');
+const passport = require('passport');
+const { User } = require('../models/User');
 const bcrypt = require('bcryptjs');
 const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
 
 dotenv.config();
 
+require('../config/passport'); // Import your Passport Google strategy setup
+
 const router = express.Router();
 
-router.post('/signup', async (req, res) => {
+// Trigger Google OAuth login
+router.get('/google', passport.authenticate('google', {
+  scope: ['profile', 'email']
+}));
+
+// Google OAuth callback route
+router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), async (req, res) => {
+  console.log('OAuth Callback Route Invoked');
+
   try {
+      const user = req.user; // User is already set by Passport strategy
+      console.log(`User authenticated with ID: ${user.id}`);
+
+      const payload = { userId: user.id };
+      const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 3600 });
+      console.log('Token created:', token);
+      res.redirect(`http://localhost:8000/game?token=${token}`);
+
+  } catch (error) {
+      console.error('Error during OAuth callback processing:', error);
+      res.status(500).json({ message: 'Internal server error', error: error.message });
+  }
+});
+
+
+
+
+
+
+router.post('/signup', async (req, res) => {
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
-      throw new Error('Missing required fields.');
+        return res.status(400).json({ message: 'Missing required fields.' });
+    }
+
+    const existingUser = await User.findOne({ email });
+    if (existingUser && existingUser.isGoogleUser) {
+        return res.status(400).json({ message: 'Email is already registered with Google. Please log in using Google.' });
     }
 
     const saltRounds = 12;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     const newUser = new User({
-      name,
-      email,
-      password: hashedPassword,
+        name,
+        email,
+        password: hashedPassword
     });
 
     await newUser.save();
 
-    // Generate a JWT token for the new user
     const payload = { userId: newUser.id };
-    const token = jwt.sign(
-      payload, 
-      process.env.JWT_SECRET, 
-      { expiresIn: 3600 } // Expires in 1 hour
-    );
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 3600 });
 
-    // Send the token in the response
     res.status(201).json({
-      message: 'User created successfully.',
-      token,
-      user: {
-        id: newUser.id,
-        ...newUser.toObject()
-        // name: newUser.name,
-        // email: newUser.email
-      }
+        message: 'User created successfully.',
+        token,
+        user: { id: newUser.id, ...newUser.toObject() }
     });
-  } catch (err) {
-    console.error("General error during signup:", err);
-    res.status(400).json({ message: err.message });
-  }
 });
 
 router.post('/login', async (req, res) => {
-  try {
     const { email, password } = req.body;
 
-    console.log(`Attempting to log in user: ${email}`);
-
-    // Find user by email
     const user = await User.findOne({ email });
-
-    console.log("Found user for login:", user);
-
     if (!user) {
-      return res.status(400).json({ message: "Invalid email or password." });
+        return res.status(400).json({ message: "Invalid email or password." });
     }
 
-    // Check password
+    if (user.isGoogleUser) {
+        return res.status(400).json({ message: "Please log in using Google." });
+    }
+
     const isMatch = await bcrypt.compare(password, user.password);
-
-    console.log("Password match result:", isMatch);
-
     if (!isMatch) {
-      return res.status(400).json({ message: "Invalid email or password." });
+        return res.status(400).json({ message: "Invalid email or password." });
     }
 
-    // User matched. Create a token
     const payload = { userId: user.id };
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 3600 });
 
-    const token = jwt.sign(
-      payload, 
-      process.env.JWT_SECRET, 
-      { expiresIn: 3600 } // Expires in 1 hour
-    );
-
-    res.json({
-      token,
-      user: {
-        id: user.id,
-        ...user.toObject()
-        // name: user.name,
-        // email: user.email
-      }
-    });
-
-  } catch (err) {
-    console.error("Error during login:", err);
-    res.status(500).json({ message: "Server error." });
-  }
+    res.json({ token, user: { id: user.id, ...user.toObject() } });
 });
 
 
+
+router.get('/facebook', passport.authenticate('facebook'));
+
+// Facebook OAuth callback route
+router.get('/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), async (req, res) => {
+    console.log('Facebook OAuth Callback Route Invoked');
+    try {
+        const user = req.user; // User is already set by Passport strategy
+        console.log(`User authenticated with ID: ${user.id}`);
+
+        const payload = { userId: user.id };
+        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 3600 });
+        console.log('Token created:', token);
+        res.redirect(`http://localhost:8000/game?token=${token}`);
+    } catch (error) {
+        console.error('Error during Facebook OAuth callback processing:', error);
+        res.status(500).json({ message: 'Internal server error', error: error.message });
+    }
+});
 
 
 module.exports = router;
