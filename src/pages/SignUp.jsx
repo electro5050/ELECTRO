@@ -63,7 +63,8 @@ const SignUp = () => {
 
     return (
         <div>
-            <section className="signup-container">
+             <section id='signUp-section' className='signup-container'>
+           
                 <div className="themesflat-container">
                     <div className="row">
                         <div className="signup-inner">
@@ -90,7 +91,7 @@ const SignUp = () => {
                                     <form onSubmit={handleSignUp}>
                                         <div>
                                             <input 
-                                                type="text" 
+                                                type="text" style={{color:'white'}}
                                                 name="name" 
                                                 tabIndex="1" 
                                                 aria-required="true" 
@@ -102,7 +103,7 @@ const SignUp = () => {
                                             {errors.name && <div className="error">{errors.name}</div>}
 
                                             <input 
-                                                type="email" 
+                                                type="email" style={{color:'white'}}
                                                 name="email" 
                                                 tabIndex="2" 
                                                 aria-required="true" 
@@ -114,7 +115,7 @@ const SignUp = () => {
                                             {errors.email && <div className="error">{errors.email}</div>}
 
                                             <input 
-                                                type="password" 
+                                                type="password" style={{color:'white'}}
                                                 name="password" 
                                                 tabIndex="3" 
                                                 aria-required="true" 
@@ -132,6 +133,13 @@ const SignUp = () => {
                                             </label>
                                             <Link to="#" className="forgot-pass">Forgot Password ?</Link>
                                         </div>
+                                        <div className='signup-terms'>
+                                            <p className='sign-term'>By creating an account you agree to our    <Link to='/' className="conditions">Terms ,</Link>  <Link to='/' className="conditions"> Privacy Policy</Link></p>
+                                            <p className='sign-term'>By creating an account you confirm that you are <p className='eligble'>18+</p></p>
+                                            <p className='sign-term'>By creating an account you agree to our   <Link to='/' className="conditions">User Agreement  </Link></p>
+                                            <p className='sign-term'>By creating an account you agree to   <Link to= '/' className="conditions"> Responsible gaming </Link></p>
+                                        
+                                        </div>
                                         <button type="submit" className="submit">SignUp</button>
                                     </form>
                                 </div>
@@ -140,7 +148,9 @@ const SignUp = () => {
                         </div>
                     </div>
                 </div>
+                
             </section>
+            
         </div>
     );
 };

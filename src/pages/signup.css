@@ -1,28 +1,23 @@
 
 .signup-start{
-    width: 30%;
-    height: 20%;
+    width: auto;
+    height: 5vh;
     white-space: nowrap; 
-   
     text-overflow: ellipsis; 
-    
-    text-align: center;
+    align-items: center;
     justify-content: center;
+    flex-shrink: 0;
+    color: #FFD700;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: center;
+    gap: 15%;
+   
 
-flex-shrink: 0;
-
-position: relative;
-margin-left: 32.5vw;
-color: #FFD700;
-text-align: center;
-font-family: Poppins;
-font-size: 3rem;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-text-align: center;
-gap: 15%;
-top: 3rem;
 }
 .forgot-pass{
   color: #fff;
@@ -32,4 +27,45 @@ top: 3rem;
   height: 100% ;
 
 } 
+.signup-terms{
+  display: flex;
+  width: auto;
+  height: auto;
+ 
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  text-align: center;
+  
+ 
+  
+  
+}
+.conditions{
+  color: rgb(93, 93, 222);
+  display: flex;
+  /* white-space: nowrap; 
+   
+    text-overflow: ellipsis;  */
+   
+   
+  
+}
+.eligble{
+  color: brown;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+.sign-term{
+  display: flex;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  white-space: nowrap; 
+    overflow: hidden; 
+    /* text-overflow: ellipsis;  */
+}
+
 

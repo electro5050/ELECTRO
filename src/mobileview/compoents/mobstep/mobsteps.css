@@ -1,47 +1,53 @@
 .mob-step-container{
     display: flex;
-    position: relative;
+   width: 100vw;
+   height: 40vh;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     
 }
 .mob-mainbox-container{
     display: flex;
-    position: relative;
-    width: auto;
-    height: auto;
+  
+    width: 100vw;
+    height: 20vh;
+    align-items: center;
+    justify-content: center;
 
 }
 .mob-mainbox{
-    width: auto;
-    height: auto;
-    position: relative;
+    width: 100vw;
+    height: 10vh;
+   
     align-items: center;
     
     display: flex;
     justify-content:center;
     flex-direction:column;
-    right: 4vw;
+    /* right: 4vw; */
 }
 .mob-texts{
     display: flex;
-    position: relative;
+   
     text-align: center;
     justify-content: center;
     
     
 }
 .mob-method{
-    position: relative;
+   display: flex;
     text-align: center;
     color: #FFF;
-    text-align: center; 
+    text-align: center;
+    justify-content: center;
+    align-items: center;
     font-family: Poppins;
     
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    top: 59px;
+    
     width: 426px;
     height: 126px;
     flex-shrink: 0;
@@ -50,18 +56,18 @@
    
 }
 .mob-innerbox{
-    position: relative;
+    
     display: flex;
     justify-content: center;
     flex-direction:row;
     align-items: center;
-    margin-top: 10vh;
+  
     gap: 15px;
    
     
 }
 .mob-innerbox1 {
-    position: relative;
+   
     width: 15.49vw;
     height: auto;
     flex-shrink: 0;
@@ -73,14 +79,14 @@ background: rgba(255, 255, 255, 0.1);
 box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
   }
 .mob-pic-a{
-  position: relative;
+ 
   display: flex;
   align-items: center;
 
 }
 
 .mob-innerbox2 {
-  position: relative;
+  
   width: 15.49vw;
   height: auto;
   flex-shrink: 0;
@@ -92,14 +98,14 @@ background: rgba(255, 255, 255, 0.10);
 box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
 }
 .mob-pic-b{
-position: relative;
+
 display: flex;
 align-items: center;
 
 }
 
 .mob-innerbox3 {
-  position: relative;
+
   width: 15.49vw;
   height: auto;
   flex-shrink: 0;
@@ -111,14 +117,14 @@ background: rgba(255, 255, 255, 0.10);
 box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
 }
 .mob-pic-c{
-position: relative;
+
 display: flex;
 align-items: center;
 
 }
 
 .mob-innerbox4{
-  position: relative;
+ 
   width: 15.49vw;
   height: auto;
   flex-shrink: 0;
@@ -130,14 +136,14 @@ background: rgba(255, 255, 255, 0.10);
 box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
 }
 .mob-pic-d{
-position: relative;
+
 display: flex;
 align-items: center;
 
 }
 
 .mob-innerbox5{
-  position: relative;
+  
   width: 15.49vw;
   height: auto;
   flex-shrink: 0;
@@ -149,7 +155,7 @@ background: rgba(255, 255, 255, 0.10);
 box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
 }
 .mob-pic-e{
-position: relative;
+
 display: flex;
 align-items: center;
 

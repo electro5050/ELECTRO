@@ -16,7 +16,7 @@
 .main-logo img {
   max-width: 100%; /* Ensure the logo scales properly */
   height: auto;
-  margin-top: 15vh;
+  margin-top: 10vh;
 }
 
 
@@ -31,12 +31,14 @@
 }
 .entrybutton .btn, .signupentry .btn {
   width: 6vw; /* Adjust the width as needed */
-  height: 6vh; /* Adjust the height as needed */
+  height: 5vh; /* Adjust the height as needed */
   color: #FFF;
+  border: 1px solid #FFD700;
 
-text-align: center;
 
-font-size: 1.3rem;
+  font-family: 'Poppins', sans-serif;
+
+font-size: 1.5rem;
 
 font-weight: 600;
 line-height: normal;
@@ -52,7 +54,8 @@ text-overflow: ellipsis;
 
 }
 .signupentry .btn{
-  background-color: rgba(78, 79, 235, 1);
+  background-color:#FFD700;
+  color: #000;
   
 }
 .entrybutton .btn{
@@ -64,7 +67,7 @@ text-overflow: ellipsis;
   background-size: cover;
   background-position: center;
   width: 100vw;
-    height: auto;
+  height: auto;
 }
 .landing-graph{
   background: url('../../../src/mobileview/assets/garph.png');

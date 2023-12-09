@@ -1751,7 +1751,8 @@
   -webkit-background-clip: text;
   -webkit-text-stroke: 3px transparent;
   -webkit-text-fill-color: #fff;
-  text-shadow: 1px 10px 50px #ffbc0e;
+  /* text-shadow: 1px 10px 50px #ffbc0e; */
+  -webkit-text-stroke: 1px #FFD700;
  
 
 }

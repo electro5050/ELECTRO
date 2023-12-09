@@ -1,5 +1,5 @@
 .mob-footer {
-    position: relative;
+   
     
     align-items: center;
     justify-content:center;
@@ -14,7 +14,7 @@
     margin-left: 1.8vw;
     display: flex;
     flex-direction: column;
-    top: 4vh;
+    /* top: 4vh; */
    
   }
   
@@ -22,14 +22,15 @@
    
     color: #E9D4D4;
 text-align: center;
+justify-content: center;
 
 font-size: 1.3em;
 font-style: normal;
 font-weight: 600;
 display: inline-flex;
 padding: 20px;
-position: relative;
-margin-left: .4vw;
+
+
 align-items: center;
 
 
@@ -46,9 +47,9 @@ align-items: center;
     justify-content: center;
     gap: 5.5rem;
      /* Add margin between links and line */
-     position: relative;
-     margin-left: 3px;
-     bottom: 1.5vh;
+    
+     /* margin-left: 3px;
+     bottom: 1.5vh; */
   }
   
   .footer-link {
@@ -70,9 +71,13 @@ align-items: center;
 height: .1rem;
     background-color: rgba(200, 200, 200, 0.3);
     margin: 0 auto; /* Center the line */
-    top: 1vh;
+    
+    margin-top: 1vh;
    
-    position: relative;
+    
+    
+   
+  
   }
   .logo-dark{
     padding-bottom: 3%;
@@ -80,12 +85,12 @@ height: .1rem;
   .footer-llp{
     font-size: 1.1rem;
     padding: 10px ;
-    position: relative;
-    bottom: 2vh;
+    text-align: center;
+    justify-content: center;
    
   }
   .footer-main{
-    position: relative;
+   
     width: 100%;
     height: 30%;
     top: 5vh;
@@ -106,7 +111,7 @@ font-style: normal;
 font-weight: 600;
 display: inline-flex;
 padding: 20px;
-position: relative;
+
 margin-left: .4vw;
 bottom: 1vh;
 
@@ -115,11 +120,11 @@ bottom: 1vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 3rem;
+    gap: 2rem;
      /* Add margin between links and line */
-     position: relative;
-     margin-left: 3px;
-     bottom: 4vh;
+    
+    
+     
   }
   
   
