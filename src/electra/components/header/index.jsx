@@ -100,7 +100,7 @@ const Headers = ({userData, selectedHeader, handleLinkClick ,handleChatToggle })
 
                       </div>
 
-                      <a onClick={() => alert('wallet')}>
+                      <a onClick={() => handleLinkClick('Wallet')}>
                         
                       <svg xmlns="http://www.w3.org/2000/svg" width="17" height="14" viewBox="0 0 17 14" fill="none">
                       <path d="M7.56586 9.46313V10.7491C7.56586 11.8386 6.3658 12.7192 4.88824 12.7192C3.41069 12.7192 2.20312 11.8386 2.20312 10.7491V9.46313C2.20312 10.5527 3.40319 11.3255 4.88824 11.3255C6.3658 11.3255 7.56586 10.5464 7.56586 9.46313Z" stroke="#DFDDD5" stroke-linecap="round" stroke-linejoin="round"/>

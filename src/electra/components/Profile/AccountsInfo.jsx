@@ -115,7 +115,7 @@ const AccountInfo = ({userData}) => {
                 padding:"1.5%"
               }}>
                 {isEdit ? (
-           <input type="text" placeholder="Enter Name" value={name} style={InputStyle} handleChange={()=>{setName()}} className="font-4" />
+           <input type="text" placeholder="Enter Name" value={name} style={InputStyle} onChange={(e)=>{setName(e.target.value)}} className="font-4" />
             ) : (
               <label>{user?.name}</label>
             )}

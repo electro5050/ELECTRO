@@ -37,6 +37,7 @@ import ReferralComponent from 'electra/components/Referral'
 import TawkItem from 'electra/components/ChatComponents/tawkItem';
 import OrientationLock from 'electra/pages/orientationLock'; 
 import GameChart from 'electra/components/Common/Games/GameChart';
+import WalletComponent from 'electra/components/wallet';
 import { useNavigate } from 'react-router-dom';
 import config from 'common/constants';
 import {updateUserData} from 'redux/userActionActions';
@@ -63,7 +64,7 @@ const GamePage = () => {
     }, [windowWidth]);
 
 
-  const [activeTab, SetTab] = useState('Games');
+  const [activeTab, SetTab] = useState('Wallet');
 
   const [collapsed, setCollapsed] = useState(false);
 
@@ -128,6 +129,9 @@ const GamePage = () => {
 
           case 'Profile':
             return <ProfileComponent />;
+
+          case 'Wallet':
+              return <WalletComponent />;
 
           default:
             return <GameComponent />;

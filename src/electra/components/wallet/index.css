@@ -1,0 +1,166 @@
+
+
+.wallet-page .btn.control-btn {
+    width: 6vw; /* Adjust the width as needed */
+    height: 6vh; /* Adjust the height as needed */
+
+  
+  text-align: center;
+    
+  font-weight: 600;
+  line-height: normal;
+  border-radius: 0.5vw;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  background-color:white;
+  color:black;
+}
+
+.wallet-page .control-btn.btn.selected {
+    background-color: rgba(79, 78, 232, 1);
+    color: #FFF;
+}
+
+.wallet-page .coin-image{
+    width: 4vh;
+}   
+
+.wallet-page .wallet-money{
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 1);
+    padding: calc(0.3vw + 0.3vh + 3px) calc(0.7vw + 0.7vh + 7px);
+    display: flex;
+    align-items: center;
+    width: max-content;
+}
+
+.wallet-page  .custom-horizontal-line {
+    border: 0.5px solid rgba(219, 219, 219, 1); /* Customize the border style */
+    height: 4vh; /* Customize the height of the line */
+    margin: 0; /* Customize the margin as needed */
+    margin-left: 0.5vw;
+  }
+
+  .wallet-page  .wallet-amount-input{
+    width: calc(2vw + 2vh + 20px);
+    color:white;
+  }
+
+
+.wallet-page  .wallet-amount-input::-webkit-outer-spin-button,
+.wallet-page  .wallet-amount-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.wallet-page  .wallet-amount-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.wallet-page .btn.checkout-btn {
+    width: 6vw; /* Adjust the width as needed */
+    height: 6vh; /* Adjust the height as needed */
+
+  
+  text-align: center;
+    
+  font-weight: 600;
+  line-height: normal;
+  border-radius: 0.5vw;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  background-color:white;
+  color:black;
+  background-color: rgba(221, 168, 62, 1);
+  border: none;
+  font-weight: 900;
+  margin-top: 5vh;
+  padding:  1vh 4vw;
+}
+
+
+
+.wallet-page .redeem-money{
+    border-radius: 5px;
+    border: 1px solid #37354D;
+    background: #1E1C2A;
+    padding: calc(0.2vw + 0.2vh + 2px) calc(0.4vw + 0.4vh + 4px);;
+    display: flex;
+    align-items: center;
+    width: max-content;
+
+    color: #DBDBDB;
+}
+
+.wallet-page .redeem-money .coin-image{
+    width: 4vh;
+    box-shadow: 0px 0px 20px 0px #F3CB5F, 0px 2px 4px 0px #000;
+    border-radius: 50%;
+}   
+
+
+
+.wallet-page .btn.checkout-btn.continue {
+  color:white;
+  background-color: #514DEA;
+    width: auto;
+}
+
+.wallet-page .btn.checkout-btn.submit {
+    color:black;
+    background-color: white;
+  }
+
+
+.wallet-page .transactiondiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+  }
+
+
+  .wallet-page .redeem-options {
+    background: #25211C;
+    border-radius: 0.4vw;
+    width: 8vw;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    margin-left: 2vw;
+    cursor: pointer;
+  }
+
+  .wallet-page .redeem-options  svg{
+    width: 100%;
+    height: 80%;
+    
+  }
+
+
+  .wallet-page .custom-input {
+    background-color: #e2e2e2; /* Replace with your desired background color */
+    /* Add any other custom styles for the input */
+    font-size: calc(0.4vw + 0.4vh  + 4px);
+    padding: 2px;
+  }
+
+  .wallet-page .custom-input::placeholder {
+    font-size: calc(0.4vw + 0.4vh  + 4px);
+  }
+
+  .wallet-page .redeem-options.selected {
+
+    border: 1px solid #FFBC0E;
+  }
