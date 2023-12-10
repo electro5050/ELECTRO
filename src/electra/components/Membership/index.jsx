@@ -19,23 +19,23 @@ const GameComponent = ({isMobile}) => {
   return (
     <div className="membership-game">
       {!isMobile && <TopSection  />}
-      <div className="container" style={{background:"rgba(40, 40, 40, 0.60)", borderRadius: "1.2vw", height: "70vh", overflowY: "auto", 
+      <div className="container" style={{background:"url(/assets/electra/vip.jpeg)", backgroundSize: '100% 100%',backgroundposition:'center', backgroundRepeat: 'no-repeat', borderRadius: "1.2vw", height: "50vh",width:"100%", overflowY: "auto", 
       fontWeight:"700", color: "white", padding:"2vw"}}>
 
           <div style={{width:"100%", textAlign:"center"}} className="font-10">
-            membership coming soon..
+          for becoming a VIP member Purchase coins for
           </div>
 
-          <div style={{width:"100%", textAlign:"center", marginTop:"0.5vh"}} className="font-6">
-          stay tuned...
+          <div style={{width:"100%", textAlign:"center", marginTop:"0.5vh",color:'gold'}}className="font-10">
+          $10000
           </div>
 
-          <div style={{width:"100%", textAlign:"left", marginTop:"2vh"}} className="font-10">
-          Want to have early access to VIP Membership?
+          <div style={{width:"100%", textAlign:"center", marginTop:"2vh"}} className="font-10">
+          get exclusive access to
           </div>
 
-          <div style={{width:"100%", textAlign:"left", marginTop:"0.5vh"}} className="font-6">
-          here's how you can avail it
+          <div style={{width:"100%", textAlign:"center", marginTop:"0.5vh",color:'gold'}} className="font-10">
+          Gold Level Benefits
           </div>
 
 

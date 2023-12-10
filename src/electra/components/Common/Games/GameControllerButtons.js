@@ -13,6 +13,22 @@ import switchSound from '../../../../assets/sounds/switch room.mp3';
 const BidSound = new Audio(bidSound);
 const SwitchSound = new Audio(switchSound);
 
+
+const blinkingStyle = {
+  animation: 'blink 0.5s linear infinite'
+};
+
+// Include this at the top of your component file
+const styleSheet = document.styleSheets[0];
+const keyframes =
+`@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}`;
+styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+
+
 const gameContollersStyle = {
     padding:"10px",
     height: "100%"
@@ -162,6 +178,11 @@ const GameControllerButtons = ({userData, websocketData, setAuthError}) => {
   const [lastGameStartedTime, setLastGameStartedTime] = useState(0);
 
   const [currentGameState, setCurrentGameState] = useState(null);
+  const [isSilverBidButtonBlinking, setIsSilverBidButtonBlinking] = useState(false);
+  const [isGoldBidButtonBlinking, setIsGoldBidButtonBlinking] = useState(false);
+  
+const [isSwitchButtonBlinking, setIsSwitchButtonBlinking] = useState(false);
+
   // const [showSwitchRoomButton, setShowSwitchRoomButton] = useState(false);
   // const [totalBidAmount, setTotalBidAmount] = useState({amount:0, type:null});
 
@@ -259,11 +280,28 @@ const GameControllerButtons = ({userData, websocketData, setAuthError}) => {
 
   }, [result]);
 
+  useEffect(() => {
+    if (IsSwitchRoomEnable()) {
+      setIsSwitchButtonBlinking(true); // Start blinking when switch button becomes visible
+      const timer = setTimeout(() => setIsSwitchButtonBlinking(false), 5000); // Stop blinking after 5 seconds
+      return () => clearTimeout(timer); // Clear the timeout when the component unmounts or the condition changes
+    }
+  }, [IsSwitchRoomEnable()]);
+
   const handleButtonClick = (type) => {
-    // setButtonType(type);
+    sendDataToAPI(type);
     BidSound.play();
-    sendDataToAPI(type); // Sending the type as a parameter to the function
+    if (type === "silver") {
+      setIsSilverBidButtonBlinking(true);
+      setTimeout(() => setIsSilverBidButtonBlinking(false), 3000); // Stop blinking after 1 second
+    } else if (type === "gold") {
+      setIsGoldBidButtonBlinking(true);
+      setTimeout(() => setIsGoldBidButtonBlinking(false), 3000); // Stop blinking after 1 second
+    }
+    
   };
+  
+  
 
   const sendDataToAPI = (type) => {
     
@@ -324,7 +362,7 @@ const handleSwitchRoom = () => {
       </div> */}
       <div style={ButtonGroupContainer}>
         <div style={CenterStyle}>
-          <div style={{...buttonStyle, background: "#D9D4D4", cursor: IsGameButtonValid("silver")  ?  "pointer" : "not-allowed"}} onClick={() => {
+          <div style={{...buttonStyle, background: "#D9D4D4", cursor: IsGameButtonValid("silver")   ?  "pointer" : "not-allowed", ...(isSilverBidButtonBlinking ? blinkingStyle : {})}} onClick={() => {
               if(IsGameButtonValid("silver")){
                 handleButtonClick("silver");
               }
@@ -394,7 +432,7 @@ const handleSwitchRoom = () => {
 
 
         <div style={CenterStyle}>
-          <div style={{...buttonStyle, background: "#FFD700" , cursor: IsGameButtonValid("gold")  ?  "pointer" : "not-allowed"}} onClick={() => {
+          <div style={{...buttonStyle, background: "#FFD700" , cursor: IsGameButtonValid("gold")  ?  "pointer" : "not-allowed", ...(isGoldBidButtonBlinking ? blinkingStyle : {})}} onClick={() => {
               if(IsGameButtonValid("gold") ){
                 handleButtonClick("gold");
               }
@@ -418,8 +456,8 @@ const handleSwitchRoom = () => {
         </div>
 
         <div >
-             {IsSwitchRoomEnable() && (
-           <button onClick={handleSwitchRoom} style={switchRoomStyle}>switch room</button>
+        {IsSwitchRoomEnable() && (
+           <button onClick={handleSwitchRoom} style={{...switchRoomStyle, ...(isSwitchButtonBlinking ? blinkingStyle : {})}}>switch room</button>
              )}
         </div>
 

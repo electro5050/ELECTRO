@@ -16,8 +16,8 @@ const GameTopSection = ({userData, handleLinkClick}) => {
   }, [userData]);
 
   return (
-    <div className='d-between m-10'>
-      <div style={avatharContainerStyle}>
+    <div className='d-between m-10' style={{ justifyContent: "flex-end" }} >
+      {/* <div style={avatharContainerStyle}>
         <Avathar imageUrl={(user && user.profilePictureUrl) || "assets/Avatars/avathar_1.png"} imageSize={'5vh'}/>
         <div style={{marginLeft:"5px"}}>
             <span style={{fontWeight: "700"}}  className="font-8">
@@ -28,9 +28,9 @@ const GameTopSection = ({userData, handleLinkClick}) => {
                 welcome back
             </span>
         </div>
-      </div>
+      </div> */}
       <div className='d-center v-cen '>
-        <div style={{background:"#DEA83F", borderRadius:"10px", padding:"2px"}}  onClick={() => handleLinkClick("Referal")}>
+        <div style={{background:"#DEA83F", borderRadius:"10px", padding:"2px",}}  onClick={() => handleLinkClick("Referal")}>
           <img
                 className="referal-image"
                 id="logo_header"

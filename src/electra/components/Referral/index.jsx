@@ -18,10 +18,11 @@ const overlayColor1 = 'rgba(255, 0, 0, 0.5)'; // First overlay color
 const overlayColor2 = 'rgba(0, 0, 0, 0.5)';
 
   const backgroundStyle = {
-     background: `url(/assets/electra/referal.png), lightgray 50% / cover no-repeat`,
-    backgroundSize: 'cover',
+     background: `url(/assets/electra/refeer.jpeg), lightgray 50% / cover no-repeat`,
+    backgroundSize: '100% 100%',
     backgroundRepeat: 'no-repeat',
-    height: '55vh',
+    backgroundposition:'center',
+    height: '50vh',
     width: '100%',
     borderRadius: '1.5vw',
     border: '2px solid rgba(255, 255, 255, 0.5)',
@@ -80,9 +81,9 @@ const GameComponent = ({}) => {
 
         <div style={backgroundStyle}>
               <div style={overlayStyle}></div> {/* Pseudo-element for the overlay */}
-              <div style={contentStyle } >
+              {/* <div style={contentStyle } >
               REFER AND EARN<br></br>get up to 10% bonus 
-              </div>
+              </div> */}
 
               <div style={linkStyle}>
               <span style={{marginRight:"10px"}}>https://electro5050.com/i-t05bg5y7-n/ </span>

@@ -16,6 +16,8 @@ import Mobprivacy from '../mobileview/pages/mobprivacy/Mobprivacy'
 import Mobuser from '../mobileview/pages/mobuser/Mobuser'
 import Mobresponsible from '../mobileview/pages/mobresponsible/Mobgaming'
 import Loginmobile from "mobileview/pages/Loginmobile";
+import Refund from '../pages/refund/Refund';
+import Refundpolicy from '../mobileview/pages/refund/Refundmobile';
 const routes = [
   { path: '/', component: <Home01 />},
   { path: '/home-02', component: <Home02 />},
@@ -35,6 +37,8 @@ const routes = [
   { path: '/users', component: <Mobuser/>},
   { path: '/responsiblegm', component: <Mobresponsible/>},
   { path: '/loginmobile', component: <Loginmobile/>},
+  { path: '/refund', component: <Refund/>},
+  { path: '/mobilerefund', component: <Refundpolicy/>},
 ]
 
 export default routes;
