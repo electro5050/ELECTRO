@@ -1,9 +1,9 @@
 
 
 const config = {
-  apiUrl: 'https://api.electro5050.com:3001',
-  gameApiUrl: 'https://gameapi.electro5050.com:3000',
-  chatSocketUrl: 'https://chatsocket.electro5050.com:3002',
+  apiUrl: 'https://api.electro5050.com',
+  gameApiUrl: 'https://gameapi.electro5050.com',
+  chatSocketUrl: 'https://chatsocket.electro5050.com',
   gameSocketUrl: 'ws://gamesocket.electro5050.com:5000',
 };
 
