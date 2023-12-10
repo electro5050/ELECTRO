@@ -17,6 +17,7 @@ function Mobfooter() {
         <a href="/Aboutus" className="footer-link">About</a>
         <a href="/Policy" className="footer-link">Privacy Policy</a>
         <a href="/Term" className="footer-link">Terms</a>
+        <a href="/mobilerefund" className="footer-link">Refund Policy</a>
        
       </div>
       <div className="mob-long-line"></div>

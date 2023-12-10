@@ -138,6 +138,7 @@ const Footer = () => {
         <a href="/About" className="footer-link">About</a>
         <a href="/Privacy" className="footer-link">Privacy Policy</a>
         <a href="/Terms" className="footer-link">Terms</a>
+        <a href="/refund" className="footer-link">Refund Policy</a>
        
       </div>
       <div className="long-line"></div>
