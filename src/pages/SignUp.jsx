@@ -8,6 +8,7 @@ import config from 'common/constants';
 const SignUp = () => {
     const [formData, setFormData] = useState({ name: '', email: '', password: '' });
     const [errors, setErrors] = useState({});
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const navigate = useNavigate();
 
     const validateForm = () => {
@@ -47,6 +48,19 @@ const SignUp = () => {
         }
     };
 
+    // const handleGoogleSignIn = (e) => {
+    //     e.preventDefault();
+    //     setIsSubmitting(true);
+    //     setIsSubmitting(false);
+    //     // Redirect to the backend Google OAuth route
+    //     window.location.href = config.apiUrl + '/auth/google';
+    // };
+
+    // const handleFacebookLogin = () => {
+    //     window.location.href = config.apiUrl + '/auth/facebook';
+    // };
+    
+
     return (
         <div>
              <section id='signUp-section' className='signup-container'>
@@ -57,18 +71,18 @@ const SignUp = () => {
                             <h2 className="signup-start">Get started!</h2>
                             <div className="flat-form box-login-social">
                                 <ul>
-                                    {/* <li>
-                                        <Link to="#" className="sc-button style-2 fl-button pri-3">
+                                    <li>
+                                        {/* <Link to="#" className="sc-button style-2 fl-button pri-3" onClick={handleGoogleSignIn} disabled={isSubmitting} >
                                             <i className="icon-fl-google-2"></i>
                                             <span>Google</span>
                                         </Link>
-                                    </li> */}
-                                    {/* <li>
-                                        <Link to="#" className="sc-button style-2 fl-button pri-3">
+                                    </li>
+                                    <li>
+                                        <Link to="#" className="sc-button style-2 fl-button pri-3"  onClick={handleFacebookLogin} disabled={isSubmitting} >
                                             <i className="icon-fl-facebook"></i>
                                             <span>Facebook</span>
-                                        </Link>
-                                    </li> */}
+                                        </Link> */}
+                                    </li>
                                 </ul>
                             </div>
                             <div className="flat-form box-login-email">

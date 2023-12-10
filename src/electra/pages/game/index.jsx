@@ -42,6 +42,8 @@ import config from 'common/constants';
 import {updateUserData} from 'redux/userActionActions';
 import { useDispatch  } from 'react-redux';
 
+import backgroundMusic from '../../../assets/sounds/Electra Theme.wav';
+
 const GamePage = () => {
 
   const dispatch = useDispatch();
@@ -49,6 +51,22 @@ const GamePage = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isMobile, setIsMobile] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Background music setup
+    const music = new Audio(backgroundMusic);
+    music.loop = true;
+    music.volume = 0.5; // Start with low volume or muted
+    music.play().catch(error => {
+      console.log("Playback was prevented. Provide a UI element to play the music.", error);
+    });
+
+    return () => {
+      music.pause();
+      music.currentTime = 0;
+    };
+  }, []);
+
 
   // Update window width on resize
   useEffect(() => {

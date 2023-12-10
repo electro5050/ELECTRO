@@ -13,9 +13,8 @@ const InputStyle = {
   width:"100%"
 };
 
-const PasswordInput = () => {
+const PasswordInput = ({ value, onChange }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState('');
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -26,11 +25,11 @@ const PasswordInput = () => {
       <input
         type={showPassword ? 'text' : 'password'}
         placeholder=""
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        value={value} // Use value from props
+        onChange={onChange} // Use onChange from props
         style={InputStyle} 
       />
-      <span onClick={togglePasswordVisibility}>
+      <span onClick={togglePasswordVisibility} style={{ cursor: 'pointer' }}>
         {showPassword ? '👁️' : '👁️‍🗨️'}
       </span>
     </div>

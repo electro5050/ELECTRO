@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation,useNavigate } from 'react-router-dom';
 import SideBar from 'electra/components/sidebar';
 import './index.css';
 import TopSection from 'electra/components/Common/Games/TopSection';
@@ -55,74 +55,11 @@ import { useDispatch  } from 'react-redux';
     // Additional styles for the black div as needed
   };
 
-  
-  const exampleRankingData = [
-    {
-      userId: "User1",
-      bidAmount: 100,
-      winningBonus: 50,
-    },
-    {
-      userId: "User2",
-      bidAmount: 150,
-      winningBonus: 75,
-    },
-    {
-      userId: "User3",
-      bidAmount: 120,
-      winningBonus: 60,
-    },
-    {
-      userId: "User1",
-      bidAmount: 100,
-      winningBonus: 50,
-    },
-    {
-      userId: "User2",
-      bidAmount: 150,
-      winningBonus: 75,
-    },
-    {
-      userId: "User3",
-      bidAmount: 120,
-      winningBonus: 60,
-    },
-    {
-      userId: "User1",
-      bidAmount: 100,
-      winningBonus: 50,
-    },
-    {
-      userId: "User2",
-      bidAmount: 150,
-      winningBonus: 75,
-    },
-    {
-      userId: "User3",
-      bidAmount: 120,
-      winningBonus: 60,
-    },
-    {
-      userId: "User1",
-      bidAmount: 100,
-      winningBonus: 50,
-    },
-    {
-      userId: "User2",
-      bidAmount: 150,
-      winningBonus: 75,
-    },
-    {
-      userId: "User3",
-      bidAmount: 120,
-      winningBonus: 60,
-    },
-    // Add more data as needed
-  ];
 
 const GameComponent = ({userData, websocketData}) => {
   const [rankingData, setRankingData] = useState([]);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
     const [user, setUser] = useState(null);
     useEffect(() => {
@@ -131,6 +68,38 @@ const GameComponent = ({userData, websocketData}) => {
   
 const [gameEndModal, SetIsGameEndModal] = useState(false);
 const [gameCounter, SetGameCounter] = useState(0);
+const [token, setToken] = useState(null);
+
+
+const location = useLocation();
+useEffect(() => {
+  const queryParams = new URLSearchParams(location.search);
+  const tokenFromUrl = queryParams.get('token');
+
+  if (tokenFromUrl) {
+    console.log('Token:', tokenFromUrl);
+    localStorage.setItem('token', tokenFromUrl);
+    setToken(tokenFromUrl);
+  } else {
+    console.error('Token not received');
+  }
+}, [location]);
+
+useEffect(() => {
+  const storedToken = localStorage.getItem('token');
+  if (token || storedToken) {
+    // If token is available either in state or localStorage, navigate to the game page
+    navigate('/game');
+  } else {
+    // If token is not available, redirect to login
+    navigate('/login');
+  }
+}, [token, navigate]);
+
+
+// const axiosInstance = axios.create({
+//   headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+// });
 
 
 const closeGameEndModal = () => {

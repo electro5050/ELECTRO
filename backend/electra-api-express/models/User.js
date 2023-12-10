@@ -2,6 +2,7 @@
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 
+// User Schema
 const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: {
@@ -10,37 +11,45 @@ const userSchema = new mongoose.Schema({
         required: true,
         match: [/^\S+@\S+\.\S+$/, 'Please provide a valid email address.']
     },
-    userId: {
-        type: String,
-    },
+    userId: { type: String },
     password: {
         type: String,
-        required: true,
-        minlength: 8
+        minlength: 8,
+        required: function() {
+            return !this.isGoogleUser && !this.isFacebookUser;
+        }
     },
-    coinbalance:{
-        type: Number,
-        default: 10000
+    isGoogleUser: { type: Boolean, default: false },
+    googleId: {
+        type: String,
+        unique: true,
+        sparse: true
     },
+    isFacebookUser: { type: Boolean, default: false }, // New field for Facebook
+    facebookId: { // New field for Facebook User ID
+        type: String,
+        unique: true,
+        sparse: true
+    },
+    coinbalance: { type: Number, default: 10000 },
     profilePictureUrl: { type: String }
 });
 
+
+// Add pre-save hook for logging
 userSchema.pre('save', function (next) {
-    // Check if userId is not already set
+    console.log(`Pre-save hook triggered for user: ${this.email}`);
+    
     if (!this.userId) {
-        // Extract the first 10 letters of the email without the domain
         const emailPrefix = this.email.slice(0, this.email.indexOf('@')).slice(0, 5);
-
-        // Generate a unique identifier using uuidv4
         const uniqueId = uuidv4().slice(-4);
-
-        // Combine the two parts to form the userId
         this.userId = emailPrefix + uniqueId;
     }
 
     next();
 });
 
+// User virtuals and other settings
 userSchema.virtual('UserId').get(function () {
     const emailPrefix = this.email.slice(0, this.email.indexOf('@')).slice(0, 10);
     const idSuffix = this._id.toString().slice(-5);
