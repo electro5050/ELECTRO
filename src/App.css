@@ -253,6 +253,16 @@ iframe[title="chat widget"] {
   justify-content: flex-start !important;
 }
 
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.blink-btn{
+  animation: blink 0.5s linear infinite
+}
+
 
 
 

@@ -14,12 +14,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 const Home02 = () => {
     const [data, setData] = useState([]);
-    const [ws, setWs] = useState(null);
-    const [gameState, setGameState] = useState({
-        gameEnded: false,
-        endGameMessage: "",
-        activeGameButton: ""
-    });
+
     const [authError, setAuthError] = useState(false);
   
       const [showUserModal, setShowUserModal] = useState(false);
@@ -30,59 +25,6 @@ const Home02 = () => {
             setShowUserModal(false);
         };
 
-    useEffect(() => {
-      const websocket = new WebSocket("ws://192.168.29.85:5000");
-  
-      websocket.onopen = () => {
-          const token = localStorage.getItem('token');
-          if (token) {
-              websocket.send(JSON.stringify({ type: 'auth', token: token }));
-          }
-      };
-  
-      websocket.onmessage = (event) => {
-          const message = JSON.parse(event.data);
-          if (message.message) {
-              setGameState({
-                  ...gameState,
-                  endGameMessage: message.message,
-                  gameEnded: true
-              });
-              
-              setData([]);
-              
-              setTimeout(() => {
-                  setGameState({
-                      ...gameState,
-                      gameEnded: false,
-                      endGameMessage: ""
-                  });
-              }, 10000);
-          } else {
-              // Only update if the message value is different
-              if (!data.includes(message.value)) {
-                  setData(prevData => [...prevData, message.value]);
-              }
-          }
-      };
-  
-      websocket.onerror = (error) => {
-          console.error("WebSocket Error:", error);
-      };
-  
-      setWs(websocket);
-  
-      const token = localStorage.getItem('token');
-      if (token) {
-          axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      } else {
-          setAuthError(true);
-      }
-  
-      return () => {
-          websocket.close();
-      };
-  },[] );
 
   const handleLinkClick = (e) => {
     // Show the user modal when a sidebar link is clicked
