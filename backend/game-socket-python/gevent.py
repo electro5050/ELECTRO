@@ -6,6 +6,12 @@ from datetime import datetime, timedelta
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from websockets.exceptions import ConnectionClosedOK
+import ssl
+
+ssl_cert_path = '/etc/letsencrypt/live/gamesocket.electro5050.com/fullchain.pem'
+ssl_key_path = '/etc/letsencrypt/live/gamesocket.electro5050.com/privkey.pem'
+ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+ssl_context.load_cert_chain(ssl_cert_path, ssl_key_path)
 
 # Redis setup
 redis_url = 'redis://localhost:6379/0'
@@ -228,7 +234,7 @@ async def websocket_handler(websocket, path):
 
 asyncio.get_event_loop().create_task(listen_to_redis())
 asyncio.get_event_loop().create_task(game_cycle())
-start_server = websockets.serve(websocket_handler, "0.0.0.0", 5000, origins=None)
+start_server = websockets.serve(websocket_handler, "0.0.0.0", 5000,ssl=ssl_context, origins=None)
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
