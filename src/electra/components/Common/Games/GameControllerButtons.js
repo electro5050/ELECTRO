@@ -9,7 +9,7 @@ import {updateUserData} from 'redux/userActionActions';
 import { useDispatch  } from 'react-redux';
 import bidSound from '../../../../assets/sounds/bid button.wav';
 import switchSound from '../../../../assets/sounds/switch room.mp3';
-import switchalarm from '../../../../assets/sounds/5 sec timer.wav'
+import switchalarm from '../../../../../src/assets/sounds/5 sec timer.wav'
 
 const BidSound = new Audio(bidSound);
 const SwitchSound = new Audio(switchSound);
