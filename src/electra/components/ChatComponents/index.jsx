@@ -9,7 +9,10 @@ import './index.css';
 import config from 'common/constants';
 import { connect } from 'react-redux';
 import Modal from 'electra/components/Games/model'
-
+import winsound from '../../../assets/sounds/Lose.wav'
+import losesound from '../../../assets/sounds/win popup.wav'
+const Winsound = new Audio(winsound);
+const Losesound = new Audio(losesound);
 
 const shareButtonStyle = {
     borderRadius: '10px',
@@ -65,6 +68,7 @@ const ChatBox = ({userData, websocketData}) => {
     const [message, setMessage] = useState('');
     const chatWindowRef = useRef(null);
     const token = localStorage.getItem('token');
+    // const [gameEnded, setGameEnded] = useState(false);
 
     const [user, setUser] = useState(null);
     useEffect(() => {
@@ -72,22 +76,31 @@ const ChatBox = ({userData, websocketData}) => {
     }, [userData]);
       
     const [winModel, SetIsWinModal] = useState(0);
+    const [loseModel,SetLoseModal] = useState(0);
 
     const closeWinModal = () => {
         SetIsWinModal(0)
     };
+    const closeLoseModal = () => {
+        SetLoseModal(0)
+    };
     
     
-  useEffect(() => {
-    if (user && websocketData && websocketData.type === 'gameEnded') {
-      const currentUserId =  user.userId;
-      const CurrentUserWinner = websocketData.winners.find(winners => winners.userId === currentUserId);
+//   useEffect(() => {
+    
+//     if (user && websocketData && websocketData.type === 'gameEnded') {
+//     //   const currentUserId =  user.userId;
+//     //   const CurrentUserWinner = websocketData.winners.find(winners => winners.userId === currentUserId);
 
-      if (CurrentUserWinner) {
-        SetIsWinModal(CurrentUserWinner.winningBonus); // Open the modal if the current user is a winner
-      }
-    }
-  }, [websocketData]);
+//     //   if (CurrentUserWinner) {
+//     //     SetIsWinModal(CurrentUserWinner.winningBonus); // Open the modal if the current user is a winner
+//     //   }
+//     //   else {
+//     //     SetLoseModal(true)
+//     //   }
+//       setGameEnded(true);
+//     }
+//   }, [websocketData]);
 
 
     useEffect(() => {
@@ -124,11 +137,55 @@ const ChatBox = ({userData, websocketData}) => {
                 type:jsonObject.type
             }]);
         });
+        
 
         return () => {
             socket.off('message');
         };
     }, [socket]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                // Check if the gameId is available in the websocketData
+                const gameId = websocketData && websocketData.gameId;
+                
+                // Proceed only if gameId is available
+                if (gameId) {
+                    const response = await axios.get(config.gameApiUrl +'/game-outcome?gameId=${gameId}', {
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+    
+                    const userGameOutcome = response.data;
+                    console.log('User Game Outcome:', userGameOutcome);
+    
+                    // Process the outcome only if the game has ended
+                    if (userGameOutcome.participated && userGameOutcome.gameEnded) {
+                        if (userGameOutcome.outcome === 'win') {
+                            SetIsWinModal(userGameOutcome.winningAmount); // Open the win modal and display the winning amount
+                        } else if (userGameOutcome.outcome === 'loss') {
+                            SetLoseModal(true); // Open the lose modal
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching user game outcome:', error);
+            }
+        };
+    
+        // Trigger the fetchData function if websocketData contains gameId
+        if (websocketData && websocketData.gameId) {
+            fetchData();
+        }
+    }, [websocketData, token]); // Include token in the dependency array
+     // Include token in the dependency array
+     // Include token in the dependency array if it's a state/prop
+    
+    
+    
 
     useEffect(() => {
         chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
@@ -174,10 +231,21 @@ const ChatBox = ({userData, websocketData}) => {
         }
       };
 
+      useEffect(() => {
+        if (winModel > 0) {
+            Winsound.play();
+        }
+        if (loseModel > 0){
+            Losesound.play();
+        }
+
+    }, [winModel,loseModel]);
+    
+
     return (
         <>
         
-        <Modal isOpen={winModel > 0} onClose={closeWinModal}>
+        <Modal isOpen={winModel > 0} onClose={ closeWinModal}>
             <div>
             <img src={"assets/electra/win-shield.png"}  alt=""  style={{height:"50vh"}}/>
             <div style={shareButtonStyle} onClick={shareWin}>
@@ -186,6 +254,19 @@ const ChatBox = ({userData, websocketData}) => {
                     <path d="M7.5 0V3C1.5 3 0 6.075 0 10.5C0.78 7.53 3 6 6 6H7.5V9L12 4.26L7.5 0Z" fill="#6D6520"/>
                     </svg>
             </div>
+            </div>
+
+        </Modal>
+
+        <Modal isOpen={loseModel > 0} onClose={closeLoseModal}>
+            <div>
+            <img src={"assets/electra/lose.png"}  alt=""  style={{height:"50vh"}}/>
+            {/* <div style={shareButtonStyle} onClick={shareWin}>
+                    share &nbsp;&nbsp;
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
+                    <path d="M7.5 0V3C1.5 3 0 6.075 0 10.5C0.78 7.53 3 6 6 6H7.5V9L12 4.26L7.5 0Z" fill="#6D6520"/>
+                    </svg>
+            </div> */}
             </div>
 
         </Modal>

@@ -9,9 +9,19 @@ import {updateUserData} from 'redux/userActionActions';
 import { useDispatch  } from 'react-redux';
 import bidSound from '../../../../assets/sounds/bid button.wav';
 import switchSound from '../../../../assets/sounds/switch room.mp3';
+import switchalarm from '../../../../assets/sounds/5 sec timer.wav'
 
 const BidSound = new Audio(bidSound);
 const SwitchSound = new Audio(switchSound);
+const Switchalarm = new Audio(switchalarm);
+
+const totalText = {
+  display: "flex",
+  justifyContent: "center",
+  fontSize: '15px',
+  marginTop:'35px'
+  
+}
 
 
 const gameContollersStyle = {
@@ -122,7 +132,7 @@ const DropDownStyles = {
 const switchRoomStyle={
   borderRadius: "5px",
   boxShadow: "0px 3px 4px 0px rgba(0, 0, 0, 0.60)",
-  backgroundColor:"#363636",
+  backgroundColor:"#FF0000",
   padding:"1% 2%",
   fontSize: 'calc(4px + 0.4vh + 0.4vw)',
 }
@@ -346,6 +356,14 @@ const handleSwitchRoom = () => {
   });
 };
 
+
+useEffect(() => {
+  // Play the switch sound when the button is enabled
+  if (IsSwitchRoomEnable()) {
+    Switchalarm.play();
+  }
+}, [IsSwitchRoomEnable]);
+
   return (
     <div className="game-controller" style={gameContollersStyle}>
        {/* <div style={circleStyle}>
@@ -413,15 +431,13 @@ const handleSwitchRoom = () => {
 
           </div>
         </div>
-
+          <div style={totalText} >Total Bid Amount</div>
         <div style={CenterStyle}>
              {currentGameState && currentGameState.amount > 0 && currentGameState.type != null  && (
            <button  style={getBidAmountStyle(currentGameState.type)} >
             {currentGameState.amount}</button>
              )}
         </div>
-
-
         <div style={CenterStyle}>
           <div className={IsButtonClicked("gold") ? "blink-btn": ""} style={{...buttonStyle, background: "#FFD700" , cursor: IsGameButtonValid("gold")  ?  "pointer" : "not-allowed"}} onClick={() => {
               if(IsGameButtonValid("gold") ){

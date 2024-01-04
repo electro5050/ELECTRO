@@ -173,7 +173,7 @@ const AccountInfo = ({userData}) => {
                 {isEdit ? (
            <input type="text" placeholder="Enter Name" value={"95382037289"} style={InputStyle} />
             ) : (
-              <label>95382037289</label>
+              <label>##########</label>
             )}
           </div>
       </div>

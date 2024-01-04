@@ -50,7 +50,7 @@ function SideBar({handleLinkClick, activeTab}) {
       </a>
       <a href="#" className={`electra-sidebar-link ${activeTab === "Portfolio" ? 'active' : ''}`} onClick={() => handleLinkClick("Portfolio")}>
         <FontAwesomeIcon icon={faSuitcase} />
-        <span style={{ paddingLeft: "10px" }}>Portfolio</span>
+        <span style={{ paddingLeft: "10px" }}>Bid History</span>
       </a>
       {/* <a href="#" className={`electra-sidebar-link ${activeTab === "Live Support" ? 'active' : ''}`} onClick={() => handleLinkClick("Live Support")}>
         <FontAwesomeIcon icon={faHeadset} />

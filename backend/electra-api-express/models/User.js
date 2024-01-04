@@ -78,7 +78,11 @@ const gameSchema = new mongoose.Schema({
         },
         bidAmount: Number,
         winningBonus: Number
-    }
+    },
+    hasEnded: {
+        type: Boolean,
+        default: false
+    },
 });
 
 const Game = mongoose.model('Game', gameSchema);

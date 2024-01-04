@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import PasswordInput from './PasswordInput';
 import { connect } from 'react-redux';
+import config from '../../../../src/common/constants'
 
 const avatharContainerStyle = {
   display: "flex",
@@ -78,7 +79,7 @@ const AccountInfo = ({userData}) => {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/change-password', {
+      const response = await fetch(config.gameApiUrl +'/change-password', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

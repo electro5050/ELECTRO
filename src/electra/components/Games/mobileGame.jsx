@@ -10,6 +10,10 @@ import { connect } from 'react-redux';
 import config from 'common/constants';
 import {updateUserData} from 'redux/userActionActions';
 import { useDispatch  } from 'react-redux';
+import winsound from '../../../assets/sounds/Lose.wav'
+import losesound from '../../../assets/sounds/win popup.wav'
+const Winsound = new Audio(winsound);
+const Losesound = new Audio(losesound);
 
 const containerStyle = {
     display: 'flex',
@@ -140,11 +144,18 @@ const GameComponent = ({userData, websocketData}) => {
     const token = localStorage.getItem('token');
     const dispatch = useDispatch();
 
+    const [gameEndModal, SetIsGameEndModal] = useState(false);
+    const [gameCounter, SetGameCounter] = useState(0);
     const [winModel, SetIsWinModal] = useState(0);
+    const [loseModel,SetLoseModal] = useState(0);
 
     const closeWinModal = () => {
         SetIsWinModal(0)
     };
+
+    const closeLoseModal = () => {
+      SetLoseModal(0)
+  };
 
     const [user, setUser] = useState(null);
   
@@ -152,8 +163,7 @@ const GameComponent = ({userData, websocketData}) => {
       setUser(userData);
     }, [userData]);
 
-  const [gameEndModal, SetIsGameEndModal] = useState(false);
-  const [gameCounter, SetGameCounter] = useState(0);
+ 
   
   
   const closeGameEndModal = () => {
@@ -215,6 +225,54 @@ const GameComponent = ({userData, websocketData}) => {
         }
     }
   
+    useEffect(() => {
+      const fetchData = async () => {
+          try {
+              // Check if the gameId is available in the websocketData
+              const gameId = websocketData && websocketData.gameId;
+              
+              // Proceed only if gameId is available
+              if (gameId) {
+                  const response = await axios.get(config.gameApiUrl + '/game-outcome?gameId=${gameId}', {
+                      headers: {
+                          'Authorization': `Bearer ${token}`,
+                          'Content-Type': 'application/json'
+                      }
+                  });
+  
+                  const userGameOutcome = response.data;
+                  console.log('User Game Outcome:', userGameOutcome);
+  
+                  // Process the outcome only if the game has ended
+                  if (userGameOutcome.participated && userGameOutcome.gameEnded) {
+                      if (userGameOutcome.outcome === 'win') {
+                          SetIsWinModal(userGameOutcome.winningAmount); // Open the win modal and display the winning amount
+                      } else if (userGameOutcome.outcome === 'loss') {
+                          SetLoseModal(true); // Open the lose modal
+                      }
+                  }
+              }
+          } catch (error) {
+              console.error('Error fetching user game outcome:', error);
+          }
+      };
+  
+      // Trigger the fetchData function if websocketData contains gameId
+      if (websocketData && websocketData.gameId) {
+          fetchData();
+      }
+  }, [websocketData, token]);
+
+  useEffect(() => {
+    if (winModel > 0) {
+        Winsound.play();
+    }
+    if (loseModel > 0){
+        Losesound.play();
+    }
+
+}, [winModel,loseModel]);
+
 
   return (
 
@@ -263,6 +321,13 @@ const GameComponent = ({userData, websocketData}) => {
             </div>
 
         </Modal>
+
+        <Modal isOpen={loseModel > 0} onClose={closeLoseModal}>
+                <div>
+                    <img src={"assets/electra/lose.png"} alt="" style={{ height: "60vw" }} />
+                    {/* Additional content for lose modal if needed */}
+                </div>
+            </Modal>
     </div>
   );
 };

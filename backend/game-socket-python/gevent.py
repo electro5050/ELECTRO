@@ -9,20 +9,27 @@ from websockets.exceptions import ConnectionClosedOK
 import ssl
 
 ssl_cert_path = '/etc/letsencrypt/live/gamesocket.electro5050.com/fullchain.pem'
+# ssl_cert_path = '../game-socket-python/cert.pem'
 ssl_key_path = '/etc/letsencrypt/live/gamesocket.electro5050.com/privkey.pem'
+# ssl_key_path = '../game-socket-python/key.pem'
 ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+# ssl_context.load_cert_chain(certfile=ssl_cert_path, keyfile=ssl_key_path, password='abcd')
 ssl_context.load_cert_chain(ssl_cert_path, ssl_key_path)
 
 # Redis setup
-redis_url = 'redis://localhost:6379/0'
+# redis_url = 'redis://localhost:6379/0'
+redis_url = 'redis://electra-0001-001.dw3abo.0001.aps1.cache.amazonaws.com:6379/0'
 connection = redis.StrictRedis.from_url(redis_url, decode_responses=True)
 pubsub = connection.pubsub()
 pubsub.subscribe('game_queue')
 active_websockets = set()
 
 # MongoDB setup
-mongo_uri = "mongodb+srv://hrelectroweb:electro@cluster0.yru2wau.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp"
+mongo_uri = "mongodb://electra:electra5050@docdb-2023-11-21-09-53-39.cluster-cp0ip1rsquov.ap-south-1.docdb.amazonaws.com:27017/?tls=true&tlsCAFile=global-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false"
+# mongo_uri = "mongodb+srv://hrelectroweb:electro@cluster0.yru2wau.mongodb.net/?retryWrites=true&w=majority"
 mongo_client = MongoClient(mongo_uri, ssl=True)
+# mongo_client = MongoClient(mongo_uri, ssl=True, tlsAllowInvalidCertificates=True)
+
 db = mongo_client['test']
 
 users_collection = db['users']
@@ -197,8 +204,17 @@ async def game_cycle():
             "winning_color": winning_color, 
             "winners": winners,             
         }
+        game_end_update = {
+            "end_time": datetime.now(),
+            "winning_color": winning_color,
+            "winners": winners,
+            "hasEnded": True  # Mark the game as ended
+         }
 
         asyncio.create_task(send_data_to_clients(winning_message))
+
+         
+        games_collection.update_one({"_id": current_game_id}, {"$set": game_end_update})
 
         # Update the game document with end time, winning color, and winners
         game_doc["end_time"] = datetime.now()
@@ -235,6 +251,7 @@ async def websocket_handler(websocket, path):
 asyncio.get_event_loop().create_task(listen_to_redis())
 asyncio.get_event_loop().create_task(game_cycle())
 start_server = websockets.serve(websocket_handler, "0.0.0.0", 5000,ssl=ssl_context, origins=None)
+# start_server = websockets.serve(websocket_handler, "0.0.0.0", 5000, origins=None)
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()

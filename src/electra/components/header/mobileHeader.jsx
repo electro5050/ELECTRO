@@ -58,7 +58,7 @@ const Headers = ({userData, electedHeader, handleLinkClick,}) => {
                       />
                       <span className='wallet-value'>
                     
-                      {(user && user.coinbalance) ? `${user.coinbalance} $` : '000'}
+                      {(user && user.coinbalance) ? `${user.coinbalance.toLocaleString()} $` : '000'}
                       </span>
                   </div>
 
