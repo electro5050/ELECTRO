@@ -10,6 +10,7 @@ import ssl
 
 ssl_cert_path = '/etc/letsencrypt/live/gamesocket.electro5050.com/fullchain.pem'
 # ssl_cert_path = '../game-socket-python/cert.pem'
+# ssl_cert_path = '../game-socket-python/cert.pem'
 ssl_key_path = '/etc/letsencrypt/live/gamesocket.electro5050.com/privkey.pem'
 # ssl_key_path = '../game-socket-python/key.pem'
 ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
