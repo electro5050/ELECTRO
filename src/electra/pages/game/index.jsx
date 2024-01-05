@@ -42,7 +42,7 @@ import config from 'common/constants';
 import {updateUserData} from 'redux/userActionActions';
 import { useDispatch  } from 'react-redux';
 
-import backgroundMusic from '../../../assets/sounds/Electra Theme.wav';
+// import backgroundMusic from '../../../assets/sounds/Electra Theme.wav';
 import MobileReferral from '../../../electra/components/MobileReferral/Index'
 import Mobilevip from '../../../electra/components/mobilevip/Index'
 
@@ -54,20 +54,20 @@ const GamePage = () => {
   const [isMobile, setIsMobile] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // Background music setup
-    const music = new Audio(backgroundMusic);
-    music.loop = true;
-    music.volume = 0.5; // Start with low volume or muted
-    music.play().catch(error => {
-      console.log("Playback was prevented. Provide a UI element to play the music.", error);
-    });
+  // useEffect(() => {
+  //   // Background music setup
+  //   const music = new Audio(backgroundMusic);
+  //   music.loop = true;
+  //   music.volume = 0.5; // Start with low volume or muted
+  //   music.play().catch(error => {
+  //     console.log("Playback was prevented. Provide a UI element to play the music.", error);
+  //   });
 
-    return () => {
-      music.pause();
-      music.currentTime = 0;
-    };
-  }, []);
+  //   return () => {
+  //     music.pause();
+  //     music.currentTime = 0;
+  //   };
+  // }, []);
 
 
   // Update window width on resize
