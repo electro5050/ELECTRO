@@ -1,0 +1,151 @@
+.mobile-parent{
+   
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 2.3%;
+  background-color: rgba(0, 0, 0, .70);
+  border-radius: 5px;
+}
+.mobile-chaild01{
+    display: flex;
+    width: 100%;
+    height: 10%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Phosphate;
+    font-size: 20px;
+    font-style:normal;
+    font-weight: 400;
+    font-weight:bolder;
+    letter-spacing: 2.5px;
+    color: #FFD700;
+    -webkit-text-stroke: .3px #000;
+    
+  
+}
+.mobile-chaild02{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    width: 100%;
+    height: auto;
+    font-family: 'Poppins', sans-serif;
+}
+.mobile-chaild03{
+   display: flex; 
+   width: 100%;
+   height: 100%;
+  
+   align-items: center;
+   justify-content: center;
+ 
+}
+.mobile-img{
+    display: flex;
+    width: 50%;
+    height: 100%;
+    align-items: center;
+    justify-content: start;
+   flex-direction: column;
+   gap:7px;
+  
+    
+}
+.mobile-rfeeral01{
+    display: flex;
+    width: 50%;
+    height: 10vh;
+    background: url('../../../../public/assets/electra/rf1.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    align-items: center;
+    background-size: 100% 100%;
+    /* background-color: #FFD700; */
+}
+.mobile-refferaltxt01{
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.24px;
+}
+.mobile-refferal02{
+    display: flex;
+    width: 50%;
+    height: 10vh;
+    background: url('../../../../public/assets/electra/rf2.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    align-items: center;
+    background-size: 100% 100%;
+}
+.mobile-refferaltxt02{
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.24px;
+   
+}
+.mobile-refferal03{
+    display: flex;
+    width: 45%;
+    height: 6vh;
+    background: url('../../../../public/assets/electra/reff.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    align-items: center;
+    background-size: 100% 100%;
+   
+}
+.mobile-refferaltxt03{
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.24px;
+}
+.mobile-chaildend{
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: end;
+    text-align: center;
+    font-family: Phosphate;
+    font-size: 20px;
+    font-style:normal;
+    font-weight:bolder;
+    letter-spacing: 2.5px;
+    color: #FFD700;
+    margin-top: 10px;
+
+    
+}

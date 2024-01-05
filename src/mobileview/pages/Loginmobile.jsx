@@ -9,6 +9,8 @@ import Header from '../../components/header/Header';
 import Footer from '../compoents/mobfooter/Mobfooter';
 // import SignUp from './SignUp';
 import config from 'common/constants';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 
 const Loginmobile = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -95,7 +97,13 @@ const Loginmobile = () => {
                                             </label>
                                             <Link to="#" className="forgot-pass">Forgot Password ?</Link>
                                         </div>
-                                        <button type="submit" className="submit">Login</button>
+                                        <button type="submit" className="submit" style={{backgroundColor:"#FFD700", color:"black",}}>Login</button>
+                                        <div className='backhome'>
+                                        <div className="forgot-pass">Back to Home </div>
+                                        
+                                        <Link to="/" className='arrow'><FontAwesomeIcon icon={faArrowLeft} /></Link>
+
+                                        </div>
                                     </form>
                                 </div>
                             </div>

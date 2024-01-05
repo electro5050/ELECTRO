@@ -65,7 +65,7 @@ const SignUp = () => {
         <div>
              <section id='signUp-section' className='signup-container'>
            
-                <div className="themesflat-container">
+                <div className="themesflat-container" style={{width:"90%"}}>
                     <div className="row">
                         <div className="signup-inner">
                             <h2 className="signup-start">Get started!</h2>
@@ -133,14 +133,19 @@ const SignUp = () => {
                                             </label>
                                             <Link to="#" className="forgot-pass">Forgot Password ?</Link>
                                         </div>
+                                        <div className='termsbox'>
+
                                         <div className='signup-terms'>
-                                            <p className='sign-term'>By creating an account you agree to our    <Link to='/' className="conditions">Terms ,</Link>  <Link to='/' className="conditions"> Privacy Policy</Link></p>
-                                            <p className='sign-term'>By creating an account you confirm that you are <p className='eligble'>18+</p></p>
-                                            <p className='sign-term'>By creating an account you agree to our   <Link to='/' className="conditions">User Agreement  </Link></p>
-                                            <p className='sign-term'>By creating an account you agree to   <Link to= '/' className="conditions"> Responsible gaming </Link></p>
-                                        
+                                                    <p className='sign-term'>By creating an account you agree to our    <Link to='/' className="conditions">Terms ,</Link>  <Link to='/' className="conditions"> Privacy Policy</Link></p>
+                                                    <p className='sign-term'>By creating an account you confirm that you are <p className='eligble'>18+</p></p>
+                                                    <p className='sign-term'>By creating an account you agree to our   <Link to='/' className="conditions">User Agreement  </Link></p>
+                                                    <p className='sign-term'>By creating an account you agree to   <Link to= '/' className="conditions"> Responsible gaming </Link></p>
+                                                
+                                                </div>
+
                                         </div>
-                                        <button type="submit" className="submit">SignUp</button>
+                                                
+                                        <button type="submit" className="submit-signup "style={{backgroundColor:"#FFD700",color:'black' ,}}>SignUp</button>
                                     </form>
                                 </div>
                                 </div>

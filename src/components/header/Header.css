@@ -33,6 +33,7 @@
   width: 6vw; /* Adjust the width as needed */
   height: 5vh; /* Adjust the height as needed */
   color: #FFF;
+  
   border: 1px solid #FFD700;
 
 
@@ -59,7 +60,7 @@ text-overflow: ellipsis;
   
 }
 .entrybutton .btn{
-  background-color:transparent;
+  background-color:black;
   
 }
 .home-landing{
@@ -109,4 +110,3 @@ line-height: normal;
   text-overflow: ellipsis; 
   
 }
-

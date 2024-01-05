@@ -1,0 +1,190 @@
+.parent-vip{
+    display:flex ;
+    width: 100%;
+    height: 170vh;
+    border-radius: 15px;
+    
+   
+    flex-direction:column;
+    gap: 10px;
+}
+.chaild-vip{
+    display:flex ;
+    width: 100%;
+    height: 10%; 
+    border-radius: 15px;
+    flex-direction: row;
+   
+    
+}
+.top-left{
+    display: flex;
+    width: 100%; 
+    height: 100%;
+    background:url('../../../../public/assets/electra/vip/top.png');
+    border-radius: 15px ;
+    background-size: 100% 100%;
+    background-position: center;
+    border: 1px solid rgba(255, 255, 255, 0.33);
+
+    
+}
+/* .top-right{
+    display: flex;
+    width: 50%;
+    height: 100%;
+    background-color: rgb(54, 13, 177);
+    border-radius: 0 15px 15px 0;
+} */
+.vip-center{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #282828;
+    border-radius: 15px;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+     border: 1px solid rgba(255, 255, 255, 0.33);
+}
+.center-main{
+    display: flex;
+    width: 100%;
+    height: 20%;
+    /* background-color: antiquewhite; */
+    align-items: center;
+    justify-content: center;
+    
+}
+.center-first{
+    display: flex;
+    width: 50%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+   
+    font-size: 24px;
+    font-style: normal;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+.center-second{
+    display: flex;
+    width: 89.8%;
+    height: 10%;
+    background-color: #3F3F3F;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border-radius: 10px;
+}
+.chaild-second{
+    display: flex;
+    width: 95%;
+    height: 100%;
+    gap: 10px;
+   
+    
+    
+}
+.vip-text{
+    display: flex;
+    width: 33%;
+    height: 100%;
+   justify-content: center;
+    align-items: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    color: #ffd700;
+  
+}
+.center-third{
+    display: flex;
+    width: 90.5%;
+    height: 50%;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 10px;
+  
+    
+}
+.chaild-third{
+    display: flex;
+    width: 50%;
+    height: 29vh;
+    background:url('../../../../public/assets/electra/vip/pic2.png');
+    background-size: 100% 100%;
+    background-position: center;
+   
+    /* border: 1px solid rgba(255, 255, 255, 0.33); */
+    border-radius: 10px;
+}
+.chaild-third01{
+    display: flex;
+    width: 50%;
+    height: 30vh;
+    background:url('../../../../public/assets/electra/vip/pic.png');
+    background-size: 100% 100%;
+    background-position: center;
+   
+    /* border: 1px solid rgba(255, 255, 255, 0.33); */
+    border-radius: 10px;
+    margin-top: 1vh;
+}
+.center-lasttop{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    
+    justify-content: center;
+}
+.chaild-lasttop{
+    display: flex;
+    width: 90%;
+    height: 100%;
+    background:url('../../../../public/assets/electra/vip/pic3.png'); 
+    background-size: 100% 100%;
+    background-position: center; 
+   
+    align-items: center;
+    justify-content: center;
+   
+    border-radius: 10px;
+}
+.vip-end{
+    display: flex;
+    width: 90%;
+    height: 30%;
+    
+    align-items: center;
+    justify-content: center;
+}
+.chaild-end{
+    display: flex;
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color: #FFD702;
+}
+.vip-endlast{
+    display: flex;
+    width: 90%;
+    height: 100%;
+    background:url('../../../../public/assets/electra/vip/dropdown.png'); 
+    background-size: 100% 100%;
+    background-position: center; 
+   
+    align-items: center;
+    justify-content: center;
+   
+    border-radius: 10px;
+}

@@ -1,0 +1,144 @@
+.referal-parent{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 2.5%;
+    background-color: rgba(0, 0, 0, 0.50);
+  border-radius: 1.5vw;
+}
+.referal-chaild{
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Phosphate;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    
+    letter-spacing: 6.5px;
+    color: black;
+
+    color: transparent; /* Makes the text color transparent */
+    background: url('../../../../public/assets/electra/coinback.png') no-repeat; /* Path to your image */
+    -webkit-background-clip: text; /* Clips the background image to the text */
+    background-clip: text;
+    
+    
+    
+}
+.referal-chaild01{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+   
+    font-style: normal;
+    font-weight: 400;
+    
+    
+}
+.referal-chaild02{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFD700;
+    text-align: center;
+    
+    font-family: Phosphate;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 400;
+   
+    letter-spacing: 3px;
+}
+.referal-chaild03{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items:end;
+    justify-content: center;   
+}
+.referal-chaild04{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: auto;
+   gap: 10rem;
+   margin-top: 3%;
+   align-items: center;
+  
+ 
+  
+ 
+
+    
+}
+.referal-chaild05{
+    display: flex;
+    width: 20%;
+    height: 15vh;
+    background: url('../../../../public/assets/electra/rf1.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    align-items: center;
+    background-size: 100% 100%;
+    
+}
+.referal-chaild06{
+    display: flex;
+    width: 20%;
+    height: 15vh;
+    background: url('../../../../public/assets/electra/rf2.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    align-items: center;  
+    background-size: 100% 100%;
+}
+.referal-chaild07{
+    display: flex;
+    width: 20%;
+    height: 10vh;
+    background: url('../../../../public/assets/electra/reff.png');
+    background-size: 100% 100%;
+    background-position: center;
+    border-radius: 10px;
+    align-items: center;  
+   
+    
+}
+.referal-chaild08{
+    display: flex;
+    width: 90%;
+    /* height: auto; */
+    align-items: start;
+    justify-content: left;
+   
+    gap: 100px;
+ 
+   
+   
+}
+.referal-endtext{
+    display: flex;
+    width: 20%;
+   height: 100%;
+  
+    color: #FFF;
+    text-align: center;
+        
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+   
+    letter-spacing: 0.1vw;
+   
+
+}

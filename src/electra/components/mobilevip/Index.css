@@ -1,0 +1,178 @@
+.mobilevip-parent{
+    display: flex;
+    width: 100%;
+    height: 200vh;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: start;
+    flex-direction:column;
+    gap: 10px;
+}
+.mobilevip-chaild{
+    display: flex;
+    width: 100%;
+    height: 6%;
+   
+    align-items: center;
+    justify-content: center;
+}
+.mobilechaild-top{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    border-radius: 1.5vw;
+    background-color: #000000;
+
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+
+}
+.mobilevip-chaild02{
+    display: flex;
+    width: 100%;
+    height: 6%;
+    align-items: center;
+    justify-content: center;
+   
+}
+.mobilevip-secondtop{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #3F3F3F;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.5vw;
+    flex-direction: row;
+}
+.mobilevip-text{
+    display: flex;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color: #ffd700;
+}
+.mobilevip-chaild03{
+    display: flex;
+    width: 100%;
+    height: 15%;
+    align-items: center;
+    
+   
+}
+.mobilevip-pic{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background:url('../../../../public/assets/electra/vip/mobilevip/pic1.png');
+    background-size: 100% 100%;
+    background-position: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.5vw;
+}
+.mobilevip-chaild04{
+    display: flex;
+    width: 100%;
+    height: 18%;
+    align-items: center;
+    
+   
+}
+.mobilevip-pic02{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background:url('../../../../public/assets/electra/vip/mobilevip/pic2.png');
+    
+    background-size: 100% 100%;
+    background-position: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.5vw;
+}
+.mobilevip-chaild05{
+    display: flex;
+    width: 100%;
+    height: 23%;
+    align-items: center;
+    
+   
+}
+.mobilevip-pic03{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background:url('../../../../public/assets/electra/vip/mobilevip/pic3.png');
+    background-size: 100% 100%;
+    background-position: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.5vw;
+}
+.mobilevip-chaild06{
+    display: flex;
+    width: 100%;
+    height: 23%;
+    align-items: center;
+    
+   
+}
+.mobilevip-pic04{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background:url('../../../../public/assets/electra/vip/mobilevip/pic4.png');
+    background-size: 100% 100%;
+    background-position: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.5vw;
+}
+.mobilevip-chaild07{
+    display: flex;
+    width: 100%;
+    height: 80%;
+    align-items: center;
+    
+   
+}
+.mobilevip-pic05{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background:url('../../../../public/assets/electra/vip/mobilevip/pic5.png');
+    background-size: 100% 100%;
+    background-position: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.5vw;
+}
+.mobilevip-chaild08{
+    display: flex;
+    width: 100%;
+    height: 50%;
+    align-items: center;
+    
+   
+}
+.mobilevip-pic06{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background:url('../../../../public/assets/electra/vip/mobilevip/pic6.png');
+    background-size: 100% 100%;
+    background-position: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.5vw;
+}

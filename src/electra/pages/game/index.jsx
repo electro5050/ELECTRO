@@ -43,6 +43,8 @@ import {updateUserData} from 'redux/userActionActions';
 import { useDispatch  } from 'react-redux';
 
 import backgroundMusic from '../../../assets/sounds/Electra Theme.wav';
+import MobileReferral from '../../../electra/components/MobileReferral/Index'
+import Mobilevip from '../../../electra/components/mobilevip/Index'
 
 const GamePage = () => {
 
@@ -90,7 +92,7 @@ const GamePage = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
-      navigate('/login');
+      navigate('/game');
     }
     else{
       fetch(config.gameApiUrl+ '/users', {
@@ -164,7 +166,7 @@ const GamePage = () => {
           case 'Tutorials':
             return <MobileTutorialComponent />;
           case 'VIP Membership':
-            return <VIPMembershipComponent isMobile={true} />;
+            return <Mobilevip isMobile={true} />;
           case 'Portfolio':
             return <MobilePortfolioComponent />;
           // case 'LiveSupport':
@@ -174,7 +176,7 @@ const GamePage = () => {
           case 'Win History':
             return <WinHistoryComponent isMobile={true} />;
           case 'Referal':
-            return <ReferralComponent />;
+            return <MobileReferral/>;
 
           case 'Profile':
             return <MobileProfileComponent />;

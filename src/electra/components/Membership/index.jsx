@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import SideBar from 'electra/components/sidebar';
 import './index.css';
 import TopSection from 'electra/components/Common/Games/TopSection';
+import King from '../../../assets/vip/king.png'
 
 const containerStyle = {
   background: 'rgb(0, 0, 0)',
@@ -19,24 +20,60 @@ const GameComponent = ({isMobile}) => {
   return (
     <div className="membership-game">
       {!isMobile && <TopSection  />}
-      <div className="container" style={{background:"url(/assets/electra/vip.jpeg)", backgroundSize: '100% 100%',backgroundposition:'center', backgroundRepeat: 'no-repeat', borderRadius: "1.2vw", height: "50vh",width:"100%", overflowY: "auto", 
+      <div className="container" style={{background:"rgba(0,0,0,.25)", backgroundSize: '100% 100%',backgroundposition:'center', backgroundRepeat: 'no-repeat', borderRadius: "1.2vw", height: "70vh",width:"100%", overflowY: "auto", 
       fontWeight:"700", color: "white", padding:"2vw"}}>
+        <div className='parent-vip'> 
+          <div className='chaild-vip'>
+            <div className='top-left'>
 
-          <div style={{width:"100%", textAlign:"center"}} className="font-10">
-          for becoming a VIP member Purchase coins for
-          </div>
+            </div>
+            {/* <div className='top-right'>
 
-          <div style={{width:"100%", textAlign:"center", marginTop:"0.5vh",color:'gold'}}className="font-10">
-          $10000
-          </div>
+            </div> */}
 
-          <div style={{width:"100%", textAlign:"center", marginTop:"2vh"}} className="font-10">
-          get exclusive access to
           </div>
+          <div className='vip-center'>
+            <div className='center-main'>
+              <div className='center-first'>
+              VIP <img src={King} alt="" style={{width:'7%'}}/>CLUB
+              </div>
+              
 
-          <div style={{width:"100%", textAlign:"center", marginTop:"0.5vh",color:'gold'}} className="font-10">
-          Gold Level Benefits
-          </div>
+              </div>
+               <div className='center-second'>
+                <div className='chaild-second'>
+                  <div className='vip-text'>Reach Level 2 to to get 10 XP</div>
+                  <div className='vip-text'>GET 1 LC On Every level UP</div>
+                  <div className='vip-text'>Earn XP on First Deposit</div>
+                </div>
+              </div>
+              <div className='center-third'>
+                <div className='chaild-third'>
+                  
+                </div>
+                <div className='chaild-third01'>
+                  
+                  </div>
+              </div>
+              <div className='center-lasttop'>
+                <div className='chaild-lasttop'>
+                  
+                </div>
+              </div>
+              <div className='vip-end'>
+                <div className='chaild-end'>
+                FAQ about LC
+                </div>
+              </div>
+              <div className='vip-endlast'>
+
+              </div>
+            </div>
+          
+         
+        </div>
+
+          
 
 
       </div>

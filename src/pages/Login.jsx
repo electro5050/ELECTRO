@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'common/electra_axios';
-
+import './Login.css'
 import { useNavigate } from 'react-router-dom'; 
 // import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
@@ -9,6 +9,11 @@ import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
 import SignUp from './SignUp';
 import config from 'common/constants';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft} from '@fortawesome/free-solid-svg-icons';
+
+
+
 
 const Login = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -52,7 +57,7 @@ const Login = () => {
 
     return (
         
-             <div  className='login-container' >
+             <div  className='login-container'>
             <img src={Logo} style={{width:'10vw'}}></img>
             {/* <section className="flat-title-page inner">
                 <div className="overlay"></div>
@@ -60,7 +65,7 @@ const Login = () => {
             <section className="tf-login tf-section" style={{backgroundColor:'black'}} >
                 <div className="themesflat-container" >
                     <div className="row">
-                        <div className="col-12" style ={{width:'100vw' , height:'auto', }}>
+                        <div className="col-12" style ={{width:'100%' , height:'auto',alignItems:'center' }}>
 
                             <div className="flat-form box-login-social">                            
                              
@@ -95,7 +100,14 @@ const Login = () => {
                                             </label>
                                             <Link to="#" className="forgot-pass">Forgot Password ?</Link>
                                         </div>
-                                        <button type="submit" className="submit">Login</button>
+                                        <button type="submit" className="submit" style={{backgroundColor:"#FFD700", color:"black",}}>Login</button>
+                                        <div className='backhome'>
+                                        <div className="forgot-pass">Back to Home </div>
+                                        
+                                        <Link to="/" className='arrow'><FontAwesomeIcon icon={faArrowLeft} /></Link>
+
+                                        </div>
+                                       
                                     </form>
                                 </div>
                             </div>

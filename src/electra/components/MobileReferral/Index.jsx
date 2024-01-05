@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import SideBar from 'electra/components/sidebar';
-import './index.css';
+import './Index.css'
 import TopSection from 'electra/components/Common/Games/TopSection';
 
 const containerStyle = {
@@ -18,14 +18,14 @@ const overlayColor1 = 'rgba(255, 0, 0, 0.5)'; // First overlay color
 const overlayColor2 = 'rgba(0, 0, 0, 0.5)';
 
   const backgroundStyle = {
-     background: `url(assets/electra/referal.png), lightgray 50% / cover no-repeat`,
+     background: `url(assets/electra/refferal-bg.png), lightgray 50% / cover no-repeat`,
     backgroundSize: '100% 100%',
     backgroundRepeat: 'no-repeat',
     backgroundposition:'center',
     height: '100%',
     width: '100%',
     borderRadius: '1.5vw',
-    border: '2px solid rgba(255, 255, 255, 0.5)',
+    border: '1px solid #FFD702',
     position: 'relative', // Set the container's position to relative
     
   };
@@ -78,7 +78,7 @@ const GameComponent = ({}) => {
     <div className="referral">
       <TopSection  />
       <div className="container" style={{background:"rgba(40, 40, 40, 0.60)", borderRadius: "1.2vw", height: "70vh", overflowY: "auto", 
-      fontWeight:"700", color: "white", padding:"2vw"}}>
+      fontWeight:"700", color: "white", padding:"2vw",}}>
        
         
 
@@ -87,43 +87,40 @@ const GameComponent = ({}) => {
               {/* <div style={contentStyle } >
               REFER AND EARN<br></br>get up to 10% bonus 
               </div> */}
-              <div className='referal-parent'>
-                  <div className='referal-chaild'>
-                      REFER AND EARN
-                  </div>
-                  <div className='referal-chaild01'>
-                    How It Work ?
-                  </div>
-                  <div className='referal-chaild02'>
-                    get up to 10% bonus
-                  </div>
-                <div className='referal-chaild03'>
-                <div className='referal-chaild04'>
-                  
-                    <div className='referal-chaild05'>
-                   
-                     </div>
-                     <div className='referal-chaild06'>
+              <div className='mobile-parent'>
+                <div className='mobile-chaild01'>
+                REFER AND EARN
 
-                     </div>
-                     <div className='referal-chaild07'>
-
-                     </div>
-                    
-                   
-                  </div>
-                  <div className='referal-chaild08'>
-                      <div className='referal-endtext'>
-                      Share your unique referral code or link with your friends to join electro5050.
-                        </div>
-                        <div className='referal-endtext'>
-                        Referred user purchase $100 in coins, and verify referred user’s account.
-                        </div>
-                        <div className='referal-endtext'>
-                        Collect your referral bonus 10$ for each successful referrals
-                        </div>
-                     </div>
                 </div>
+                <div className='mobile-chaild02'>
+                How It Works?
+                </div>
+                <div className='mobile-chaild03'>
+                    <div className='mobile-img'>
+                      <div className='mobile-rfeeral01'>
+
+                      </div>
+                      <div className='mobile-refferaltxt01'>
+                        Share your unique referral<br></br> code or link with your<br></br> friends to join <br></br>electro5050.
+                      </div>
+                      <div className='mobile-refferal02'></div>
+                      <div className='mobile-refferaltxt02'>
+                        Referred user purchase <br></br>$100 in coins, and verify <br></br>referred user’s account.
+                      </div>
+                      <div className='mobile-refferal03'></div>
+                      <div className='mobile-refferaltxt03'>
+                      Collect your referral<br></br> bonus 10$ for each <br></br>successful referrals
+                      </div>
+                      <div className='mobile-chaildend'>
+                      GET UP TO 10%<br></br> BONUS
+              
+                      </div>
+                      
+
+                    </div>
+                    
+                </div>
+
               </div>
 
               <div style={linkStyle}>
