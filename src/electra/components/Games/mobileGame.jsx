@@ -233,7 +233,7 @@ const GameComponent = ({userData, websocketData}) => {
               
               // Proceed only if gameId is available
               if (gameId) {
-                  const response = await axios.get(config.gameApiUrl + '/game-outcome?gameId=${gameId}', {
+                  const response = await axios.get(`${config.gameApiUrl}/game-outcome?gameId=${gameId}`, {
                       headers: {
                           'Authorization': `Bearer ${token}`,
                           'Content-Type': 'application/json'
