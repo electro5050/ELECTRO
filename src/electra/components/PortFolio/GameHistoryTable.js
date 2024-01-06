@@ -72,6 +72,7 @@ const TopWinners = ({userData}) => {
           console.error('Error fetching user game history:', error);
       });
   }, []);
+  
 
   return (
     <div className="game-view-portfolio-table" style={{height:"70vh", background:"#43415B", marginTop:"1vh", borderRadius: "20px"}}>
@@ -81,7 +82,7 @@ const TopWinners = ({userData}) => {
         <tbody style={{ maxHeight: "20vh", overflowY: "auto", paddingRight: "10px" }}>
 
         <tr className="th-title font-6"  style={{ position: 'sticky', top: '0', zIndex: '1', background:"#43415B" }}>
-        <th className="column left-align" style={{ paddingLeft:"3%" }}>Date and Time</th>
+        <th className="column left-align" style={{ paddingLeft:"3%",width:"35vw" }}>Date and Time</th>
             <th className="column">Win Amount</th>
             <th className="column">Room</th>
           </tr>
@@ -113,7 +114,7 @@ const TopWinners = ({userData}) => {
               </td>
               <td className="column">
                 <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
-                  <span style={{color:"#D77070", paddingLeft:'10px', fontWeight:"700"}}> {player.Room}</span>
+                  <span style={{color: player.Room === 'gold' ? '#D4AF37' : player.Room === 'silver' ? '#C0C0C0' : '#D77070', paddingLeft:'10px', fontWeight:"700"}}> {player.Room}</span>
                 </div>
               </td>
             </tr>

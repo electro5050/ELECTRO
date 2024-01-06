@@ -7,85 +7,6 @@ import GameHistoryTable from 'electra/components/PortFolio/GameHistoryTable';
 import config from 'common/constants';
 
 
-const rankingData = [
-  {
-    bidAmount: 100,
-    win: 5,
-    loss: 2,
-  },
-  {
-    bidAmount: 150,
-    win: 8,
-    loss: 3,
-  },
-  {
-    bidAmount: 80,
-    win: 4,
-    loss: 1,
-  },
-  {
-    bidAmount: 100,
-    win: 5,
-    loss: 2,
-  },
-  {
-    bidAmount: 150,
-    win: 8,
-    loss: 3,
-  },
-  {
-    bidAmount: 80,
-    win: 4,
-    loss: 1,
-  },
-  {
-    bidAmount: 100,
-    win: 5,
-    loss: 2,
-  },
-  {
-    bidAmount: 150,
-    win: 8,
-    loss: 3,
-  },
-  {
-    bidAmount: 80,
-    win: 4,
-    loss: 1,
-  },
-  {
-    bidAmount: 100,
-    win: 5,
-    loss: 2,
-  },
-  {
-    bidAmount: 150,
-    win: 8,
-    loss: 3,
-  },
-  {
-    bidAmount: 80,
-    win: 4,
-    loss: 1,
-  },
-  {
-    bidAmount: 100,
-    win: 5,
-    loss: 2,
-  },
-  {
-    bidAmount: 150,
-    win: 8,
-    loss: 3,
-  },
-  {
-    bidAmount: 80,
-    win: 4,
-    loss: 1,
-  },
-  // Add more data as needed
-];
-
 
 const GameComponent = ({}) => {
   const [gameHistory, setGameHistory] = useState([]);
@@ -114,7 +35,7 @@ const GameComponent = ({}) => {
     marginLeft: "auto",
     marginRight: "auto"}}>
       
-      <span className="font-5">Your game potfolio</span>
+      <span className="font-5">Your Potfolio</span>
       <GameHistoryTable rankingData={gameHistory} />
     </div>
   );
