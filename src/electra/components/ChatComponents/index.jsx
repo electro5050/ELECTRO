@@ -25,11 +25,14 @@ const shareButtonStyle = {
     justifyContent: 'center',
     color: 'black',
     alignItems: 'center',
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    marginLeft: '9.5vw',
+    // marginRight: '13vw',
+    // marginBottom:'30vh',
     padding: '10px 20px',
     fontWeight: 700,
-    cursor:"pointer"
+    cursor:"pointer",
+    position:'relative',
+   bottom:'13vh',
   };
 
 const sendButtonStyle={
@@ -240,14 +243,23 @@ const ChatBox = ({userData, websocketData}) => {
         }
 
     }, [winModel,loseModel]);
+
+    useEffect(() => {
+        if (winModel||loseModel) {
+          const timer = setTimeout(() => {
+            closeWinModal()||closeLoseModal()
+          }, 3000); 
+          return () => clearTimeout(timer);
+        }
+      }, [winModel,loseModel]);
     
 
     return (
         <>
         
-        <Modal isOpen={winModel > 0} onClose={ closeWinModal}>
+        <Modal isOpen={winModel > 0} onClose={closeWinModal} >
             <div>
-            <img src={"assets/electra/win-shield.png"}  alt=""  style={{height:"50vh"}}/>
+            <img src={"assets/electra/win-shield.png"}  alt=""  style={{height:"50vh",position:'relative',marginRight:'23vw'}}/>
             <div style={shareButtonStyle} onClick={shareWin}>
                     share &nbsp;&nbsp;
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
@@ -260,7 +272,7 @@ const ChatBox = ({userData, websocketData}) => {
 
         <Modal isOpen={loseModel > 0} onClose={closeLoseModal}>
             <div>
-            <img src={"assets/electra/lose.png"}  alt=""  style={{height:"50vh"}}/>
+            <img src={"assets/electra/lose.png"}  alt=""  style={{height:"50vh",position:'relative',marginRight:'23vw',marginBottom:'2vh'}}/>
             {/* <div style={shareButtonStyle} onClick={shareWin}>
                     share &nbsp;&nbsp;
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">

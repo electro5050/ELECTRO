@@ -14,23 +14,27 @@ import { useDispatch  } from 'react-redux';
 
   const containerStyle = {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius:"5vw",
-    height: '5vw',
-    width:"30vw",
+    height: '3vw',
+    width:"20vw",
     background: 'transparent',
     position: 'relative',
+    marginRight:'23vw',
+    marginBottom:'4vh',
+    zIndex:'1'
+    
   };
 
   const textDivStyle = {
-    position: 'absolute',
+    position: 'relative',
     top: '50%', // Adjust as needed
     transform: 'translateY(-50%)',
     opacity: 1,
     color: 'white',
-    fontSize:"calc(10px + 2vw + 2vh)",
+    fontSize:"calc(7px + 2vw + 2vh)",
     fontWeight:"100"
     // Additional styles for the text div as needed
   };
@@ -140,6 +144,16 @@ const closeGameEndModal = () => {
       // Cleanup the interval when the component is unmounted or when the condition is not met
       return () => clearInterval(intervalId);
     }, [websocketData]);
+
+
+    useEffect(() => {
+      if (gameEndModal) {
+        const timer = setTimeout(() => {
+          closeGameEndModal();
+        }, 5000); 
+        return () => clearTimeout(timer);
+      }
+    }, [gameEndModal]);
 
 
   return (

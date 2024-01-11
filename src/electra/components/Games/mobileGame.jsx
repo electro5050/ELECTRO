@@ -15,6 +15,9 @@ import losesound from '../../../assets/sounds/win popup.wav'
 const Winsound = new Audio(winsound);
 const Losesound = new Audio(losesound);
 
+
+
+
 const containerStyle = {
     display: 'flex',
     flexDirection: 'column',
@@ -214,12 +217,31 @@ const GameComponent = ({userData, websocketData}) => {
 
 }, [winModel,loseModel]);
 
+useEffect(() => {
+  if (winModel||loseModel) {
+    const timer = setTimeout(() => {
+      closeWinModal()||closeLoseModal()
+    }, 3000); 
+    return () => clearTimeout(timer);
+  }
+}, [winModel,loseModel]);
+
+
+useEffect(() => {
+  if (gameEndModal) {
+    const timer = setTimeout(() => {
+      closeGameEndModal();
+    }, 5000); 
+    return () => clearTimeout(timer);
+  }
+}, [gameEndModal]);
+
 
   return (
 
 
 
-    <div className="game-view">
+    <div className="game-view" style={{maxHeight:'100vh',overflow: 'hidden'}}>
 
       <GameChart />
 
@@ -263,7 +285,7 @@ const GameComponent = ({userData, websocketData}) => {
 
         </Modal>
 
-        <Modal isOpen={loseModel > 0} >
+        <Modal isOpen={loseModel > 0} onClose={closeLoseModal} >
                 <div>
                     <img src={"assets/electra/lose.png"} alt="" style={{ height: "60vw",marginBottom:'30vh' }} />
                     {/* Additional content for lose modal if needed */}
