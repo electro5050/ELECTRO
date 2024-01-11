@@ -17,8 +17,8 @@ import { useDispatch  } from 'react-redux';
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius:"2vw",
-    height: '30vw',
+    borderRadius:"5vw",
+    height: '5vw',
     width:"30vw",
     background: 'transparent',
     position: 'relative',
@@ -30,21 +30,21 @@ import { useDispatch  } from 'react-redux';
     transform: 'translateY(-50%)',
     opacity: 1,
     color: 'white',
-    fontSize:"calc(50px + 5vw + 5vh)",
-    fontWeight:"800"
+    fontSize:"calc(10px + 2vw + 2vh)",
+    fontWeight:"100"
     // Additional styles for the text div as needed
   };
 
   const textDivStyleSpan = {
     position: 'absolute',
-    top: '15%', // Adjust as needed
+    top: '45%', // Adjust as needed
     transform: 'translateY(-50%)',
     opacity: 1,
     color: 'white',
   }
 
   const blackDivStyle = {
-    borderRadius:"2vw",
+    borderRadius:"1.5vw",
     border:"1px solid yellow",
     position: 'absolute',
     width: '100%', // Full width
@@ -169,12 +169,12 @@ const closeGameEndModal = () => {
 {/* 
           <div style={textDivStyle} className="font-10"> */}
             <div style={textDivStyleSpan} className="font-10">
-            next bid starts in...
+            next bid starts in...    {gameCounter}
             </div>
 
-            <div style={textDivStyle}>
-              {gameCounter}
-            </div>
+            {/* <div style={textDivStyle}>
+              
+            </div> */}
         </div>
         </Modal>
 

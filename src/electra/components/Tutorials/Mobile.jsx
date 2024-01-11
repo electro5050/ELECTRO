@@ -46,10 +46,10 @@ const GameComponent = ({}) => {
 
 
 
-<div className="container" style={{background:"#000000E6", backgroundSize: '100% 100%',backgroundposition:'center', backgroundRepeat: 'no-repeat', borderRadius: "1.2vw", height: "60vh",width:"100%", overflowY: "auto", 
+<div className="container" style={{ backgroundSize: '100% 100%',backgroundposition:'center', backgroundRepeat: 'no-repeat', borderRadius: "1.2vw", height: "60vh",width:"100%", overflowY: "auto", 
       fontWeight:"700", color: "white", padding:"2vw"}}>
 
-          <div style={{width:"100%", textAlign:"center"}} className="font-6">
+          <div style={{width:"100%", textAlign:"center",color:'green',fontWeight:'900'}} className="font-6">
           HOW TO PLAY ?
           </div>
           <div className='mobtutorials'>
@@ -63,7 +63,7 @@ const GameComponent = ({}) => {
                 Buy coins
                 </div>
                 <div className='mobcontent'>
-                In this system, 1 coin is equivalent to 1 dollar. To participate, you need to purchase coins; for instance, buying $100 means acquiring 100 coins. These coins can then be used for bidding and earning.
+                In this system, 1 coin is equivalent to 1 dollar,To participate, you need to purchase coins;for instance, buying $100 means acquiring 100 coins.These coins can then be used for bidding and earning.
                 </div>
 
               </div>
@@ -77,7 +77,7 @@ const GameComponent = ({}) => {
                 Select a room (Gold or Silver)
                 </div>
                 <div className='mobcontent'>
-                In a single game session, you are limited to bidding in only one room. However, you have the option to switch rooms during the last 5 seconds by clicking the 'switch' button and analyzing the graph.
+                In a single game session, you are limited to bidding in only one room However,you have the option to switch rooms during the last 5 seconds by clicking the 'switch' button and analyzing the graph.
                 </div>
 
               </div>
@@ -90,7 +90,7 @@ const GameComponent = ({}) => {
                 30 Seconds
                 </div>
                 <div className='mobcontent'>
-                Each session has a duration of 30 seconds, and users are not permitted to place bids during the final 5 seconds.
+                Each session has a duration of 30 seconds,and users are not permitted to place bids during the final 5 seconds.
                 </div>
 
               </div>
@@ -104,7 +104,7 @@ const GameComponent = ({}) => {
                 Analyse the graph's
                 </div>
                 <div className='mobcontent'>
-                The gold and silver bars symbolize bidders competing against each other from opposite sides. The side with a greater number of bidders will be represented by a higher volume on the graph. The position of the silver and gold bars, located below the graph, will fluctuate to the left or right, reflecting the traffic in the gold or silver rooms, respectively.
+                The gold and silver bars symbolize bidders competing against each other from opposite sides.The side with a greater number of bidders will be represented by a higher volume on the graph.The position of the silver and gold bars,located below the graph,will fluctuate to the left or right,reflecting the traffic in the gold or silver rooms,respectively.
                 </div>
 
               </div>
@@ -118,7 +118,7 @@ const GameComponent = ({}) => {
                 Win or Lose
                 </div>
                 <div className='mobcontent'>
-                After 30 seconds, the game concludes, marking the end of the session. The winning side, either gold or silver, is determined by which side had greater traffic. Each winner will receive double their bid amount, which will be instantly credited to their wallet. 
+                After 30 seconds,the game concludes,marking the end of the session.The winning side,either gold or silver,is determined by which side had greater traffic.Each winner will receive double their bid amount,which will be instantly credited to their wallet.  
                 
                 </div>
 

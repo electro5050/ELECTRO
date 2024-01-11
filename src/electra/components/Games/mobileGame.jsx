@@ -19,35 +19,37 @@ const containerStyle = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start', // Changed from 'center' to 'flex-start'
+    marginBottom: '38vh',
     borderRadius:"2vw",
-    height: '70vw',
-    width:"70vw",
+    height: '5vw',
+    width:"50vw",
     background: 'transparent',
     position: 'relative',
+    zIndex: 2,
   };
 
   const textDivStyle = {
     position: 'absolute',
-    top: '50%', // Adjust as needed
+    top: '15%', // Adjust as needed
     transform: 'translateY(-50%)',
     opacity: 1,
     color: 'white',
-    fontSize:"calc(50px + 5vw + 5vh)",
-    fontWeight:"800"
+    fontSize:"calc(5px + 2vw + 2vh)",
+    fontWeight:"100"
     // Additional styles for the text div as needed
   };
 
   const textDivStyleSpan = {
     position: 'absolute',
-    top: '15%', // Adjust as needed
+    top: '45%', // Adjust as needed
     transform: 'translateY(-50%)',
     opacity: 1,
     color: 'white',
   }
 
   const blackDivStyle = {
-    borderRadius:"2vw",
+    borderRadius:"1vw",
     border:"1px solid yellow",
     position: 'absolute',
     width: '100%', // Full width
@@ -65,79 +67,18 @@ const containerStyle = {
     width: 'fit-content',
     height: '20px',
     display: 'flex',
-    textAlign: 'center',
+    textAlign: 'flex-start',
+    marginBottom:'30vh',
     justifyContent: 'center',
     color: 'black',
     alignItems: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
+   position:'relative',
+   bottom:'7vh',
     padding: '10px 20px',
     fontWeight: 700
   };
-
-  const exampleRankingData = [
-    {
-      userId: "User1",
-      bidAmount: 100,
-      winningBonus: 50,
-    },
-    {
-      userId: "User2",
-      bidAmount: 150,
-      winningBonus: 75,
-    },
-    {
-      userId: "User3",
-      bidAmount: 120,
-      winningBonus: 60,
-    },
-    {
-      userId: "User1",
-      bidAmount: 100,
-      winningBonus: 50,
-    },
-    {
-      userId: "User2",
-      bidAmount: 150,
-      winningBonus: 75,
-    },
-    {
-      userId: "User3",
-      bidAmount: 120,
-      winningBonus: 60,
-    },
-    {
-      userId: "User1",
-      bidAmount: 100,
-      winningBonus: 50,
-    },
-    {
-      userId: "User2",
-      bidAmount: 150,
-      winningBonus: 75,
-    },
-    {
-      userId: "User3",
-      bidAmount: 120,
-      winningBonus: 60,
-    },
-    {
-      userId: "User1",
-      bidAmount: 100,
-      winningBonus: 50,
-    },
-    {
-      userId: "User2",
-      bidAmount: 150,
-      winningBonus: 75,
-    },
-    {
-      userId: "User3",
-      bidAmount: 120,
-      winningBonus: 60,
-    },
-    // Add more data as needed
-  ];
 
 const GameComponent = ({userData, websocketData}) => {
     const [rankingData, setRankingData] = useState([]);
@@ -150,11 +91,11 @@ const GameComponent = ({userData, websocketData}) => {
     const [loseModel,SetLoseModal] = useState(0);
 
     const closeWinModal = () => {
-        SetIsWinModal(0)
+        SetIsWinModal(0);
     };
 
     const closeLoseModal = () => {
-      SetLoseModal(0)
+        SetLoseModal(0)
   };
 
     const [user, setUser] = useState(null);
@@ -167,7 +108,7 @@ const GameComponent = ({userData, websocketData}) => {
   
   
   const closeGameEndModal = () => {
-    SetIsGameEndModal(false)
+      SetIsGameEndModal(false)
   };
   
    
@@ -299,17 +240,17 @@ const GameComponent = ({userData, websocketData}) => {
         </div>
         {/* 
         <div style={textDivStyle} className="font-10"> */}
-            <div style={textDivStyleSpan} className="font-10">
-            next bid starts in...
+            <div style={textDivStyleSpan} className="font-6">
+            next bid starts in... <span style={{ marginLeft: '10px' }}>{gameCounter}</span>
             </div>
 
-            <div style={textDivStyle}>
-            {gameCounter}
-            </div>
+            {/* <div style={textDivStyle}>
+            
+            </div> */}
         </div>
         </Modal>
 
-        <Modal isOpen={winModel > 0} onClose={closeWinModal}>
+        <Modal isOpen={winModel > 0} onClose={closeWinModal} >
             <div>
             <img src={"assets/electra/win-shield.png"}  alt=""  style={{height:"60vw"}}/>
             <div style={shareButtonStyle} onClick={shareWin}>
@@ -322,9 +263,9 @@ const GameComponent = ({userData, websocketData}) => {
 
         </Modal>
 
-        <Modal isOpen={loseModel > 0} onClose={closeLoseModal}>
+        <Modal isOpen={loseModel > 0} >
                 <div>
-                    <img src={"assets/electra/lose.png"} alt="" style={{ height: "60vw" }} />
+                    <img src={"assets/electra/lose.png"} alt="" style={{ height: "60vw",marginBottom:'30vh' }} />
                     {/* Additional content for lose modal if needed */}
                 </div>
             </Modal>

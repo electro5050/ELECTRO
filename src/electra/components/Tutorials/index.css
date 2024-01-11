@@ -15,188 +15,118 @@
 .m-3 {
   margin: 1rem;
 }
-.tutorialstep{
-  display: flex;
-  width: 100%;
-  height: 100%;
-  flex-direction: column;
-  gap: 10px;
+
+
+
+
+
+
+.tutorial-parent{
+display: flex;
+width: 100%;
+height: 100vh;
+/* background-color: aqua; */
+align-items: center;
+justify-content: start;
+flex-direction: column;
+gap: 1vw;
+}
+.tutorail-chaild{
+display: flex;
+width: 100%;
+height: 20%;
+/* background-color: brown; */
+align-items: center;
+justify-content: center;
+}
+.chaild-tutorail01{
+display: flex;
+width: 95%;
+height: 100%;
+background-color: #252525; 
+border-radius: 2vw;
 
 }
-.steptutorial{
-  display: flex;
-  width: 100%;
-  height: 100%;
-  gap: 25px;
-  flex-direction: row;
-  margin-top: .7vw;
-  
- 
-  
-  
+.chaild-01{
+display: flex;
+width: 100%;
+height: 100%;
+
+border-radius: 2vw;
+align-items: center;
+justify-content: center;
 }
-.step1{
-  display: flex;
-  width: 100%;
-  height: 30vh;
-  background-color: #252525;
-  border-radius: 30px;
-  flex-direction: column;
-  
-}
-.set1{
-  display: flex;
-  align-items: center;
-  color: #9F9F9F;
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 600;
-  margin-top: .5vw;
-  justify-content: center;
-  border-radius: 25px;
+.chaild-001{
+display: flex;
+width: 95%;
+height: 100%;
+/* gap: .2vw; */
+border-radius: 2vw;
+flex-direction: column;
 
 }
-.tutobuy{
-  display: flex;
-  align-items: center;
-  /* width: 100%;
-  height: 100%; */
-  text-align: center;
-  justify-content: center;
-  color: #FFF;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  margin-top: .8vw;
- 
-  
-  
-}
-.tutosteps{
-  display: flex;
-  width: 17vw;
-   height: 20vh;
-   align-items: center;
-   justify-content: center;
-   margin-left: 1vw;
-   color: #FFF;
-   text-align: justify;
-   font-family: 'Poppins', sans-serif;
-   font-size: 13px;
-   font-style: normal;
-   font-weight: 600;
-  
-  
-  
-  
- 
-  
+.text-tutotail{
+display: flex;
+width: 100%;
+height: 25%;
 
+align-items: center;
+justify-content: center;
 }
-.tutosteps2{
-  display: flex;
-  width: 17vw;
-   height: 20vh;
-   align-items: center;
-   justify-content: center;
-   margin-left: 1vw;
-   color: #FFF;
-   text-align: justify;
-   font-family: 'Poppins', sans-serif;
-   font-size: 13px;
-   font-style: normal;
-   font-weight: 600;
-   
-  margin-bottom: 2.9vw;
-   
-  
-  
-  
-  
-  
-  
- 
- 
-  
+.tutorailtext-chaild{
+display: flex;
+width: 100%;
+height: 100%;
 
+color: #9F9F9F;
+font-family: Poppins;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+align-items: center;
 }
-.step4{
-  display: flex;
-  width: 100%;
-  height: 100%;
-  background-color: #252525;
-  border-radius: 30px;
-  flex-direction: column;
-  
-}
-.set4{
-  display: flex;
-  align-items: center;
-  color: #9F9F9F;
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 600;
- 
- 
-  margin-top: .5vw;
- 
-  justify-content: center;
-  border-radius: 30px;
+.text-tutotails{
+display: flex;
+width: 100%;
+height: 20%;
 
+align-items: center;
+justify-content: center;
 }
-.tutobuy4{
-  display: flex;
-  align-items: center;
- 
-  text-align: center;
-  justify-content: center;
-  color: #FFF;
-  
-  
-  
- 
-  
-  font-style: normal;
-  font-weight: 600;
- 
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  
-  margin-top: .8vw;
-}
-.tutosteps4{
-  display: flex;
- width: 25vw;
-  height: 20vh;
-  align-items: center;
-  justify-content: center;
-  margin-left: 1vw;
-  color: #FFF;
-  text-align: justify;
-  font-family: 'Poppins', sans-serif;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 600;
- 
- 
-  
- 
-  
+.tutorailtext-innerchaild{
+display: flex;
+width: 100%;
+height: auto;
 
+color: #fff;
+font-family: Poppins;
+font-size: 2.3rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+align-items: center;
+/* background-color: chartreuse; */
 }
-.steplast{
-  display: flex;
-  width: 100%;
-  height: 93%;
-  gap: 20px;
-  
-  
-  flex-direction: row;
+.text-tutotaillast{
+display: flex;
+width: 100%;
+height: 50%;
+
+align-items: center;
+justify-content: center;
+}
+.tutorailtext-innerchaildlast{
+display: flex;
+width: 100%;
+height: auto;
+
+color: #fff;
+font-family: 'Poppins', sans-serif;
+font-size: 1.4rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+align-items: center;
+/* background-color: aqua; */
 }
