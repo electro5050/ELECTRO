@@ -19,13 +19,13 @@ const shareButtonStyle = {
     background: 'linear-gradient(0deg, rgb(255, 255, 255) 0%, rgba(244, 225, 124, 0.9) 100%)',
     backdropFilter: 'blur(50px)',
     width: 'fit-content',
-    height: '20px',
+    height: '2em',
     display: 'flex',
     textAlign: 'center',
     justifyContent: 'center',
     color: 'black',
     alignItems: 'center',
-    marginLeft: '9.5vw',
+    marginLeft: '38%',
     // marginRight: '13vw',
     // marginBottom:'30vh',
     padding: '10px 20px',
@@ -258,8 +258,8 @@ const ChatBox = ({userData, websocketData}) => {
         <>
         
         <Modal isOpen={winModel > 0} onClose={closeWinModal} >
-            <div>
-            <img src={"assets/electra/win-shield.png"}  alt=""  style={{height:"50vh",position:'relative',marginRight:'23vw'}}/>
+            <div style={{marginRight:'23vw',}} >
+            <img src={"assets/electra/win-shield.png"}  alt=""  style={{height:"50vh",position:'relative'}}/>
             <div style={shareButtonStyle} onClick={shareWin}>
                     share &nbsp;&nbsp;
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">

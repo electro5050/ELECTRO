@@ -227,14 +227,14 @@ useEffect(() => {
 }, [winModel,loseModel]);
 
 
-useEffect(() => {
-  if (gameEndModal) {
-    const timer = setTimeout(() => {
-      closeGameEndModal();
-    }, 5000); 
-    return () => clearTimeout(timer);
-  }
-}, [gameEndModal]);
+// useEffect(() => {
+//   if (gameEndModal) {
+//     const timer = setTimeout(() => {
+//       closeGameEndModal();
+//     }, 5000); 
+//     return () => clearTimeout(timer);
+//   }
+// }, [gameEndModal]);
 
 
   return (
