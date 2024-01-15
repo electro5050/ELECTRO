@@ -92,142 +92,146 @@ const GameComponent = ({}) => {
 
 
 
-<div className="container" style={{ backgroundSize: '100% 100%',backgroundposition:'center', backgroundRepeat: 'no-repeat', borderRadius: "1.2vw", height: "75vh",width:"100%", overflowY: "auto", 
+<div className="container" style={{ backgroundSize: '100% 100%',backgroundposition:'center', backgroundRepeat: 'no-repeat', borderRadius: "1.2vw", height: "70vh",width:"100%", overflowY: "auto", 
       fontWeight:"700", color: "white", padding:"2vw"}}>
 
-          <div style={{width:"100%", textAlign:"center",color:'green',fontWeight:'900'}} className="font-6">
+          <div style={{width:"100%", textAlign:"center"}} className="font-6">
           HOW TO PLAY ?
           </div>
-          <div className='tutorial-parent'>
-            <div className='tutorail-chaild'>
-              <div className='chaild-tutorail01'>
-                <div className='chaild-01'>
-                  <div className='chaild-001'>
-                    <div className='text-tutotail'>
-                      <div className='tutorailtext-chaild'>
-                      step 1
-                      </div>
-                    </div>
-                    <div className='text-tutotails'>
-                      <div className='tutorailtext-innerchaild'>
-                     Buy Coins
-                      </div>
-                    </div>
-                    <div className='text-tutotaillast'>
-                      <div className='tutorailtext-innerchaildlast'>
-                      In this system, 1 coin is equivalent to 1 dollar,To participate, you need to purchase coins;for instance, buying $100 means acquiring 100 coins.These coins can then be used for bidding and earning.
-                      </div>
-                    </div>
-
+          <div className='tutorial-mainparent'>
+            <div className='tutorial-parent'>
+              <div className='tutorial-inner'>
+                <div className='innertutorail-chaild'>
+                  <div className='innertutorial-chaild01'>
+                  STEP 1
                   </div>
+
                 </div>
+
+                <div className='innertutorail-chaild01'>
+                  <div className='innertutorial-chaild02'>
+                  Buy Coins
+                  </div>
+
+                </div>
+
+                <div className='innertutorail-chaild02'>
+                  <div className='innertutorial-chaild03'>
+                  In this system, 1 coin is equivalent to 1 dollar,To participate, you need to purchase coins;for instance, buying $100 means acquiring 100 coins.These coins can then be used for bidding and earning.
+                  </div>
+
+                </div>
+
               </div>
             </div>
 
 
-            <div className='tutorail-chaild'>
-              <div className='chaild-tutorail01'>
-                <div className='chaild-01'>
-                  <div className='chaild-001'>
-                    <div className='text-tutotail'>
-                      <div className='tutorailtext-chaild'>
-                      step 2
-                      </div>
-                    </div>
-                    <div className='text-tutotails'>
-                      <div className='tutorailtext-innerchaild'>
-                      Select a room (Gold or Silver)
-                      </div>
-                    </div>
-                    <div className='text-tutotaillast'>
-                      <div className='tutorailtext-innerchaildlast'>
-                      In a single game session, you are limited to bidding in only one room However,you have the option to switch rooms during the last 5 seconds by clicking the 'switch' button and analyzing the graph.
-                      </div>
-                    </div>
-
+            <div className='tutorial-parent'>
+              <div className='tutorial-inner'>
+                <div className='innertutorail-chaild'>
+                  <div className='innertutorial-chaild01'>
+                  STEP 2
                   </div>
+
                 </div>
+
+                <div className='innertutorail-chaild01'>
+                  <div className='innertutorial-chaild02'>
+                  Select a room (Gold or Silver)
+                  </div>
+
+                </div>
+
+                <div className='innertutorail-chaild02'>
+                  <div className='innertutorial-chaild03'>
+                  In a single game session, you are limited to bidding in only one room However,you have the option to switch rooms during the last 5 seconds by clicking the 'switch' button and analyzing the graph.
+                  </div>
+
+                </div>
+
               </div>
             </div>
 
-
-            <div className='tutorail-chaild'>
-              <div className='chaild-tutorail01'>
-                <div className='chaild-01'>
-                  <div className='chaild-001'>
-                    <div className='text-tutotail'>
-                      <div className='tutorailtext-chaild'>
-                      step 3
-                      </div>
-                    </div>
-                    <div className='text-tutotails'>
-                      <div className='tutorailtext-innerchaild'>
-                      30 Seconds
-                      </div>
-                    </div>
-                    <div className='text-tutotaillast'>
-                      <div className='tutorailtext-innerchaildlast'>
-                      Each session has a duration of 30 seconds,and users are not permitted to place bids during the final 5 seconds.
-                      </div>
-                    </div>
-
+            <div className='tutorial-parent'>
+              <div className='tutorial-inner'>
+                <div className='innertutorail-chaild'>
+                  <div className='innertutorial-chaild01'>
+                  STEP 3
                   </div>
+
                 </div>
+
+                <div className='innertutorail-chaild01'>
+                  <div className='innertutorial-chaild02'>
+                  30 Seconds
+                  </div>
+
+                </div>
+
+                <div className='innertutorail-chaild02'>
+                  <div className='innertutorial-chaild03'>
+                  Each session has a duration of 30 seconds,and users are not permitted to place bids during the final 5 seconds.
+                  </div>
+
+                </div>
+
               </div>
             </div>
 
-
-            <div className='tutorail-chaild'>
-              <div className='chaild-tutorail01'>
-                <div className='chaild-01'>
-                  <div className='chaild-001'>
-                    <div className='text-tutotail'>
-                      <div className='tutorailtext-chaild'>
-                      step 4
-                      </div>
-                    </div>
-                    <div className='text-tutotails'>
-                      <div className='tutorailtext-innerchaild'>
-                      Analyse the graph's
-                      </div>
-                    </div>
-                    <div className='text-tutotaillast'>
-                      <div className='tutorailtext-innerchaildlast'>
-                      The gold and silver bars symbolize bidders competing against each other from opposite sides.The side with a greater number of bidders will be represented by a higher volume on the graph.The position of the silver and gold bars,located below the graph,will fluctuate to the left or right,reflecting the traffic in the gold or silver rooms,respectively.
-                      </div>
-                    </div>
-
+            <div className='tutorial-parent'>
+              <div className='tutorial-inner'>
+                <div className='innertutorail-chaild'>
+                  <div className='innertutorial-chaild01'>
+                  STEP 4
                   </div>
+
                 </div>
+
+                <div className='innertutorail-chaild01'>
+                  <div className='innertutorial-chaild02'>
+                  Analyse the graph's
+                  </div>
+
+                </div>
+
+                <div className='innertutorail-chaild02'>
+                  <div className='innertutorial-chaild03'>
+                  The gold and silver bars symbolize bidders competing against each other from opposite sides.The side with a greater number of bidders will be represented by a higher volume on the graph.The position of the silver and gold bars,located below the graph,will fluctuate to the left or right,reflecting the traffic in the gold or silver rooms,respectively.
+                  </div>
+
+                </div>
+
               </div>
             </div>
 
-
-            <div className='tutorail-chaild'>
-              <div className='chaild-tutorail01'>
-                <div className='chaild-01'>
-                  <div className='chaild-001'>
-                    <div className='text-tutotail'>
-                      <div className='tutorailtext-chaild'>
-                      step 5
-                      </div>
-                    </div>
-                    <div className='text-tutotails'>
-                      <div className='tutorailtext-innerchaild'>
-                      Win or Lose
-                      </div>
-                    </div>
-                    <div className='text-tutotaillast'>
-                      <div className='tutorailtext-innerchaildlast'>
-                      After 30 seconds,the game concludes,marking the end of the session.The winning side,either gold or silver,is determined by which side had greater traffic.Each winner will receive double their bid amount,which will be instantly credited to their wallet. 
-                      </div>
-                    </div>
-
+            <div className='tutorial-parent'>
+              <div className='tutorial-inner'>
+                <div className='innertutorail-chaild'>
+                  <div className='innertutorial-chaild01'>
+                  STEP 5
                   </div>
+
                 </div>
+
+                <div className='innertutorail-chaild01'>
+                  <div className='innertutorial-chaild02'>
+                  Win or Lose
+                  </div>
+
+                </div>
+
+                <div className='innertutorail-chaild02'>
+                  <div className='innertutorial-chaild03'>
+                  After 30 seconds,the game concludes,marking the end of the session.The winning side,either gold or silver,is determined by which side had greater traffic.Each winner will receive double their bid amount,which will be instantly credited to their wallet.  
+                  </div>
+
+                </div>
+
               </div>
             </div>
+
           </div>
+          
      
           
 

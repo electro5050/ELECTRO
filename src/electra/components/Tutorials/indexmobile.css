@@ -15,78 +15,94 @@
 .m-3 {
   margin: 1rem;
 }
-.mobtutorials{
+
+
+.tutorial-mainparentmobile{
   display: flex;
   width: 100%;
-  height: 100%;
-  flex-direction: column;
-  
-}
-.mobtutorial{
-  display: flex;
-  width: 100%;
-  height: 100%;
+  height: 140vh;
+ 
   flex-direction: column;
   gap: 10px;
-  margin-top: 1vh;
-
-  
-
- 
-}
-.mobtuto{
-  display: flex;
-  width: 100%;
-  height: 25vh;
-  background-color:#252525;
   align-items: center;
-  
-  border-radius: 20px;
-  flex-direction: column;
-  /* margin-top: 1vh; */
 }
-.mobtutostep{
-  display: flex;
-  width: 95%;
-  height: 10%;
- margin-top: 1vh;
-  align-items: center;
-  justify-content: start;
-  color: #9F9F9F;
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
-  font-size: 15px;
-  font-style: normal;
-
+.tutorial-parent{
+display: flex;
+width: 100%;
+height: 200px;
+flex-shrink: 0;
+border-radius: 36px;
+background: #1C1C1C;
+align-items: center;
+justify-content: center;
+}
+.tutorial-inner{
+display: flex;
+width: 90%;
+height: 100%;
+/* background-color: aquamarine; */
+flex-direction: column;
+gap: .2vw;
 
 }
-.mobset{
-  display: flex;
-  width: 95%;
- 
- margin-top: 1vh;
-  align-items: center;
-  justify-content: start;
-  color: #FFFFFF;
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.7rem;
-  font-style: normal;
+.innertutorail-chaildmobile{
+display: flex;
+width: 50%;
+height: 15%;
 
-  
+align-items: end;
 }
-.mobcontent{
-  display: flex;
-  width: 95%;
-  height: 100%;
- margin-left: 2vw;
-  align-items: center;
-  justify-content: center;
-  color: #FFFFFF;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.4rem;
-  font-style: normal;
-  justify-content: center;
-  text-align: start;
-  
+.innertutorial-chaild01mobile{
+display: flex;
+width: 100%;
+height: auto;
+
+align-items: center;
+color: #9F9F9F;
+font-family: 'Poppins', sans-serif;
+font-size: 11px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.innertutorail-chaild01mobile{
+display: flex;
+width: 50%;
+height: 20%;
+
+align-items: center;
+}
+.innertutorial-chaild02mobile{
+display: flex;
+width: 100%;
+height: auto;
+
+align-items: center;
+color: #ffff;
+font-family: 'Poppins', sans-serif;
+font-size: 11px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.innertutorail-chaild02mobile{
+display: flex;
+width: 100%;
+height: 50%;
+
+align-items: start;
+}
+.innertutorial-chaild03mobile{
+display: flex;
+width: 100%;
+height: auto;
+
+align-items: center;
+color: #ffff;
+font-family: 'Poppins', sans-serif;
+font-size: 11.5px;
+font-style: normal;
+font-weight: 550;
+line-height: normal;
 }
