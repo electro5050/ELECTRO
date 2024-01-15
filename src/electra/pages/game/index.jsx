@@ -120,12 +120,53 @@ const GamePage = () => {
   }
     
   
-    const backgroundStyle = {
-        backgroundImage: `url(/assets/electra/bg1.jpg)`,
-        backgroundSize: 'cover', // Adjust as needed
-        backgroundRepeat: 'no-repeat',
-        minHeight: "100vh",
+    // const backgroundStyle = {
+    //     backgroundImage: `url(/assets/electra/bg1.jpg)`,
+    //     backgroundSize: 'cover', // Adjust as needed
+    //     backgroundRepeat: 'no-repeat',
+    //     minHeight: "100vh",
+    //   };
+
+    const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+
+
+    useEffect(() => {
+      // Function to update the window height
+      const handleResize = () => {
+          setWindowHeight(window.innerHeight);
       };
+
+      // Add event listener
+      window.addEventListener('resize', handleResize);
+
+      // Remove event listener on cleanup
+      return () => window.removeEventListener('resize', handleResize);
+  }, []); // Empty dependency array ensures this effect runs only on mount and unmount
+
+      const backgroundStyle = {
+        backgroundImage: `url(/assets/electra/bg1.jpg)`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        minHeight: `${windowHeight}px`, // Set minHeight to the state value
+    };
+
+    //   const backgroundStyle = {
+    //     backgroundImage: `url(/assets/electra/bg1.jpg)`,
+    //     backgroundSize: 'cover',
+    //     backgroundRepeat: 'no-repeat',
+    //     minHeight: `${window.innerHeight}px`, // Initial minHeight
+    // };
+    
+    // // Function to update the minHeight
+    // function updateMinHeight() {
+    //     backgroundStyle.minHeight = `${window.innerHeight}px`;
+    // }
+    
+    // // Set the initial minHeight
+    // updateMinHeight();
+    
+    // Add an event listener to the window to handle resize events
+    // window.addEventListener('resize', updateMinHeight);
 
       const renderComponent = () => {
         switch (activeTab) {
@@ -248,7 +289,7 @@ const GamePage = () => {
             <div style={backgroundStyle} className={`main-game-container ${collapsed ? 'collapse' : ''}`}>
               <MobileHeaders handleLinkClick={handleLinkClick} selectedHeader={activeTab} handleChatToggle={handleChatToggle} />
               <TopSectionMobile handleLinkClick={handleLinkClick}  />
-              <div style={{ height: "80vh", maxHeight: "80vh", overflowY: "auto" }}>
+              <div style={{ height: "calc("+windowHeight+"px - 20vh)", maxHeight: "calc("+windowHeight+"px - 20vh)", overflowY: "auto" }}>
                 {renderMobileComponent()}
               </div>
               <BottomNavigation handleLinkClick={handleLinkClick} selectedMenu={activeTab} />

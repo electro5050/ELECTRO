@@ -245,10 +245,10 @@ useEffect(() => {
 
       <GameChart />
 
-      <div style={{height:'25vh', display:"flex", justifyContent:"center",alignItems:'center' }} >
+      {/* <div style={{height:'25vh', display:"flex", justifyContent:"center",alignItems:'center' }} >
         <TopWinnersTable rankingData={rankingData} />
 
-      </div>
+      </div> */}
 
 
       <Modal isOpen={gameEndModal} onClose={closeGameEndModal}>
