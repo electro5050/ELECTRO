@@ -83,7 +83,7 @@ const TopWinners = ({userData}) => {
 
         <tr className="th-title font-6"  style={{ position: 'sticky', top: '0', zIndex: '1', background:"#43415B" }}>
         <th className="column left-align" style={{ paddingLeft:"3%",width:"35vw" }}>Date and Time</th>
-            <th className="column">Win Amount</th>
+            <th className="column">Win/Lose</th>
             <th className="column">Room</th>
           </tr>
 
@@ -107,7 +107,7 @@ const TopWinners = ({userData}) => {
                 <div>
                 <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
 
-                  <span style={{color:"#70D77A", paddingLeft:'10px', fontWeight:"700"}}> {player.win}</span>
+                  <span style={{color: player.win ? "#70D77A" : "#FF0000", paddingLeft:'10px', fontWeight:"700"}}> {player.win|| player.loss}</span>
                 </div>
                 </div>
 

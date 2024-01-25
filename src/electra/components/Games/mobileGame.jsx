@@ -23,9 +23,10 @@ const containerStyle = {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-start', // Changed from 'center' to 'flex-start'
-    marginBottom: '38vh',
-    borderRadius:"2vw",
-    height: '5vw',
+    marginBottom: '40vh',
+    marginTop:'auto',
+    borderRadius:"3vw",
+    height: '5vh',
     width:"50vw",
     background: 'transparent',
     position: 'relative',
@@ -71,7 +72,7 @@ const containerStyle = {
     height: '20px',
     display: 'flex',
     textAlign: 'flex-start',
-    marginBottom:'30vh',
+    marginBottom:'37vh',
     justifyContent: 'center',
     color: 'black',
     alignItems: 'center',
@@ -80,7 +81,7 @@ const containerStyle = {
    position:'relative',
    bottom:'7vh',
     padding: '10px 20px',
-    fontWeight: 700
+    fontWeight: 700,
   };
 
 const GameComponent = ({userData, websocketData}) => {
@@ -251,7 +252,7 @@ useEffect(() => {
       </div> */}
 
 
-      <Modal isOpen={gameEndModal} onClose={closeGameEndModal}>
+      <Modal isOpen={gameEndModal} >
 
         <div style={containerStyle}>
 
@@ -274,7 +275,7 @@ useEffect(() => {
 
         <Modal isOpen={winModel > 0} onClose={closeWinModal} >
             <div>
-            <img src={"assets/electra/win-shield.png"}  alt=""  style={{height:"60vw"}}/>
+            <img src={"assets/electra/win-shield.png"}  alt=""  style={{height:"60vw",position:'relative'}}/>
             <div style={shareButtonStyle} onClick={shareWin}>
                     share &nbsp;&nbsp;
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
@@ -287,7 +288,7 @@ useEffect(() => {
 
         <Modal isOpen={loseModel > 0} onClose={closeLoseModal} >
                 <div>
-                    <img src={"assets/electra/lose.png"} alt="" style={{ height: "60vw",marginBottom:'30vh' }} />
+                    <img src={"assets/electra/lose.png"} alt="" style={{ height: "60vw",marginBottom:'37vh' }} />
                     {/* Additional content for lose modal if needed */}
                 </div>
             </Modal>
